@@ -1,165 +1,155 @@
 buildscript {
-    repositories {
-        maven {
-            name 'Forge'
-            url 'https://maven.minecraftforge.net'
-        }
-        maven {
-            name 'Sponge'
-            url 'https://repo.spongepowered.org/maven'
-        }
-        maven {
-            name 'Gradle'
-            url "https://plugins.gradle.org/m2/"
-        }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.0.14', changing: true
-        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
-    }
-}
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-apply plugin: 'org.spongepowered.mixin'
-
-version = project.mc_version + '-v' + project.aether_version
-group = 'com.gildedgames.aether' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'aether'
-
-java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
-
-minecraft {
-    mappings channel: 'official', version: project.mappings
-
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-
-    runs {
-        client {
-            workingDirectory project.file('run')
-
-            //Only uncomment this if you actually need the debug logging! If you enable this the log will be full of incredibly useless information spam
-            //property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            //property 'forge.logging.console.level', 'debug'
-
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
-            arg "--mixin=aether.mixins.json"
-
-            mods {
-                aether {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        server {
-            workingDirectory project.file('run')
-
-            //property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            //property 'forge.logging.console.level', 'debug'
-
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
-            arg "--mixin=aether.mixins.json"
-
-            mods {
-                aether {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run')
-
-            //property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            //property 'forge.logging.console.level', 'debug'
-
-            args '--mod', 'aether', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), '--existing', file('src/generated/resources/')
-
-            environment 'target', 'fmluserdevdata'
-
-            mods {
-                aether {
-                    source sourceSets.main
-                }
-            }
-        }
-    }
+	repositories {
+		maven {
+			name = "Fabric"
+			url = "https://maven.fabricmc.net/"
+		}
+		mavenCentral()
+		jcenter()
+		maven {
+			name = "Jitpack"
+			url 'https://jitpack.io/'
+		}
+	}
+	dependencies {
+		classpath 'com.github.Chocohead:Fabric-Loom:0d0261a'
+	}
 }
 
-sourceSets.main.resources {
-    srcDir 'src/generated/resources'
+plugins {
+	id 'maven-publish'
 }
 
-dependencies {
-    minecraft "net.minecraftforge:forge:${project.mc_version}-${project.forge_version}"
+apply plugin: "fabric-loom"
 
-    annotationProcessor 'org.spongepowered:mixin:0.8.3-SNAPSHOT:processor'
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}:api")
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}")
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}")
+archivesBaseName = project.archives_base_name
+version = project.mod_version
+group = project.maven_group
 
-    compileOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:${project.caelus_version}:api")
-    compileOnly fg.deobf("top.theillusivec4.caelus:caelus-forge:${project.caelus_version}")
+idea {
+	module {
+		downloadJavadoc = true
+	}
+}
 
-    compileOnly fg.deobf("com.blamejared.crafttweaker:CraftTweaker-${project.crafttweaker_version}")
-
-    compileOnly fg.deobf("curse.maven:colytra-280200:${project.colytra_version}")
-    compileOnly fg.deobf("curse.maven:curious-elytra-317716:${project.curiouselytra_version}")
-
-    runtimeOnly fg.deobf("io.github.ultimateboomer:smoothboot-forge:${project.smoothboot_version}")
-
-    runtimeOnly fg.deobf("curse.maven:shutup-experimental-settings-407174:${project.shutupexperimentalsettings_version}")
-
-    //compileOnly fileTree(dir: 'libs', include: '*.jar')
+eclipse {
+	classpath {
+		downloadJavadoc = true
+	}
 }
 
 repositories {
-    maven { url = "https://repo.spongepowered.org/maven" }
-    maven { url = "https://maven.blamejared.com" }
-    maven { url = "https://maven.theillusivec4.top/" }
-    maven { url = "https://jcenter.bintray.com/" }
-    maven { url = "https://www.cursemaven.com" }
+	maven {
+		name = "Jitpack"
+		url "https://jitpack.io/"
+	}
 }
 
-jar {
-    manifest {
-        attributes([
-            "Specification-Title": project.name,
-            "Specification-Vendor": "Gilded Games",
-            "Specification-Version": "1", // We are version 1 of ourselves
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" : "Gilded Games",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-            "MixinConfigs": "aether.mixins.json"
-        ])
-    }
+minecraft {
 }
 
-def reobfFile = file("$buildDir/reobfJar/output.jar")
-def reobfArtifact = artifacts.add('default', reobfFile) {
-    type 'jar'
-    builtBy 'reobfJar'
+dependencies {
+	// fabric loader requires log4j, guava, and gson
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.1'
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.1'
+	annotationProcessor group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.1'
+	annotationProcessor group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.1'
+	implementation 'com.google.guava:guava:21.0'
+	implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+
+	// mixin and fabric loader need asm 9
+	implementation 'org.ow2.asm:asm:9.0'
+	implementation 'org.ow2.asm:asm-analysis:9.0'
+	implementation 'org.ow2.asm:asm-commons:9.0'
+	implementation 'org.ow2.asm:asm-tree:9.0'
+	implementation 'org.ow2.asm:asm-util:9.0'
+
+	implementation "com.github.jhalterman:typetools:${project.typetools_version}"
+	implementation "com.github.mineLdiver:expressions:${project.expressions_version}"
+	implementation "com.github.mineLdiver:UnsafeEvents:${project.unsafeevents_version}"
+	implementation "it.unimi.dsi:fastutil:${project.fastutil}"
+
+	// to change the versions see the gradle.properties file
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+
+	mappings loom.fromCommit("calmilamsy/BIN-Mappings", "${project.yarn_mappings}") {spec ->
+		spec.version = "b1.7.3-${project.yarn_mappings}"
+	}
+
+	// convenience stuff
+	// adds some useful annotations for data classes. does not add any dependencies
+	compileOnly 'org.projectlombok:lombok:1.18.16'
+	annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
+	// adds some useful annotations for miscellaneous uses. does not add any dependencies, though people without the lib will be missing some useful context hints.
+	compile 'org.jetbrains:annotations:16.0.2'
+
+	modImplementation "com.github.minecraft-cursed-legacy:cursed-fabric-loader:${project.loader_version}"
+
+	modImplementation "com.github.ModificationStation:StationAPI:${project.stapi_version}"
+
+	modImplementation('com.github.calmilamsy:HowManyItems-Fabric-Unofficial:6af40ed18d') {
+		exclude group: 'com.github.ModificationStation', module: 'StationAPI'
+	}
+
+	modImplementation "com.github.calmilamsy:ModMenu:03023e1"
 }
+
+processResources {
+	inputs.property "version", project.version
+
+	from(sourceSets.main.resources.srcDirs) {
+		include "fabric.mod.json"
+		expand "version": project.version
+	}
+
+	from(sourceSets.main.resources.srcDirs) {
+		exclude "fabric.mod.json"
+	}
+}
+
+// ensure that the encoding is set to UTF-8, no matter what the system default is
+// this fixes some edge cases with special characters not displaying correctly
+// see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
+}
+
+// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+// if it is present.
+// If you remove this task, sources will not be generated.
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = "sources"
+	from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar) {
+	from javadoc
+	classifier = 'javadoc'
+}
+
+tasks.publishToMavenLocal.dependsOn(tasks.remapJar)
 
 publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact reobfArtifact
-        }
-    }
-    repositories {
-        maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
-        }
-    }
-}
+	repositories {
+		mavenLocal()
+	}
 
-mixin {
-    add sourceSets.main, "aether.refmap.json"
+	publications {
+		mavenJava(MavenPublication) {
+			artifactId project.archives_base_name
+			artifact ("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}.jar") {
+				classifier null
+				builtBy remapJar
+			}
+
+			artifact ("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}-dev.jar") {
+				classifier 'dev'
+				builtBy remapJar
+			}
+		}
+	}
 }
