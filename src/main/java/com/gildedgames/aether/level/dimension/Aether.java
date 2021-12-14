@@ -7,8 +7,15 @@ import net.minecraft.level.dimension.Dimension;
 import net.minecraft.level.source.LevelSource;
 import net.minecraft.util.maths.MathHelper;
 import net.minecraft.util.maths.Vec3f;
+import net.modificationstation.stationapi.api.client.level.dimension.TravelMessageProvider;
 
-public class Aether extends Dimension {
+import static com.gildedgames.aether.Aether.of;
+
+public class Aether extends Dimension implements TravelMessageProvider {
+
+    public static final String
+            ENTERING_MESSAGE = "gui." + of("ascending"),
+            LEAVING_MESSAGE = "gui." + of("descending");
 
     private final float[] colours = new float[4];
 
@@ -113,5 +120,15 @@ public class Aether extends Dimension {
     @Override
     public boolean canPlayerSleep() {
         return false;
+    }
+
+    @Override
+    public String getEnteringTranslationKey() {
+        return ENTERING_MESSAGE;
+    }
+
+    @Override
+    public String getLeavingTranslationKey() {
+        return LEAVING_MESSAGE;
     }
 }

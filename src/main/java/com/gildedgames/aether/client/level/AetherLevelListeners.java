@@ -19,7 +19,6 @@ public class AetherLevelListeners {
             AETHER_WORLD_RENDERER = new AetherWorldRenderer((Minecraft) FabricLoader.getInstance().getGameInstance());
         }
         AETHER_WORLD_RENDERER.updateLevel(event.level);
-        System.out.println("how and why");
     }
 
     private static boolean init;

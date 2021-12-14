@@ -71,6 +71,7 @@ dependencies {
 	implementation "com.github.mineLdiver:expressions:${project.expressions_version}"
 	implementation "com.github.mineLdiver:UnsafeEvents:${project.unsafeevents_version}"
 	implementation "it.unimi.dsi:fastutil:${project.fastutil}"
+	implementation "com.github.ben-manes.caffeine:caffeine:${project.caffeine_version}"
 
 	// to change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"

@@ -148,14 +148,4 @@ public class AetherPortal extends TemplatePortal implements CustomPortal, BlockI
     public class_467 getTravelAgent(PlayerBase player) {
         return new AetherTravelAgent();
     }
-
-    @Override
-    public String getDimensionEnteringMessage(PlayerBase player) {
-        return "Entering the Aether";
-    }
-
-    @Override
-    public String getDimensionLeavingMessage(PlayerBase player) {
-        return "Leaving the Aether";
-    }
 }
