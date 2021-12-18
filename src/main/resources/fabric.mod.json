@@ -27,8 +27,7 @@
       "com.gildedgames.aether.Aether",
       "com.gildedgames.aether.registry.AetherBlocks",
       "com.gildedgames.aether.event.listener.BlockPlacementListener",
-      "com.gildedgames.aether.registry.AetherDimensions",
-      "com.gildedgames.aether.level.biome.AetherBiomes"
+      "com.gildedgames.aether.registry.AetherDimensions"
     ],
     "stationapi:event_bus_client": [
       "com.gildedgames.aether.client.texture.AetherTextures",

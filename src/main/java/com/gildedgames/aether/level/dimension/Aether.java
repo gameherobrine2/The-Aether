@@ -2,6 +2,9 @@ package com.gildedgames.aether.level.dimension;
 
 import com.gildedgames.aether.level.gen.AetherBiomeSource;
 import com.gildedgames.aether.level.source.AetherLevelSource;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvironmentInterface;
 import net.minecraft.block.BlockBase;
 import net.minecraft.level.dimension.Dimension;
 import net.minecraft.level.source.LevelSource;
@@ -11,6 +14,7 @@ import net.modificationstation.stationapi.api.client.level.dimension.TravelMessa
 
 import static com.gildedgames.aether.Aether.of;
 
+@EnvironmentInterface(value = EnvType.CLIENT, itf = TravelMessageProvider.class)
 public class Aether extends Dimension implements TravelMessageProvider {
 
     public static final String
@@ -110,11 +114,8 @@ public class Aether extends Dimension implements TravelMessageProvider {
 
     @Override
     public boolean canSpawnOn(int x, int y) {
-        int k = level.getHeight(x, y);
-        if(k == 0)
-            return false;
-        else
-            return BlockBase.BY_ID[k].material.isSolid();
+        int var3 = this.level.getTopBlockAboveSeaLevel(x, y);
+        return var3 != 0 && BlockBase.BY_ID[var3].material.blocksMovement();
     }
 
     @Override
@@ -122,11 +123,13 @@ public class Aether extends Dimension implements TravelMessageProvider {
         return false;
     }
 
+    @Environment(EnvType.CLIENT)
     @Override
     public String getEnteringTranslationKey() {
         return ENTERING_MESSAGE;
     }
 
+    @Environment(EnvType.CLIENT)
     @Override
     public String getLeavingTranslationKey() {
         return LEAVING_MESSAGE;
