@@ -31,7 +31,6 @@
       "com.gildedgames.aether.registry.AetherDimensions"
     ],
     "stationapi:event_bus_client": [
-      "com.gildedgames.aether.client.texture.AetherTextures",
       "com.gildedgames.aether.client.level.AetherLevelListeners"
     ]
   },

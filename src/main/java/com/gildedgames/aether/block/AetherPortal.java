@@ -1,17 +1,12 @@
 package com.gildedgames.aether.block;
 
-import com.gildedgames.aether.client.texture.AetherTextures;
 import com.gildedgames.aether.level.dimension.AetherTravelAgent;
 import com.gildedgames.aether.registry.AetherDimensions;
 import net.minecraft.block.BlockBase;
 import net.minecraft.class_467;
 import net.minecraft.entity.player.PlayerBase;
-import net.minecraft.level.BlockView;
 import net.minecraft.level.Level;
 import net.modificationstation.stationapi.api.block.CustomPortal;
-import net.modificationstation.stationapi.api.client.model.Model;
-import net.modificationstation.stationapi.api.client.model.block.BlockInventoryModelProvider;
-import net.modificationstation.stationapi.api.client.model.block.BlockWorldModelProvider;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplatePortal;
 
@@ -19,20 +14,10 @@ import java.util.*;
 
 import static com.gildedgames.aether.Aether.of;
 
-public class AetherPortal extends TemplatePortal implements CustomPortal, BlockInventoryModelProvider, BlockWorldModelProvider {
+public class AetherPortal extends TemplatePortal implements CustomPortal {
 
     public AetherPortal(Identifier identifier, int j) {
         super(identifier, j);
-    }
-
-    @Override
-    public Model getInventoryModel(int meta) {
-        return AetherTextures.AETHER_PORTAL;
-    }
-
-    @Override
-    public Model getCustomWorldModel(BlockView blockView, int x, int y, int z) {
-        return blockView.getTileId(x - 1, y, z) != id && blockView.getTileId(x + 1, y, z) != id ? AetherTextures.AETHER_PORTAL_NS : AetherTextures.AETHER_PORTAL_EW;
     }
 
     @Override
@@ -69,8 +54,10 @@ public class AetherPortal extends TemplatePortal implements CustomPortal, BlockI
             arg.stopPhysics = true;
 
             for(int var11 = 0; var11 < 2; ++var11)
-                for (int var12 = 0; var12 < 3; ++var12)
-                    arg.setTile(x + var5 * var11, y + var12, z + var6 * var11, id);
+                for (int var12 = 0; var12 < 3; ++var12) {
+                    arg.setTileWithMetadata(x + var5 * var11, y + var12, z + var6 * var11, id, (var5 + var6 * 2) - 1);
+                    arg.method_243(x + var5 * var11, y + var12, z + var6 * var11);
+                }
 
             arg.stopPhysics = false;
             return true;

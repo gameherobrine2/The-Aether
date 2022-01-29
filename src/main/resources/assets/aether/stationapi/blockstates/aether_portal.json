@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "meta=0": {
+      "model": "aether:block/aether_portal"
+    },
+    "meta=1": {
+      "model": "aether:block/aether_portal",
+      "y": 90
+    }
+  }
+}

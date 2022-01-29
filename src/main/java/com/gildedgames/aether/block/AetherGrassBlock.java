@@ -1,33 +1,18 @@
 package com.gildedgames.aether.block;
 
-import com.gildedgames.aether.client.texture.AetherTextures;
 import com.gildedgames.aether.registry.AetherBlocks;
 import net.minecraft.block.material.Material;
-import net.minecraft.level.BlockView;
 import net.minecraft.level.Level;
-import net.modificationstation.stationapi.api.client.model.Model;
-import net.modificationstation.stationapi.api.client.model.block.BlockInventoryModelProvider;
-import net.modificationstation.stationapi.api.client.model.block.BlockWorldModelProvider;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
 
 import java.util.*;
 
-public class AetherGrassBlock extends TemplateBlockBase implements BlockInventoryModelProvider, BlockWorldModelProvider {
+public class AetherGrassBlock extends TemplateBlockBase {
 
     public AetherGrassBlock(Identifier identifier) {
         super(identifier, Material.DIRT);
         setTicksRandomly(true);
-    }
-
-    @Override
-    public Model getInventoryModel(int meta) {
-        return AetherTextures.AETHER_GRASS_BLOCK;
-    }
-
-    @Override
-    public Model getCustomWorldModel(BlockView blockView, int x, int y, int z) {
-        return AetherTextures.AETHER_GRASS_BLOCK;
     }
 
     @Override
