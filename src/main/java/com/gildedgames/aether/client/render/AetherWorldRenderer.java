@@ -17,7 +17,11 @@ public class AetherWorldRenderer implements LevelListener {
     private final Minecraft client;
     public Level level;
 
-    public void updateLevel(Level level) {
+    public AetherWorldRenderer(Minecraft gameInstance) {
+		client = gameInstance;
+	}
+
+	public void updateLevel(Level level) {
         if (this.level != null)
             this.level.removeLevelListener(this);
         this.level = level;

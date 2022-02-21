@@ -1,12 +1,15 @@
 package com.gildedgames.aether.level.source;
 
 import com.gildedgames.aether.registry.AetherBlocks;
+
+import net.minecraft.block.Sand;
 import net.minecraft.level.Level;
 import net.minecraft.level.biome.Biome;
 import net.minecraft.level.chunk.Chunk;
 import net.minecraft.level.gen.Cave;
 import net.minecraft.level.gen.OverworldCave;
 import net.minecraft.level.source.LevelSource;
+import net.minecraft.level.structure.Structure;
 import net.minecraft.util.ProgressListener;
 import net.minecraft.util.noise.PerlinOctaveNoise;
 
@@ -213,7 +216,49 @@ public class AetherLevelSource implements LevelSource {
 
     @Override
     public void decorate(LevelSource levelSource, int chunkX, int chunkZ) {
-
+    	 Sand.fallInstantly = true;
+         final int k = chunkX * 16;
+         final int l = chunkZ * 16;
+         final Biome biomegenbase = this.level.getBiomeSource().getBiome(k + 16, l + 16);
+         this.random.setSeed(this.level.getSeed());
+         final long l2 = this.random.nextLong() / 2L * 2L + 1L;
+         final long l3 = this.random.nextLong() / 2L * 2L + 1L;
+         this.random.setSeed(chunkX * l2 + chunkZ * l3 ^ this.level.getSeed());
+         double d = 0.25;
+         int l4 = 0;
+         final int k2 = (int)((this.perlinOctaveNoise8.sample(k * d, l * d) / 8.0 + this.random.nextDouble() * 4.0 + 4.0) / 3.0);
+         if (this.random.nextInt(10) == 0) {
+             ++l4;
+         }
+         if (biomegenbase == Biome.FOREST) {
+             l4 += k2 + 5;
+         }
+         if (biomegenbase == Biome.RAINFOREST) {
+             l4 += k2 + 5;
+         }
+         if (biomegenbase == Biome.SEASONAL_FOREST) {
+             l4 += k2 + 2;
+         }
+         if (biomegenbase == Biome.TAIGA) {
+             l4 += k2 + 5;
+         }
+         if (biomegenbase == Biome.DESERT) {
+             l4 -= 20;
+         }
+         if (biomegenbase == Biome.TUNDRA) {
+             l4 -= 20;
+         }
+         if (biomegenbase == Biome.PLAINS) {
+             l4 -= 20;
+         }
+         l4 += k2;
+         for (int i11 = 0; i11 < l4; ++i11) {
+             final int k3 = k + this.random.nextInt(16) + 8;
+             final int j18 = l + this.random.nextInt(16) + 8;
+             final Structure worldgenerator = biomegenbase.getTree(this.random);
+             worldgenerator.method_1143(1.0, 1.0, 1.0);
+             worldgenerator.generate(this.level, this.random, k3, this.level.getHeight(k3, j18), j18);
+         }
     }
 
     @Override
