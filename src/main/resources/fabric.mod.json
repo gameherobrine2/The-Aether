@@ -28,10 +28,12 @@
       "com.gildedgames.aether.registry.AetherBlocks",
       "com.gildedgames.aether.registry.AetherItems",
       "com.gildedgames.aether.event.listener.BlockPlacementListener",
-      "com.gildedgames.aether.registry.AetherDimensions"
+      "com.gildedgames.aether.registry.AetherDimensions",
+      "com.gildedgames.aether.event.listener.EntityRendererListener"
     ],
     "stationapi:event_bus_client": [
-      "com.gildedgames.aether.client.level.AetherLevelListeners"
+      "com.gildedgames.aether.client.level.AetherLevelListeners",
+      "com.gildedgames.aether.event.listener.TextureListener"
     ]
   },
   "mixins": [

@@ -2,6 +2,7 @@ package com.gildedgames.aether.entity.animal;
 
 import com.gildedgames.aether.entity.base.EntityAetherAnimal;
 import com.gildedgames.aether.mixin.LivingAccessor;
+import com.gildedgames.aether.mixin.EntityBaseAccessor;
 import net.minecraft.entity.Living;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemBase;
@@ -94,11 +95,11 @@ public class EntityFlyingCow extends EntityAetherAnimal {
         //if (this.level.isServerSide) {
          //   return;
         //}
-        /*if (this.passenger != null && this.passenger instanceof Living) {
+        if (this.passenger != null && this.passenger instanceof Living) {
             this.field_1029 = 0.0f;
             this.field_1060 = 0.0f;
             this.jumping = false;
-            this.passenger.fallDistance = 0.0f;
+            ((EntityBaseAccessor)this.passenger).setFallDistance(0.0f);
             float field_1606 = this.passenger.yaw;
             this.yaw = field_1606;
             this.prevYaw = field_1606;
@@ -118,33 +119,33 @@ public class EntityFlyingCow extends EntityAetherAnimal {
                 this.velocityX += ((LivingAccessor)living2).get1029() * -Math.sin(float5) * 0.17499999701976776;
                 this.velocityZ += ((LivingAccessor)living2).get1029() * Math.cos(float5) * 0.17499999701976776;
             }
-            if (living2.field_1060 > 0.1f) {
+            if (((LivingAccessor)living2).get1060() > 0.1f) {
                 float float5 = living2.yaw * float4;
-                this.velocityX += living2.field_1060 * Math.cos(float5) * 0.17499999701976776;
-                this.velocityZ += living2.field_1060 * Math.sin(float5) * 0.17499999701976776;
+                this.velocityX += ((LivingAccessor)living2).get1060() * Math.cos(float5) * 0.17499999701976776;
+                this.velocityZ += ((LivingAccessor)living2).get1060() * Math.sin(float5) * 0.17499999701976776;
             }
-            else if (living2.field_1060 < -0.1f) {
+            else if (((LivingAccessor)living2).get1060() < -0.1f) {
                 float float5 = living2.yaw * float4;
-                this.velocityX += living2.field_1060 * Math.cos(float5) * 0.17499999701976776;
-                this.velocityZ += living2.field_1060 * Math.sin(float5) * 0.17499999701976776;
+                this.velocityX += ((LivingAccessor)living2).get1060() * Math.cos(float5) * 0.17499999701976776;
+                this.velocityZ += ((LivingAccessor)living2).get1060() * Math.sin(float5) * 0.17499999701976776;
             }
-            if (this.onGround && living2.jumping) {
+            if (this.onGround && ((LivingAccessor)living2).getJumping()) {
                 this.onGround = false;
                 this.velocityY = 1.4;
                 this.jpress = true;
                 --this.jrem;
             }
-            else if (this.method_1393() && living2.jumping) {
+            else if (this.method_1393() && ((LivingAccessor)living2).getJumping()) {
                 this.velocityY = 0.5;
                 this.jpress = true;
                 --this.jrem;
             }
-            else if (this.jrem > 0 && !this.jpress && living2.jumping) {
+            else if (this.jrem > 0 && !this.jpress && ((LivingAccessor)living2).getJumping()) {
                 this.velocityY = 1.2;
                 this.jpress = true;
                 --this.jrem;
             }
-            if (this.jpress && !living2.jumping) {
+            if (this.jpress && !((LivingAccessor)living2).getJumping()) {
                 this.jpress = false;
             }
             double double5 = Math.abs(Math.sqrt(this.velocityX * this.velocityX + this.velocityZ * this.velocityZ));
@@ -154,7 +155,7 @@ public class EntityFlyingCow extends EntityAetherAnimal {
                 this.velocityZ *= double7;
             }
             return;
-        }*/
+        }
         super.tickHandSwing();
     }
     

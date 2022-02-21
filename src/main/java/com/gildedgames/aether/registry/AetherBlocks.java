@@ -3,6 +3,7 @@ package com.gildedgames.aether.registry;
 import com.gildedgames.aether.block.AetherDirt;
 import com.gildedgames.aether.block.AetherGrassBlock;
 import com.gildedgames.aether.block.AetherPortal;
+import com.gildedgames.aether.block.BlockAercloud;
 import com.gildedgames.aether.block.BlockAetherLeaves;
 import com.gildedgames.aether.block.BlockAetherLog;
 import com.gildedgames.aether.block.Holystone;
@@ -31,6 +32,7 @@ public class AetherBlocks {
         LOG = register("log", id -> new BlockAetherLog(id).setHardness(2.0f).setSounds(BlockBase.WOOD_SOUNDS));
         SKYROOT_LEAVES = register("skyroot_leaves", id -> new BlockAetherLeaves(id,false).setHardness(0.2f).setLightOpacity(1).setSounds(BlockBase.GRASS_SOUNDS));
         GOLDEN_OAK_LEAVES = register("golden_oak_leaves", id -> new BlockAetherLeaves(id,true).setHardness(0.2f).setLightOpacity(1).setSounds(BlockBase.GRASS_SOUNDS));
+        AERCLOUD = register("aercloud",id -> new BlockAercloud(id).setHardness(0.2f).setLightOpacity(3).setSounds(BlockBase.WOOL_SOUNDS).setTranslationKey("Aercloud"));
 
     }
 

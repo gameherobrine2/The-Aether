@@ -1,5 +1,6 @@
 package com.gildedgames.aether.level.source;
 
+import com.gildedgames.aether.generator.AetherGenClouds;
 import com.gildedgames.aether.registry.AetherBlocks;
 
 import net.minecraft.block.Sand;
@@ -226,6 +227,30 @@ public class AetherLevelSource implements LevelSource {
          this.random.setSeed(chunkX * l2 + chunkZ * l3 ^ this.level.getSeed());
          double d = 0.25;
          int l4 = 0;
+         if (this.random.nextInt(50) == 0) {
+             final int x2 = k + this.random.nextInt(16);
+             final int y2 = this.random.nextInt(32) + 96;
+             final int z2 = l + this.random.nextInt(16);
+             new AetherGenClouds(AetherBlocks.AERCLOUD.id, 2, 4, false).generate(this.level, this.random, x2, y2, z2);
+         }
+         if (this.random.nextInt(13) == 0) {
+             final int x2 = k + this.random.nextInt(16);
+             final int y2 = this.random.nextInt(64) + 32;
+             final int z2 = l + this.random.nextInt(16);
+             new AetherGenClouds(AetherBlocks.AERCLOUD.id, 1, 8, false).generate(this.level, this.random, x2, y2, z2);
+         }
+         if (this.random.nextInt(7) == 0) {
+             final int x2 = k + this.random.nextInt(16);
+             final int y2 = this.random.nextInt(64) + 32;
+             final int z2 = l + this.random.nextInt(16);
+             new AetherGenClouds(AetherBlocks.AERCLOUD.id, 0, 16, false).generate(this.level, this.random, x2, y2, z2);
+         }
+         if (this.random.nextInt(50) == 0) {
+             final int x2 = k + this.random.nextInt(16);
+             final int y2 = this.random.nextInt(32);
+             final int z2 = l + this.random.nextInt(16);
+             new AetherGenClouds(AetherBlocks.AERCLOUD.id, 0, 64, true).generate(this.level, this.random, x2, y2, z2);
+         }
          final int k2 = (int)((this.perlinOctaveNoise8.sample(k * d, l * d) / 8.0 + this.random.nextDouble() * 4.0 + 4.0) / 3.0);
          if (this.random.nextInt(10) == 0) {
              ++l4;

@@ -1,27 +1,32 @@
 package com.gildedgames.aether.block;
 
 import net.minecraft.util.maths.Box;
+import net.modificationstation.stationapi.api.registry.Identifier;
+import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
 import net.minecraft.level.BlockView;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.level.Level;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.BlockBase;
+import com.gildedgames.aether.mixin.EntityBaseAccessor;
+import com.gildedgames.aether.event.listener.TextureListener;
 
-public class BlockAercloud extends BlockBase {
+public class BlockAercloud extends TemplateBlockBase {
     public static final int bouncingMeta = 1;
     
-    protected BlockAercloud(final int blockID) {
-        super(blockID, ModLoader.addOverride("/terrain.png", "/aether/blocks/Aercloud.png"), Material.ICE);
+    public BlockAercloud(final Identifier id) {
+        super(id, Material.ICE);
     }
-    
+    public int getTextureForSide(int side, int meta) {
+    	return TextureListener.sprAercloud;
+    }
     @Override
     public void onEntityCollision(final Level level, final int x, final int y, final int z, final EntityBase entityBase) {
-        entityBase.fallDistance = 0.0f;
+        ((EntityBaseAccessor)entityBase).setFallDistance(0.0f);
         if (level.getTileMeta(x, y, z) == 1) {
             entityBase.velocityY = 2.0;
             if (entityBase instanceof PlayerBase) {
-                mod_Aether.giveAchievement(AetherAchievements.blueCloud, (PlayerBase)entityBase);
+                //mod_Aether.giveAchievement(AetherAchievements.blueCloud, (PlayerBase)entityBase);
             }
         }
         else if (entityBase.velocityY < 0.0) {

@@ -10,7 +10,6 @@ import net.minecraft.level.structure.Structure;
 public class AetherGenSkyroot extends Structure {
     @Override
     public boolean generate(final Level level, final Random rand, final int x, final int y, final int z) {
-    	System.out.println("NYA!");
         final int l = rand.nextInt(3) + 4;
         boolean flag = true;
         if (y < 1 || y + l + 1 > 128) {
