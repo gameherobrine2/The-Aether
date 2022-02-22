@@ -3,7 +3,14 @@ package com.gildedgames.aether.registry;
 import com.gildedgames.aether.block.AetherDirt;
 import com.gildedgames.aether.block.AetherGrassBlock;
 import com.gildedgames.aether.block.AetherPortal;
+import com.gildedgames.aether.block.BlockAercloud;
+import com.gildedgames.aether.block.BlockAerogel;
+import com.gildedgames.aether.block.BlockAetherFlower;
+import com.gildedgames.aether.block.BlockAetherLeaves;
+import com.gildedgames.aether.block.BlockAetherLog;
 import com.gildedgames.aether.block.Holystone;
+import com.gildedgames.aether.event.listener.TextureListener;
+
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.BlockBase;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
@@ -26,6 +33,13 @@ public class AetherBlocks {
         AETHER_DIRT = register("aether_dirt", id -> new AetherDirt(id).setHardness(0.2F).setSounds(BlockBase.GRAVEL_SOUNDS));
         AETHER_GRASS_BLOCK = register("aether_grass_block", id -> new AetherGrassBlock(id).setHardness(0.2F).setSounds(BlockBase.GRASS_SOUNDS));
         HOLYSTONE = register("holystone", id -> new Holystone(id).setHardness(0.5F).setSounds(BlockBase.STONE_SOUNDS));
+        LOG = register("log", id -> new BlockAetherLog(id).setHardness(2.0f).setSounds(BlockBase.WOOD_SOUNDS));
+        SKYROOT_LEAVES = register("skyroot_leaves", id -> new BlockAetherLeaves(id,false).setHardness(0.2f).setLightOpacity(1).setSounds(BlockBase.GRASS_SOUNDS));
+        GOLDEN_OAK_LEAVES = register("golden_oak_leaves", id -> new BlockAetherLeaves(id,true).setHardness(0.2f).setLightOpacity(1).setSounds(BlockBase.GRASS_SOUNDS));
+        AERCLOUD = register("aercloud",id -> new BlockAercloud(id).setHardness(0.2f).setLightOpacity(3).setSounds(BlockBase.WOOL_SOUNDS).setTranslationKey("Aercloud"));
+        AEROGEL = register("aerogel", id -> new BlockAerogel(id).setHardness(1.0f).setBlastResistance(2000.0f).setLightOpacity(3).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("Aerogel"));
+        WHITE_FLOWER = register("white_flower", id -> new BlockAetherFlower(id, TextureListener.sprWhiteFlower).setHardness(0.0f).setSounds(BlockBase.GRASS_SOUNDS).setTranslationKey("White_Flower"));
+        PURPLE_FLOWER = register("purple_flower", id -> new BlockAetherFlower(id, TextureListener.sprPurpleFlower).setHardness(0.0f).setSounds(BlockBase.GRASS_SOUNDS).setTranslationKey("Purple_Flower"));
     }
 
     private static <T extends BlockBase & BlockTemplate<T>> T register(String id, Function<Identifier, T> initializer) {

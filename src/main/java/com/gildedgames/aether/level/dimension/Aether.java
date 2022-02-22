@@ -38,33 +38,27 @@ public class Aether extends Dimension implements TravelMessageProvider {
     }
 
     @Override
-    public float getSunPosition(long time, float delta) {
-//        boolean hasKilledGold = ModLoader.getMinecraftInstance().statFileWriter.hasAchievementUnlocked(AetherAchievements.defeatGold);
-//        if(hasKilledGold)
-//        {
-//            int timeTicks = (int)(l % 0x13880L);
-//            float timeFraction = ((float)timeTicks + f) / 120000F - 0.25F;
-//            if(timeTicks > 60000)
-//            {
-//                timeTicks -= 40000;
-//                timeFraction = ((float)timeTicks + f) / 20000F - 0.25F;
-//            }
-//            if(timeFraction < 0.0F)
-//            {
-//                timeFraction++;
-//            }
-//            if(timeFraction > 1.0F)
-//            {
-//                timeFraction--;
-//            }
-//            float f2 = timeFraction;
-//            timeFraction = 1.0F - (float)((Math.cos((double)timeFraction * 3.1415926535897931D) + 1.0D) / 2D);
-//            timeFraction = f2 + (timeFraction - f2) / 3F;
-//            return timeFraction;
-//        } else
-//        {
-            return 0.0F;
-//        }
+    public float getSunPosition(final long time, final float delta) {
+        final boolean hasKilledGold = false;//= ModLoader.getMinecraftInstance().statFileWriter.isAchievementUnlocked(AetherAchievements.defeatGold);
+        if (hasKilledGold) {
+            int timeTicks = (int)(time % 80000L);
+            float timeFraction = (timeTicks + delta) / 120000.0f - 0.25f;
+            if (timeTicks > 60000) {
+                timeTicks -= 40000;
+                timeFraction = (timeTicks + delta) / 20000.0f - 0.25f;
+            }
+            if (timeFraction < 0.0f) {
+                ++timeFraction;
+            }
+            if (timeFraction > 1.0f) {
+                --timeFraction;
+            }
+            final float f2 = timeFraction;
+            timeFraction = 1.0f - (float)((Math.cos(timeFraction * 3.141592653589793) + 1.0) / 2.0);
+            timeFraction = f2 + (timeFraction - f2) / 3.0f;
+            return timeFraction;
+        }
+        return 0.0f;
     }
 
     @Override

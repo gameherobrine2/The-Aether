@@ -1,12 +1,20 @@
 package com.gildedgames.aether.level.source;
 
+import com.gildedgames.aether.generator.AetherGenClouds;
+import com.gildedgames.aether.generator.AetherGenFlowers;
+import com.gildedgames.aether.generator.AetherGenLiquids;
 import com.gildedgames.aether.registry.AetherBlocks;
+
+import net.minecraft.block.BlockBase;
+import net.minecraft.block.Sand;
 import net.minecraft.level.Level;
 import net.minecraft.level.biome.Biome;
 import net.minecraft.level.chunk.Chunk;
 import net.minecraft.level.gen.Cave;
 import net.minecraft.level.gen.OverworldCave;
 import net.minecraft.level.source.LevelSource;
+import net.minecraft.level.structure.Lake;
+import net.minecraft.level.structure.Structure;
 import net.minecraft.util.ProgressListener;
 import net.minecraft.util.noise.PerlinOctaveNoise;
 
@@ -213,7 +221,168 @@ public class AetherLevelSource implements LevelSource {
 
     @Override
     public void decorate(LevelSource levelSource, int chunkX, int chunkZ) {
-
+    	Sand.fallInstantly = true;
+        final int k = chunkX * 16;
+        final int l = chunkZ * 16;
+        final Biome biomegenbase = this.level.getBiomeSource().getBiome(k + 16, l + 16);
+        this.random.setSeed(this.level.getSeed());
+        final long l2 = this.random.nextLong() / 2L * 2L + 1L;
+        final long l3 = this.random.nextLong() / 2L * 2L + 1L;
+        this.random.setSeed(chunkX * l2 + chunkZ * l3 ^ this.level.getSeed());
+        double d = 0.25;
+        //if (ChunkProviderAether.gumCount < 800) {
+        //    ++ChunkProviderAether.gumCount;
+        //}
+        /*else if (this.random.nextInt(32) == 0) {
+            boolean flag = false;
+            final int x = k + this.random.nextInt(16) + 8;
+            final int y = this.random.nextInt(64) + 32;
+            final int z = l + this.random.nextInt(16) + 8;
+            flag = new AetherGenGumdrop().generate(this.level, this.random, x, y, z);
+            if (flag) {
+                gumCount = 0;
+            }
+        }*/
+        if (this.random.nextInt(3) == 0) {
+            final int x2 = k + this.random.nextInt(16) + 8;
+            final int y2 = this.random.nextInt(128);
+            final int z2 = l + this.random.nextInt(16) + 8;
+            new Lake(BlockBase.STILL_WATER.id).generate(this.level, this.random, x2, y2, z2);
+        }
+        /*for (int n = 0; n < 20; ++n) {
+            final int x = k + this.random.nextInt(16);
+            final int y = this.random.nextInt(128);
+            final int z = l + this.random.nextInt(16);
+            new AetherGenMinable(AetherBlocks.Dirt.id, 32).generate(this.level, this.random, x, y, z);
+        }*/
+        for (int n = 0; n < 2; ++n) {
+            final int x = k + this.random.nextInt(16) + 8;
+            final int y = this.random.nextInt(128);
+            final int z = l + this.random.nextInt(16) + 8;
+            new AetherGenFlowers(AetherBlocks.WHITE_FLOWER.id).generate(this.level, this.random, x, y, z);
+        }
+        for (int n = 0; n < 2; ++n) {
+            if (this.random.nextInt(2) == 0) {
+                final int x = k + this.random.nextInt(16) + 8;
+                final int y = this.random.nextInt(128);
+                final int z = l + this.random.nextInt(16) + 8;
+                new AetherGenFlowers(AetherBlocks.PURPLE_FLOWER.id).generate(this.level, this.random, x, y, z);
+            }
+        }
+        /*for (int n = 0; n < 10; ++n) {
+            final int x = k + this.random.nextInt(16);
+            final int y = this.random.nextInt(128);
+            final int z = l + this.random.nextInt(16);
+            new AetherGenMinable(AetherBlocks.Icestone.id, 32).generate(this.level, this.random, x, y, z);
+        }
+        for (int n = 0; n < 20; ++n) {
+            final int x = k + this.random.nextInt(16);
+            final int y = this.random.nextInt(128);
+            final int z = l + this.random.nextInt(16);
+            new AetherGenMinable(AetherBlocks.AmbrosiumOre.id, 16).generate(this.level, this.random, x, y, z);
+        }
+        for (int n = 0; n < 15; ++n) {
+            final int x = k + this.random.nextInt(16);
+            final int y = this.random.nextInt(64);
+            final int z = l + this.random.nextInt(16);
+            new AetherGenMinable(AetherBlocks.ZaniteOre.id, 8).generate(this.level, this.random, x, y, z);
+        }
+        for (int n = 0; n < 8; ++n) {
+            final int x = k + this.random.nextInt(16);
+            final int y = this.random.nextInt(32);
+            final int z = l + this.random.nextInt(16);
+            new AetherGenMinable(AetherBlocks.GravititeOre.id, 7).generate(this.level, this.random, x, y, z);
+        }*/
+        if (this.random.nextInt(50) == 0) {
+            final int x2 = k + this.random.nextInt(16);
+            final int y2 = this.random.nextInt(32) + 96;
+            final int z2 = l + this.random.nextInt(16);
+            new AetherGenClouds(AetherBlocks.AERCLOUD.id, 2, 4, false).generate(this.level, this.random, x2, y2, z2);
+        }
+        if (this.random.nextInt(13) == 0) {
+            final int x2 = k + this.random.nextInt(16);
+            final int y2 = this.random.nextInt(64) + 32;
+            final int z2 = l + this.random.nextInt(16);
+            new AetherGenClouds(AetherBlocks.AERCLOUD.id, 1, 8, false).generate(this.level, this.random, x2, y2, z2);
+        }
+        if (this.random.nextInt(7) == 0) {
+            final int x2 = k + this.random.nextInt(16);
+            final int y2 = this.random.nextInt(64) + 32;
+            final int z2 = l + this.random.nextInt(16);
+            new AetherGenClouds(AetherBlocks.AERCLOUD.id, 0, 16, false).generate(this.level, this.random, x2, y2, z2);
+        }
+        if (this.random.nextInt(50) == 0) {
+            final int x2 = k + this.random.nextInt(16);
+            final int y2 = this.random.nextInt(32);
+            final int z2 = l + this.random.nextInt(16);
+            new AetherGenClouds(AetherBlocks.AERCLOUD.id, 0, 64, true).generate(this.level, this.random, x2, y2, z2);
+        }
+        /*for (int qq = 0; qq < 2; ++qq) {
+            final int x = k + this.random.nextInt(16);
+            final int y = 32 + this.random.nextInt(64);
+            final int z = l + this.random.nextInt(16);
+            new AetherGenDungeonBronze(AetherBlocks.LockedDungeonStone.id, AetherBlocks.LockedLightDungeonStone.id, AetherBlocks.DungeonStone.id, AetherBlocks.LightDungeonStone.id, AetherBlocks.Holystone.id, 2, AetherBlocks.Holystone.id, 0, 16, true).generate(this.level, this.random, x, y, z);
+        }
+        if (this.random.nextInt(500) == 0) {
+            final int x2 = k + this.random.nextInt(16);
+            final int y2 = this.random.nextInt(32) + 64;
+            final int z2 = l + this.random.nextInt(16);
+            new AetherGenDungeonSilver(AetherBlocks.LockedDungeonStone.id, AetherBlocks.LockedLightDungeonStone.id, AetherBlocks.DungeonStone.id, AetherBlocks.LightDungeonStone.id, AetherBlocks.Holystone.id, 2, AetherBlocks.Holystone.id, 0, AetherBlocks.Pillar.id).generate(this.level, this.random, x2, y2, z2);
+        }*/
+        /*if (this.random.nextInt(5) == 0) {
+            for (int x2 = k; x2 < k + 16; ++x2) {
+                for (int z3 = l; z3 < l + 16; ++z3) {
+                    for (int n2 = 0; n2 < 48; ++n2) {
+                        if (this.level.getTileId(x2, n2, z3) == 0 && this.level.getTileId(x2, n2 + 1, z3) == AetherBlocks.Grass.id && this.level.getTileId(x2, n2 + 2, z3) == 0) {
+                            new AetherGenQuicksoil(AetherBlocks.Quicksoil.id).generate(this.level, this.random, x2, n2, z3);
+                            n2 = 128;
+                        }
+                    }
+                }
+            }
+        }*/
+        d = 0.5;
+        final int k2 = (int)((this.perlinOctaveNoise8.sample(k * d, l * d) / 8.0 + this.random.nextDouble() * 4.0 + 4.0) / 3.0);
+        int l4 = 0;
+        if (this.random.nextInt(10) == 0) {
+            ++l4;
+        }
+        if (biomegenbase == Biome.FOREST) {
+            l4 += k2 + 5;
+        }
+        if (biomegenbase == Biome.RAINFOREST) {
+            l4 += k2 + 5;
+        }
+        if (biomegenbase == Biome.SEASONAL_FOREST) {
+            l4 += k2 + 2;
+        }
+        if (biomegenbase == Biome.TAIGA) {
+            l4 += k2 + 5;
+        }
+        if (biomegenbase == Biome.DESERT) {
+            l4 -= 20;
+        }
+        if (biomegenbase == Biome.TUNDRA) {
+            l4 -= 20;
+        }
+        if (biomegenbase == Biome.PLAINS) {
+            l4 -= 20;
+        }
+        l4 += k2;
+        for (int i11 = 0; i11 < l4; ++i11) {
+            final int k3 = k + this.random.nextInt(16) + 8;
+            final int j18 = l + this.random.nextInt(16) + 8;
+            final Structure worldgenerator = biomegenbase.getTree(this.random);
+            worldgenerator.method_1143(1.0, 1.0, 1.0);
+            worldgenerator.generate(this.level, this.random, k3, this.level.getHeight(k3, j18), j18);
+        }
+        for (int k4 = 0; k4 < 50; ++k4) {
+            final int j19 = k + this.random.nextInt(16) + 8;
+            final int l5 = this.random.nextInt(this.random.nextInt(120) + 8);
+            final int l6 = l + this.random.nextInt(16) + 8;
+            new AetherGenLiquids(BlockBase.FLOWING_WATER.id).generate(this.level, this.random, j19, l5, l6);
+        }
+        Sand.fallInstantly = false;
     }
 
     @Override

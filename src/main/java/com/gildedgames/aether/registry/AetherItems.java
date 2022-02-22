@@ -9,5 +9,6 @@ import net.modificationstation.stationapi.api.mod.entrypoint.EventBusPolicy;
 public class AetherItems {
 
     @EventListener
-    private static void registerItems(ItemRegistryEvent event) {}
+    private static void registerItems(ItemRegistryEvent event) {
+    }
 }

@@ -4,6 +4,10 @@
   "package": "com.gildedgames.aether.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+	"EntityBaseAccessor",
+	"LivingAccessor",
+	"MinecraftClientAccessor",
+	"PlayerBaseAccessor"
   ],
   "server": [
   ],
