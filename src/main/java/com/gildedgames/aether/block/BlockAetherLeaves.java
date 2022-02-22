@@ -127,7 +127,7 @@ public class BlockAetherLeaves extends TemplateBlockBase {
     
     @Override
     public boolean isFullOpaque() {
-        return true;
+        return false;
     }
     
     @Override
