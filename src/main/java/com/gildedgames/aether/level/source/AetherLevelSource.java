@@ -271,19 +271,19 @@ public class AetherLevelSource implements LevelSource {
                 new AetherGenFlowers(AetherBlocks.PURPLE_FLOWER.id).generate(this.level, this.random, x, y, z);
             }
         }
-        /*for (int n = 0; n < 10; ++n) {
+        for (int n = 0; n < 10; ++n) {
             final int x = k + this.random.nextInt(16);
             final int y = this.random.nextInt(128);
             final int z = l + this.random.nextInt(16);
-            new AetherGenMinable(AetherBlocks.Icestone.id, 32).generate(this.level, this.random, x, y, z);
+            new AetherGenMinable(AetherBlocks.ICESTONE.id, 32).generate(this.level, this.random, x, y, z);
         }
         for (int n = 0; n < 20; ++n) {
             final int x = k + this.random.nextInt(16);
             final int y = this.random.nextInt(128);
             final int z = l + this.random.nextInt(16);
-            new AetherGenMinable(AetherBlocks.AmbrosiumOre.id, 16).generate(this.level, this.random, x, y, z);
+            new AetherGenMinable(AetherBlocks.AMBROSIUM_ORE.id, 16).generate(this.level, this.random, x, y, z);
         }
-        for (int n = 0; n < 15; ++n) {
+        /*for (int n = 0; n < 15; ++n) {
             final int x = k + this.random.nextInt(16);
             final int y = this.random.nextInt(64);
             final int z = l + this.random.nextInt(16);

@@ -88,9 +88,10 @@ public class BlockAetherLeaves extends TemplateBlockBase {
     }
     
     private boolean nearTrunk(final Level world, final int px, final int py, final int pz) {
+		return true;
         /*final Loc startLoc = new Loc(px, py, pz);
-        final LinkedList<net.minecraft.src.Loc> toCheck = (LinkedList<net.minecraft.src.Loc>)new LinkedList();
-        final ArrayList<net.minecraft.src.Loc> checked = (ArrayList<net.minecraft.src.Loc>)new ArrayList();
+        final LinkedList<Loc> toCheck = (LinkedList<Loc>)new LinkedList();
+        final ArrayList<Loc> checked = (ArrayList<Loc>)new ArrayList();
         toCheck.offer(new Loc(px, py, pz));
         final int bLeaves = this.id;
         while (!toCheck.isEmpty()) {
@@ -101,16 +102,17 @@ public class BlockAetherLeaves extends TemplateBlockBase {
             if (curLoc.distSimple(startLoc) <= 4) {
                 final int block = curLoc.getBlock((BlockView)world);
                 final int meta = curLoc.getMeta((BlockView)world);
-                if (block == AetherBlocks.Log.id && this.isMyTrunkMeta(meta)) {
+                if (block == AetherBlocks.LOG.id && this.isMyTrunkMeta(meta)) {
                     return true;
                 }
                 if (block == bLeaves) {
                     toCheck.addAll((Collection)Arrays.asList((Object[])curLoc.adjacent()));
                 }
             }
+            System.out.println("nya");
             checked.add(curLoc);
-        }*/
-        return true;
+        }
+        return true;*/
     }
     
     private boolean isMyTrunkMeta(final int meta) {

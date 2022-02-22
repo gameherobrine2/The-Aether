@@ -1,6 +1,8 @@
 package com.gildedgames.aether.block;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.stat.Stats;
+import net.modificationstation.stationapi.api.block.HasMetaBlockItem;
+import net.modificationstation.stationapi.api.block.MetaNamedBlockItemProvider;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
 import net.minecraft.entity.player.PlayerBase;
@@ -12,8 +14,8 @@ import com.gildedgames.aether.event.listener.TextureListener;
 import com.gildedgames.aether.registry.AetherItems;
 
 import net.minecraft.block.BlockBase;
-
-public class BlockAetherLog extends TemplateBlockBase {
+@HasMetaBlockItem
+public class BlockAetherLog extends TemplateBlockBase implements MetaNamedBlockItemProvider{
     private static Random rand;
     
     public BlockAetherLog(final Identifier id) {

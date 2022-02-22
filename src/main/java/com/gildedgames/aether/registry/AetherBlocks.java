@@ -8,6 +8,9 @@ import com.gildedgames.aether.block.BlockAerogel;
 import com.gildedgames.aether.block.BlockAetherFlower;
 import com.gildedgames.aether.block.BlockAetherLeaves;
 import com.gildedgames.aether.block.BlockAetherLog;
+import com.gildedgames.aether.block.BlockAetherSapling;
+import com.gildedgames.aether.block.BlockAmbrosiumOre;
+import com.gildedgames.aether.block.BlockIcestone;
 import com.gildedgames.aether.block.Holystone;
 import com.gildedgames.aether.event.listener.TextureListener;
 
@@ -40,6 +43,10 @@ public class AetherBlocks {
         AEROGEL = register("aerogel", id -> new BlockAerogel(id).setHardness(1.0f).setBlastResistance(2000.0f).setLightOpacity(3).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("Aerogel"));
         WHITE_FLOWER = register("white_flower", id -> new BlockAetherFlower(id, TextureListener.sprWhiteFlower).setHardness(0.0f).setSounds(BlockBase.GRASS_SOUNDS).setTranslationKey("White_Flower"));
         PURPLE_FLOWER = register("purple_flower", id -> new BlockAetherFlower(id, TextureListener.sprPurpleFlower).setHardness(0.0f).setSounds(BlockBase.GRASS_SOUNDS).setTranslationKey("Purple_Flower"));
+        SKYROOT_SAPLING = register("skyroot_sapling", id -> new BlockAetherSapling(id,false).setTranslationKey("SkyrootSapling").setHardness(0.0f).setSounds(BlockBase.GRASS_SOUNDS));
+        GOLDEN_OAK_SAPLING = register("golden_oak_sapling", id -> new BlockAetherSapling(id,true).setTranslationKey("GoldenOakSapling").setHardness(0.0f).setSounds(BlockBase.GRASS_SOUNDS));
+        AMBROSIUM_ORE = register("ambrosium_ore", id -> new BlockAmbrosiumOre(id).setHardness(3.0f).setBlastResistance(5.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("AmbrosiumOre"));
+        ICESTONE = register("icestone", id -> new BlockIcestone(id).setHardness(3.0f).setSounds(BlockBase.GLASS_SOUNDS).setTranslationKey("Icestone"));
     }
 
     private static <T extends BlockBase & BlockTemplate<T>> T register(String id, Function<Identifier, T> initializer) {

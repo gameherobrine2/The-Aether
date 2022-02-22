@@ -1,6 +1,8 @@
 package com.gildedgames.aether.block;
 
 import net.minecraft.util.maths.Box;
+import net.modificationstation.stationapi.api.block.HasMetaBlockItem;
+import net.modificationstation.stationapi.api.block.MetaNamedBlockItemProvider;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
 import net.minecraft.level.BlockView;
@@ -11,7 +13,8 @@ import net.minecraft.block.material.Material;
 import com.gildedgames.aether.mixin.EntityBaseAccessor;
 import com.gildedgames.aether.event.listener.TextureListener;
 
-public class BlockAercloud extends TemplateBlockBase {
+@HasMetaBlockItem
+public class BlockAercloud extends TemplateBlockBase implements MetaNamedBlockItemProvider {
     public static final int bouncingMeta = 1;
     
     public BlockAercloud(final Identifier id) {

@@ -2,7 +2,9 @@ package com.gildedgames.aether.block;
 
 import com.gildedgames.aether.registry.AetherBlocks;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.level.Level;
+import net.minecraft.stat.Stats;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
 
@@ -14,7 +16,19 @@ public class AetherGrassBlock extends TemplateBlockBase {
         super(identifier, Material.DIRT);
         setTicksRandomly(true);
     }
-
+    @Override
+    public int getDropId(final int meta, final Random rand) {
+        return AetherBlocks.AETHER_DIRT.getDropId(0, rand);
+    }
+    
+    @Override
+    public void afterBreak(final Level level, final PlayerBase playerBase, final int x, final int y, final int z, final int meta) {
+        playerBase.increaseStat(Stats.mineBlock[this.id], 1);
+        //if (mod_Aether.equippedSkyrootShovel()) {
+        //    this.drop(level, x, y, z, meta);
+        //}
+        this.drop(level, x, y, z, meta);
+    }
     @Override
     public void onScheduledTick(Level level, int x, int y, int z, Random rand) {
         if(!level.isClient) {

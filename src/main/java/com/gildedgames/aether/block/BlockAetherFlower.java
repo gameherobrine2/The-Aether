@@ -16,7 +16,6 @@ import net.minecraft.block.BlockBase;
 public class BlockAetherFlower extends TemplateBlockBase {
     public BlockAetherFlower(final Identifier id, final int var2) {
         super(id, Material.PLANT);
-        this.texture = var2;
         this.setTicksRandomly(true);
         final float var3 = 0.2f;
         this.setBoundingBox(0.5f - var3, 0.0f, 0.5f - var3, 0.5f + var3, var3 * 3.0f, 0.5f + var3);
