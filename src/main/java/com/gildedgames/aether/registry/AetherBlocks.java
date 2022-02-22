@@ -45,7 +45,9 @@ public class AetherBlocks {
     private static <T extends BlockBase & BlockTemplate<T>> T register(String id, Function<Identifier, T> initializer) {
         return initializer.apply(of(id)).setTranslationKey(MODID, id);
     }
-
+    public static boolean isGood(final int id, final int meta) { //AETHER 1.02
+        return id == 0 || id == AetherBlocks.AERCLOUD.id;
+    }
     public static BlockBase
             AETHER_PORTAL,
             AETHER_DIRT,

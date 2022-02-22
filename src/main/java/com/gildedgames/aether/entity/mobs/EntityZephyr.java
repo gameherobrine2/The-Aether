@@ -120,9 +120,9 @@ public class EntityZephyr extends FlyingBase implements MonsterEntityType {
                 --this.attackCounter;
             }
         }
-        this.texture = ((this.attackCounter <= 10) ? "/aether/mobs/Zephyr.png" : "/aether/mobs/Zephyr.png");
+        this.texture = ((this.attackCounter <= 10) ? "/assets/aether/stationapi/textures/entity/Zephyr.png" : "/assets/aether/stationapi/textures/entity/Zephyr.png");
         //if (!this.level.isServerSide && this.level.difficulty == 0) {
-        this.remove();
+        //this.remove();
         //}
         this.checkForBeingStuck();
     }
@@ -202,7 +202,7 @@ public class EntityZephyr extends FlyingBase implements MonsterEntityType {
         		this.level.getTileId(i, j - 1, k) != /*AetherBlocks.LIGHT_DUNGEON_STONE.id*/ 0 && this.level.getTileId(i, j - 1, k) != /*AetherBlocks.LOCKED_DUNGEON_STONE.id*/ 0 &&
         		this.level.getTileId(i, j - 1, k) != /*AetherBlocks.LOCKED_LIGHT_DUNGEON_STONE.id*/ 0 && this.level.getTileId(i, j - 1, k) != AetherBlocks.HOLYSTONE.id &&
         		this.level.difficulty > 0;
-        //if(flag)System.out.println("XYZ: "+i+" "+j+" "+k+", "+flag);
+        if(flag)System.out.println("XYZ: "+i+" "+j+" "+k+", "+flag);
         return flag;
     }
     

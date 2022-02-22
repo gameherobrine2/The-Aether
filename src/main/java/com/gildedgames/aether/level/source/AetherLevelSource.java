@@ -3,6 +3,7 @@ package com.gildedgames.aether.level.source;
 import com.gildedgames.aether.generator.AetherGenClouds;
 import com.gildedgames.aether.generator.AetherGenFlowers;
 import com.gildedgames.aether.generator.AetherGenLiquids;
+import com.gildedgames.aether.generator.AetherGenMinable;
 import com.gildedgames.aether.registry.AetherBlocks;
 
 import net.minecraft.block.BlockBase;
@@ -230,6 +231,7 @@ public class AetherLevelSource implements LevelSource {
         final long l3 = this.random.nextLong() / 2L * 2L + 1L;
         this.random.setSeed(chunkX * l2 + chunkZ * l3 ^ this.level.getSeed());
         double d = 0.25;
+        //TODO: Add more structures
         //if (ChunkProviderAether.gumCount < 800) {
         //    ++ChunkProviderAether.gumCount;
         //}
@@ -249,12 +251,12 @@ public class AetherLevelSource implements LevelSource {
             final int z2 = l + this.random.nextInt(16) + 8;
             new Lake(BlockBase.STILL_WATER.id).generate(this.level, this.random, x2, y2, z2);
         }
-        /*for (int n = 0; n < 20; ++n) {
+        for (int n = 0; n < 20; ++n) {
             final int x = k + this.random.nextInt(16);
             final int y = this.random.nextInt(128);
             final int z = l + this.random.nextInt(16);
-            new AetherGenMinable(AetherBlocks.Dirt.id, 32).generate(this.level, this.random, x, y, z);
-        }*/
+            new AetherGenMinable(AetherBlocks.AETHER_DIRT.id, 32).generate(this.level, this.random, x, y, z);
+        }
         for (int n = 0; n < 2; ++n) {
             final int x = k + this.random.nextInt(16) + 8;
             final int y = this.random.nextInt(128);
