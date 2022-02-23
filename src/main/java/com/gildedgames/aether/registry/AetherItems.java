@@ -10,6 +10,7 @@ import net.modificationstation.stationapi.api.registry.ModID;
 
 import com.gildedgames.aether.item.ItemAether;
 import com.gildedgames.aether.item.ItemAmbrosium;
+import com.gildedgames.aether.item.ItemMoreArmor;
 @Entrypoint(eventBus = @EventBusPolicy(registerInstance = false))
 public class AetherItems {
     @Entrypoint.ModID
@@ -18,6 +19,7 @@ public class AetherItems {
     private static void registerItems(ItemRegistryEvent event) {
     	AmbrosiumShard = new ItemAmbrosium(Identifier.of(MOD_ID, "ambrosium_shard"), 1).setTranslationKey("AmbrosiumShard");
     	Stick = new ItemAether(Identifier.of(MOD_ID, "stick")).setTranslationKey("SkyrootStick");
+    	IronRing = new ItemMoreArmor(Identifier.of(MOD_ID, "iron_ring"), 0,"", 8, 16777215).setTranslationKey("IronRing");
     }
     
     

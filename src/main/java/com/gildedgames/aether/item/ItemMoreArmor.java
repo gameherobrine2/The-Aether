@@ -1,7 +1,11 @@
 package com.gildedgames.aether.item;
-import net.minecraft.item.ItemBase;
+import org.jetbrains.annotations.NotNull;
 
-public class ItemMoreArmor extends ItemBase {
+import net.minecraft.item.ItemBase;
+import net.modificationstation.stationapi.api.registry.Identifier;
+import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
+
+public class ItemMoreArmor extends TemplateItemBase {
     private static final int[] damageReduceAmountArray;
     private static final int[] maxDamageArray;
     public final int armorLevel;
@@ -12,8 +16,8 @@ public class ItemMoreArmor extends ItemBase {
     public String texture;
     public boolean colouriseRender;
     
-    public ItemMoreArmor(final int i, final int j, final int k, final int l, final int col) {
-        super(i);
+    public ItemMoreArmor(final @NotNull Identifier identifier, final int j, final int k, final int l, final int col) {
+        super(identifier);
         this.armorLevel = j;
         this.armorType = l;
         this.renderIndex = k;
@@ -22,24 +26,23 @@ public class ItemMoreArmor extends ItemBase {
         this.maxStackSize = 1;
         this.colour = col;
         this.colouriseRender = true;
-        this.texture = "/armor/Accessories.png";
     }
     
-    public ItemMoreArmor(final int i, final int j, final int k, final int l) {
-        this(i, j, k, l, 16777215);
+    public ItemMoreArmor(final @NotNull Identifier identifier, final int j, final int k, final int l) {
+        this(identifier, j, k, l, 16777215);
     }
     
-    public ItemMoreArmor(final int i, final int j, final String path, final int l) {
+    public ItemMoreArmor(final @NotNull Identifier i, final int j, final String path, final int l) {
         this(i, j, 0, l);
         this.texture = path;
     }
     
-    public ItemMoreArmor(final int i, final int j, final String path, final int l, final int m) {
+    public ItemMoreArmor(final @NotNull Identifier i, final int j, final String path, final int l, final int m) {
         this(i, j, 0, l, m);
         this.texture = path;
     }
     
-    public ItemMoreArmor(final int i, final int j, final String path, final int l, final int m, final boolean flag) {
+    public ItemMoreArmor(final @NotNull Identifier i, final int j, final String path, final int l, final int m, final boolean flag) {
         this(i, j, path, l, m);
         this.colouriseRender = flag;
     }
