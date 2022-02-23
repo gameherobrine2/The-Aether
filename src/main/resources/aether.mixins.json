@@ -7,11 +7,15 @@
 	"EntityBaseAccessor",
 	"LivingAccessor",
 	"MinecraftClientAccessor",
-	"PlayerBaseAccessor"
+	"PlayerBaseAccessor",
+	"PlayerBaseMixin"
   ],
   "server": [
   ],
   "client": [
+	"PlayerInventoryGuiMixin",
+	"ScreenBaseAccessor",
+	"ContainerBaseAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
