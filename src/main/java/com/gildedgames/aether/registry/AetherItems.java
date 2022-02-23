@@ -8,6 +8,7 @@ import net.modificationstation.stationapi.api.mod.entrypoint.EventBusPolicy;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.registry.ModID;
 
+import com.gildedgames.aether.item.ItemAether;
 import com.gildedgames.aether.item.ItemAmbrosium;
 @Entrypoint(eventBus = @EventBusPolicy(registerInstance = false))
 public class AetherItems {
@@ -16,6 +17,7 @@ public class AetherItems {
     @EventListener
     private static void registerItems(ItemRegistryEvent event) {
     	AmbrosiumShard = new ItemAmbrosium(Identifier.of(MOD_ID, "ambrosium_shard"), 1).setTranslationKey("AmbrosiumShard");
+    	Stick = new ItemAether(Identifier.of(MOD_ID, "stick")).setTranslationKey("SkyrootStick");
     }
     
     

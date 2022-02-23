@@ -2,7 +2,7 @@ package com.gildedgames.aether.event.listener;
 
 import com.gildedgames.aether.block.BlockAetherLeaves;
 import com.gildedgames.aether.block.BlockAetherLog;
-import com.gildedgames.aether.item.ItemAmbrosium;
+import com.gildedgames.aether.item.*;
 import com.gildedgames.aether.registry.AetherItems;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
@@ -29,11 +29,16 @@ public class TextureListener {
         sprOakSapling = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/SkyrootSapling")).index;
         sprAmbrosiumOre = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/AmbrosiumOre")).index;
         sprIceStone = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/Icestone")).index;
+        sprPlank = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/Plank")).index;
+        sprDirt = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/Dirt")).index;
+        sprGrassTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/GrassTop")).index;
+        sprGrassSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/GrassSide")).index;
         ((ItemAmbrosium)AetherItems.AmbrosiumShard).setTexture(Identifier.of(MOD_ID, "items/AmbrosiumShard"));
+        ((ItemAether)AetherItems.Stick).setTexture(Identifier.of(MOD_ID, "items/Stick"));
 	}
 	
 	
-	public static int sprAmbrosiumOre,sprIceStone;
+	public static int sprAmbrosiumOre,sprIceStone,sprPlank,sprDirt,sprGrassTop,sprGrassSide;
 	public static int sprGoldenSapling, sprOakSapling;
 	public static int sprWhiteFlower, sprPurpleFlower;
 	public static int sprAerogel;

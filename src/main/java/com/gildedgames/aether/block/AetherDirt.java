@@ -1,5 +1,7 @@
 package com.gildedgames.aether.block;
 
+import com.gildedgames.aether.event.listener.TextureListener;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.level.Level;
@@ -12,7 +14,9 @@ public class AetherDirt extends TemplateBlockBase {
     public AetherDirt(Identifier identifier) {
         super(identifier, Material.DIRT);
     }
-
+    public int getTextureForSide(int side, int meta) {
+    	return TextureListener.sprDirt;
+    }
     @Override
     public boolean isFullOpaque() {
         return true;

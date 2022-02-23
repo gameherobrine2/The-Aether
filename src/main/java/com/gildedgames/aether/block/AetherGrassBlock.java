@@ -1,5 +1,6 @@
 package com.gildedgames.aether.block;
 
+import com.gildedgames.aether.event.listener.TextureListener;
 import com.gildedgames.aether.registry.AetherBlocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerBase;
@@ -7,6 +8,7 @@ import net.minecraft.level.Level;
 import net.minecraft.stat.Stats;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
+import net.modificationstation.stationapi.api.util.math.Direction;
 
 import java.util.*;
 
@@ -15,6 +17,14 @@ public class AetherGrassBlock extends TemplateBlockBase {
     public AetherGrassBlock(Identifier identifier) {
         super(identifier, Material.DIRT);
         setTicksRandomly(true);
+    }
+    public int getTextureForSide(int side, int meta) {
+    	switch(side) {
+    	case 1:
+    		return TextureListener.sprGrassTop;
+    	default:
+    		return TextureListener.sprGrassSide;
+    	}
     }
     @Override
     public int getDropId(final int meta, final Random rand) {
