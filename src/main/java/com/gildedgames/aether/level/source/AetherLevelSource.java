@@ -283,13 +283,13 @@ public class AetherLevelSource implements LevelSource {
             final int z = l + this.random.nextInt(16);
             new AetherGenMinable(AetherBlocks.AMBROSIUM_ORE.id, 16).generate(this.level, this.random, x, y, z);
         }
-        /*for (int n = 0; n < 15; ++n) {
+        for (int n = 0; n < 15; ++n) {
             final int x = k + this.random.nextInt(16);
             final int y = this.random.nextInt(64);
             final int z = l + this.random.nextInt(16);
-            new AetherGenMinable(AetherBlocks.ZaniteOre.id, 8).generate(this.level, this.random, x, y, z);
+            new AetherGenMinable(AetherBlocks.ZANITE_ORE.id, 8).generate(this.level, this.random, x, y, z);
         }
-        for (int n = 0; n < 8; ++n) {
+        /*for (int n = 0; n < 8; ++n) {
             final int x = k + this.random.nextInt(16);
             final int y = this.random.nextInt(32);
             final int z = l + this.random.nextInt(16);

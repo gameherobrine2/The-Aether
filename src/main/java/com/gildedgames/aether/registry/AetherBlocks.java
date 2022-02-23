@@ -11,7 +11,9 @@ import com.gildedgames.aether.block.BlockAetherLog;
 import com.gildedgames.aether.block.BlockAetherPlank;
 import com.gildedgames.aether.block.BlockAetherSapling;
 import com.gildedgames.aether.block.BlockAmbrosiumOre;
+import com.gildedgames.aether.block.BlockAmbrosiumTorch;
 import com.gildedgames.aether.block.BlockIcestone;
+import com.gildedgames.aether.block.BlockZaniteOre;
 import com.gildedgames.aether.block.Holystone;
 import com.gildedgames.aether.event.listener.TextureListener;
 
@@ -50,7 +52,8 @@ public class AetherBlocks {
         AMBROSIUM_ORE = register("ambrosium_ore", id -> new BlockAmbrosiumOre(id).setHardness(3.0f).setBlastResistance(5.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("AmbrosiumOre"));
         ICESTONE = register("icestone", id -> new BlockIcestone(id).setHardness(3.0f).setSounds(BlockBase.GLASS_SOUNDS).setTranslationKey("Icestone"));
         SKYROOT_PLANKS = register("skyroot_planks", id -> new BlockAetherPlank(id,Material.WOOD).setHardness(2.0f).setBlastResistance(5.0f).setSounds(BlockBase.WOOD_SOUNDS).setTranslationKey("AetherPlank"));
-        
+        AMBROSIUM_TORCH = register("ambrosium_torch", id -> new BlockAmbrosiumTorch(id).setLightEmittance(0.9375f).setSounds(BlockBase.WOOD_SOUNDS).setTranslationKey("AmbrosiumTorch"));
+        ZANITE_ORE = register("zanite_ore", id -> new BlockZaniteOre(id).setHardness(3.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("ZaniteOre"));
         
     }
 

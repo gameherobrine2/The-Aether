@@ -3,6 +3,7 @@ package com.gildedgames.aether.event.listener;
 import com.gildedgames.aether.block.BlockAetherLeaves;
 import com.gildedgames.aether.block.BlockAetherLog;
 import com.gildedgames.aether.item.*;
+import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
@@ -33,12 +34,14 @@ public class TextureListener {
         sprDirt = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/Dirt")).index;
         sprGrassTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/GrassTop")).index;
         sprGrassSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/GrassSide")).index;
+        sprAmbrosiumTorch = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/AmbrosiumTorch")).index;
+        sprZaniteOre = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/ZaniteOre")).index;
         ((ItemAmbrosium)AetherItems.AmbrosiumShard).setTexture(Identifier.of(MOD_ID, "items/AmbrosiumShard"));
         ((ItemAether)AetherItems.Stick).setTexture(Identifier.of(MOD_ID, "items/Stick"));
 	}
 	
 	
-	public static int sprAmbrosiumOre,sprIceStone,sprPlank,sprDirt,sprGrassTop,sprGrassSide;
+	public static int sprAmbrosiumOre,sprIceStone,sprPlank,sprDirt,sprGrassTop,sprGrassSide,sprAmbrosiumTorch;
 	public static int sprGoldenSapling, sprOakSapling;
 	public static int sprWhiteFlower, sprPurpleFlower;
 	public static int sprAerogel;
@@ -48,6 +51,7 @@ public class TextureListener {
     public static int sprTop;
     public static int sprSide;
     public static int sprGoldenSide;
+	public static int sprZaniteOre;
     @Entrypoint.ModID
     public static final ModID MOD_ID = Null.get();
 }
