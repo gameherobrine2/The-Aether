@@ -29,7 +29,8 @@
       "com.gildedgames.aether.registry.AetherItems",
       "com.gildedgames.aether.event.listener.BlockPlacementListener",
       "com.gildedgames.aether.registry.AetherDimensions",
-      "com.gildedgames.aether.event.listener.EntityRendererListener"
+      "com.gildedgames.aether.event.listener.EntityRendererListener",
+	"com.gildedgames.aether.event.listener.RecipeListener"
     ],
     "stationapi:event_bus_client": [
       "com.gildedgames.aether.client.level.AetherLevelListeners",

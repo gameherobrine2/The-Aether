@@ -1,5 +1,7 @@
 package com.gildedgames.aether;
 
+import com.gildedgames.aether.inventory.InventoryAether;
+
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.mod.entrypoint.EventBusPolicy;
 import net.modificationstation.stationapi.api.registry.Identifier;
@@ -15,4 +17,7 @@ public class Aether {
     public static Identifier of(String id) {
         return Identifier.of(MODID, id);
     }
+    
+    public static InventoryAether inv;
+    public static int maxHealth = 20;
 }

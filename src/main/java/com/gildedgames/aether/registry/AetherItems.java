@@ -1,13 +1,24 @@
 package com.gildedgames.aether.registry;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.block.BlockBase;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import com.gildedgames.aether.mixin.EntityBaseAccessor;
+import com.gildedgames.aether.mixin.LivingAccessor;
+
+import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemBase;
+import net.minecraft.item.ItemInstance;
+import net.minecraft.util.maths.MathHelper;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.mod.entrypoint.EventBusPolicy;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.registry.ModID;
 
+import com.gildedgames.aether.Aether;
+import com.gildedgames.aether.inventory.InventoryAether;
 import com.gildedgames.aether.item.ItemAether;
 import com.gildedgames.aether.item.ItemAmbrosium;
 import com.gildedgames.aether.item.ItemMoreArmor;
@@ -23,6 +34,161 @@ public class AetherItems {
     	GoldRing = new ItemMoreArmor(Identifier.of(MOD_ID, "gold_ring"), 0, "", 8, 16776994).setTranslationKey("GoldRing");
     	ZaniteRing = new ItemMoreArmor(Identifier.of(MOD_ID, "zanite_ring"), 0, "/armor/Accessories.png", 8, 7412456).setTranslationKey("ZaniteRing");
         IceRing = new ItemMoreArmor(Identifier.of(MOD_ID, "ice_ring"), 0, "/armor/Accessories.png", 8, 9823975).setTranslationKey("IceRing");
+    }
+    
+    public static void tick(final Minecraft game) {
+        if (true) {
+            final PlayerBase player = game.player;
+            final InventoryAether inv = Aether.inv;
+            if(inv == null || inv.slots == null) {
+            	return;
+            }
+        	if ((inv.slots[4] != null && inv.slots[4].itemId == AetherItems.IceRing.id) || (inv.slots[5] != null && inv.slots[5].itemId == AetherItems.IceRing.id)) {
+                final int i = MathHelper.floor(player.x);
+                final int j = MathHelper.floor(player.boundingBox.minY);
+                final int k = MathHelper.floor(player.z);
+                final double yoff = player.y - j;
+                final Material mat0 = game.level.getMaterial(i, j, k);
+                final Material mat2 = game.level.getMaterial(i, j - 1, k);
+                for (int l = i - 1; l <= i + 1; ++l) {
+                    for (int i2 = j - 1; i2 <= j + 1; ++i2) {
+                        for (int j2 = k - 1; j2 <= k + 1; ++j2) {
+                            if (game.level.getTileId(l, i2, j2) == 8) {
+                                game.level.setTile(l, i2, j2, 79);
+                            }
+                            else if (game.level.getTileId(l, i2, j2) == 9) {
+                                game.level.setTile(l, i2, j2, 79);
+                            }
+                            else if (game.level.getTileId(l, i2, j2) == 10) {
+                                game.level.setTile(l, i2, j2, 49);
+                            }
+                            else if (game.level.getTileId(l, i2, j2) == 11) {
+                                game.level.setTile(l, i2, j2, 49);
+                            }
+                        }
+                    }
+                }
+            }
+            /*if (player.inventory.armour[3] != null && player.inventory.armour[3].itemId == AetherItems.PhoenixHelm.id && player.inventory.armour[2] != null && player.inventory.armour[2].itemId == AetherItems.PhoenixBody.id && player.inventory.armour[1] != null && player.inventory.armour[1].itemId == AetherItems.PhoenixLegs.id && player.inventory.armour[0] != null && player.inventory.armour[0].itemId == AetherItems.PhoenixBoots.id && inv.slots[6] != null && inv.slots[6].itemId == AetherItems.PhoenixGlove.id) {
+                ((EntityBaseAccessor)player).setImmunityToFire(true);
+                player.fire = 0;
+                //if (!MainMenu.mmactive) {
+                game.level.addParticle("flame", player.x + ((EntityBaseAccessor)player).getRand().nextGaussian() / 5.0, player.y - 0.5 + ((EntityBaseAccessor)player).getRand().nextGaussian() / 5.0, player.z + ((EntityBaseAccessor)player).getRand().nextGaussian() / 3.0, 0.0, 0.0, 0.0);
+                //}
+            }
+            else {
+            	((EntityBaseAccessor)player).setImmunityToFire(false);
+            }
+            if (player.isTouchingWater()) {
+                final int playerBlock = game.level.getTileId(MathHelper.floor(player.x), MathHelper.floor(player.y), MathHelper.floor(player.z));
+                if (player.inventory.armour[0] != null && player.inventory.armour[0].itemId == AetherItems.PhoenixBoots.id) {
+                    player.inventory.armour[0].applyDamage(1, player);
+                    if (playerBlock == BlockBase.STILL_WATER.id) {
+                        player.inventory.armour[0].applyDamage(4, player);
+                        game.level.setTile(MathHelper.floor(player.x), MathHelper.floor(player.y), MathHelper.floor(player.z), 0);
+                    }
+                    if (player.inventory.armour[0] == null || player.inventory.armour[0].count < 1) {
+                        player.inventory.armour[0] = new ItemInstance(AetherItems.ObsidianBoots, 1, 0);
+                    }
+                }
+                if (player.inventory.armour[1] != null && player.inventory.armour[1].itemId == AetherItems.PhoenixLegs.id) {
+                    player.inventory.armour[1].applyDamage(1, player);
+                    if (playerBlock == BlockBase.STILL_WATER.id) {
+                        player.inventory.armour[1].applyDamage(4, player);
+                        game.level.setTile(MathHelper.floor(player.x), MathHelper.floor(player.y), MathHelper.floor(player.z), 0);
+                    }
+                    if (player.inventory.armour[1] == null || player.inventory.armour[1].count < 1) {
+                        player.inventory.armour[1] = new ItemInstance(AetherItems.ObsidianLegs, 1, 0);
+                    }
+                }
+                if (player.inventory.armour[2] != null && player.inventory.armour[2].itemId == AetherItems.PhoenixBody.id) {
+                    player.inventory.armour[2].applyDamage(1, player);
+                    if (playerBlock == BlockBase.STILL_WATER.id) {
+                        player.inventory.armour[2].applyDamage(4, player);
+                        game.level.setTile(MathHelper.floor(player.x), MathHelper.floor(player.y), MathHelper.floor(player.z), 0);
+                    }
+                    if (player.inventory.armour[2] == null || player.inventory.armour[2].count < 1) {
+                        player.inventory.armour[2] = new ItemInstance(AetherItems.ObsidianBody, 1, 0);
+                    }
+                }
+                if (player.inventory.armour[3] != null && player.inventory.armour[3].itemId == AetherItems.PhoenixHelm.id) {
+                    player.inventory.armour[3].applyDamage(1, player);
+                    if (playerBlock == BlockBase.STILL_WATER.id) {
+                        player.inventory.armour[3].applyDamage(4, player);
+                        game.level.setTile(MathHelper.floor(player.x), MathHelper.floor(player.y), MathHelper.floor(player.z), 0);
+                    }
+                    if (player.inventory.armour[3] == null || player.inventory.armour[3].count < 1) {
+                        player.inventory.armour[3] = new ItemInstance(AetherItems.ObsidianHelm, 1, 0);
+                    }
+                }
+                if (inv.slots[6] != null && inv.slots[6].itemId == AetherItems.PhoenixGlove.id) {
+                    inv.slots[6].applyDamage(1, player);
+                    if (playerBlock == BlockBase.STILL_WATER.id) {
+                        inv.slots[6].applyDamage(4, player);
+                        game.level.setTile(MathHelper.floor(player.x), MathHelper.floor(player.y), MathHelper.floor(player.z), 0);
+                    }
+                    if (inv.slots[6] == null || inv.slots[6].count < 1) {
+                        inv.slots[6] = new ItemInstance(AetherItems.ObsidianGlove, 1, 0);
+                    }
+                }
+            }
+            if (player.inventory.armour[3] != null && player.inventory.armour[3].itemId == AetherItems.GravititeHelmet.id && player.inventory.armour[2] != null && player.inventory.armour[2].itemId == AetherItems.GravititeBodyplate.id && player.inventory.armour[1] != null && player.inventory.armour[1].itemId == AetherItems.GravititePlatelegs.id && player.inventory.armour[0] != null && player.inventory.armour[0].itemId == AetherItems.GravititeBoots.id && inv.slots[6] != null && inv.slots[6].itemId == AetherItems.GravititeGlove.id) {
+                if (((LivingAccessor)player).getJumping() && !AetherItems.jumpBoosted) {
+                    player.velocityY = 1.0;
+                    AetherItems.jumpBoosted = true;
+                }
+                ((EntityBaseAccessor)player).setFallDistance(-1.0f);
+            }
+            if (!((LivingAccessor)player).getJumping() && player.onGround) {
+                AetherItems.jumpBoosted = false;
+            }
+            if ((inv.slots[3] != null && inv.slots[3].itemId == AetherItems.IronBubble.id) || (inv.slots[7] != null && inv.slots[7].itemId == AetherItems.IronBubble.id)) {
+                player.air = 20;
+            }
+            if ((inv.slots[0] != null && inv.slots[0].itemId == AetherItems.IcePendant.id) || (inv.slots[4] != null && inv.slots[4].itemId == AetherItems.IceRing.id) || (inv.slots[5] != null && inv.slots[5].itemId == AetherItems.IceRing.id)) {
+                final int i = MathHelper.floor(player.x);
+                final int j = MathHelper.floor(player.boundingBox.minY);
+                final int k = MathHelper.floor(player.z);
+                final double yoff = player.y - j;
+                final Material mat0 = game.level.getMaterial(i, j, k);
+                final Material mat2 = game.level.getMaterial(i, j - 1, k);
+                for (int l = i - 1; l <= i + 1; ++l) {
+                    for (int i2 = j - 1; i2 <= j + 1; ++i2) {
+                        for (int j2 = k - 1; j2 <= k + 1; ++j2) {
+                            if (game.level.getTileId(l, i2, j2) == 8) {
+                                game.level.setTile(l, i2, j2, 79);
+                            }
+                            else if (game.level.getTileId(l, i2, j2) == 9) {
+                                game.level.setTile(l, i2, j2, 79);
+                            }
+                            else if (game.level.getTileId(l, i2, j2) == 10) {
+                                game.level.setTile(l, i2, j2, 49);
+                            }
+                            else if (game.level.getTileId(l, i2, j2) == 11) {
+                                game.level.setTile(l, i2, j2, 49);
+                            }
+                        }
+                    }
+                }
+            }
+            if ((inv.slots[3] != null && inv.slots[3].itemId == AetherItems.GoldenFeather.id) || (inv.slots[7] != null && inv.slots[7].itemId == AetherItems.GoldenFeather.id)) {
+                if (!player.onGround && player.velocityY < 0.0 && !((EntityBaseAccessor)player).get1612()) {
+                    final PlayerBase playerBase = player;
+                    playerBase.velocityY *= 0.6;
+                }
+                ((EntityBaseAccessor)player).setFallDistance(-1.0f);
+            }
+            if (inv.slots[1] != null && inv.slots[1].itemId == AetherItems.AgilityCape.id) {
+                player.field_1641 = 1.0f;
+            }
+            else {
+                player.field_1641 = 0.5f;
+            }
+            if (AetherItems.ticks % 200 == 0 && player.health < Aether.maxHealth && ((inv.slots[3] != null && inv.slots[3].itemId == AetherItems.RegenerationStone.id) || (inv.slots[7] != null && inv.slots[7].itemId == AetherItems.RegenerationStone.id))) {
+                player.addHealth(1);
+            }
+            ++AetherItems.ticks;*/
+        }
     }
     
     

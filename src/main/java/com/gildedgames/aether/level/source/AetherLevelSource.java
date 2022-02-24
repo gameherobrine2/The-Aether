@@ -4,6 +4,7 @@ import com.gildedgames.aether.generator.AetherGenClouds;
 import com.gildedgames.aether.generator.AetherGenFlowers;
 import com.gildedgames.aether.generator.AetherGenLiquids;
 import com.gildedgames.aether.generator.AetherGenMinable;
+import com.gildedgames.aether.generator.AetherGenQuicksoil;
 import com.gildedgames.aether.registry.AetherBlocks;
 
 import net.minecraft.block.BlockBase;
@@ -331,18 +332,18 @@ public class AetherLevelSource implements LevelSource {
             final int z2 = l + this.random.nextInt(16);
             new AetherGenDungeonSilver(AetherBlocks.LockedDungeonStone.id, AetherBlocks.LockedLightDungeonStone.id, AetherBlocks.DungeonStone.id, AetherBlocks.LightDungeonStone.id, AetherBlocks.Holystone.id, 2, AetherBlocks.Holystone.id, 0, AetherBlocks.Pillar.id).generate(this.level, this.random, x2, y2, z2);
         }*/
-        /*if (this.random.nextInt(5) == 0) {
+        if (this.random.nextInt(5) == 0) {
             for (int x2 = k; x2 < k + 16; ++x2) {
                 for (int z3 = l; z3 < l + 16; ++z3) {
                     for (int n2 = 0; n2 < 48; ++n2) {
-                        if (this.level.getTileId(x2, n2, z3) == 0 && this.level.getTileId(x2, n2 + 1, z3) == AetherBlocks.Grass.id && this.level.getTileId(x2, n2 + 2, z3) == 0) {
-                            new AetherGenQuicksoil(AetherBlocks.Quicksoil.id).generate(this.level, this.random, x2, n2, z3);
+                        if (this.level.getTileId(x2, n2, z3) == 0 && this.level.getTileId(x2, n2 + 1, z3) == AetherBlocks.AETHER_GRASS_BLOCK.id && this.level.getTileId(x2, n2 + 2, z3) == 0) {
+                            new AetherGenQuicksoil(AetherBlocks.QUICKSOIL.id).generate(this.level, this.random, x2, n2, z3);
                             n2 = 128;
                         }
                     }
                 }
             }
-        }*/
+        }
         d = 0.5;
         final int k2 = (int)((this.perlinOctaveNoise8.sample(k * d, l * d) / 8.0 + this.random.nextDouble() * 4.0 + 4.0) / 3.0);
         int l4 = 0;

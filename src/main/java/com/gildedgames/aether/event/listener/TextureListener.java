@@ -36,6 +36,7 @@ public class TextureListener {
         sprGrassSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/GrassSide")).index;
         sprAmbrosiumTorch = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/AmbrosiumTorch")).index;
         sprZaniteOre = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/ZaniteOre")).index;
+        sprQuicksoil = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/Quicksoil")).index;
         ((ItemAmbrosium)AetherItems.AmbrosiumShard).setTexture(Identifier.of(MOD_ID, "items/AmbrosiumShard"));
         ((ItemAether)AetherItems.Stick).setTexture(Identifier.of(MOD_ID, "items/Stick"));
         ((ItemMoreArmor)AetherItems.IronRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
@@ -45,7 +46,7 @@ public class TextureListener {
 	}
 	
 	
-	public static int sprAmbrosiumOre,sprIceStone,sprPlank,sprDirt,sprGrassTop,sprGrassSide,sprAmbrosiumTorch;
+	public static int sprAmbrosiumOre,sprIceStone,sprPlank,sprDirt,sprGrassTop,sprGrassSide,sprAmbrosiumTorch,sprQuicksoil;
 	public static int sprGoldenSapling, sprOakSapling;
 	public static int sprWhiteFlower, sprPurpleFlower;
 	public static int sprAerogel;
