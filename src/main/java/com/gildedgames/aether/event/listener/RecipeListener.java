@@ -23,8 +23,9 @@ public class RecipeListener {
 	 private void registerShapedRecipes() {
 		 CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.IronRing), " C ", "C C", " C ", 'C', ItemBase.ironIngot);
 		 CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.GoldRing), " C ", "C C", " C ", 'C', ItemBase.goldIngot);
+		 CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.Stick,4), "#", "#", '#', AetherBlocks.SKYROOT_PLANKS);
 	 }
 	 private void registerShapelessRecipes() {
-		 CraftingRegistry.addShapelessRecipe(new ItemInstance(AetherBlocks.SKYROOT_PLANKS), new ItemInstance(AetherBlocks.LOG));
+		 CraftingRegistry.addShapelessRecipe(new ItemInstance(AetherBlocks.SKYROOT_PLANKS,4), new ItemInstance(AetherBlocks.LOG));
 	 }
 }

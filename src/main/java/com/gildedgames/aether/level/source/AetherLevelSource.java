@@ -1,6 +1,7 @@
 package com.gildedgames.aether.level.source;
 
 import com.gildedgames.aether.generator.AetherGenClouds;
+import com.gildedgames.aether.generator.AetherGenDungeonBronze;
 import com.gildedgames.aether.generator.AetherGenFlowers;
 import com.gildedgames.aether.generator.AetherGenLiquids;
 import com.gildedgames.aether.generator.AetherGenMinable;
@@ -320,13 +321,13 @@ public class AetherLevelSource implements LevelSource {
             final int z2 = l + this.random.nextInt(16);
             new AetherGenClouds(AetherBlocks.AERCLOUD.id, 0, 64, true).generate(this.level, this.random, x2, y2, z2);
         }
-        /*for (int qq = 0; qq < 2; ++qq) {
+        for (int qq = 0; qq < 2; ++qq) {
             final int x = k + this.random.nextInt(16);
             final int y = 32 + this.random.nextInt(64);
             final int z = l + this.random.nextInt(16);
-            new AetherGenDungeonBronze(AetherBlocks.LockedDungeonStone.id, AetherBlocks.LockedLightDungeonStone.id, AetherBlocks.DungeonStone.id, AetherBlocks.LightDungeonStone.id, AetherBlocks.Holystone.id, 2, AetherBlocks.Holystone.id, 0, 16, true).generate(this.level, this.random, x, y, z);
+            new AetherGenDungeonBronze(AetherBlocks.LOCKED_DUNGEON_STONE.id, AetherBlocks.LOCKED_LIGHT_DUNGEON_STONE.id, AetherBlocks.DUNGEON_STONE.id, AetherBlocks.LIGHT_DUNGEON_STONE.id, AetherBlocks.HOLYSTONE.id, 2, AetherBlocks.HOLYSTONE.id, 0, 16, true).generate(this.level, this.random, x, y, z);
         }
-        if (this.random.nextInt(500) == 0) {
+        /*if (this.random.nextInt(500) == 0) {
             final int x2 = k + this.random.nextInt(16);
             final int y2 = this.random.nextInt(32) + 64;
             final int z2 = l + this.random.nextInt(16);

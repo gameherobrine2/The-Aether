@@ -18,7 +18,8 @@
 	"PlayerInventoryGuiMixin",
 	"ScreenBaseAccessor",
 	"ContainerBaseAccessor",
-	"GameRendererMixin"
+	"GameRendererMixin",
+	"MinecraftClientAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

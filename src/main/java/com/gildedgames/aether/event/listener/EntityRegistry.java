@@ -15,16 +15,25 @@ import com.gildedgames.aether.entity.mobs.EntityZephyr;
 import com.gildedgames.aether.entity.projectile.EntityZephyrSnowball;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
 
-import io.github.prospector.modmenu.mixin.MinecraftAccessor;
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
+import net.modificationstation.stationapi.api.event.entity.EntityRegister;
 import net.modificationstation.stationapi.api.event.registry.MobHandlerRegistryEvent;
-public class EntityRendererListener {
+
+public class EntityRegistry {
     @EventListener
-    private static void registerEntity(EntityRendererRegisterEvent event) {
-        event.renderers.put(EntityFlyingCow.class, new RenderFlyingCow(new ModelFlyingCow1(), new ModelFlyingCow2(), 0.7f));
-        event.renderers.put(EntityZephyr.class, new RenderZephyr());
-        event.renderers.put(EntityZephyrSnowball.class, new RenderZephyrSnowball());
-        event.renderers.put(EntitySlider.class, new RenderSlider(new ModelSlider(0.0f, 12.0f), 1.5f));
+    public void registerMobHandlers(MobHandlerRegistryEvent event) {
+    	 System.out.println("works");
+    	 event.registry.register(of(MODID, "flying_cow"), EntityFlyingCow::new);
+    	 event.registry.register(of(MODID, "awful_monster"), EntityZephyr::new);
+    	 //event.registry.register(of(MODID, "dangerous_weapon_zephyrsnowball"), EntityZephyrSnowball::new);
+    	 event.registry.register(of(MODID, "boss_slider"), EntitySlider::new);
+    }
+    
+    @EventListener
+    public void registerEntities(EntityRegister event) {
+    	event.register(EntityFlyingCow.class,"flying_cow");
+   	 	event.register(EntityZephyr.class,"awful_monster");
+   	 //event.registry.register(of(MODID, "dangerous_weapon_zephyrsnowball"), EntityZephyrSnowball::new);
+   	 	event.register(EntitySlider.class, "boss_slider");
     }
 }

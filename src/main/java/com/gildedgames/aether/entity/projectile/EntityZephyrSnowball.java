@@ -3,6 +3,9 @@ package com.gildedgames.aether.entity.projectile; /*name "projectile" was copied
 import net.minecraft.util.io.CompoundTag;
 import net.minecraft.util.maths.Box;
 import java.util.List;
+
+import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.maths.Vec3f;
 import net.minecraft.util.maths.MathHelper;
@@ -23,6 +26,10 @@ public class EntityZephyrSnowball extends EntityBase {
     public double field_9405_b;
     public double field_9404_c;
     public double field_9403_d;
+    
+    public EntityZephyrSnowball() {
+    	this(MinecraftClientAccessor.getMCinstance().level);
+    }
     
     public EntityZephyrSnowball(final Level level) {
         super(level);

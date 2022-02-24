@@ -12,8 +12,12 @@ import com.gildedgames.aether.block.BlockAetherPlank;
 import com.gildedgames.aether.block.BlockAetherSapling;
 import com.gildedgames.aether.block.BlockAmbrosiumOre;
 import com.gildedgames.aether.block.BlockAmbrosiumTorch;
+import com.gildedgames.aether.block.BlockChestMimic;
+import com.gildedgames.aether.block.BlockDungeon;
 import com.gildedgames.aether.block.BlockIcestone;
 import com.gildedgames.aether.block.BlockQuicksoil;
+import com.gildedgames.aether.block.BlockTrap;
+import com.gildedgames.aether.block.BlockTreasureChest;
 import com.gildedgames.aether.block.BlockZanite;
 import com.gildedgames.aether.block.BlockZaniteOre;
 import com.gildedgames.aether.block.Holystone;
@@ -58,6 +62,13 @@ public class AetherBlocks {
         ZANITE_ORE = register("zanite_ore", id -> new BlockZaniteOre(id).setHardness(3.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("ZaniteOre"));
         ZANITE_BLOCK = register("zanite_block", id -> new BlockZanite(id).setHardness(3.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("ZaniteBlock"));
         QUICKSOIL = register("quicksoil", id -> new BlockQuicksoil(id).setHardness(0.5f).setSounds(BlockBase.SAND_SOUNDS).setTranslationKey("Quicksoil"));
+        DUNGEON_STONE =  register("dungeon_stone", id -> new BlockDungeon(id).setHardness(0.5f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("DungeonStone"));
+        LIGHT_DUNGEON_STONE =  register("light_dungeon_stone", id -> new BlockDungeon(id).setHardness(0.5f).setSounds(BlockBase.PISTON_SOUNDS).setLightEmittance(0.75f).setTranslationKey("LightDungeonStone"));
+        LOCKED_DUNGEON_STONE =  register("locked_dungeon_stone", id -> new BlockDungeon(id).setHardness(-1.0f).setBlastResistance(1000000.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("LockedDungeonStone"));
+        LOCKED_LIGHT_DUNGEON_STONE =  register("locked_light_dungeon_stone", id -> new BlockDungeon(id).setHardness(-1.0f).setBlastResistance(1000000.0f).setSounds(BlockBase.PISTON_SOUNDS).setLightEmittance(0.5f).setTranslationKey("LightLockedDungeonStone"));
+        TRAPPED_DUNGEON_STONE =  register("trap", id -> new BlockTrap(id).setHardness(-1.0f).setBlastResistance(1000000.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("Trap"));
+        TREASURE_CHEST =  register("treasure_chest", id -> new BlockTreasureChest(id).setHardness(-1.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("TreasureChest"));
+        CHEST_MIMIC = register("mimic_chest", id -> new BlockChestMimic(id).setHardness(2.0f).setSounds(BlockBase.WOOD_SOUNDS).setTranslationKey("Mimic"));
     }
 
     private static <T extends BlockBase & BlockTemplate<T>> T register(String id, Function<Identifier, T> initializer) {
