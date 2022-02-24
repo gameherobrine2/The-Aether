@@ -24,6 +24,7 @@ public class InventoryAether implements InventoryBase {
         for (int i = 0; i < nbttaglist.size(); ++i) {
             final CompoundTag nbttagcompound = (CompoundTag)nbttaglist.get(i);
             final int j = nbttagcompound.getByte("Slot") & 0xFF;
+            
             final ItemInstance itemstack = new ItemInstance(nbttagcompound);
             if (j > 8 || !(itemstack.getType() instanceof ItemMoreArmor)) {
                 this.readOldFile(nbttaglist);
@@ -54,6 +55,7 @@ public class InventoryAether implements InventoryBase {
         for (int j = 0; j < this.slots.length; ++j) {
             if (this.slots[j] != null) {
                 final CompoundTag nbttagcompound1 = new CompoundTag();
+                System.out.println(this.slots[j].getTranslationKey());
                 nbttagcompound1.put("Slot", (byte)j);
                 this.slots[j].toTag(nbttagcompound1);
                 nbttaglist.add(nbttagcompound1);

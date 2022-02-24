@@ -39,6 +39,9 @@ public class TextureListener {
         ((ItemAmbrosium)AetherItems.AmbrosiumShard).setTexture(Identifier.of(MOD_ID, "items/AmbrosiumShard"));
         ((ItemAether)AetherItems.Stick).setTexture(Identifier.of(MOD_ID, "items/Stick"));
         ((ItemMoreArmor)AetherItems.IronRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
+        ((ItemMoreArmor)AetherItems.GoldRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
+        ((ItemMoreArmor)AetherItems.IceRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
+        ((ItemMoreArmor)AetherItems.ZaniteRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
 	}
 	
 	

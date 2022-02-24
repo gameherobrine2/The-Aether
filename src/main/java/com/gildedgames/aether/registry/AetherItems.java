@@ -20,6 +20,9 @@ public class AetherItems {
     	AmbrosiumShard = new ItemAmbrosium(Identifier.of(MOD_ID, "ambrosium_shard"), 1).setTranslationKey("AmbrosiumShard");
     	Stick = new ItemAether(Identifier.of(MOD_ID, "stick")).setTranslationKey("SkyrootStick");
     	IronRing = new ItemMoreArmor(Identifier.of(MOD_ID, "iron_ring"), 0,"", 8, 16777215).setTranslationKey("IronRing");
+    	GoldRing = new ItemMoreArmor(Identifier.of(MOD_ID, "gold_ring"), 0, "", 8, 16776994).setTranslationKey("GoldRing");
+    	ZaniteRing = new ItemMoreArmor(Identifier.of(MOD_ID, "zanite_ring"), 0, "/armor/Accessories.png", 8, 7412456).setTranslationKey("ZaniteRing");
+        IceRing = new ItemMoreArmor(Identifier.of(MOD_ID, "ice_ring"), 0, "/armor/Accessories.png", 8, 9823975).setTranslationKey("IceRing");
     }
     
     
