@@ -9,7 +9,8 @@
 	"MinecraftClientAccessor",
 	"PlayerBaseAccessor",
 	"PlayerBaseMixin",
-	"DimensionFileAccessor"
+	"DimesnionFileAccessor",
+	"LevelAccessor"
   ],
   "server": [
   ],
