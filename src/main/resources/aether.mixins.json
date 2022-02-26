@@ -10,7 +10,8 @@
 	"PlayerBaseAccessor",
 	"PlayerBaseMixin",
 	"DimesnionFileAccessor",
-	"LevelAccessor"
+	"LevelAccessor",
+	"ParticleBaseAccessor"
   ],
   "server": [
   ],

@@ -14,6 +14,7 @@ import com.gildedgames.aether.block.BlockAmbrosiumOre;
 import com.gildedgames.aether.block.BlockAmbrosiumTorch;
 import com.gildedgames.aether.block.BlockChestMimic;
 import com.gildedgames.aether.block.BlockDungeon;
+import com.gildedgames.aether.block.BlockFreezer;
 import com.gildedgames.aether.block.BlockIcestone;
 import com.gildedgames.aether.block.BlockPillar;
 import com.gildedgames.aether.block.BlockQuicksoil;
@@ -71,6 +72,7 @@ public class AetherBlocks {
         TREASURE_CHEST =  register("treasure_chest", id -> new BlockTreasureChest(id).setHardness(-1.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("TreasureChest"));
         CHEST_MIMIC = register("mimic_chest", id -> new BlockChestMimic(id).setHardness(2.0f).setSounds(BlockBase.WOOD_SOUNDS).setTranslationKey("Mimic"));
         PILLAR = register("pillar", id -> new BlockPillar(id).setHardness(0.5f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("Pillar"));
+        FREEZER = register("freezer", id -> new BlockFreezer(id).setHardness(2.5f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("Freezer"));
     }
 
     private static <T extends BlockBase & BlockTemplate<T>> T register(String id, Function<Identifier, T> initializer) {

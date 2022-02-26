@@ -23,6 +23,7 @@ import com.gildedgames.aether.item.ItemAether;
 import com.gildedgames.aether.item.ItemAetherKey;
 import com.gildedgames.aether.item.ItemAmbrosium;
 import com.gildedgames.aether.item.ItemMoreArmor;
+import com.gildedgames.aether.item.ItemSkyrootBucket;
 @Entrypoint(eventBus = @EventBusPolicy(registerInstance = false))
 public class AetherItems {
     @Entrypoint.ModID
@@ -37,6 +38,11 @@ public class AetherItems {
         IceRing = new ItemMoreArmor(Identifier.of(MOD_ID, "ice_ring"), 0, "/armor/Accessories.png", 8, 9823975).setTranslationKey("IceRing");
         AetherItems.Key = new ItemAetherKey(Identifier.of(MOD_ID, "key")).setTranslationKey("AetherKey");
         AetherItems.VictoryMedal = new ItemAether(Identifier.of(MOD_ID, "victory_medal")).setMaxStackSize(10).setTranslationKey("VictoryMedal");
+        Bucket = new ItemSkyrootBucket(Identifier.of(MOD_ID, "skyroot_bucket")).setTranslationKey("SkyrootBucket");
+        AetherItems.IronPendant = new ItemMoreArmor(Identifier.of(MOD_ID, "iron_pendant"), 0, "/armor/Accessories.png", 4, 16777215).setTranslationKey("IronPendant");
+        AetherItems.GoldPendant = new ItemMoreArmor(Identifier.of(MOD_ID, "gold_endant"), 0, "/armor/Accessories.png", 4, 16776994).setTranslationKey("GoldPendant");
+        AetherItems.ZanitePendant = new ItemMoreArmor(Identifier.of(MOD_ID, "zanite_pendant"), 0, "/armor/Accessories.png", 4, 7412456).setTranslationKey("ZanitePendant");
+        AetherItems.IcePendant = new ItemMoreArmor(Identifier.of(MOD_ID, "ice_pendant"), 0, "/armor/Accessories.png", 4, 9823975).setTranslationKey("IcePendant");
     }
     
     public static void tick(final Minecraft game) {
@@ -46,7 +52,7 @@ public class AetherItems {
             if(inv == null || inv.slots == null) {
             	return;
             }
-        	if ((inv.slots[4] != null && inv.slots[4].itemId == AetherItems.IceRing.id) || (inv.slots[5] != null && inv.slots[5].itemId == AetherItems.IceRing.id)) {
+        	if ((inv.slots[0] != null && inv.slots[0].itemId == AetherItems.IcePendant.id) || (inv.slots[4] != null && inv.slots[4].itemId == AetherItems.IceRing.id) || (inv.slots[5] != null && inv.slots[5].itemId == AetherItems.IceRing.id)) {
                 final int i = MathHelper.floor(player.x);
                 final int j = MathHelper.floor(player.boundingBox.minY);
                 final int k = MathHelper.floor(player.z);

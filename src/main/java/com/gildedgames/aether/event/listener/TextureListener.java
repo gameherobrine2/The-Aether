@@ -55,21 +55,35 @@ public class TextureListener {
         sprPillarTopSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/PillarCarved")).index;
         sprHolystone = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/HolyStone")).index;
         sprMossyHolystone = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/MossyHolystone")).index;
+        sprFreezerTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/FreezerTop")).index;
+        sprFreezerSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/FreezerSide")).index;
         
+        ItemSkyrootBucket.sprEmpty = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/Bucket")).index;
+        ItemSkyrootBucket.sprWater = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/BucketWater")).index;
+        ItemSkyrootBucket.sprMilk = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/BucketMilk")).index;
+        ItemSkyrootBucket.sprPoison = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/BucketPoison")).index;
+        ItemSkyrootBucket.sprRemedy = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/BucketRemedy")).index;
         //Some textures for blocks
         ((BlockAmbrosiumTorch)AetherBlocks.AMBROSIUM_TORCH).texture = sprAmbrosiumTorch;
         
         //Items
+        
         ((ItemAmbrosium)AetherItems.AmbrosiumShard).setTexture(Identifier.of(MOD_ID, "items/AmbrosiumShard"));
         ((ItemAetherKey)AetherItems.Key).setTexture(Identifier.of(MOD_ID, "items/Key"));
         ((ItemAether)AetherItems.VictoryMedal).setTexture(Identifier.of(MOD_ID, "items/VictoryMedal"));
         ((ItemAether)AetherItems.Stick).setTexture(Identifier.of(MOD_ID, "items/Stick"));
+        ((ItemMoreArmor)AetherItems.GoldPendant).setTexture(Identifier.of(MOD_ID, "items/Pendant"));
+        ((ItemMoreArmor)AetherItems.IronPendant).setTexture(Identifier.of(MOD_ID, "items/Pendant"));
+        ((ItemMoreArmor)AetherItems.IcePendant).setTexture(Identifier.of(MOD_ID, "items/Pendant"));
+        ((ItemMoreArmor)AetherItems.ZanitePendant).setTexture(Identifier.of(MOD_ID, "items/Pendant"));
         ((ItemMoreArmor)AetherItems.IronRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
         ((ItemMoreArmor)AetherItems.GoldRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
         ((ItemMoreArmor)AetherItems.IceRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
         ((ItemMoreArmor)AetherItems.ZaniteRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
 	}
 	//this is Alias code but i changed public static booleans to ints and renamed them
+	public static int sprFreezerTop;
+	public static int sprFreezerSide;
     public static int sprPillarTop,sprHolystone,sprMossyHolystone;
     public static int sprPillarSide;
     public static int sprPillarTopSide;

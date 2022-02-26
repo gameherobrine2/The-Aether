@@ -16,6 +16,10 @@ import com.gildedgames.aether.entity.mobs.EntityHomeShot;
 import com.gildedgames.aether.entity.mobs.EntityMimic;
 import com.gildedgames.aether.entity.mobs.EntitySentry;
 import com.gildedgames.aether.entity.mobs.EntityZephyr;
+import com.gildedgames.aether.entity.projectile.EntityDartEnchanted;
+import com.gildedgames.aether.entity.projectile.EntityDartGolden;
+import com.gildedgames.aether.entity.projectile.EntityDartPoison;
+import com.gildedgames.aether.entity.projectile.EntityPoisonNeedle;
 import com.gildedgames.aether.entity.projectile.EntityZephyrSnowball;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
 
@@ -34,6 +38,7 @@ public class EntityRegistry {
     	 event.registry.register(of(MODID, "entity_mimic"), EntityMimic::new);
     	 event.registry.register(of(MODID, "entity_valkyre"), EntityValkyrie::new);
     	 event.registry.register(of(MODID, "entity_homeshot"), EntityHomeShot::new);
+    	 
     }
     
     @EventListener
@@ -46,6 +51,9 @@ public class EntityRegistry {
     	event.register(EntitySlider.class, "boss_slider");
     	event.register(EntityValkyrie.class, "entity_valkyre");
     	event.register(EntityHomeShot.class, "entity_homeshot");
-    	
+        event.register((Class)EntityPoisonNeedle.class, "PoisonNeedle");
+        event.register((Class)EntityDartPoison.class, "PoisonDart");
+        event.register((Class)EntityDartGolden.class, "GoldenDart");
+        event.register((Class)EntityDartEnchanted.class, "EnchantedDart");
     }
 }
