@@ -35,7 +35,9 @@
     ],
     "stationapi:event_bus_client": [
       "com.gildedgames.aether.client.level.AetherLevelListeners",
-      "com.gildedgames.aether.event.listener.TextureListener"
+      "com.gildedgames.aether.event.listener.TextureListener",
+      "com.gildedgames.aether.event.listener.GuiListener"
+	
     ]
   },
   "mixins": [

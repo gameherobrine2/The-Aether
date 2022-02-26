@@ -20,6 +20,7 @@ import net.modificationstation.stationapi.api.registry.ModID;
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.inventory.InventoryAether;
 import com.gildedgames.aether.item.ItemAether;
+import com.gildedgames.aether.item.ItemAetherKey;
 import com.gildedgames.aether.item.ItemAmbrosium;
 import com.gildedgames.aether.item.ItemMoreArmor;
 @Entrypoint(eventBus = @EventBusPolicy(registerInstance = false))
@@ -34,6 +35,8 @@ public class AetherItems {
     	GoldRing = new ItemMoreArmor(Identifier.of(MOD_ID, "gold_ring"), 0, "", 8, 16776994).setTranslationKey("GoldRing");
     	ZaniteRing = new ItemMoreArmor(Identifier.of(MOD_ID, "zanite_ring"), 0, "/armor/Accessories.png", 8, 7412456).setTranslationKey("ZaniteRing");
         IceRing = new ItemMoreArmor(Identifier.of(MOD_ID, "ice_ring"), 0, "/armor/Accessories.png", 8, 9823975).setTranslationKey("IceRing");
+        AetherItems.Key = new ItemAetherKey(Identifier.of(MOD_ID, "key")).setTranslationKey("AetherKey");
+        AetherItems.VictoryMedal = new ItemAether(Identifier.of(MOD_ID, "victory_medal")).setMaxStackSize(10).setTranslationKey("VictoryMedal");
     }
     
     public static void tick(final Minecraft game) {

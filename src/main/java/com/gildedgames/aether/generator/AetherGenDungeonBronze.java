@@ -13,7 +13,6 @@ import com.gildedgames.aether.registry.AetherItems;
 import net.minecraft.level.Level;
 
 public class AetherGenDungeonBronze extends AetherGenBuildings {
-	//TODO: fix after adding more stuff
     private int corridorMeta1;
     private int corridorMeta2;
     private int lockedBlockID1;

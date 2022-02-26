@@ -60,7 +60,7 @@ public class ItemMoreArmor extends TemplateItemBase {
     }
     
     @Override
-    public int getNameColour(final int i) {
+    public int getColourMultiplier(final int i) {
         return this.colour;
     }
     

@@ -2,8 +2,10 @@ package com.gildedgames.aether.block;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.tileentity.TileEntityBase;
 import net.minecraft.client.gui.screen.ScreenBase;
+import net.minecraft.client.gui.screen.container.ContainerBase;
 import net.minecraft.inventory.InventoryBase;
 import net.minecraft.tileentity.TileEntityChest;
+import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 import net.minecraft.entity.player.PlayerBase;
@@ -13,10 +15,14 @@ import net.minecraft.level.BlockView;
 import net.minecraft.block.material.Material;
 import java.util.Random;
 
+import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.event.listener.TextureListener;
+import com.gildedgames.aether.gui.GuiTreasureChest;
+import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.registry.AetherItems;
 
 import net.minecraft.block.BlockWithEntity;
-
+import static net.modificationstation.stationapi.api.registry.Identifier.of;
 public class BlockTreasureChest extends TemplateBlockWithEntity {
     private Random random;
     
@@ -74,18 +80,18 @@ public class BlockTreasureChest extends TemplateBlockWithEntity {
     
     @Override
     public boolean canPlaceAt(final Level level, final int x, final int y, final int z) {
-        return false;
+        return true; //TODO: change to false later(did it for debug now)
     }
     
     @Override
     public boolean canUse(final Level level, final int x, final int y, final int z, final PlayerBase player) {
-        /*//if (level.isServerSide) {
+        //if (level.isServerSide) {
         //    return true;
         //}
         final int meta = level.getTileMeta(x, y, z);
         final TileEntityChest chest = (TileEntityChest)level.getTileEntity(x, y, z);
         if (meta % 2 == 1) {
-            ModLoader.OpenGUI(player, (ScreenBase)new GuiTreasureChest(player.inventory, chest, meta));
+        	MinecraftClientAccessor.getMCinstance().openScreen(new GuiTreasureChest(player.inventory, chest, meta)); //TODO: start using stationapi
             return true;
         }
         final ItemInstance itemstack = player.inventory.getHeldItem();
@@ -107,8 +113,8 @@ public class BlockTreasureChest extends TemplateBlockWithEntity {
             level.setTileEntity(x, y, z, chest);
             return true;
         }
-        return false;*/ //TODO: fix all stuff here(too lazy to do it now)
-    	return true;
+        return false; //TODO: fix all stuff here(too lazy to do it now)
+    	//return true;
     }
     
     @Override

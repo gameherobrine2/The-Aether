@@ -1,6 +1,7 @@
 package com.gildedgames.aether.entity.boss;
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.IAetherBoss;
+import com.gildedgames.aether.mixin.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.NameGen;
@@ -369,7 +370,7 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
     
     private void chatItUp(final String s) {
         if (this.chatTime <= 0) {
-            //TODO: ModLoader.getMinecraftInstance().overlay.addChatMessage(s);
+        	MinecraftClientAccessor.getMCinstance().overlay.addChatMessage(s); //still no stationapi documentation, so i am using minecraftclientaccessor
             this.chatTime = 60;
         }
     }
@@ -492,14 +493,14 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
         if (a == 0 || a == AetherBlocks.LOCKED_DUNGEON_STONE.id || a == AetherBlocks.LOCKED_LIGHT_DUNGEON_STONE.id) {
             return;
         }
-        //TODO: ModLoader.getMinecraftInstance().particleManager.addTileBreakParticles(x, y, z, a, b);
+        MinecraftClientAccessor.getMCinstance().particleManager.addTileBreakParticles(x, y, z, a, b);
         BlockBase.BY_ID[a].onBlockRemoved(this.level, x, y, z);
         BlockBase.BY_ID[a].drop(this.level, x, y, z, b);
         this.level.setTile(x, y, z, 0);
         this.crushed = true;
-        //TODO: if (ModLoader.getMinecraftInstance().options.fancyGraphics) {
-        //    this.addSquirrelButts(x, y, z);
-        //}
+        if (MinecraftClientAccessor.getMCinstance().options.fancyGraphics) {
+            this.addSquirrelButts(x, y, z);
+        }
     }
     
     public void addSquirrelButts(final int x, final int y, final int z) {

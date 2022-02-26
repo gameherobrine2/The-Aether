@@ -41,7 +41,7 @@ public class AetherGrassBlock extends TemplateBlockBase {
     }
     @Override
     public void onScheduledTick(Level level, int x, int y, int z, Random rand) {
-        if(!level.isClient) {
+        if(!level.isServerSide) {
             if (level.getLightLevel(x, y + 1, z) < 4 && level.getMaterial(x, y + 1, z).canBlockGrass()) {
                 if (rand.nextInt(4) == 0) {
                     level.setTile(x, y, z, AetherBlocks.AETHER_DIRT.id);

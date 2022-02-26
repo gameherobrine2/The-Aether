@@ -11,7 +11,7 @@ import net.minecraft.tileentity.TileEntityBase;
 
 import static com.gildedgames.aether.Aether.of;
 
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class AetherWorldRenderer implements LevelListener {
 
     private final Minecraft client;

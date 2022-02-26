@@ -2,6 +2,7 @@ package com.gildedgames.aether.block;
 
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.maths.Vec3f;
+import net.modificationstation.stationapi.api.client.model.block.BlockWithWorldRenderer;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
 import net.modificationstation.stationapi.api.template.block.TemplateTorch;
@@ -10,13 +11,16 @@ import java.util.Random;
 import com.gildedgames.aether.event.listener.TextureListener;
 
 import net.minecraft.util.maths.Box;
+import net.minecraft.level.BlockView;
 import net.minecraft.level.Level;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.render.Tessellator;
+import net.minecraft.client.render.block.BlockRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockBase;
 
-public class BlockAmbrosiumTorch extends TemplateTorch {
+public class BlockAmbrosiumTorch extends TemplateTorch{
     public BlockAmbrosiumTorch(final Identifier id) {
         super(id, TextureListener.sprAmbrosiumTorch);
         this.setTicksRandomly(true);

@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityBase;
 import net.minecraft.level.Level;
 import java.util.Random;
 
+import com.gildedgames.aether.entity.boss.EntityValkyrie;
 import com.gildedgames.aether.entity.mobs.EntitySentry;
 import com.gildedgames.aether.event.listener.TextureListener;
 import com.gildedgames.aether.registry.AetherBlocks;
@@ -62,9 +63,9 @@ public class BlockTrap extends TemplateTranslucentBlock {
                     break;
                 }
                 case 1: {
-                    //final EntityValkyrie entityvalk = new EntityValkyrie(level);
-                    //entityvalk.setPosition(x2 + 0.5, y2 + 1.5, z2 + 0.5);
-                    //level.spawnEntity(entityvalk);
+                    final EntityValkyrie entityvalk = new EntityValkyrie(level);
+                    entityvalk.setPosition(x2 + 0.5, y2 + 1.5, z2 + 0.5);
+                    level.spawnEntity(entityvalk);
                     break;
                 }
             }

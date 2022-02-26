@@ -2,7 +2,9 @@ package com.gildedgames.aether.event.listener;
 
 import com.gildedgames.aether.block.BlockAetherLeaves;
 import com.gildedgames.aether.block.BlockAetherLog;
+import com.gildedgames.aether.block.BlockAmbrosiumTorch;
 import com.gildedgames.aether.block.BlockDungeon;
+import com.gildedgames.aether.block.BlockPillar;
 import com.gildedgames.aether.block.BlockTrap;
 import com.gildedgames.aether.item.*;
 import com.gildedgames.aether.registry.AetherBlocks;
@@ -19,6 +21,7 @@ import net.modificationstation.stationapi.api.util.Null;
 public class TextureListener {
 	@EventListener
     public void registerTextures(TextureRegisterEvent event) {
+		//Sprites for blocks ^-^
 		sprTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/SkyrootLogTop")).index;
 		sprSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/SkyrootLogSide")).index;
 		sprGoldenSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/GoldenOak")).index;
@@ -47,15 +50,29 @@ public class TextureListener {
         sprGoldLit = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/LightHellfireStone")).index;
         sprChestFront = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/LockedChestFront")).index;
         sprChestSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/LockedChestSide")).index;
-        ((ItemAmbrosium)AetherItems.AmbrosiumShard).setTexture(Identifier.of(MOD_ID, "items/AmbrosiumShard"));
+        sprPillarTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/PillarTop")).index;
+        sprPillarSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/PillarSide")).index;
+        sprPillarTopSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/PillarCarved")).index;
+        sprHolystone = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/HolyStone")).index;
+        sprMossyHolystone = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/MossyHolystone")).index;
         
+        //Some textures for blocks
+        ((BlockAmbrosiumTorch)AetherBlocks.AMBROSIUM_TORCH).texture = sprAmbrosiumTorch;
+        
+        //Items
+        ((ItemAmbrosium)AetherItems.AmbrosiumShard).setTexture(Identifier.of(MOD_ID, "items/AmbrosiumShard"));
+        ((ItemAetherKey)AetherItems.Key).setTexture(Identifier.of(MOD_ID, "items/Key"));
+        ((ItemAether)AetherItems.VictoryMedal).setTexture(Identifier.of(MOD_ID, "items/VictoryMedal"));
         ((ItemAether)AetherItems.Stick).setTexture(Identifier.of(MOD_ID, "items/Stick"));
         ((ItemMoreArmor)AetherItems.IronRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
         ((ItemMoreArmor)AetherItems.GoldRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
         ((ItemMoreArmor)AetherItems.IceRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
         ((ItemMoreArmor)AetherItems.ZaniteRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
 	}
-	
+	//this is Alias code but i changed public static booleans to ints and renamed them
+    public static int sprPillarTop,sprHolystone,sprMossyHolystone;
+    public static int sprPillarSide;
+    public static int sprPillarTopSide;
     public static int sprBronze,sprChestFront,sprChestSide;
     public static int sprSilver;
     public static int sprGold;
