@@ -1,0 +1,28 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.gildedgames.aether.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+	"EntityBaseAccessor",
+	"LivingAccessor",
+	"MinecraftClientAccessor",
+	"PlayerBaseAccessor",
+	"PlayerBaseMixin",
+	"DimesnionFileAccessor",
+	"LevelAccessor",
+	"ParticleBaseAccessor"
+  ],
+  "server": [
+  ],
+  "client": [
+	"PlayerInventoryGuiMixin",
+	"ScreenBaseAccessor",
+	"ContainerBaseAccessor",
+	"GameRendererMixin",
+	"MinecraftClientAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
