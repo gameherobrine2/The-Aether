@@ -5,6 +5,8 @@ Experimental Port of Aether to StationAPI forked from [mine_diver's Aether port]
 ## Changes
 - More blocks than in [mine_diver's version](https://github.com/mineLdiver/The-Aether)
 - Some items were added
+- Some entities were added
 - Inventory from original Aether
 - Added Trees and Aerclouds generation
 - Added ores generation
+- All bosses were added
