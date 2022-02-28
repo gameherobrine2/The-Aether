@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.gildedgames.aether.Aether;
+import com.gildedgames.aether.effect.AetherPoison;
 import com.gildedgames.aether.entity.base.IAetherBoss;
 import com.gildedgames.aether.registry.AetherItems;
 
@@ -26,6 +27,7 @@ public class GameRendererMixin {
 		if(minecraft.level != null) {
 			AetherItems.tick(minecraft);
 			renderBossHP();
+			AetherPoison.tickRender(minecraft);
 		} //onTickInGame =P
 	}
 	

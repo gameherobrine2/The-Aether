@@ -3,9 +3,11 @@ import java.util.Map;
 import net.minecraft.client.render.Tessellator;
 import org.lwjgl.opengl.GL11;
 
+import com.gildedgames.aether.entity.boss.EntityFireMonster;
 import com.gildedgames.aether.entity.boss.EntitySlider;
 import com.gildedgames.aether.entity.mobs.EntityHomeShot;
 import com.gildedgames.aether.entity.mobs.EntitySentry;
+import com.gildedgames.aether.entity.projectile.EntityFiroBall;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
 
 import net.minecraft.client.util.ScreenScaler;
@@ -41,8 +43,8 @@ public class AetherPoison {
     
     public static boolean canPoison(final EntityBase entity) { //TODO: fix after adding entities
         return !(entity instanceof EntitySlider) && !(entity instanceof EntitySentry) 
-        		/*&& !(entity instanceof EntityMiniCloud) && !(entity instanceof EntityFireMonster) && !(entity instanceof EntityAechorPlant) 
-        		&& !(entity instanceof EntityFiroBall) && !(entity instanceof EntityCockatrice)*/ && !(entity instanceof EntityHomeShot);
+        		/*&& !(entity instanceof EntityMiniCloud)*/ && !(entity instanceof EntityFireMonster) /*&& !(entity instanceof EntityAechorPlant)*/ 
+        		&& !(entity instanceof EntityFiroBall) /*&& !(entity instanceof EntityCockatrice)*/ && !(entity instanceof EntityHomeShot);
     }
     
     public static void distractEntity(final EntityBase ent) {
@@ -117,14 +119,14 @@ public class AetherPoison {
         if (AetherPoison.mc.currentScreen != null) {
             return;
         }
-        flashColor("%blur%/aether/poison/curevignette.png", getCureAlpha(-(float)AetherPoison.poisonTime / 500.0f));
+        flashColor("%blur%/assets/aether/stationapi/poison/curevignette.png", getCureAlpha(-(float)AetherPoison.poisonTime / 500.0f));
     }
     
     public static void displayPoisonEffect(final int mod) {
         if (AetherPoison.mc.currentScreen != null) {
             return;
         }
-        flashColor("%blur%/aether/poison/poisonvignette.png", getPoisonAlpha(mod / 50.0f));
+        flashColor("%blur%/assets/aether/stationapi/poison/poisonvignette.png", getPoisonAlpha(mod / 50.0f));
     }
     
     public static void flashColor(final String file, final float a) {

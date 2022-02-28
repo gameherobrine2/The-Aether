@@ -58,11 +58,21 @@ public class TextureListener {
         sprFreezerTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/FreezerTop")).index;
         sprFreezerSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/FreezerSide")).index;
         
+        
+        
+        //Textures for some items
+        sprShooterNormal = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/DartShooter")).index;
+        sprShooterPoison = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/DartShooterPoison")).index;
+        sprShooterEnchanted = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/DartShooterEnchanted")).index;
+        sprDartGolden = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/DartGolden")).index;
+        sprDartEnchanted = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/DartEnchanted")).index;
+        sprDartPoison = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/DartPoison")).index;
         ItemSkyrootBucket.sprEmpty = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/Bucket")).index;
         ItemSkyrootBucket.sprWater = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/BucketWater")).index;
         ItemSkyrootBucket.sprMilk = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/BucketMilk")).index;
         ItemSkyrootBucket.sprPoison = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/BucketPoison")).index;
         ItemSkyrootBucket.sprRemedy = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/BucketRemedy")).index;
+        
         //Some textures for blocks
         ((BlockAmbrosiumTorch)AetherBlocks.AMBROSIUM_TORCH).texture = sprAmbrosiumTorch;
         
@@ -80,8 +90,17 @@ public class TextureListener {
         ((ItemMoreArmor)AetherItems.GoldRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
         ((ItemMoreArmor)AetherItems.IceRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
         ((ItemMoreArmor)AetherItems.ZaniteRing).setTexture(Identifier.of(MOD_ID, "items/Ring"));
+        ((ItemMoaEgg)AetherItems.MoaEgg).setTexture(Identifier.of(MOD_ID, "items/MoaEgg"));
+        ((ItemAether)AetherItems.AechorPetal).setTexture(Identifier.of(MOD_ID, "items/AechorPetal"));
+        ((ItemAether)AetherItems.GoldenAmber).setTexture(Identifier.of(MOD_ID, "items/GoldenAmber"));
 	}
 	//this is Alias code but i changed public static booleans to ints and renamed them
+    public static int sprShooterNormal;
+    public static int sprShooterPoison;
+    public static int sprShooterEnchanted;
+    public static int sprDartGolden;
+    public static int sprDartEnchanted;
+    public static int sprDartPoison;
 	public static int sprFreezerTop;
 	public static int sprFreezerSide;
     public static int sprPillarTop,sprHolystone,sprMossyHolystone;

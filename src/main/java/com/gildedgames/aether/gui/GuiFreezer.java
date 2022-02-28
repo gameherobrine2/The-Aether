@@ -23,7 +23,7 @@ public class GuiFreezer extends ContainerBase {
     
     @Override
     protected void renderContainerBackground(final float tickDelta) {
-        final int i = this.minecraft.textureManager.getTextureId("/aether/gui/enchanter.png");
+        final int i = this.minecraft.textureManager.getTextureId("/assets/aether/stationapi/textures/gui/enchanter.png");
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         this.minecraft.textureManager.bindTexture(i);
         final int j = (this.width - this.containerWidth) / 2;

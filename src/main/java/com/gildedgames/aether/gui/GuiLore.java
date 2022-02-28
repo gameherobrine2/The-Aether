@@ -3,6 +3,12 @@ package com.gildedgames.aether.gui;
 import net.minecraft.item.ItemBase;
 import net.minecraft.block.BlockBase;
 import org.lwjgl.opengl.GL11;
+
+import com.gildedgames.aether.gui.container.ContainerLore;
+import com.gildedgames.aether.registry.AetherBlocks;
+import com.gildedgames.aether.registry.AetherItems;
+import com.gildedgames.aether.utils.Lore;
+
 import net.minecraft.entity.player.PlayerBase;
 import java.util.Iterator;
 import net.minecraft.item.ItemInstance;
@@ -15,7 +21,7 @@ public class GuiLore extends ContainerBase {
 	public GuiLore(net.minecraft.container.ContainerBase container2) {
 		super(container2);
 	}
-    /*public static ArrayList<Lore> lores;
+    public static ArrayList<Lore> lores;
     private int type;
     
     public GuiLore(final PlayerInventory inventoryplayer, final int i) {
@@ -53,9 +59,9 @@ public class GuiLore extends ContainerBase {
                     this.textManager.drawText(lore.line4, 134, 58, 4210752);
                     this.textManager.drawText(lore.line5, 134, 68, 4210752);
                     this.textManager.drawText(lore.line6, 134, 78, 4210752);
-                    mod_Aether.giveAchievement(AetherAchievements.lore);
+                    //mod_Aether.giveAchievement(AetherAchievements.lore);
                     if (item.itemId == AetherItems.LoreBook.id) {
-                        mod_Aether.giveAchievement(AetherAchievements.loreception);
+                        //mod_Aether.giveAchievement(AetherAchievements.loreception); //TODO: Achievements
                         break;
                     }
                     break;
@@ -74,7 +80,7 @@ public class GuiLore extends ContainerBase {
     protected void renderContainerBackground(final float tickDelta) {
         this.containerWidth = 256;
         this.containerHeight = 195;
-        final int i = this.minecraft.textureManager.getTextureId("/aether/gui/lore.png");
+        final int i = this.minecraft.textureManager.getTextureId("/assets/aether/stationapi/textures/gui/lore.png");
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         this.minecraft.textureManager.bindTexture(i);
         final int j = (this.width - this.containerWidth) / 2;
@@ -262,33 +268,33 @@ public class GuiLore extends ContainerBase {
         GuiLore.lores.add(new Lore(BlockBase.GLOWSTONE, "Glowstone", "Found on the roof", "of the Nether.", "Drops 4 Glowstone", "dust.", "Used in Aether ", "portals", 1));
         GuiLore.lores.add(new Lore(ItemBase.glowstoneDust, "Glowstone Dust", "Obtained when mining", "a block of Glowstone.", "", "", "", "", 1));
         GuiLore.lores.add(new Lore(new ItemInstance(AetherItems.LoreBook, 1, 1), "Lore Book : Vol 2", "Contains information", "about blocks and", "items from the", "Nether", "", "", 1));
-        GuiLore.lores.add(new Lore(AetherBlocks.Dirt, "Aether Dirt", "A paler dirt.", "Aether grass", "and skyroot trees", "will grow on it", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.Grass, "Aether Grass", "A paler grass.", "Skyroot trees will", "grow on it.", "Allows Aether mobs", "to spawn", "", 2));
-        GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.Holystone, 1, 0), "Holystone", "Main material of", "the Aether.", "Makes holystone", "tools and", "enchanters", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.Plank, "Skyroot Plank", "Made from skyroot.", "Used to make", "skyroot sticks and", "tools", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.SkyrootSapling, "Skyroot Sapling", "Dropped by ", "skyroot leaves.", "Plants a skyroot", "tree", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.GoldenOakSapling, "Golden Oak Sapling", "Dropped by golden", "oak leaves.", "Plants a golden", "oak", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.Quicksoil, "Quicksoil", "Found at the edge", "of islands.", "Speeds up anything", "on it.", "Use it with blue", "clouds for epicness", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.Log, "Skyroot Wood", "Wood from skyroot", "trees.", "Makes skyroot", "planks", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.Icestone, "Icestone", "Found in Holystone.", "Freezes water", "around it on", "placement", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.GravititeOre, "Gravitite Ore", "Found under big", "islands.", "Floats upwards,", "and can be made", "into tools.", "Can be enchanted", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.EnchantedGravitite, "Enchanted Gravitite", "Floats upwards", "when powered by", "redstone", "", "", "", 2));
-        GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.Holystone, 1, 2), "Mossy Holystone", "Found in dungeons.", "Decorative block", "", "", "", "", 2));
-        GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.Aercloud, 1, 1), "Blue Aercloud", "Found in clouds.", "When landed on,", "it will bounce you", "sky-high", "", "", 2));
-        GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.Aercloud, 1, 0), "Cold Aercloud", "Found in clouds.", "Stops fall damage", "when landed on", "", "", "", 2));
-        GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.Aercloud, 1, 2), "Gold Aercloud", "Found in clouds.", "Stops fall damage", "when landed on.", "Quite rare", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.AmbrosiumTorch, "Ambrosium Torch", "Made from skyroot", "sticks and", "ambrosium.", "Can be placed in", "the Aether", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.DungeonStone, "Dungeon Stone", "Found in dungeons.", "Decorative block", "", "", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.LightDungeonStone, "Lit Dungeon Stone", "Found in dungeons.", "Emits a faint light.", "Decorative block", "", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.Pillar, "Pillar", "Found in silver", "dungeons.", "Decorative block", "", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.Enchanter, "Enchanter", "Made from Zanite", "and Holystone.", "Enchants items", "and repairs tools", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.Incubator, "Incubator", "Made from skyroot", "planks and", "Holystone.", "Incubates Moa", "eggs until they ", "hatch", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.ZaniteBlock, "Zanite Block", "Crafted with four", "Zanite Gemstones.", "Decorative block", "", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.PurpleFlower, "Purple Flower", "Common plant in", "the Aether.", "Can be crafted", "into dye.", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.WhiteFlower, "White Flower", "Common plant in", "the Aether.", "Can be crafted", "into dye.", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.Freezer, "Freezer", "Allows you to", "freeze certain items.", "Uses Icestone as", "a fuel source.", "", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.QuicksoilGlass, "Quicksoil Glass", "Gained by enchanting", "Quicksoil blocks.", "Translucent, gives", "off small amount", "of light.", "", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.Aerogel, "Aerogel", "Found in dungeons.", "Incredibly high", "TNT resistance", "", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.AETHER_DIRT, "Aether Dirt", "A paler dirt.", "Aether grass", "and skyroot trees", "will grow on it", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.AETHER_GRASS_BLOCK, "Aether Grass", "A paler grass.", "Skyroot trees will", "grow on it.", "Allows Aether mobs", "to spawn", "", 2));
+        GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.HOLYSTONE, 1, 0), "Holystone", "Main material of", "the Aether.", "Makes holystone", "tools and", "enchanters", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.SKYROOT_PLANKS, "Skyroot Plank", "Made from skyroot.", "Used to make", "skyroot sticks and", "tools", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.SKYROOT_SAPLING, "Skyroot Sapling", "Dropped by ", "skyroot leaves.", "Plants a skyroot", "tree", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.GOLDEN_OAK_SAPLING, "Golden Oak Sapling", "Dropped by golden", "oak leaves.", "Plants a golden", "oak", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.QUICKSOIL, "Quicksoil", "Found at the edge", "of islands.", "Speeds up anything", "on it.", "Use it with blue", "clouds for epicness", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.LOG, "Skyroot Wood", "Wood from skyroot", "trees.", "Makes skyroot", "planks", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.ICESTONE, "Icestone", "Found in Holystone.", "Freezes water", "around it on", "placement", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.GRAVITITE_ORE, "Gravitite Ore", "Found under big", "islands.", "Floats upwards,", "and can be made", "into tools.", "Can be enchanted", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.ENCHANTED_GRAVITITE, "Enchanted Gravitite", "Floats upwards", "when powered by", "redstone", "", "", "", 2));
+        GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.HOLYSTONE, 1, 2), "Mossy Holystone", "Found in dungeons.", "Decorative block", "", "", "", "", 2));
+        GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.AERCLOUD, 1, 1), "Blue Aercloud", "Found in clouds.", "When landed on,", "it will bounce you", "sky-high", "", "", 2));
+        GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.AERCLOUD, 1, 0), "Cold Aercloud", "Found in clouds.", "Stops fall damage", "when landed on", "", "", "", 2));
+        GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.AERCLOUD, 1, 2), "Gold Aercloud", "Found in clouds.", "Stops fall damage", "when landed on.", "Quite rare", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.AMBROSIUM_TORCH, "Ambrosium Torch", "Made from skyroot", "sticks and", "ambrosium.", "Can be placed in", "the Aether", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.DUNGEON_STONE, "Dungeon Stone", "Found in dungeons.", "Decorative block", "", "", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.LIGHT_DUNGEON_STONE, "Lit Dungeon Stone", "Found in dungeons.", "Emits a faint light.", "Decorative block", "", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.PILLAR, "Pillar", "Found in silver", "dungeons.", "Decorative block", "", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.ENCHANTER, "Enchanter", "Made from Zanite", "and Holystone.", "Enchants items", "and repairs tools", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.INCUBATOR, "Incubator", "Made from skyroot", "planks and", "Holystone.", "Incubates Moa", "eggs until they ", "hatch", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.ZANITE_BLOCK, "Zanite Block", "Crafted with four", "Zanite Gemstones.", "Decorative block", "", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.PURPLE_FLOWER, "Purple Flower", "Common plant in", "the Aether.", "Can be crafted", "into dye.", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.WHITE_FLOWER, "White Flower", "Common plant in", "the Aether.", "Can be crafted", "into dye.", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.FREEZER, "Freezer", "Allows you to", "freeze certain items.", "Uses Icestone as", "a fuel source.", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.QUICKSOIL_GLASS, "Quicksoil Glass", "Gained by enchanting", "Quicksoil blocks.", "Translucent, gives", "off small amount", "of light.", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.AEROGEL, "Aerogel", "Found in dungeons.", "Incredibly high", "TNT resistance", "", "", "", 2));
         GuiLore.lores.add(new Lore(AetherItems.PhoenixBow, "Phoenix Bow", "Found in dungeons.", "Shoots flaming", "arrows that", "burn mobs", "", "", 2));
         GuiLore.lores.add(new Lore(AetherItems.GummieSwet, "Gummy Swet", "Found in dungeons.", "Tasty swet", "flavoured", "gummy swets", "(May contain swet)", "", 2));
         GuiLore.lores.add(new Lore(AetherItems.SwordFire, "Fire Sword", "Found in dungeons.", "A sword imbued", "with the power of", "fire", "", "", 2));
@@ -387,8 +393,5 @@ public class GuiLore extends ContainerBase {
         GuiLore.lores.add(new Lore(AetherItems.RegenerationStone, "Regeneration Stone", "Use it in your", "accessory slots.", "Regenerates health", "over time", "", "", 2));
         GuiLore.lores.add(new Lore(AetherItems.InvisibilityCloak, "Invisibility Cloak", "Use it in your", "cloak slot.", "Makes you invisible", "", "", "", 2));
         GuiLore.lores.add(new Lore(new ItemInstance(AetherItems.LoreBook, 1, 2), "Lore Book : Vol 3", "Contains information", "about blocks and", "items from the", "Aether", "", "", 2));
-    }*/ //TODO: add lore
-
-	@Override
-	protected void renderContainerBackground(float f) {}
+    } //TODO: add lore
 }

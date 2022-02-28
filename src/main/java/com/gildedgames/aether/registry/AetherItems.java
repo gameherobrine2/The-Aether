@@ -22,6 +22,10 @@ import com.gildedgames.aether.inventory.InventoryAether;
 import com.gildedgames.aether.item.ItemAether;
 import com.gildedgames.aether.item.ItemAetherKey;
 import com.gildedgames.aether.item.ItemAmbrosium;
+import com.gildedgames.aether.item.ItemDart;
+import com.gildedgames.aether.item.ItemDartShooter;
+import com.gildedgames.aether.item.ItemLoreBook;
+import com.gildedgames.aether.item.ItemMoaEgg;
 import com.gildedgames.aether.item.ItemMoreArmor;
 import com.gildedgames.aether.item.ItemSkyrootBucket;
 @Entrypoint(eventBus = @EventBusPolicy(registerInstance = false))
@@ -43,6 +47,12 @@ public class AetherItems {
         AetherItems.GoldPendant = new ItemMoreArmor(Identifier.of(MOD_ID, "gold_endant"), 0, "/armor/Accessories.png", 4, 16776994).setTranslationKey("GoldPendant");
         AetherItems.ZanitePendant = new ItemMoreArmor(Identifier.of(MOD_ID, "zanite_pendant"), 0, "/armor/Accessories.png", 4, 7412456).setTranslationKey("ZanitePendant");
         AetherItems.IcePendant = new ItemMoreArmor(Identifier.of(MOD_ID, "ice_pendant"), 0, "/armor/Accessories.png", 4, 9823975).setTranslationKey("IcePendant");
+        AetherItems.LoreBook = new ItemLoreBook(Identifier.of(MOD_ID, "lore_book")).setTexturePosition(59).setTranslationKey("LoreBook");
+        AetherItems.MoaEgg = new ItemMoaEgg(Identifier.of(MOD_ID, "moa_egg")).setTranslationKey("MoaEgg");
+        AetherItems.AechorPetal = new ItemAether(Identifier.of(MOD_ID, "aechor_petal")).setTranslationKey("AechorPetal");
+        AetherItems.GoldenAmber = new ItemAether(Identifier.of(MOD_ID, "golden_amber")).setTranslationKey("GoldenAmber");
+        AetherItems.Dart = new ItemDart(Identifier.of(MOD_ID, "item_dart")).setHasSubItems(true).setTranslationKey("Dart");
+        AetherItems.DartShooter = new ItemDartShooter(Identifier.of(MOD_ID, "item_dart_shooter")).setTranslationKey("DartShooter");
     }
     
     public static void tick(final Minecraft game) {
