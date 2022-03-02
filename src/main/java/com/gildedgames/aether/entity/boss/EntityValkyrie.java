@@ -16,6 +16,7 @@ import com.gildedgames.aether.entity.base.EntityDungeonMob;
 import com.gildedgames.aether.entity.base.IAetherBoss;
 import com.gildedgames.aether.entity.mobs.EntityHomeShot;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.NameGen;
@@ -524,7 +525,7 @@ public class EntityValkyrie extends EntityDungeonMob implements IAetherBoss {
         this.level.setTileWithMetadata(this.dungeonX + 17, this.dungeonY + 1, this.dungeonZ + 9, BlockBase.TRAPDOOR.id, 2);
         this.level.setTileWithMetadata(this.dungeonX + 16, this.dungeonY + 1, this.dungeonZ + 10, BlockBase.TRAPDOOR.id, 3);
         this.level.setTileWithMetadata(this.dungeonX + 17, this.dungeonY + 1, this.dungeonZ + 10, BlockBase.TRAPDOOR.id, 2);
-        //Aether.giveAchievement(AetherAchievements.defeatSilver); //TODO: achievement
+        Aether.giveAchievement(AetherAchievements.defeatSilver);
         for (int x = this.dungeonX - 26; x < this.dungeonX + 29; ++x) {
             for (int y = this.dungeonY - 1; y < this.dungeonY + 22; ++y) {
                 for (int z = this.dungeonZ - 5; z < this.dungeonZ + 25; ++z) {

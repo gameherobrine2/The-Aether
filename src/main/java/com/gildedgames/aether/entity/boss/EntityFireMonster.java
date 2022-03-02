@@ -12,6 +12,7 @@ import com.gildedgames.aether.entity.mobs.EntityFireMinion;
 import com.gildedgames.aether.entity.projectile.EntityFiroBall;
 import com.gildedgames.aether.mixin.EntityBaseAccessor;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.NameGen;
@@ -423,7 +424,7 @@ public class EntityFireMonster extends FlyingBase implements IAetherBoss {
                 }
             }
         }
-        //TODO: Aether.giveAchievement(AetherAchievements.defeatGold);
+        Aether.giveAchievement(AetherAchievements.defeatGold);
         for (int x2 = this.orgX - 20; x2 < this.orgX + 20; ++x2) {
             for (int y2 = this.orgY - 3; y2 < this.orgY + 6; ++y2) {
                 for (int z2 = this.orgZ - 20; z2 < this.orgZ + 20; ++z2) {

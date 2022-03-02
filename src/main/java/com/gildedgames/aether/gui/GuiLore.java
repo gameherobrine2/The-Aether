@@ -4,7 +4,9 @@ import net.minecraft.item.ItemBase;
 import net.minecraft.block.BlockBase;
 import org.lwjgl.opengl.GL11;
 
+import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.gui.container.ContainerLore;
+import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.Lore;
@@ -59,9 +61,9 @@ public class GuiLore extends ContainerBase {
                     this.textManager.drawText(lore.line4, 134, 58, 4210752);
                     this.textManager.drawText(lore.line5, 134, 68, 4210752);
                     this.textManager.drawText(lore.line6, 134, 78, 4210752);
-                    //mod_Aether.giveAchievement(AetherAchievements.lore);
+                    Aether.giveAchievement(AetherAchievements.lore);
                     if (item.itemId == AetherItems.LoreBook.id) {
-                        //mod_Aether.giveAchievement(AetherAchievements.loreception); //TODO: Achievements
+                    	 Aether.giveAchievement(AetherAchievements.loreception);
                         break;
                     }
                     break;

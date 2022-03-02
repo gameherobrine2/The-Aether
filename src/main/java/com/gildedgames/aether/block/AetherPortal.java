@@ -1,5 +1,6 @@
 package com.gildedgames.aether.block;
 
+import com.gildedgames.aether.event.listener.TextureListener;
 import com.gildedgames.aether.level.dimension.AetherTravelAgent;
 import com.gildedgames.aether.registry.AetherDimensions;
 import net.minecraft.block.BlockBase;
@@ -19,7 +20,9 @@ public class AetherPortal extends TemplatePortal implements CustomPortal {
     public AetherPortal(Identifier identifier, int j) {
         super(identifier, j);
     }
-
+    public int getTextureForSide(int side, int meta) {
+    	return TextureListener.sprPortal;
+    }
     @Override
     public boolean method_736(Level arg, int x, int y, int z) {
         byte var5 = 0;

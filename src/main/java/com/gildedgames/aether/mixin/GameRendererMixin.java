@@ -9,12 +9,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.effect.AetherPoison;
 import com.gildedgames.aether.entity.base.IAetherBoss;
+import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.registry.AetherItems;
 
 import org.spongepowered.asm.mixin.injection.At;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.util.ScreenScaler;
+import net.minecraft.entity.EntityBase;
+import net.minecraft.entity.player.PlayerBase;
+import net.minecraft.item.ItemInstance;
 import net.minecraft.sortme.GameRenderer;
 
 @Mixin(GameRenderer.class)
@@ -25,6 +29,16 @@ public class GameRendererMixin {
 	@Inject(method = "method_1844", at = @At("TAIL"))
 	private void betaloader_onRenderTick(float delta, CallbackInfo ci) { //skidded from BetaLoader
 		if(minecraft.level != null) {
+			final PlayerBase player = minecraft.player;
+			if (Aether.getCurrentDimension() == 2) {
+                final boolean enteredAether = minecraft.statFileWriter.isAchievementUnlocked(AetherAchievements.enterAether);
+                if (!enteredAether) {
+                    Aether.giveAchievement(AetherAchievements.enterAether, player);
+                    player.inventory.addStack(new ItemInstance(AetherItems.LoreBook, 1, 2));
+                    //TODO: player.inventory.addStack(new ItemInstance(AetherItems.CloudParachute, 1));
+                    minecraft.level.playSound((EntityBase)player, "random.pop", 0.2f, 1.0f);
+                }
+            }
 			AetherItems.tick(minecraft);
 			renderBossHP();
 			AetherPoison.tickRender(minecraft);

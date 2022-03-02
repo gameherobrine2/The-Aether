@@ -63,6 +63,8 @@ public class TextureListener {
         sprIncubatorSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/IncubatorSide")).index;
         sprEnchanterTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/EnchanterTop")).index;
         sprEnchanterSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/EnchanterSide")).index;
+        sprPortal = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/Portal")).index;
+        
         //Textures for some items
         sprShooterNormal = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/DartShooter")).index;
         sprShooterPoison = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/DartShooterPoison")).index;
@@ -98,7 +100,7 @@ public class TextureListener {
         ((ItemAether)AetherItems.GoldenAmber).setTexture(Identifier.of(MOD_ID, "items/GoldenAmber"));
 	}
 	//this is Alias code but i changed public static booleans to ints and renamed them
-	public static int sprIncubatorSide, sprIncubatorTop;
+	public static int sprIncubatorSide, sprIncubatorTop,sprPortal;
 	public static int sprEnchanterSide, sprEnchanterTop;
     public static int sprShooterNormal,sprQuicksoilGlass;
     public static int sprShooterPoison;

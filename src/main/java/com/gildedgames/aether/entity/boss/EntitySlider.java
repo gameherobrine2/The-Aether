@@ -2,6 +2,7 @@ package com.gildedgames.aether.entity.boss;
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.IAetherBoss;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.NameGen;
@@ -412,7 +413,7 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
                 this.level.setTileWithMetadata(this.dungeonX + 8, this.dungeonY + 1, this.dungeonZ + 7, BlockBase.TRAPDOOR.id, 2);
                 this.level.setTileWithMetadata(this.dungeonX + 7, this.dungeonY + 1, this.dungeonZ + 8, BlockBase.TRAPDOOR.id, 3);
                 this.level.setTileWithMetadata(this.dungeonX + 8, this.dungeonY + 1, this.dungeonZ + 8, BlockBase.TRAPDOOR.id, 2);
-                //TODO: Aether.giveAchievement(AetherAchievements.defeatBronze);
+                Aether.giveAchievement(AetherAchievements.defeatBronze);
                 Aether.currentBoss = null;
             }
             else if (!this.awake) {
