@@ -184,7 +184,7 @@ public class EntityFlyingCow extends EntityAetherAnimal {
         if (!this.getSaddled && playerBase.inventory.getHeldItem() != null && playerBase.inventory.getHeldItem().itemId == ItemBase.saddle.id) {
             playerBase.inventory.setInventoryItem(playerBase.inventory.selectedHotbarSlot, null);
             this.getSaddled = true;
-            this.texture = "/aether/mobs/Mob_FlyingCowSaddle.png";
+            this.texture = "/assets/aether/stationapi/textures/entity/Mob_FlyingCowSaddle.png";
             return true;
         }
         if (this.getSaddled /*&& !this.level.isServerSide*/ && (this.passenger == null || this.passenger == playerBase)) {

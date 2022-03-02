@@ -10,6 +10,7 @@ import com.gildedgames.aether.client.render.model.ModelFlyingCow1;
 import com.gildedgames.aether.client.render.model.ModelFlyingCow2;
 import com.gildedgames.aether.client.render.model.ModelSlider;
 import com.gildedgames.aether.entity.animal.EntityFlyingCow;
+import com.gildedgames.aether.entity.animal.EntityMoa;
 import com.gildedgames.aether.entity.boss.EntityFireMonster;
 import com.gildedgames.aether.entity.boss.EntitySlider;
 import com.gildedgames.aether.entity.boss.EntityValkyrie;
@@ -22,6 +23,7 @@ import com.gildedgames.aether.entity.projectile.EntityDartEnchanted;
 import com.gildedgames.aether.entity.projectile.EntityDartGolden;
 import com.gildedgames.aether.entity.projectile.EntityDartPoison;
 import com.gildedgames.aether.entity.projectile.EntityFiroBall;
+import com.gildedgames.aether.entity.projectile.EntityFloatingBlock;
 import com.gildedgames.aether.entity.projectile.EntityPoisonNeedle;
 import com.gildedgames.aether.entity.projectile.EntityZephyrSnowball;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
@@ -43,7 +45,7 @@ public class EntityRegistry {
     	 event.registry.register(of(MODID, "entity_homeshot"), EntityHomeShot::new);
     	 event.registry.register(of(MODID,"boss_sunspirit"), EntityFireMonster::new);
     	 event.registry.register(of(MODID,"entity_fireminion"), EntityFireMinion::new);
-    	 
+    	 event.registry.register(of(MODID,"entity_moa"), EntityMoa::new);
     	 
     }
     
@@ -54,6 +56,7 @@ public class EntityRegistry {
     	event.register(EntityZephyrSnowball.class, "dangerous_weapon_zephyrsnowball");
     	event.register(EntitySentry.class, "entity_sentry");
     	event.register(EntityMimic.class, "entity_mimic");
+    	event.register(EntityMoa.class, "entity_moa");
     	event.register(EntitySlider.class, "boss_slider");
     	event.register(EntityValkyrie.class, "entity_valkyre");
     	event.register(EntityHomeShot.class, "entity_homeshot");
@@ -64,5 +67,6 @@ public class EntityRegistry {
         event.register(EntityFireMonster.class,"entity_sunspirit");
         event.register(EntityFireMinion.class,"entity_fireminion");
         event.register(EntityFiroBall.class,"entity_fireball");
+        event.register(EntityFloatingBlock.class,"entity_floatingblock");
     }
 }

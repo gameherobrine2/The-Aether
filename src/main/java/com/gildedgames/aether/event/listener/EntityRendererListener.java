@@ -4,7 +4,10 @@ import com.gildedgames.aether.client.render.entity.RenderDartEnchanted;
 import com.gildedgames.aether.client.render.entity.RenderDartGolden;
 import com.gildedgames.aether.client.render.entity.RenderDartPoison;
 import com.gildedgames.aether.client.render.entity.RenderFiroBall;
+import com.gildedgames.aether.client.render.entity.RenderFloatingBlock;
 import com.gildedgames.aether.client.render.entity.RenderFlyingCow;
+import com.gildedgames.aether.client.render.entity.RenderMimic;
+import com.gildedgames.aether.client.render.entity.RenderMoa;
 import com.gildedgames.aether.client.render.entity.RenderPoisonNeedle;
 
 import static com.gildedgames.aether.Aether.MODID;
@@ -18,18 +21,22 @@ import com.gildedgames.aether.client.render.model.ModelFireMonster;
 import com.gildedgames.aether.client.render.model.ModelFlyingCow1;
 import com.gildedgames.aether.client.render.model.ModelFlyingCow2;
 import com.gildedgames.aether.client.render.model.ModelHomeShot;
+import com.gildedgames.aether.client.render.model.ModelMoa;
 import com.gildedgames.aether.client.render.model.ModelSlider;
 import com.gildedgames.aether.client.render.model.ModelValkyrie;
 import com.gildedgames.aether.entity.animal.EntityFlyingCow;
+import com.gildedgames.aether.entity.animal.EntityMoa;
 import com.gildedgames.aether.entity.boss.EntityFireMonster;
 import com.gildedgames.aether.entity.boss.EntitySlider;
 import com.gildedgames.aether.entity.boss.EntityValkyrie;
 import com.gildedgames.aether.entity.mobs.EntityFireMinion;
+import com.gildedgames.aether.entity.mobs.EntityMimic;
 import com.gildedgames.aether.entity.mobs.EntityZephyr;
 import com.gildedgames.aether.entity.projectile.EntityDartEnchanted;
 import com.gildedgames.aether.entity.projectile.EntityDartGolden;
 import com.gildedgames.aether.entity.projectile.EntityDartPoison;
 import com.gildedgames.aether.entity.projectile.EntityFiroBall;
+import com.gildedgames.aether.entity.projectile.EntityFloatingBlock;
 import com.gildedgames.aether.entity.projectile.EntityPoisonNeedle;
 import com.gildedgames.aether.entity.projectile.EntityZephyrSnowball;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
@@ -54,5 +61,8 @@ public class EntityRendererListener {
         event.renderers.put(EntityFireMonster.class, new BipedEntityRenderer(new ModelFireMonster(0.0f, 0.0f), 0.4f));
         event.renderers.put(EntityFireMinion.class, new BipedEntityRenderer(new ModelFireMinion(0.0f, 0.0f), 0.4f));
         event.renderers.put(EntityFiroBall.class, new RenderFiroBall(new ModelHomeShot(0.5f, 0.0f), 0.25f));
+        event.renderers.put(EntityFloatingBlock.class, new RenderFloatingBlock());
+        event.renderers.put(EntityMimic.class, new RenderMimic());
+        event.renderers.put(EntityMoa.class, new RenderMoa(new ModelMoa(), 1.0f));
     }
 }

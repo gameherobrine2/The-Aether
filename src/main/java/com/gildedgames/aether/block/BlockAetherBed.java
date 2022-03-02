@@ -9,6 +9,9 @@ import net.minecraft.level.BlockView;
 import net.minecraft.sortme.MagicBedNumbers;
 import net.minecraft.block.Bed;
 import net.minecraft.util.Vec3i;
+import net.modificationstation.stationapi.api.registry.Identifier;
+import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
+
 import java.util.Iterator;
 import net.minecraft.util.SleepStatus;
 import net.minecraft.entity.player.PlayerBase;
@@ -16,11 +19,11 @@ import net.minecraft.level.Level;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.BlockBase;
 
-public class BlockAetherBed extends BlockBase {
+public class BlockAetherBed extends TemplateBlockBase {
     public static final int[][] headBlockToFootBlockMap;
     
-    public BlockAetherBed(final int i) {
-        super(i, 134, Material.WOOL);
+    public BlockAetherBed(final Identifier id) {
+        super(id, 134, Material.WOOL);
         this.setBounds();
     }
     
@@ -81,7 +84,8 @@ public class BlockAetherBed extends BlockBase {
             return SleepStatus.TOO_FAR_AWAY;
         }
         //}
-        //((LivingAccessor)player).setSize(0.2f, 0.2f);
+        player.width = 0.2f;
+        player.height = 0.2f;
         player.standingEyeHeight = 0.2f;
         if (worldObj.isTileLoaded(i, j, k)) {
             final int l = worldObj.getTileMeta(i, j, k);

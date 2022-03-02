@@ -24,14 +24,15 @@
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
-      "com.gildedgames.aether.Aether",
-      "com.gildedgames.aether.registry.AetherBlocks",
-      "com.gildedgames.aether.registry.AetherItems",
-      "com.gildedgames.aether.event.listener.BlockPlacementListener",
-      "com.gildedgames.aether.registry.AetherDimensions",
-      "com.gildedgames.aether.event.listener.EntityRendererListener",
+      	"com.gildedgames.aether.Aether",
+      	"com.gildedgames.aether.registry.AetherBlocks",
+      	"com.gildedgames.aether.registry.AetherItems",
+      	"com.gildedgames.aether.event.listener.BlockPlacementListener",
+      	"com.gildedgames.aether.registry.AetherDimensions",
+      	"com.gildedgames.aether.event.listener.EntityRendererListener",
 	"com.gildedgames.aether.event.listener.RecipeListener",
-	"com.gildedgames.aether.event.listener.EntityRegistry"
+	"com.gildedgames.aether.event.listener.EntityRegistry",
+	"com.gildedgames.aether.event.listener.TileEntityListener"
     ],
     "stationapi:event_bus_client": [
       "com.gildedgames.aether.client.level.AetherLevelListeners",

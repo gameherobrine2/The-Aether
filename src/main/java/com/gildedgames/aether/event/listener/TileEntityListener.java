@@ -2,7 +2,9 @@ package com.gildedgames.aether.event.listener;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.gildedgames.aether.entity.tile.TileEntityEnchanter;
 import com.gildedgames.aether.entity.tile.TileEntityFreezer;
+import com.gildedgames.aether.entity.tile.TileEntityIncubator;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.event.tileentity.TileEntityRegisterEvent;
@@ -17,5 +19,7 @@ public class TileEntityListener {
     @EventListener
     public void registerTileEntities(TileEntityRegisterEvent event) {
         event.register(TileEntityFreezer.class, Identifier.of(MOD_ID, "freezer_entity").toString());
+        event.register(TileEntityEnchanter.class, Identifier.of(MOD_ID, "enchanter_entity").toString());
+        event.register(TileEntityIncubator.class, Identifier.of(MOD_ID, "incubator_entity").toString());
     }
 }

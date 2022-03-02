@@ -187,7 +187,7 @@ public class TileEntityFreezer extends TileEntityBase implements InventoryBase {
     }
     
     static {
-        TileEntityFreezer.frozen = (List<Frozen>)new ArrayList(); //TODO: fix
+        TileEntityFreezer.frozen = (List<Frozen>)new ArrayList();
         addFrozen(new ItemInstance(ItemBase.waterBucket, 1), new ItemInstance(BlockBase.ICE, 5), 500);
         addFrozen(new ItemInstance(AetherItems.Bucket, 1, 8), new ItemInstance(BlockBase.ICE, 5), 500);
         addFrozen(new ItemInstance(ItemBase.lavaBucket, 1), new ItemInstance(BlockBase.OBSIDIAN, 2), 500);

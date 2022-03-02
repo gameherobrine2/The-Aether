@@ -5,6 +5,7 @@ import com.gildedgames.aether.block.AetherGrassBlock;
 import com.gildedgames.aether.block.AetherPortal;
 import com.gildedgames.aether.block.BlockAercloud;
 import com.gildedgames.aether.block.BlockAerogel;
+import com.gildedgames.aether.block.BlockAetherBed;
 import com.gildedgames.aether.block.BlockAetherFlower;
 import com.gildedgames.aether.block.BlockAetherLeaves;
 import com.gildedgames.aether.block.BlockAetherLog;
@@ -14,10 +15,15 @@ import com.gildedgames.aether.block.BlockAmbrosiumOre;
 import com.gildedgames.aether.block.BlockAmbrosiumTorch;
 import com.gildedgames.aether.block.BlockChestMimic;
 import com.gildedgames.aether.block.BlockDungeon;
+import com.gildedgames.aether.block.BlockEnchantedGravitite;
+import com.gildedgames.aether.block.BlockEnchanter;
+import com.gildedgames.aether.block.BlockFloating;
 import com.gildedgames.aether.block.BlockFreezer;
 import com.gildedgames.aether.block.BlockIcestone;
+import com.gildedgames.aether.block.BlockIncubator;
 import com.gildedgames.aether.block.BlockPillar;
 import com.gildedgames.aether.block.BlockQuicksoil;
+import com.gildedgames.aether.block.BlockQuicksoilGlass;
 import com.gildedgames.aether.block.BlockTrap;
 import com.gildedgames.aether.block.BlockTreasureChest;
 import com.gildedgames.aether.block.BlockZanite;
@@ -73,6 +79,12 @@ public class AetherBlocks {
         CHEST_MIMIC = register("mimic_chest", id -> new BlockChestMimic(id).setHardness(2.0f).setSounds(BlockBase.WOOD_SOUNDS).setTranslationKey("Mimic"));
         PILLAR = register("pillar", id -> new BlockPillar(id).setHardness(0.5f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("Pillar"));
         FREEZER = register("freezer", id -> new BlockFreezer(id).setHardness(2.5f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("Freezer"));
+        QUICKSOIL_GLASS = register("quicksoilglass", id -> new BlockQuicksoilGlass(id).setLightEmittance(0.7375f).setHardness(0.2f).setLightOpacity(0).setSounds(BlockBase.GLASS_SOUNDS).setTranslationKey("QuicksoilGlass"));
+        GRAVITITE_ORE =  register("gravitite_ore", id -> new BlockFloating(id, false).setHardness(5.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("GravititeOre"));
+        ENCHANTED_GRAVITITE = register("enchanted_gravitite", id -> new BlockEnchantedGravitite(id, true).setHardness(5.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey("EnchantedGravitite"));
+        ENCHANTER = register("enchanter", id -> new BlockEnchanter(id).setTranslationKey("Enchanter").setHardness(2.0f));
+        INCUBATOR = register("incubator", id -> new BlockIncubator(id).setTranslationKey("Incubator").setHardness(2.0f));
+        BED =  register("aether_bed", id -> new BlockAetherBed(id).setHardness(0.2f).setTranslationKey("AetherBed").disableStat().disableNotifyOnMetaDataChange());
     }
 
     private static <T extends BlockBase & BlockTemplate<T>> T register(String id, Function<Identifier, T> initializer) {
@@ -85,6 +97,7 @@ public class AetherBlocks {
             AETHER_PORTAL,
             AETHER_DIRT,
             AETHER_GRASS_BLOCK,
+            BED,
             QUICKSOIL,
             HOLYSTONE,
             ICESTONE,

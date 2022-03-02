@@ -57,9 +57,12 @@ public class TextureListener {
         sprMossyHolystone = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/MossyHolystone")).index;
         sprFreezerTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/FreezerTop")).index;
         sprFreezerSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/FreezerSide")).index;
-        
-        
-        
+        sprQuicksoilGlass = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/QuicksoilGlass")).index;
+        sprGravititeOre = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/GravititeOre")).index;
+        sprIncubatorTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/IncubatorTop")).index;
+        sprIncubatorSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/IncubatorSide")).index;
+        sprEnchanterTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/EnchanterTop")).index;
+        sprEnchanterSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/EnchanterSide")).index;
         //Textures for some items
         sprShooterNormal = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/DartShooter")).index;
         sprShooterPoison = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/DartShooterPoison")).index;
@@ -95,7 +98,9 @@ public class TextureListener {
         ((ItemAether)AetherItems.GoldenAmber).setTexture(Identifier.of(MOD_ID, "items/GoldenAmber"));
 	}
 	//this is Alias code but i changed public static booleans to ints and renamed them
-    public static int sprShooterNormal;
+	public static int sprIncubatorSide, sprIncubatorTop;
+	public static int sprEnchanterSide, sprEnchanterTop;
+    public static int sprShooterNormal,sprQuicksoilGlass;
     public static int sprShooterPoison;
     public static int sprShooterEnchanted;
     public static int sprDartGolden;
@@ -123,6 +128,7 @@ public class TextureListener {
     public static int sprSide;
     public static int sprGoldenSide;
 	public static int sprZaniteOre;
+	public static int sprGravititeOre;
     @Entrypoint.ModID
     public static final ModID MOD_ID = Null.get();
 }

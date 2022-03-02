@@ -130,7 +130,7 @@ public class BlockChestMimic extends TemplateBlockBase {
     
     @Override
     public void onBlockRemoved(final Level level, final int x, final int y, final int z) {
-        level.setTile(x, y, z, 0);
+        //level.setTile(x, y, z, 0);
         final EntityMimic mimic = new EntityMimic(level);
         mimic.setPosition(x + 0.5, y + 1.5, z + 0.5);
         level.spawnEntity(mimic);
