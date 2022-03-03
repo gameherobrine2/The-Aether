@@ -20,6 +20,8 @@ public class AetherGrassBlock extends TemplateBlockBase {
     }
     public int getTextureForSide(int side, int meta) {
     	switch(side) {
+    	case 0:
+    		return TextureListener.sprDirt;
     	case 1:
     		return TextureListener.sprGrassTop;
     	default:

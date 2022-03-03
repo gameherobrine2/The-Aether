@@ -42,4 +42,31 @@ public class Aether {
         }
         return player.dimensionId;
     }
+	
+	
+
+    public static int raritySwet;
+    public static int rarityAechorPlant;
+    public static int rarityCockatrice;
+    public static int rarityAerwhale;
+    public static int rarityZephyr;
+    public static int raritySheepuff;
+    public static int rarityPhyg;
+    public static int rarityMoa;
+    public static int rarityFlyingCow;
+    public static int rarityWhirlwind;
+    public static int rarityAerbunny;
+    static {
+        Aether.raritySwet = 8;
+        Aether.rarityAechorPlant = 8;
+        Aether.rarityCockatrice = 3;
+        Aether.rarityAerwhale = 8;
+        Aether.rarityZephyr = 5;
+        Aether.raritySheepuff = 10;
+        Aether.rarityPhyg = 12;
+        Aether.rarityMoa = 10;
+        Aether.rarityFlyingCow = 10;
+        Aether.rarityWhirlwind = 8;
+        Aether.rarityAerbunny = 11;
+   }
 }

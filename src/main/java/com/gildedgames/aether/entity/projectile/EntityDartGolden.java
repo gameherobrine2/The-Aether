@@ -26,7 +26,7 @@ public class EntityDartGolden extends EntityProjectileBase {
     
     public void initDataTracker() {
         super.initDataTracker();
-        this.item = new ItemInstance(AetherItems.Dart, 1, 0); //TODO: add item
+        this.item = new ItemInstance(AetherItems.Dart, 1, 0);
         this.curvature = 0.0f;
         this.dmg = 4;
         this.speed = 1.5f;

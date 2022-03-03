@@ -1,5 +1,8 @@
 package com.gildedgames.aether.event.listener;
 
+import com.gildedgames.aether.client.render.entity.RenderAechorPlant;
+import com.gildedgames.aether.client.render.entity.RenderAerbunny;
+import com.gildedgames.aether.client.render.entity.RenderAerwhale;
 import com.gildedgames.aether.client.render.entity.RenderDartEnchanted;
 import com.gildedgames.aether.client.render.entity.RenderDartGolden;
 import com.gildedgames.aether.client.render.entity.RenderDartPoison;
@@ -16,6 +19,8 @@ import com.gildedgames.aether.client.render.entity.RenderSlider;
 import com.gildedgames.aether.client.render.entity.RenderValkyrie;
 import com.gildedgames.aether.client.render.entity.RenderZephyr;
 import com.gildedgames.aether.client.render.entity.RenderZephyrSnowball;
+import com.gildedgames.aether.client.render.model.ModelAechorPlant;
+import com.gildedgames.aether.client.render.model.ModelAerbunny;
 import com.gildedgames.aether.client.render.model.ModelFireMinion;
 import com.gildedgames.aether.client.render.model.ModelFireMonster;
 import com.gildedgames.aether.client.render.model.ModelFlyingCow1;
@@ -24,11 +29,14 @@ import com.gildedgames.aether.client.render.model.ModelHomeShot;
 import com.gildedgames.aether.client.render.model.ModelMoa;
 import com.gildedgames.aether.client.render.model.ModelSlider;
 import com.gildedgames.aether.client.render.model.ModelValkyrie;
+import com.gildedgames.aether.entity.animal.EntityAechorPlant;
+import com.gildedgames.aether.entity.animal.EntityAerbunny;
 import com.gildedgames.aether.entity.animal.EntityFlyingCow;
 import com.gildedgames.aether.entity.animal.EntityMoa;
 import com.gildedgames.aether.entity.boss.EntityFireMonster;
 import com.gildedgames.aether.entity.boss.EntitySlider;
 import com.gildedgames.aether.entity.boss.EntityValkyrie;
+import com.gildedgames.aether.entity.mobs.EntityAerwhale;
 import com.gildedgames.aether.entity.mobs.EntityFireMinion;
 import com.gildedgames.aether.entity.mobs.EntityMimic;
 import com.gildedgames.aether.entity.mobs.EntityZephyr;
@@ -64,5 +72,12 @@ public class EntityRendererListener {
         event.renderers.put(EntityFloatingBlock.class, new RenderFloatingBlock());
         event.renderers.put(EntityMimic.class, new RenderMimic());
         event.renderers.put(EntityMoa.class, new RenderMoa(new ModelMoa(), 1.0f));
+        event.renderers.put(EntityAerwhale.class, new RenderAerwhale());
+        //event.renderers.put(EntityCockatrice.class, new RenderCockatrice(new ModelCockatrice(), 1.0f));
+        //event.renderers.put(EntitySheepuff.class, new RenderSheepuff(new ModelSheepuff1(), new ModelSheepuff2(), new ModelSheepuff3(), 0.7f));
+        //event.renderers.put(EntityPhyg.class, new RenderPhyg(new ModelFlyingPig1(), new ModelFlyingPig2(), 0.7f));
+        //event.renderers.put(EntitySwet.class, new RenderSwet(new Slime(16), new Slime(0), 0.3f));
+        event.renderers.put(EntityAechorPlant.class, new RenderAechorPlant(new ModelAechorPlant(), 0.3f));
+        event.renderers.put(EntityAerbunny.class, new RenderAerbunny(new ModelAerbunny(), 0.3f));
     }
 }

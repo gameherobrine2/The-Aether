@@ -4,7 +4,7 @@ import net.minecraft.item.ItemInstance;
 import net.modificationstation.stationapi.api.client.gui.screen.menu.AchievementPage;
 import net.modificationstation.stationapi.api.event.achievement.AchievementRegisterEvent;
 import net.minecraft.block.BlockBase;
-
+import net.modificationstation.stationapi.mixin.achievement.client.MixinAchievements;
 import com.gildedgames.aether.achievement.AetherACPage;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
