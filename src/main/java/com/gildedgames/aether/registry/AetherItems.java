@@ -72,10 +72,10 @@ public class AetherItems {
         AetherItems.AxeSkyroot = new ItemSkyrootAxe(Identifier.of(MOD_ID, "item_skyroot_axe"), mat).setTranslationKey("AxeSkyroot");
         AetherItems.SwordSkyroot = new ItemSkyrootSword(Identifier.of(MOD_ID, "item_skyroot_sword"), mat).setTranslationKey("SwordSkyroot");
         mat = ToolMaterial.STONE;
-        //AetherItems.PickHolystone = new ItemHolystonePickaxe(Identifier.of(MOD_ID, "item_holystone_pickaxe"), mat).setTexturePosition(this.override(".png")).setTranslationKey("PickHolystone");
-       // AetherItems.ShovelHolystone = new ItemHolystoneSpade(Identifier.of(MOD_ID, "item_holystone_shovel"), mat).setTexturePosition(this.override("ShovelHolystone.png")).setTranslationKey("ShovelHolystone");
-        //AetherItems.AxeHolystone = new ItemHolystoneAxe(Identifier.of(MOD_ID, "item_holystone_axe"), mat).setTexturePosition(this.override("AxeHolystone.png")).setTranslationKey("AxeHolystone");
-        //AetherItems.SwordHolystone = new ItemSwordHolystone(Identifier.of(MOD_ID, "item_holystone_sword"), mat).setTexturePosition(this.override("SwordHolystone.png")).setTranslationKey("SwordHolystone");
+        AetherItems.PickHolystone = new ItemHolystonePickaxe(Identifier.of(MOD_ID, "item_holystone_pickaxe"), mat).setTranslationKey("PickHolystone");
+        AetherItems.ShovelHolystone = new ItemHolystoneSpade(Identifier.of(MOD_ID, "item_holystone_shovel"), mat).setTranslationKey("ShovelHolystone");
+        AetherItems.AxeHolystone = new ItemHolystoneAxe(Identifier.of(MOD_ID, "item_holystone_axe"), mat).setTranslationKey("AxeHolystone");
+        AetherItems.SwordHolystone = new ItemSwordHolystone(Identifier.of(MOD_ID, "item_holystone_sword"), mat).setTranslationKey("SwordHolystone");
         /*mat = ToolMaterial.IRON;
         AetherItems.PickZanite = new ItemZanitePickaxe(mod_Aether.idItemPickZanite, mat).setTexturePosition(this.override("PickZanite.png")).setTranslationKey("PickZanite");
         AetherItems.ShovelZanite = new ItemZaniteSpade(mod_Aether.idItemShovelZanite, mat).setTexturePosition(this.override("ShovelZanite.png")).setTranslationKey("ShovelZanite");
