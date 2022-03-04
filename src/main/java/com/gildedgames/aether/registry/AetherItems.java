@@ -26,6 +26,9 @@ import com.gildedgames.aether.item.ItemAetherRecord;
 import com.gildedgames.aether.item.ItemAmbrosium;
 import com.gildedgames.aether.item.ItemDart;
 import com.gildedgames.aether.item.ItemDartShooter;
+import com.gildedgames.aether.item.ItemHolystoneAxe;
+import com.gildedgames.aether.item.ItemHolystonePickaxe;
+import com.gildedgames.aether.item.ItemHolystoneSpade;
 import com.gildedgames.aether.item.ItemLoreBook;
 import com.gildedgames.aether.item.ItemMoaEgg;
 import com.gildedgames.aether.item.ItemMoreArmor;
@@ -34,6 +37,7 @@ import com.gildedgames.aether.item.ItemSkyrootBucket;
 import com.gildedgames.aether.item.ItemSkyrootPickaxe;
 import com.gildedgames.aether.item.ItemSkyrootSpade;
 import com.gildedgames.aether.item.ItemSkyrootSword;
+import com.gildedgames.aether.item.ItemSwordHolystone;
 @Entrypoint(eventBus = @EventBusPolicy(registerInstance = false))
 public class AetherItems {
     @Entrypoint.ModID
@@ -67,12 +71,12 @@ public class AetherItems {
         AetherItems.ShovelSkyroot = new ItemSkyrootSpade(Identifier.of(MOD_ID, "item_skyroot_shovel"), mat).setTranslationKey("ShovelSkyroot");
         AetherItems.AxeSkyroot = new ItemSkyrootAxe(Identifier.of(MOD_ID, "item_skyroot_axe"), mat).setTranslationKey("AxeSkyroot");
         AetherItems.SwordSkyroot = new ItemSkyrootSword(Identifier.of(MOD_ID, "item_skyroot_sword"), mat).setTranslationKey("SwordSkyroot");
-        /*mat = ToolMaterial.STONE;
-        AetherItems.PickHolystone = new ItemHolystonePickaxe(mod_Aether.idItemPickHolystone, mat).setTexturePosition(this.override("PickHolystone.png")).setTranslationKey("PickHolystone");
-        AetherItems.ShovelHolystone = new ItemHolystoneSpade(mod_Aether.idItemShovelHolystone, mat).setTexturePosition(this.override("ShovelHolystone.png")).setTranslationKey("ShovelHolystone");
-        AetherItems.AxeHolystone = new ItemHolystoneSpade(mod_Aether.idItemAxeHolystone, mat).setTexturePosition(this.override("AxeHolystone.png")).setTranslationKey("AxeHolystone");
-        AetherItems.SwordHolystone = new ItemSwordHolystone(mod_Aether.idItemSwordHolystone, mat).setTexturePosition(this.override("SwordHolystone.png")).setTranslationKey("SwordHolystone");
-        mat = ToolMaterial.IRON;
+        mat = ToolMaterial.STONE;
+        //AetherItems.PickHolystone = new ItemHolystonePickaxe(Identifier.of(MOD_ID, "item_holystone_pickaxe"), mat).setTexturePosition(this.override(".png")).setTranslationKey("PickHolystone");
+       // AetherItems.ShovelHolystone = new ItemHolystoneSpade(Identifier.of(MOD_ID, "item_holystone_shovel"), mat).setTexturePosition(this.override("ShovelHolystone.png")).setTranslationKey("ShovelHolystone");
+        //AetherItems.AxeHolystone = new ItemHolystoneAxe(Identifier.of(MOD_ID, "item_holystone_axe"), mat).setTexturePosition(this.override("AxeHolystone.png")).setTranslationKey("AxeHolystone");
+        //AetherItems.SwordHolystone = new ItemSwordHolystone(Identifier.of(MOD_ID, "item_holystone_sword"), mat).setTexturePosition(this.override("SwordHolystone.png")).setTranslationKey("SwordHolystone");
+        /*mat = ToolMaterial.IRON;
         AetherItems.PickZanite = new ItemZanitePickaxe(mod_Aether.idItemPickZanite, mat).setTexturePosition(this.override("PickZanite.png")).setTranslationKey("PickZanite");
         AetherItems.ShovelZanite = new ItemZaniteSpade(mod_Aether.idItemShovelZanite, mat).setTexturePosition(this.override("ShovelZanite.png")).setTranslationKey("ShovelZanite");
         AetherItems.AxeZanite = new ItemZaniteAxe(mod_Aether.idItemAxeZanite, mat).setTexturePosition(this.override("AxeZanite.png")).setTranslationKey("AxeZanite");
