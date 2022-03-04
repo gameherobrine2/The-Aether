@@ -6,6 +6,7 @@ import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.level.Level;
 import net.minecraft.block.material.Material;
 
+import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.event.listener.TextureListener;
 
 import net.minecraft.block.BlockBase;
@@ -38,9 +39,9 @@ public class BlockIcestone extends TemplateBlockBase {
     @Override
     public void afterBreak(final Level level, final PlayerBase playerBase, final int x, final int y, final int z, final int meta) {
         playerBase.increaseStat(Stats.mineBlock[this.id], 1);
-        //if (meta == 0 && mod_Aether.equippedSkyrootPick()) {
-        //    this.drop(level, x, y, z, meta);
-        //}
+        if (meta == 0 && Aether.equippedSkyrootPick()) {
+            this.drop(level, x, y, z, meta);
+        }
         this.drop(level, x, y, z, meta);
     }
 }

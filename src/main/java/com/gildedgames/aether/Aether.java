@@ -3,10 +3,12 @@ package com.gildedgames.aether;
 import com.gildedgames.aether.entity.boss.EntitySlider;
 import com.gildedgames.aether.inventory.InventoryAether;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.registry.AetherItems;
 
 import net.minecraft.achievement.Achievement;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.player.PlayerBase;
+import net.minecraft.item.ItemInstance;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.mod.entrypoint.EventBusPolicy;
 import net.modificationstation.stationapi.api.registry.Identifier;
@@ -43,7 +45,25 @@ public class Aether {
         return player.dimensionId;
     }
 	
-	
+	public static boolean equippedSkyrootSword() {
+        final ItemInstance itemstack = MinecraftClientAccessor.getMCinstance().player.inventory.getHeldItem();
+        return itemstack != null && itemstack.itemId == AetherItems.SwordSkyroot.id;
+    }
+    
+    public static boolean equippedSkyrootPick() {
+        final ItemInstance itemstack = MinecraftClientAccessor.getMCinstance().player.inventory.getHeldItem();
+        return itemstack != null && itemstack.itemId == AetherItems.PickSkyroot.id;
+    }
+    
+    public static boolean equippedSkyrootShovel() {
+        final ItemInstance itemstack = MinecraftClientAccessor.getMCinstance().player.inventory.getHeldItem();
+        return itemstack != null && itemstack.itemId == AetherItems.ShovelSkyroot.id;
+    }
+    
+    public static boolean equippedSkyrootAxe() {
+        final ItemInstance itemstack = MinecraftClientAccessor.getMCinstance().player.inventory.getHeldItem();
+        return itemstack != null && itemstack.itemId == AetherItems.AxeSkyroot.id;
+    }
 
     public static int raritySwet;
     public static int rarityAechorPlant;

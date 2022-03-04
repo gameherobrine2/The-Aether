@@ -10,6 +10,7 @@ import net.minecraft.level.Level;
 import net.minecraft.block.material.Material;
 import java.util.Random;
 
+import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.event.listener.TextureListener;
 import com.gildedgames.aether.registry.AetherItems;
 
@@ -42,18 +43,18 @@ public class BlockAetherLog extends TemplateBlockBase implements MetaNamedBlockI
     public void afterBreak(final Level level, final PlayerBase playerBase, final int x, final int y, final int z, final int meta) {
         playerBase.increaseStat(Stats.mineBlock[this.id], 1);
         ItemInstance stack = new ItemInstance(this.id, 1, 0);
-        //if (mod_Aether.equippedSkyrootAxe() && meta != 1) {
-        //    final ItemInstance itemInstance = stack;
-        //    itemInstance.count *= 2;
-        //}
-        //SAPI.drop(level, new Loc(x, y, z), stack);
+        if (Aether.equippedSkyrootAxe() && meta != 1) {
+            final ItemInstance itemInstance = stack;
+            itemInstance.count *= 2;
+        }
+        this.drop(level, x, y, z, stack);
         final ItemInstance itemstack = playerBase.inventory.getHeldItem();
-        //if (itemstack == null || (itemstack.itemId != AetherItems.AxeZanite.id && itemstack.itemId != AetherItems.AxeGravitite.id && meta >= 2)) {
+        //TODO: if (itemstack == null || (itemstack.itemId != AetherItems.AxeZanite.id && itemstack.itemId != AetherItems.AxeGravitite.id && meta >= 2)) {
         //    return;
         //}
         if (meta > 1 && BlockAetherLog.rand.nextBoolean()) {
-            //stack = new ItemInstance(AetherItems.GoldenAmber.id, 2 + BlockAetherLog.rand.nextInt(2), 0);
-            //SAPI.drop(level, new Loc(x, y, z), stack);
+            stack = new ItemInstance(AetherItems.GoldenAmber.id, 2 + BlockAetherLog.rand.nextInt(2), 0);
+            this.drop(level, x, y, z, stack);
         }
     }
     

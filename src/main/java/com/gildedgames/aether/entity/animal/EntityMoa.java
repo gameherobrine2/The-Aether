@@ -7,6 +7,7 @@ import net.minecraft.item.ItemInstance;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.level.Level;
 
+import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.EntityAetherAnimal;
 import com.gildedgames.aether.mixin.EntityBaseAccessor;
 import com.gildedgames.aether.mixin.LivingAccessor;
@@ -307,7 +308,7 @@ public class EntityMoa extends EntityAetherAnimal {
     
     @Override
     protected void getDrops() {
-        this.dropItem(ItemBase.feather.id, 3 * 1);//TODO: sword? (mod_Aether.equippedSkyrootSword() ? 2 : 1));
+        this.dropItem(ItemBase.feather.id, 3 * (Aether.equippedSkyrootSword() ? 2 : 1));
     }
     
     static {

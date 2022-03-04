@@ -1,5 +1,6 @@
 package com.gildedgames.aether.entity.animal;
 
+import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.EntityAetherAnimal;
 import com.gildedgames.aether.mixin.LivingAccessor;
 import com.gildedgames.aether.mixin.EntityBaseAccessor;
@@ -196,11 +197,11 @@ public class EntityFlyingCow extends EntityAetherAnimal {
     
     @Override
     protected void getDrops() {
-        //if (mod_Aether.equippedSkyrootSword()) {
-        //    this.dropItem(ItemBase.leather.id, 4);
-        //}
-        //else {
+        if (Aether.equippedSkyrootSword()) {
+            this.dropItem(ItemBase.leather.id, 4);
+        }
+        else {
             this.dropItem(ItemBase.leather.id, 2);
-        //}
+        }
     }
 }

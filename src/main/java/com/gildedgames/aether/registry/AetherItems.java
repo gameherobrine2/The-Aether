@@ -10,6 +10,7 @@ import com.gildedgames.aether.mixin.LivingAccessor;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
+import net.minecraft.item.tool.ToolMaterial;
 import net.minecraft.util.maths.MathHelper;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
@@ -21,13 +22,18 @@ import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.inventory.InventoryAether;
 import com.gildedgames.aether.item.ItemAether;
 import com.gildedgames.aether.item.ItemAetherKey;
+import com.gildedgames.aether.item.ItemAetherRecord;
 import com.gildedgames.aether.item.ItemAmbrosium;
 import com.gildedgames.aether.item.ItemDart;
 import com.gildedgames.aether.item.ItemDartShooter;
 import com.gildedgames.aether.item.ItemLoreBook;
 import com.gildedgames.aether.item.ItemMoaEgg;
 import com.gildedgames.aether.item.ItemMoreArmor;
+import com.gildedgames.aether.item.ItemSkyrootAxe;
 import com.gildedgames.aether.item.ItemSkyrootBucket;
+import com.gildedgames.aether.item.ItemSkyrootPickaxe;
+import com.gildedgames.aether.item.ItemSkyrootSpade;
+import com.gildedgames.aether.item.ItemSkyrootSword;
 @Entrypoint(eventBus = @EventBusPolicy(registerInstance = false))
 public class AetherItems {
     @Entrypoint.ModID
@@ -53,6 +59,26 @@ public class AetherItems {
         AetherItems.GoldenAmber = new ItemAether(Identifier.of(MOD_ID, "golden_amber")).setTranslationKey("GoldenAmber");
         AetherItems.Dart = new ItemDart(Identifier.of(MOD_ID, "item_dart")).setHasSubItems(true).setTranslationKey("Dart");
         AetherItems.DartShooter = new ItemDartShooter(Identifier.of(MOD_ID, "item_dart_shooter")).setTranslationKey("DartShooter");
+        AetherItems.HealingStone = new ItemAmbrosium(Identifier.of(MOD_ID, "item_healing_stone"), 4).setTranslationKey("Healing_Stone");
+        AetherItems.Zanite = new ItemAether(Identifier.of(MOD_ID, "item_zanite")).setTranslationKey("Zanite");
+        AetherItems.BlueMusicDisk = new ItemAetherRecord(Identifier.of(MOD_ID, "item_blue_music_disk"), "AetherTune").setTranslationKey("BlueMusicDisk");
+        ToolMaterial mat = ToolMaterial.WOOD;
+        AetherItems.PickSkyroot = new ItemSkyrootPickaxe(Identifier.of(MOD_ID, "item_skyroot_pickaxe"), mat).setTranslationKey("PickSkyroot");
+        AetherItems.ShovelSkyroot = new ItemSkyrootSpade(Identifier.of(MOD_ID, "item_skyroot_shovel"), mat).setTranslationKey("ShovelSkyroot");
+        AetherItems.AxeSkyroot = new ItemSkyrootAxe(Identifier.of(MOD_ID, "item_skyroot_axe"), mat).setTranslationKey("AxeSkyroot");
+        AetherItems.SwordSkyroot = new ItemSkyrootSword(Identifier.of(MOD_ID, "item_skyroot_sword"), mat).setTranslationKey("SwordSkyroot");
+        /*mat = ToolMaterial.STONE;
+        AetherItems.PickHolystone = new ItemHolystonePickaxe(mod_Aether.idItemPickHolystone, mat).setTexturePosition(this.override("PickHolystone.png")).setTranslationKey("PickHolystone");
+        AetherItems.ShovelHolystone = new ItemHolystoneSpade(mod_Aether.idItemShovelHolystone, mat).setTexturePosition(this.override("ShovelHolystone.png")).setTranslationKey("ShovelHolystone");
+        AetherItems.AxeHolystone = new ItemHolystoneSpade(mod_Aether.idItemAxeHolystone, mat).setTexturePosition(this.override("AxeHolystone.png")).setTranslationKey("AxeHolystone");
+        AetherItems.SwordHolystone = new ItemSwordHolystone(mod_Aether.idItemSwordHolystone, mat).setTexturePosition(this.override("SwordHolystone.png")).setTranslationKey("SwordHolystone");
+        mat = ToolMaterial.IRON;
+        AetherItems.PickZanite = new ItemZanitePickaxe(mod_Aether.idItemPickZanite, mat).setTexturePosition(this.override("PickZanite.png")).setTranslationKey("PickZanite");
+        AetherItems.ShovelZanite = new ItemZaniteSpade(mod_Aether.idItemShovelZanite, mat).setTexturePosition(this.override("ShovelZanite.png")).setTranslationKey("ShovelZanite");
+        AetherItems.AxeZanite = new ItemZaniteAxe(mod_Aether.idItemAxeZanite, mat).setTexturePosition(this.override("AxeZanite.png")).setTranslationKey("AxeZanite");
+        AetherItems.SwordZanite = new ItemSwordZanite(mod_Aether.idItemSwordZanite, mat).setTexturePosition(this.override("SwordZanite.png")).setTranslationKey("SwordZanite");*/
+        
+        
     }
     
     public static void tick(final Minecraft game) {

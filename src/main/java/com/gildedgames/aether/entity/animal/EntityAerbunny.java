@@ -9,6 +9,7 @@ import net.minecraft.entity.Living;
 import net.minecraft.util.io.CompoundTag;
 import java.util.List;
 
+import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.EntityAetherAnimal;
 import com.gildedgames.aether.mixin.EntityBaseAccessor;
 import com.gildedgames.aether.mixin.LivingAccessor;
@@ -297,12 +298,12 @@ public class EntityAerbunny extends EntityAetherAnimal {
     
     @Override
     protected void getDrops() {
-        //TODO:if (mod_Aether.equippedSkyrootSword()) {
-        //    this.dropItem(ItemBase.string.id, 2);
-        //}
-        //else {
+       if (Aether.equippedSkyrootSword()) {
+            this.dropItem(ItemBase.string.id, 2);
+        }
+        else {
             this.dropItem(ItemBase.string.id, 1);
-        //}
+        }
     }
     
     public void proceed() {

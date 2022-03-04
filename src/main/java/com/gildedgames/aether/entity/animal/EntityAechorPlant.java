@@ -4,6 +4,7 @@ import net.minecraft.util.io.CompoundTag;
 import net.minecraft.item.ItemInstance;
 import java.util.List;
 
+import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.EntityAetherAnimal;
 import com.gildedgames.aether.entity.projectile.EntityPoisonNeedle;
 import com.gildedgames.aether.registry.AetherBlocks;
@@ -228,6 +229,6 @@ public class EntityAechorPlant extends EntityAetherAnimal {
     
     @Override
     protected void getDrops() {
-        this.dropItem(AetherItems.AechorPetal.id, 2 * (/*TODO:mod_Aether.equippedSkyrootSword()*/ false ? 2 : 1));
+        this.dropItem(AetherItems.AechorPetal.id, 2 * (Aether.equippedSkyrootSword() ? 2 : 1));
     }
 }

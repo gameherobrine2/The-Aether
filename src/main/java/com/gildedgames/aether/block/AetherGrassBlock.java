@@ -1,5 +1,6 @@
 package com.gildedgames.aether.block;
 
+import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.event.listener.TextureListener;
 import com.gildedgames.aether.registry.AetherBlocks;
 import net.minecraft.block.material.Material;
@@ -36,9 +37,9 @@ public class AetherGrassBlock extends TemplateBlockBase {
     @Override
     public void afterBreak(final Level level, final PlayerBase playerBase, final int x, final int y, final int z, final int meta) {
         playerBase.increaseStat(Stats.mineBlock[this.id], 1);
-        //if (mod_Aether.equippedSkyrootShovel()) {
-        //    this.drop(level, x, y, z, meta);
-        //}
+        if (Aether.equippedSkyrootShovel()) {
+            this.drop(level, x, y, z, meta);
+        }
         this.drop(level, x, y, z, meta);
     }
     @Override

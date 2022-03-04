@@ -3,6 +3,9 @@ package com.gildedgames.aether.level.dimension;
 import com.gildedgames.aether.level.gen.AetherBiomeSource;
 import net.minecraft.client.gui.screen.menu.Achievements;
 import com.gildedgames.aether.level.source.AetherLevelSource;
+import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.registry.AetherAchievements;
+
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.EnvironmentInterface;
@@ -40,7 +43,7 @@ public class Aether extends Dimension implements TravelMessageProvider {
 
     @Override
     public float getSunPosition(final long time, final float delta) {
-        final boolean hasKilledGold = false;//= ModLoader.getMinecraftInstance().statFileWriter.isAchievementUnlocked(AetherAchievements.defeatGold);
+        final boolean hasKilledGold = MinecraftClientAccessor.getMCinstance().statFileWriter.isAchievementUnlocked(AetherAchievements.defeatGold);
         if (hasKilledGold) {
             int timeTicks = (int)(time % 80000L);
             float timeFraction = (timeTicks + delta) / 120000.0f - 0.25f;
