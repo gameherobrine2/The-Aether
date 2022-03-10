@@ -26,6 +26,9 @@ import com.gildedgames.aether.item.ItemAetherRecord;
 import com.gildedgames.aether.item.ItemAmbrosium;
 import com.gildedgames.aether.item.ItemDart;
 import com.gildedgames.aether.item.ItemDartShooter;
+import com.gildedgames.aether.item.ItemGravititeAxe;
+import com.gildedgames.aether.item.ItemGravititePickaxe;
+import com.gildedgames.aether.item.ItemGravititeSpade;
 import com.gildedgames.aether.item.ItemHolystoneAxe;
 import com.gildedgames.aether.item.ItemHolystonePickaxe;
 import com.gildedgames.aether.item.ItemHolystoneSpade;
@@ -37,6 +40,7 @@ import com.gildedgames.aether.item.ItemSkyrootBucket;
 import com.gildedgames.aether.item.ItemSkyrootPickaxe;
 import com.gildedgames.aether.item.ItemSkyrootSpade;
 import com.gildedgames.aether.item.ItemSkyrootSword;
+import com.gildedgames.aether.item.ItemSwordGravitite;
 import com.gildedgames.aether.item.ItemSwordHolystone;
 import com.gildedgames.aether.item.ItemSwordZanite;
 import com.gildedgames.aether.item.ItemZaniteAxe;
@@ -94,6 +98,11 @@ public class AetherItems {
         AetherItems.PhoenixGlove = new ItemMoreArmor(Identifier.of(MOD_ID, "item_phoenix_glove"), 3, "/armor/Phoenix.png", 10, 16742144, false).setTranslationKey("PhoenixGlove");
         AetherItems.ObsidianGlove = new ItemMoreArmor(Identifier.of(MOD_ID, "item_obsidian_glove"), 4, "/armor/Accessories.png", 10, 1774663).setTranslationKey("ObsidianGlove");
         AetherItems.NeptuneGlove = new ItemMoreArmor(Identifier.of(MOD_ID, "item_neptune_glove"), 3, "/armor/Accessories.png", 10, 2512127).setTranslationKey("NeptuneGlove");
+        mat = ToolMaterial.EMERALD;
+        AetherItems.PickGravitite = new ItemGravititePickaxe(Identifier.of(MOD_ID, "item_gravitite_pickaxe"), mat).setTranslationKey("PickGravitite");
+        AetherItems.ShovelGravitite = new ItemGravititeSpade(Identifier.of(MOD_ID, "item_gravitite_shovel"), mat).setTranslationKey("ShovelGravitite");
+        AetherItems.AxeGravitite = new ItemGravititeAxe(Identifier.of(MOD_ID, "item_gravitite_axe"), mat).setTranslationKey("AxeGravitite");
+        AetherItems.SwordGravitite = new ItemSwordGravitite(Identifier.of(MOD_ID, "item_gravitite_sword"), mat).setTranslationKey("SwordGravitite");
         
     }
     
@@ -139,10 +148,10 @@ public class AetherItems {
             }
             else {
             	((EntityBaseAccessor)player).setImmunityToFire(false);
-            }
+            }*/
             if (player.isTouchingWater()) {
                 final int playerBlock = game.level.getTileId(MathHelper.floor(player.x), MathHelper.floor(player.y), MathHelper.floor(player.z));
-                if (player.inventory.armour[0] != null && player.inventory.armour[0].itemId == AetherItems.PhoenixBoots.id) {
+                /*if (player.inventory.armour[0] != null && player.inventory.armour[0].itemId == AetherItems.PhoenixBoots.id) {
                     player.inventory.armour[0].applyDamage(1, player);
                     if (playerBlock == BlockBase.STILL_WATER.id) {
                         player.inventory.armour[0].applyDamage(4, player);
@@ -181,7 +190,7 @@ public class AetherItems {
                     if (player.inventory.armour[3] == null || player.inventory.armour[3].count < 1) {
                         player.inventory.armour[3] = new ItemInstance(AetherItems.ObsidianHelm, 1, 0);
                     }
-                }
+                }*/
                 if (inv.slots[6] != null && inv.slots[6].itemId == AetherItems.PhoenixGlove.id) {
                     inv.slots[6].applyDamage(1, player);
                     if (playerBlock == BlockBase.STILL_WATER.id) {
@@ -193,7 +202,7 @@ public class AetherItems {
                     }
                 }
             }
-            if (player.inventory.armour[3] != null && player.inventory.armour[3].itemId == AetherItems.GravititeHelmet.id && player.inventory.armour[2] != null && player.inventory.armour[2].itemId == AetherItems.GravititeBodyplate.id && player.inventory.armour[1] != null && player.inventory.armour[1].itemId == AetherItems.GravititePlatelegs.id && player.inventory.armour[0] != null && player.inventory.armour[0].itemId == AetherItems.GravititeBoots.id && inv.slots[6] != null && inv.slots[6].itemId == AetherItems.GravititeGlove.id) {
+            /*if (player.inventory.armour[3] != null && player.inventory.armour[3].itemId == AetherItems.GravititeHelmet.id && player.inventory.armour[2] != null && player.inventory.armour[2].itemId == AetherItems.GravititeBodyplate.id && player.inventory.armour[1] != null && player.inventory.armour[1].itemId == AetherItems.GravititePlatelegs.id && player.inventory.armour[0] != null && player.inventory.armour[0].itemId == AetherItems.GravititeBoots.id && inv.slots[6] != null && inv.slots[6].itemId == AetherItems.GravititeGlove.id) {
                 if (((LivingAccessor)player).getJumping() && !AetherItems.jumpBoosted) {
                     player.velocityY = 1.0;
                     AetherItems.jumpBoosted = true;

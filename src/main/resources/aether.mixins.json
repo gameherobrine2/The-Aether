@@ -8,9 +8,10 @@
 	"LivingAccessor",
 	"MinecraftClientAccessor",
 	"PlayerBaseAccessor",
-	"PlayerBaseMixin",
+	"AbstractClientPlayerMixin",
 	"DimesnionFileAccessor",
 	"LevelAccessor",
+	"PlayerBaseMixin",
 	"ParticleBaseAccessor"
   ],
   "server": [

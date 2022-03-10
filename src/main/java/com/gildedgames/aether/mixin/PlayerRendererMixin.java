@@ -24,11 +24,40 @@ public class PlayerRendererMixin {
 	//TODO: render
 	@Inject(method = "render(Lnet/minecraft/entity/player/PlayerBase;DDDFF)V", at = @At(value = "TAIL"))
 	public void renderEntityCustom(PlayerBase entity, double x, double y, double z, float f, float f1,CallbackInfo ci) {
-		//this.renderEnergyShield((PlayerBase)entity, x, y, z, f, f1);
-        this.renderMisc((PlayerBase)entity, x, y, z, f, f1);
+		try {
+			//this.renderEnergyShield((PlayerBase)entity, x, y, z, f, f1);
+			this.renderMisc((PlayerBase)entity, x, y, z, f, f1);
+		}catch(Exception e) {e.printStackTrace();}
 	}
-	
+	@Inject(method = "method_345", at = @At(value = "TAIL"))
+	public void method345_handle(CallbackInfo ci) {
+		try {
+		if(Aether.inv == null) {return;}
+        final PlayerBase player = MinecraftClientAccessor.getMCinstance().player;
+        final InventoryAether inv = Aether.inv;
+        if (inv.slots[6] != null) {
+            final float brightness = player.getBrightnessAtEyes(1.0f);
+            this.modelMisc.handSwingProgress = 0.0f;
+            this.modelMisc.setAngles(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0625f);
+            this.modelMisc.field_622.method_1815(0.0625f);
+            final ItemMoreArmor glove = (ItemMoreArmor)inv.slots[6].getType();
+            ((EntityRendererAccessor)this).invokeBindTexture(glove.texture);
+            final int colour = glove.getColourMultiplier(0);
+            final float red = (colour >> 16 & 0xFF) / 255.0f;
+            final float green = (colour >> 8 & 0xFF) / 255.0f;
+            final float blue = (colour & 0xFF) / 255.0f;
+            if (glove.colouriseRender) {
+                GL11.glColor3f(red * brightness, green * brightness, blue * brightness);
+            }
+            else {
+                GL11.glColor3f(brightness, brightness, brightness);
+            }
+            this.modelMisc.field_622.method_1815(0.0625f);
+        }
+		}catch(Exception e) {e.printStackTrace();}
+	}
 	public void renderMisc(final PlayerBase entityplayer, final double d, final double d1, final double d2, final float f, final float f1) {
+		if(Aether.inv == null) {return;}
 		final ItemInstance itemstack = entityplayer.inventory.getHeldItem();
         this.modelMisc.field_629 = (itemstack != null);
         this.modelMisc.field_630 = entityplayer.method_1373();
