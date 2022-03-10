@@ -38,6 +38,10 @@ import com.gildedgames.aether.item.ItemSkyrootPickaxe;
 import com.gildedgames.aether.item.ItemSkyrootSpade;
 import com.gildedgames.aether.item.ItemSkyrootSword;
 import com.gildedgames.aether.item.ItemSwordHolystone;
+import com.gildedgames.aether.item.ItemSwordZanite;
+import com.gildedgames.aether.item.ItemZaniteAxe;
+import com.gildedgames.aether.item.ItemZanitePickaxe;
+import com.gildedgames.aether.item.ItemZaniteSpade;
 @Entrypoint(eventBus = @EventBusPolicy(registerInstance = false))
 public class AetherItems {
     @Entrypoint.ModID
@@ -76,11 +80,11 @@ public class AetherItems {
         AetherItems.ShovelHolystone = new ItemHolystoneSpade(Identifier.of(MOD_ID, "item_holystone_shovel"), mat).setTranslationKey("ShovelHolystone");
         AetherItems.AxeHolystone = new ItemHolystoneAxe(Identifier.of(MOD_ID, "item_holystone_axe"), mat).setTranslationKey("AxeHolystone");
         AetherItems.SwordHolystone = new ItemSwordHolystone(Identifier.of(MOD_ID, "item_holystone_sword"), mat).setTranslationKey("SwordHolystone");
-        /*mat = ToolMaterial.IRON;
-        AetherItems.PickZanite = new ItemZanitePickaxe(mod_Aether.idItemPickZanite, mat).setTexturePosition(this.override("PickZanite.png")).setTranslationKey("PickZanite");
-        AetherItems.ShovelZanite = new ItemZaniteSpade(mod_Aether.idItemShovelZanite, mat).setTexturePosition(this.override("ShovelZanite.png")).setTranslationKey("ShovelZanite");
-        AetherItems.AxeZanite = new ItemZaniteAxe(mod_Aether.idItemAxeZanite, mat).setTexturePosition(this.override("AxeZanite.png")).setTranslationKey("AxeZanite");
-        AetherItems.SwordZanite = new ItemSwordZanite(mod_Aether.idItemSwordZanite, mat).setTexturePosition(this.override("SwordZanite.png")).setTranslationKey("SwordZanite");*/
+        mat = ToolMaterial.IRON;
+        AetherItems.PickZanite = new ItemZanitePickaxe(Identifier.of(MOD_ID, "item_zanite_pickaxe"), mat).setTranslationKey("PickZanite");
+        AetherItems.ShovelZanite = new ItemZaniteSpade(Identifier.of(MOD_ID, "item_zanite_shovel"), mat).setTranslationKey("ShovelZanite");
+        AetherItems.AxeZanite = new ItemZaniteAxe(Identifier.of(MOD_ID, "item_zanite_axe"), mat).setTranslationKey("AxeZanite");
+        AetherItems.SwordZanite = new ItemSwordZanite(Identifier.of(MOD_ID, "item_zanite_sword"), mat).setTranslationKey("SwordZanite");
         
         
     }

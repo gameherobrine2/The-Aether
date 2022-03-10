@@ -53,6 +53,10 @@ public class RecipeListener {
 	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.GoldPendant), new Object[] { "SSS", "S S", " C ", 'S', ItemBase.string, 'C', ItemBase.goldIngot });
 	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.ZanitePendant), new Object[] { "SSS", "S S", " C ", 'S', ItemBase.string, 'C', AetherItems.Zanite });
 	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.ZaniteRing), new Object[] { " C ", "C C", " C ", 'C', AetherItems.Zanite });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.PickZanite, 1), new Object[] { "ZZZ", " Y ", " Y ", 'Z', AetherItems.Zanite, 'Y', AetherItems.Stick });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.AxeZanite, 1), new Object[] { "ZZ", "ZY", " Y", 'Z', AetherItems.Zanite, 'Y', AetherItems.Stick });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.ShovelZanite, 1), new Object[] { "Z", "Y", "Y", 'Z', AetherItems.Zanite, 'Y', AetherItems.Stick });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.SwordZanite, 1), new Object[] { "Z", "Z", "Y", 'Z', AetherItems.Zanite, 'Y', AetherItems.Stick });
 	 }
 	 private void registerShapelessRecipes() {
 		 CraftingRegistry.addShapelessRecipe(new ItemInstance(AetherBlocks.SKYROOT_PLANKS,4), new ItemInstance(AetherBlocks.LOG));

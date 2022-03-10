@@ -109,6 +109,10 @@ public class TextureListener {
         ((ItemHolystoneSpade)AetherItems.ShovelHolystone).setTexture(Identifier.of(MOD_ID, "items/ShovelHolystone"));
         ((ItemHolystoneAxe)AetherItems.AxeHolystone).setTexture(Identifier.of(MOD_ID, "items/AxeHolystone"));
         ((ItemSwordHolystone)AetherItems.SwordHolystone).setTexture(Identifier.of(MOD_ID, "items/SwordHolystone"));
+        ((ItemZaniteAxe)AetherItems.AxeZanite).setTexture(Identifier.of(MOD_ID, "items/AxeZanite"));
+        ((ItemZanitePickaxe)AetherItems.PickZanite).setTexture(Identifier.of(MOD_ID, "items/PickZanite"));
+        ((ItemZaniteSpade)AetherItems.ShovelZanite).setTexture(Identifier.of(MOD_ID, "items/ShovelZanite"));
+        ((ItemSwordZanite)AetherItems.SwordZanite).setTexture(Identifier.of(MOD_ID, "items/SwordZanite"));
 	}
 	//this is Alias code but i changed public static booleans to ints and renamed them
 	public static int sprIncubatorSide, sprIncubatorTop,sprPortal;
