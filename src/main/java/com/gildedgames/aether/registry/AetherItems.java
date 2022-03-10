@@ -50,8 +50,8 @@ public class AetherItems {
     private static void registerItems(ItemRegistryEvent event) {
     	AmbrosiumShard = new ItemAmbrosium(Identifier.of(MOD_ID, "ambrosium_shard"), 1).setTranslationKey("AmbrosiumShard");
     	Stick = new ItemAether(Identifier.of(MOD_ID, "stick")).setTranslationKey("SkyrootStick");
-    	IronRing = new ItemMoreArmor(Identifier.of(MOD_ID, "iron_ring"), 0,"", 8, 16777215).setTranslationKey("IronRing");
-    	GoldRing = new ItemMoreArmor(Identifier.of(MOD_ID, "gold_ring"), 0, "", 8, 16776994).setTranslationKey("GoldRing");
+    	IronRing = new ItemMoreArmor(Identifier.of(MOD_ID, "iron_ring"), 0,"/armor/Accessories.png", 8, 16777215).setTranslationKey("IronRing");
+    	GoldRing = new ItemMoreArmor(Identifier.of(MOD_ID, "gold_ring"), 0, "/armor/Accessories.png", 8, 16776994).setTranslationKey("GoldRing");
     	ZaniteRing = new ItemMoreArmor(Identifier.of(MOD_ID, "zanite_ring"), 0, "/armor/Accessories.png", 8, 7412456).setTranslationKey("ZaniteRing");
         IceRing = new ItemMoreArmor(Identifier.of(MOD_ID, "ice_ring"), 0, "/armor/Accessories.png", 8, 9823975).setTranslationKey("IceRing");
         AetherItems.Key = new ItemAetherKey(Identifier.of(MOD_ID, "key")).setTranslationKey("AetherKey");
@@ -85,7 +85,15 @@ public class AetherItems {
         AetherItems.ShovelZanite = new ItemZaniteSpade(Identifier.of(MOD_ID, "item_zanite_shovel"), mat).setTranslationKey("ShovelZanite");
         AetherItems.AxeZanite = new ItemZaniteAxe(Identifier.of(MOD_ID, "item_zanite_axe"), mat).setTranslationKey("AxeZanite");
         AetherItems.SwordZanite = new ItemSwordZanite(Identifier.of(MOD_ID, "item_zanite_sword"), mat).setTranslationKey("SwordZanite");
-        
+        AetherItems.LeatherGlove = new ItemMoreArmor(Identifier.of(MOD_ID, "item_leather_glove"), 0, "/armor/Accessories.png", 10, 12999733).setTranslationKey("LeatherGlove");
+        AetherItems.IronGlove = new ItemMoreArmor(Identifier.of(MOD_ID, "item_iron_glove"), 2, "/armor/Accessories.png", 10, 14540253).setTranslationKey("IronGlove");
+        AetherItems.GoldGlove = new ItemMoreArmor(Identifier.of(MOD_ID, "item_gold_glove"), 1, "/armor/Accessories.png", 10, 15396439).setTranslationKey("GoldGlove");
+        AetherItems.DiamondGlove = new ItemMoreArmor(Identifier.of(MOD_ID, "item_diamond_glove"), 3, "/armor/Accessories.png", 10, 3402699).setTranslationKey("DiamondGlove");
+        AetherItems.ZaniteGlove = new ItemMoreArmor(Identifier.of(MOD_ID, "item_zanite_glove"), 2, "/armor/Accessories.png", 10, 7412456).setTranslationKey("ZaniteGlove");
+        AetherItems.GravititeGlove = new ItemMoreArmor(Identifier.of(MOD_ID, "item_gravitite_glove"), 3, "/armor/Accessories.png", 10, 15160027).setTranslationKey("GravititeGlove");
+        AetherItems.PhoenixGlove = new ItemMoreArmor(Identifier.of(MOD_ID, "item_phoenix_glove"), 3, "/armor/Phoenix.png", 10, 16742144, false).setTranslationKey("PhoenixGlove");
+        AetherItems.ObsidianGlove = new ItemMoreArmor(Identifier.of(MOD_ID, "item_obsidian_glove"), 4, "/armor/Accessories.png", 10, 1774663).setTranslationKey("ObsidianGlove");
+        AetherItems.NeptuneGlove = new ItemMoreArmor(Identifier.of(MOD_ID, "item_neptune_glove"), 3, "/armor/Accessories.png", 10, 2512127).setTranslationKey("NeptuneGlove");
         
     }
     

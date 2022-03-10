@@ -113,6 +113,15 @@ public class TextureListener {
         ((ItemZanitePickaxe)AetherItems.PickZanite).setTexture(Identifier.of(MOD_ID, "items/PickZanite"));
         ((ItemZaniteSpade)AetherItems.ShovelZanite).setTexture(Identifier.of(MOD_ID, "items/ShovelZanite"));
         ((ItemSwordZanite)AetherItems.SwordZanite).setTexture(Identifier.of(MOD_ID, "items/SwordZanite"));
+        ((ItemMoreArmor)AetherItems.LeatherGlove).setTexture(Identifier.of(MOD_ID, "items/Glove"));
+        ((ItemMoreArmor)AetherItems.IronGlove).setTexture(Identifier.of(MOD_ID, "items/Glove"));
+        ((ItemMoreArmor)AetherItems.GoldGlove).setTexture(Identifier.of(MOD_ID, "items/Glove"));
+        ((ItemMoreArmor)AetherItems.DiamondGlove).setTexture(Identifier.of(MOD_ID, "items/Glove"));
+        ((ItemMoreArmor)AetherItems.ZaniteGlove).setTexture(Identifier.of(MOD_ID, "items/Glove"));
+        ((ItemMoreArmor)AetherItems.GravititeGlove).setTexture(Identifier.of(MOD_ID, "items/Glove"));
+        ((ItemMoreArmor)AetherItems.ObsidianGlove).setTexture(Identifier.of(MOD_ID, "items/Glove"));
+        ((ItemMoreArmor)AetherItems.PhoenixGlove).setTexture(Identifier.of(MOD_ID, "items/GloveChain"));
+        ((ItemMoreArmor)AetherItems.NeptuneGlove).setTexture(Identifier.of(MOD_ID, "items/GloveChain"));
 	}
 	//this is Alias code but i changed public static booleans to ints and renamed them
 	public static int sprIncubatorSide, sprIncubatorTop,sprPortal;

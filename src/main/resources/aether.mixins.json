@@ -20,7 +20,9 @@
 	"ScreenBaseAccessor",
 	"ContainerBaseAccessor",
 	"GameRendererMixin",
-	"MinecraftClientAccessor"
+	"MinecraftClientAccessor",
+	"LivingEntityRendererAccessor",
+	"PlayerRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
