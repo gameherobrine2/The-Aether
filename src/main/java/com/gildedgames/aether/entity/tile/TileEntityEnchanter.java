@@ -178,9 +178,9 @@ public class TileEntityEnchanter extends TileEntityBase implements InventoryBase
     }
     
     static {
-        TileEntityEnchanter.enchantments = (List<Enchantment>)new ArrayList();
+        TileEntityEnchanter.enchantments = new ArrayList<Enchantment>();
         addEnchantment(new ItemInstance(AetherBlocks.GRAVITITE_ORE, 1), new ItemInstance(AetherBlocks.ENCHANTED_GRAVITITE, 1), 1000);
-        /*addEnchantment(new ItemInstance(AetherItems.PickSkyroot, 1), new ItemInstance(AetherItems.PickSkyroot, 1), 250);
+        addEnchantment(new ItemInstance(AetherItems.PickSkyroot, 1), new ItemInstance(AetherItems.PickSkyroot, 1), 250);
         addEnchantment(new ItemInstance(AetherItems.SwordSkyroot, 1), new ItemInstance(AetherItems.SwordSkyroot, 1), 250);
         addEnchantment(new ItemInstance(AetherItems.ShovelSkyroot, 1), new ItemInstance(AetherItems.ShovelSkyroot, 1), 200);
         addEnchantment(new ItemInstance(AetherItems.AxeSkyroot, 1), new ItemInstance(AetherItems.AxeSkyroot, 1), 200);
@@ -195,7 +195,7 @@ public class TileEntityEnchanter extends TileEntityBase implements InventoryBase
         addEnchantment(new ItemInstance(AetherItems.PickGravitite, 1), new ItemInstance(AetherItems.PickGravitite, 1), 6000);
         addEnchantment(new ItemInstance(AetherItems.SwordGravitite, 1), new ItemInstance(AetherItems.SwordGravitite, 1), 6000);
         addEnchantment(new ItemInstance(AetherItems.ShovelGravitite, 1), new ItemInstance(AetherItems.ShovelGravitite, 1), 5000);
-        addEnchantment(new ItemInstance(AetherItems.AxeGravitite, 1), new ItemInstance(AetherItems.AxeGravitite, 1), 5000);*/ //TODO: itemsss
+        addEnchantment(new ItemInstance(AetherItems.AxeGravitite, 1), new ItemInstance(AetherItems.AxeGravitite, 1), 5000);
         addEnchantment(new ItemInstance(AetherItems.Dart, 1, 0), new ItemInstance(AetherItems.Dart, 1, 2), 250);
         addEnchantment(new ItemInstance(AetherItems.Bucket, 1, 2), new ItemInstance(AetherItems.Bucket, 1, 3), 1000);
         //addEnchantment(new ItemInstance(ItemBase.record13, 1), new ItemInstance(AetherItems.BlueMusicDisk, 1), 2500);

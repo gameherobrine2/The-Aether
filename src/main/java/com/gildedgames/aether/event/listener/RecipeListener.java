@@ -63,6 +63,10 @@ public class RecipeListener {
 	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.DiamondGlove), new Object[] { "C C", 'C', ItemBase.diamond });
 	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.ZaniteGlove), new Object[] { "C C", 'C', AetherItems.Zanite });
 	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.GravititeGlove), new Object[] { "C C", 'C', AetherBlocks.ENCHANTED_GRAVITITE });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.PickGravitite, 1), new Object[] { "ZZZ", " Y ", " Y ", 'Z', AetherBlocks.ENCHANTED_GRAVITITE, 'Y', AetherItems.Stick });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.AxeGravitite, 1), new Object[] { "ZZ", "ZY", " Y", 'Z', AetherBlocks.ENCHANTED_GRAVITITE, 'Y', AetherItems.Stick });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.ShovelGravitite, 1), new Object[] { "Z", "Y", "Y", 'Z', AetherBlocks.ENCHANTED_GRAVITITE, 'Y', AetherItems.Stick });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.SwordGravitite, 1), new Object[] { "Z", "Z", "Y", 'Z', AetherBlocks.ENCHANTED_GRAVITITE, 'Y', AetherItems.Stick });
 	 }
 	 private void registerShapelessRecipes() {
 		 CraftingRegistry.addShapelessRecipe(new ItemInstance(AetherBlocks.SKYROOT_PLANKS,4), new ItemInstance(AetherBlocks.LOG));

@@ -11,12 +11,16 @@ import net.minecraft.entity.Living;
 public interface LivingAccessor{
 	 @Accessor("field_1029")
 	 float get1029();
-	 @Accessor("field_1058")
-	 void set1058(int i);
 	 @Accessor("field_1060")
 	 float get1060();
 	 @Accessor("jumping")
 	 boolean getJumping();
+	 @Accessor("field_1058")
+	 void set1058(int i);
+	 @Accessor("field_1029")
+	 void set1029(float f);
+	 @Accessor("field_1060")
+	 void set1060(float f);
 	 //@Invoker("setSize")
 	 //void setSize(float f, float f1);
 }

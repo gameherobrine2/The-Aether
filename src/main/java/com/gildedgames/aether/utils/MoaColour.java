@@ -48,7 +48,7 @@ public class MoaColour {
     }
     
     static {
-        MoaColour.colours = (List<MoaColour>)new ArrayList();
+        MoaColour.colours = new ArrayList<MoaColour>();
         MoaColour.random = new Random();
         new MoaColour(0, 7829503, 3, 100, "Blue");
         new MoaColour(1, 2236962, 8, 5, "Black");

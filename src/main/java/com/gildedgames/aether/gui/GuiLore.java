@@ -91,7 +91,7 @@ public class GuiLore extends ContainerBase {
     }
     
     static {
-        (GuiLore.lores = (ArrayList<Lore>)new ArrayList()).add(new Lore(BlockBase.STONE, "Stone", "Found everywhere.", "Makes steps", "", "", "", "", 0));
+        (GuiLore.lores = new ArrayList<Lore>()).add(new Lore(BlockBase.STONE, "Stone", "Found everywhere.", "Makes steps", "", "", "", "", 0));
         GuiLore.lores.add(new Lore((BlockBase)BlockBase.GRASS, "Grass", "Found in light.", "Spreads to dirt.", "Flowers and trees", "will grow on it.", "Click with a hoe", "to make farmland", 0));
         GuiLore.lores.add(new Lore(BlockBase.DIRT, "Dirt", "Found everywhere.", "Grass, trees and", "flowers will grow", "on it.", "Click with a hoe", "to make farmland", 0));
         GuiLore.lores.add(new Lore(BlockBase.COBBLESTONE, "Cobblestone", "Found when mining", "stone and when", "water meets lava.", "Makes stone tools,", "cobble steps and", "furnaces", 0));
