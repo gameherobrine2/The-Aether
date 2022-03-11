@@ -110,7 +110,12 @@ public class AetherItems {
         AetherItems.ShovelValkyrie = new ItemValkyrieSpade(Identifier.of(MOD_ID, "item_valkyre_shovel"), mat).setTranslationKey("ShovelValkyrie");
         AetherItems.AxeValkyrie = new ItemValkyrieAxe(Identifier.of(MOD_ID, "item_valkyre_axe"), mat).setTranslationKey("AxeValkyrie");
         AetherItems.IronBubble = new ItemMoreArmor(Identifier.of(MOD_ID, "item_iron_bubble"), 0, 0, 7).setTranslationKey("IronBubble");
+        AetherItems.AetherCape = new ItemMoreArmor(Identifier.of(MOD_ID, "item_aether_cape"), 0, "/assets/aether/stationapi/textures/capes/AetherCape.png", 5).setTranslationKey("AetherCape");
+        AetherItems.RegenerationStone = new ItemMoreArmor(Identifier.of(MOD_ID, "item_regeneraation_stone"), 0, 0, 7).setTranslationKey("RegenerationStone");
+        AetherItems.InvisibilityCloak = new ItemMoreArmor(Identifier.of(MOD_ID, "item_invisibility_cloack"), 0, 0, 5).setTranslationKey("InvisibilityCloak");
+        AetherItems.AgilityCape = new ItemMoreArmor(Identifier.of(MOD_ID, "item_agility_cape"), 0, "/assets/aether/stationapi/textures/capes/AgilityCape.png", 5).setTranslationKey("AgilityCape");
         //AetherItems.PigSlayer = new ItemPigSlayer(mod_Aether.idItemPigSlayer).setTexturePosition(this.override("PigSlayer.png")).setTranslationKey("PigSlayer");
+        
     }
     
     public static void tick(final Minecraft game) {
@@ -254,7 +259,7 @@ public class AetherItems {
                     playerBase.velocityY *= 0.6;
                 }
                 ((EntityBaseAccessor)player).setFallDistance(-1.0f);
-            }
+            }*/
             if (inv.slots[1] != null && inv.slots[1].itemId == AetherItems.AgilityCape.id) {
                 player.field_1641 = 1.0f;
             }
@@ -264,7 +269,7 @@ public class AetherItems {
             if (AetherItems.ticks % 200 == 0 && player.health < Aether.maxHealth && ((inv.slots[3] != null && inv.slots[3].itemId == AetherItems.RegenerationStone.id) || (inv.slots[7] != null && inv.slots[7].itemId == AetherItems.RegenerationStone.id))) {
                 player.addHealth(1);
             }
-            ++AetherItems.ticks;*/
+            ++AetherItems.ticks;
         }
     }
     

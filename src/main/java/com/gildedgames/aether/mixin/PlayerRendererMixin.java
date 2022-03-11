@@ -5,29 +5,41 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.inventory.InventoryAether;
 import com.gildedgames.aether.item.ItemMoreArmor;
+import com.gildedgames.aether.registry.AetherItems;
+
 import net.minecraft.client.render.entity.PlayerRenderer;
 import net.minecraft.client.render.entity.model.Biped;
 import net.minecraft.entity.Living;
 import net.minecraft.entity.player.AbstractClientPlayer;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
+import net.minecraft.util.maths.MathHelper;
 
 @Mixin(PlayerRenderer.class)
 public class PlayerRendererMixin {
 	//TODO: render
+	@Inject(method = "render(Lnet/minecraft/entity/player/PlayerBase;DDDFF)V", at = @At(value = "HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+	private void renderEntityCustomHEAD(PlayerBase entity, double x, double y, double z, float f, float f1,CallbackInfo ci) {
+		if(Aether.invisible(MinecraftClientAccessor.getMCinstance().player)) ci.cancel();
+	}
 	@Inject(method = "render(Lnet/minecraft/entity/player/PlayerBase;DDDFF)V", at = @At(value = "TAIL"))
-	public void renderEntityCustom(PlayerBase entity, double x, double y, double z, float f, float f1,CallbackInfo ci) {
+	private void renderEntityCustom(PlayerBase entity, double x, double y, double z, float f, float f1,CallbackInfo ci) {
 		try {
 			//this.renderEnergyShield((PlayerBase)entity, x, y, z, f, f1);
 			this.renderMisc((PlayerBase)entity, x, y, z, f, f1);
 		}catch(Exception e) {e.printStackTrace();}
 	}
+	@Inject(method = "method_827", at = @At(value = "TAIL"))
+	private void method_827_handle(PlayerBase arg, float f,CallbackInfo ci) {
+		renderCape(arg,f);
+	}
 	@Inject(method = "method_345", at = @At(value = "TAIL"))
-	public void method345_handle(CallbackInfo ci) {
+	private void method345_handle(CallbackInfo ci) {
 		try {
 		if(Aether.inv == null) {return;}
         final PlayerBase player = MinecraftClientAccessor.getMCinstance().player;
@@ -53,6 +65,47 @@ public class PlayerRendererMixin {
         }
 		}catch(Exception e) {e.printStackTrace();}
 	}
+	private void renderCape(final PlayerBase entityplayer, final float f) {
+        final InventoryAether inv = Aether.inv;
+        if (inv.slots[1] != null) {
+            final ItemInstance cape = inv.slots[1];
+            //if (cape.itemId == AetherItems.RepShield.id) {
+            //    return;
+            //}
+            ((com.gildedgames.aether.mixin.EntityRenderAccessor)this).invokeBindTexture(((ItemMoreArmor)cape.getType()).texture);
+            GL11.glPushMatrix();
+            GL11.glTranslatef(0.0f, 0.0f, 0.125f);
+            final double d = entityplayer.field_530 + (entityplayer.field_533 - entityplayer.field_530) * f - (entityplayer.prevX + (entityplayer.x - entityplayer.prevX) * f);
+            final double d2 = entityplayer.field_531 + (entityplayer.field_534 - entityplayer.field_531) * f - (entityplayer.prevY + (entityplayer.y - entityplayer.prevY) * f);
+            final double d3 = entityplayer.field_532 + (entityplayer.field_535 - entityplayer.field_532) * f - (entityplayer.prevZ + (entityplayer.z - entityplayer.prevZ) * f);
+            final float f2 = entityplayer.field_1013 + (entityplayer.field_1012 - entityplayer.field_1013) * f;
+            final double d4 = MathHelper.sin(f2 * 3.141593f / 180.0f);
+            final double d5 = -MathHelper.cos(f2 * 3.141593f / 180.0f);
+            float f3 = (float)d2 * 10.0f;
+            if (f3 < -6.0f) {
+                f3 = -6.0f;
+            }
+            if (f3 > 32.0f) {
+                f3 = 32.0f;
+            }
+            float f4 = (float)(d * d4 + d3 * d5) * 100.0f;
+            final float f5 = (float)(d * d5 - d3 * d4) * 100.0f;
+            if (f4 < 0.0f) {
+                f4 = 0.0f;
+            }
+            final float f6 = entityplayer.field_524 + (entityplayer.field_525 - entityplayer.field_524) * f;
+            f3 += MathHelper.sin((entityplayer.field_1634 + (entityplayer.field_1635 - entityplayer.field_1634) * f) * 6.0f) * 32.0f * f6;
+            if (entityplayer.method_1373()) {
+                f3 += 25.0f;
+            }
+            GL11.glRotatef(6.0f + f4 / 2.0f + f3, 1.0f, 0.0f, 0.0f);
+            GL11.glRotatef(f5 / 2.0f, 0.0f, 0.0f, 1.0f);
+            GL11.glRotatef(-f5 / 2.0f, 0.0f, 1.0f, 0.0f);
+            GL11.glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
+            this.modelCape.method_606(0.0625f);
+            GL11.glPopMatrix();
+        }
+    }
 	public void renderMisc(final PlayerBase entityplayer, final double d, final double d1, final double d2, final float f, final float f1) {
 		if(Aether.inv == null) {return;}
 		final ItemInstance itemstack = entityplayer.inventory.getHeldItem();

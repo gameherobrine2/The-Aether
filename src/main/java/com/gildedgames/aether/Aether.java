@@ -37,6 +37,9 @@ public class Aether {
         MinecraftClientAccessor.getMCinstance().soundHelper.playSound("aether.sound.other.achievement.achievementGen", 1.0f, 1.0f); //TODO: sounds
         p.incrementStat(a);
     }
+    public static boolean invisible(final PlayerBase player) {
+        return (!player.handSwinging && inv.slots[1] != null && inv.slots[1].itemId == AetherItems.InvisibilityCloak.id);
+    }
 	public static int getCurrentDimension() {
         final PlayerBase player = MinecraftClientAccessor.getMCinstance().player;
         if (player == null) {
