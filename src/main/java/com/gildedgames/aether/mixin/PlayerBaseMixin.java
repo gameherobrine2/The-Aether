@@ -26,6 +26,7 @@ import net.minecraft.util.io.NBTIO;
 public class PlayerBaseMixin {
 	@Inject(method = "remove", at = @At(value = "TAIL"))
     private void setEntityDead(CallbackInfo ci) {
+		Aether.inv.dropAllItems();
 		this.writeCustomData(new InventoryAether(MinecraftClientAccessor.getMCinstance().player));
     }
 	
