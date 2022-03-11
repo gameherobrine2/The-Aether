@@ -23,7 +23,8 @@
 	"GameRendererMixin",
 	"MinecraftClientAccessor",
 	"LivingEntityRendererAccessor",
-	"PlayerRendererMixin"
+	"PlayerRendererMixin",
+	"EntityRenderAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

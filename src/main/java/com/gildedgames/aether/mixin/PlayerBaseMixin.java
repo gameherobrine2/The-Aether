@@ -12,7 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.inventory.InventoryAether;
-
 import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.player.AbstractClientPlayer;
 import net.minecraft.entity.player.PlayerBase;

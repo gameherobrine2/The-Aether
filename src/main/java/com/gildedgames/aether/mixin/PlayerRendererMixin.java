@@ -5,19 +5,16 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.inventory.InventoryAether;
 import com.gildedgames.aether.item.ItemMoreArmor;
-import com.gildedgames.aether.mixin.LivingEntityRendererAccessor;
 import net.minecraft.client.render.entity.PlayerRenderer;
 import net.minecraft.client.render.entity.model.Biped;
 import net.minecraft.entity.Living;
 import net.minecraft.entity.player.AbstractClientPlayer;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
-import net.modificationstation.stationapi.mixin.render.client.EntityRendererAccessor;
 
 @Mixin(PlayerRenderer.class)
 public class PlayerRendererMixin {
@@ -41,7 +38,7 @@ public class PlayerRendererMixin {
             this.modelMisc.setAngles(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0625f);
             this.modelMisc.field_622.method_1815(0.0625f);
             final ItemMoreArmor glove = (ItemMoreArmor)inv.slots[6].getType();
-            ((EntityRendererAccessor)this).invokeBindTexture(glove.texture);
+            ((com.gildedgames.aether.mixin.EntityRenderAccessor)this).invokeBindTexture(glove.texture);
             final int colour = glove.getColourMultiplier(0);
             final float red = (colour >> 16 & 0xFF) / 255.0f;
             final float green = (colour >> 8 & 0xFF) / 255.0f;
@@ -98,7 +95,7 @@ public class PlayerRendererMixin {
             final InventoryAether inv = Aether.inv;
             if (inv.slots[0] != null) {
                 final ItemMoreArmor pendant = (ItemMoreArmor)inv.slots[0].getType();
-                ((EntityRendererAccessor)this).invokeBindTexture(pendant.texture);
+                ((com.gildedgames.aether.mixin.EntityRenderAccessor)this).invokeBindTexture(pendant.texture);
                 final int colour = pendant.getColourMultiplier(0);
                 final float red = (colour >> 16 & 0xFF) / 255.0f;
                 final float green = (colour >> 8 & 0xFF) / 255.0f;
@@ -113,7 +110,7 @@ public class PlayerRendererMixin {
             }
             if (inv.slots[6] != null) {
                 final ItemMoreArmor glove = (ItemMoreArmor)inv.slots[6].getType();
-                ((EntityRendererAccessor)this).invokeBindTexture(glove.texture);
+                ((com.gildedgames.aether.mixin.EntityRenderAccessor)this).invokeBindTexture(glove.texture);
                 final int colour = glove.getColourMultiplier(0);
                 final float red = (colour >> 16 & 0xFF) / 255.0f;
                 final float green = (colour >> 8 & 0xFF) / 255.0f;
