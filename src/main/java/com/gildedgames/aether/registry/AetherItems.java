@@ -43,6 +43,9 @@ import com.gildedgames.aether.item.ItemSkyrootSword;
 import com.gildedgames.aether.item.ItemSwordGravitite;
 import com.gildedgames.aether.item.ItemSwordHolystone;
 import com.gildedgames.aether.item.ItemSwordZanite;
+import com.gildedgames.aether.item.ItemValkyrieAxe;
+import com.gildedgames.aether.item.ItemValkyriePickaxe;
+import com.gildedgames.aether.item.ItemValkyrieSpade;
 import com.gildedgames.aether.item.ItemZaniteAxe;
 import com.gildedgames.aether.item.ItemZanitePickaxe;
 import com.gildedgames.aether.item.ItemZaniteSpade;
@@ -103,7 +106,11 @@ public class AetherItems {
         AetherItems.ShovelGravitite = new ItemGravititeSpade(Identifier.of(MOD_ID, "item_gravitite_shovel"), mat).setTranslationKey("ShovelGravitite");
         AetherItems.AxeGravitite = new ItemGravititeAxe(Identifier.of(MOD_ID, "item_gravitite_axe"), mat).setTranslationKey("AxeGravitite");
         AetherItems.SwordGravitite = new ItemSwordGravitite(Identifier.of(MOD_ID, "item_gravitite_sword"), mat).setTranslationKey("SwordGravitite");
-        
+        AetherItems.PickValkyrie = new ItemValkyriePickaxe(Identifier.of(MOD_ID, "item_valkyre_pickaxe"), mat).setTranslationKey("PickValkyrie");
+        AetherItems.ShovelValkyrie = new ItemValkyrieSpade(Identifier.of(MOD_ID, "item_valkyre_shovel"), mat).setTranslationKey("ShovelValkyrie");
+        AetherItems.AxeValkyrie = new ItemValkyrieAxe(Identifier.of(MOD_ID, "item_valkyre_axe"), mat).setTranslationKey("AxeValkyrie");
+        AetherItems.IronBubble = new ItemMoreArmor(Identifier.of(MOD_ID, "item_iron_bubble"), 0, 0, 7).setTranslationKey("IronBubble");
+        //AetherItems.PigSlayer = new ItemPigSlayer(mod_Aether.idItemPigSlayer).setTexturePosition(this.override("PigSlayer.png")).setTranslationKey("PigSlayer");
     }
     
     public static void tick(final Minecraft game) {
@@ -211,11 +218,11 @@ public class AetherItems {
             }
             if (!((LivingAccessor)player).getJumping() && player.onGround) {
                 AetherItems.jumpBoosted = false;
-            }
+            }*/
             if ((inv.slots[3] != null && inv.slots[3].itemId == AetherItems.IronBubble.id) || (inv.slots[7] != null && inv.slots[7].itemId == AetherItems.IronBubble.id)) {
                 player.air = 20;
             }
-            if ((inv.slots[0] != null && inv.slots[0].itemId == AetherItems.IcePendant.id) || (inv.slots[4] != null && inv.slots[4].itemId == AetherItems.IceRing.id) || (inv.slots[5] != null && inv.slots[5].itemId == AetherItems.IceRing.id)) {
+            /*if ((inv.slots[0] != null && inv.slots[0].itemId == AetherItems.IcePendant.id) || (inv.slots[4] != null && inv.slots[4].itemId == AetherItems.IceRing.id) || (inv.slots[5] != null && inv.slots[5].itemId == AetherItems.IceRing.id)) {
                 final int i = MathHelper.floor(player.x);
                 final int j = MathHelper.floor(player.boundingBox.minY);
                 final int k = MathHelper.floor(player.z);

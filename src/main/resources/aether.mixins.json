@@ -24,7 +24,8 @@
 	"MinecraftClientAccessor",
 	"LivingEntityRendererAccessor",
 	"PlayerRendererMixin",
-	"EntityRenderAccessor"
+	"EntityRenderAccessor",
+	"SinglePlayerClientInteractionManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
