@@ -3,6 +3,7 @@ package com.gildedgames.aether.event.listener;
 import com.gildedgames.aether.client.render.entity.RenderAechorPlant;
 import com.gildedgames.aether.client.render.entity.RenderAerbunny;
 import com.gildedgames.aether.client.render.entity.RenderAerwhale;
+import com.gildedgames.aether.client.render.entity.RenderCloudParachute;
 import com.gildedgames.aether.client.render.entity.RenderCockatrice;
 import com.gildedgames.aether.client.render.entity.RenderDartEnchanted;
 import com.gildedgames.aether.client.render.entity.RenderDartGolden;
@@ -39,6 +40,7 @@ import com.gildedgames.aether.client.render.model.ModelSheepuff2;
 import com.gildedgames.aether.client.render.model.ModelSheepuff3;
 import com.gildedgames.aether.client.render.model.ModelSlider;
 import com.gildedgames.aether.client.render.model.ModelValkyrie;
+import com.gildedgames.aether.entity.EntityCloudParachute;
 import com.gildedgames.aether.entity.animal.EntityAechorPlant;
 import com.gildedgames.aether.entity.animal.EntityAerbunny;
 import com.gildedgames.aether.entity.animal.EntityFlyingCow;
@@ -94,5 +96,11 @@ public class EntityRendererListener {
         event.renderers.put(EntitySwet.class, new RenderSwet(new Slime(16), new Slime(0), 0.3f));
         event.renderers.put(EntityAechorPlant.class, new RenderAechorPlant(new ModelAechorPlant(), 0.3f));
         event.renderers.put(EntityAerbunny.class, new RenderAerbunny(new ModelAerbunny(), 0.3f));
+        event.renderers.put(EntityCloudParachute.class, new RenderCloudParachute());
+        //event.renderers.put(EntityFlamingArrow.class, new RenderFlamingArrow());
+        //event.renderers.put(EntityNotchWave.class, new RenderNotchWave());
+        //event.renderers.put(EntityAetherLightning.class, new LightningRenderer());
+        //event.renderers.put(EntityLightningKnife.class, new RenderLightningKnife());
+        //event.renderers.put(EntityMiniCloud.class, new LivingEntityRenderer(new ModelMiniCloud(0.0f, 20.0f), 0.35f));
     }
 }

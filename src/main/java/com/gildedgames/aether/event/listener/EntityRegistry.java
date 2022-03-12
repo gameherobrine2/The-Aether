@@ -2,6 +2,7 @@ package com.gildedgames.aether.event.listener;
 
 import com.gildedgames.aether.client.render.entity.RenderAechorPlant;
 import com.gildedgames.aether.client.render.entity.RenderAerbunny;
+import com.gildedgames.aether.client.render.entity.RenderCloudParachute;
 import com.gildedgames.aether.client.render.entity.RenderCockatrice;
 import com.gildedgames.aether.client.render.entity.RenderFlyingCow;
 import com.gildedgames.aether.client.render.entity.RenderPhyg;
@@ -24,6 +25,7 @@ import com.gildedgames.aether.client.render.model.ModelSheepuff1;
 import com.gildedgames.aether.client.render.model.ModelSheepuff2;
 import com.gildedgames.aether.client.render.model.ModelSheepuff3;
 import com.gildedgames.aether.client.render.model.ModelSlider;
+import com.gildedgames.aether.entity.EntityCloudParachute;
 import com.gildedgames.aether.entity.animal.EntityAechorPlant;
 import com.gildedgames.aether.entity.animal.EntityAerbunny;
 import com.gildedgames.aether.entity.animal.EntityFlyingCow;
@@ -104,5 +106,6 @@ public class EntityRegistry {
         event.register(EntityAerwhale.class,"entity_aerwhale");
         event.register(EntityAechorPlant.class,"entity_aechor_plant");
         event.register(EntityAerbunny.class,"entity_aerbunny");
+        event.register(EntityCloudParachute.class,"entity_parachute");
     }
 }

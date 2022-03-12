@@ -22,7 +22,7 @@ public interface EntityBaseAccessor{
 	 
 	 /*SETTERS*/
 	 @Accessor("fallDistance")
-	 void setFallDistance(float i);
+	 void setFallDistance(float f);
  	 @Accessor("immuneToFire")
  	 public void setImmunityToFire(boolean b); //did i spell it correctly?
 

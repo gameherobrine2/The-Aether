@@ -67,6 +67,14 @@ public class RecipeListener {
 	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.AxeGravitite, 1), new Object[] { "ZZ", "ZY", " Y", 'Z', AetherBlocks.ENCHANTED_GRAVITITE, 'Y', AetherItems.Stick });
 	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.ShovelGravitite, 1), new Object[] { "Z", "Y", "Y", 'Z', AetherBlocks.ENCHANTED_GRAVITITE, 'Y', AetherItems.Stick });
 	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.SwordGravitite, 1), new Object[] { "Z", "Z", "Y", 'Z', AetherBlocks.ENCHANTED_GRAVITITE, 'Y', AetherItems.Stick });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.WhiteCape, 1), new Object[] { "XX", "XX", "XX", 'X', new ItemInstance(BlockBase.WOOL, 1, 0) });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.RedCape, 1), new Object[] { "XX", "XX", "XX", 'X', new ItemInstance(BlockBase.WOOL, 1, 14) });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.BlueCape, 1), new Object[] { "XX", "XX", "XX", 'X', new ItemInstance(BlockBase.WOOL, 1, 11) });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.BlueCape, 1), new Object[] { "XX", "XX", "XX", 'X', new ItemInstance(BlockBase.WOOL, 1, 3) });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.BlueCape, 1), new Object[] { "XX", "XX", "XX", 'X', new ItemInstance(BlockBase.WOOL, 1, 9) });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.YellowCape, 1), new Object[] { "XX", "XX", "XX", 'X', new ItemInstance(BlockBase.WOOL, 1, 4) });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.CloudParachute), new Object[] { "CC", "CC", 'C', new ItemInstance(AetherBlocks.AERCLOUD, 1, 0) });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.CloudParachuteGold), new Object[] { "CC", "CC", 'C', new ItemInstance(AetherBlocks.AERCLOUD, 1, 2) });
 	 }
 	 private void registerShapelessRecipes() {
 		 CraftingRegistry.addShapelessRecipe(new ItemInstance(AetherBlocks.SKYROOT_PLANKS,4), new ItemInstance(AetherBlocks.LOG));

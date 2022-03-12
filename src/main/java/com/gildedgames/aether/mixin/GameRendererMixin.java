@@ -35,7 +35,7 @@ public class GameRendererMixin {
                 if (!enteredAether) {
                     Aether.giveAchievement(AetherAchievements.enterAether, player);
                     player.inventory.addStack(new ItemInstance(AetherItems.LoreBook, 1, 2));
-                    //TODO: player.inventory.addStack(new ItemInstance(AetherItems.CloudParachute, 1));
+                    player.inventory.addStack(new ItemInstance(AetherItems.CloudParachute, 1));
                     minecraft.level.playSound((EntityBase)player, "random.pop", 0.2f, 1.0f);
                 }
             }

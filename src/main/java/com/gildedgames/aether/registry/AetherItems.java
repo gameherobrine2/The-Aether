@@ -24,6 +24,7 @@ import com.gildedgames.aether.item.ItemAether;
 import com.gildedgames.aether.item.ItemAetherKey;
 import com.gildedgames.aether.item.ItemAetherRecord;
 import com.gildedgames.aether.item.ItemAmbrosium;
+import com.gildedgames.aether.item.ItemCloudParachute;
 import com.gildedgames.aether.item.ItemDart;
 import com.gildedgames.aether.item.ItemDartShooter;
 import com.gildedgames.aether.item.ItemGravititeAxe;
@@ -114,6 +115,12 @@ public class AetherItems {
         AetherItems.RegenerationStone = new ItemMoreArmor(Identifier.of(MOD_ID, "item_regeneraation_stone"), 0, 0, 7).setTranslationKey("RegenerationStone");
         AetherItems.InvisibilityCloak = new ItemMoreArmor(Identifier.of(MOD_ID, "item_invisibility_cloack"), 0, 0, 5).setTranslationKey("InvisibilityCloak");
         AetherItems.AgilityCape = new ItemMoreArmor(Identifier.of(MOD_ID, "item_agility_cape"), 0, "/assets/aether/stationapi/textures/capes/AgilityCape.png", 5).setTranslationKey("AgilityCape");
+        AetherItems.WhiteCape = new ItemMoreArmor(Identifier.of(MOD_ID, "item_white_cape"), 0, "/assets/aether/stationapi/textures/capes/WhiteCape.png", 5).setTranslationKey("WhiteCape");
+        AetherItems.RedCape = new ItemMoreArmor(Identifier.of(MOD_ID, "item_red_cape"), 0, "/assets/aether/stationapi/textures/capes/RedCape.png", 5, 15208721).setTranslationKey("RedCape");
+        AetherItems.YellowCape = new ItemMoreArmor(Identifier.of(MOD_ID, "item_yellow_cape"), 0, "/assets/aether/stationapi/textures/capes/YellowCape.png", 5, 13486862).setTranslationKey("YellowCape");
+        AetherItems.BlueCape = new ItemMoreArmor(Identifier.of(MOD_ID, "item_blue_cape"), 0, "/assets/aether/stationapi/textures/capes/BlueCape.png", 5, 1277879).setTranslationKey("BlueCape");
+        AetherItems.CloudParachute = new ItemCloudParachute(Identifier.of(MOD_ID, "item_cloud_parachute"),false).setTranslationKey("CloudParachute");
+        AetherItems.CloudParachuteGold = new ItemCloudParachute(Identifier.of(MOD_ID, "item_gold_cloud_parachute"),true).setTranslationKey("CloudParachuteGold");
         //AetherItems.PigSlayer = new ItemPigSlayer(mod_Aether.idItemPigSlayer).setTexturePosition(this.override("PigSlayer.png")).setTranslationKey("PigSlayer");
         
     }
@@ -227,7 +234,7 @@ public class AetherItems {
             if ((inv.slots[3] != null && inv.slots[3].itemId == AetherItems.IronBubble.id) || (inv.slots[7] != null && inv.slots[7].itemId == AetherItems.IronBubble.id)) {
                 player.air = 20;
             }
-            /*if ((inv.slots[0] != null && inv.slots[0].itemId == AetherItems.IcePendant.id) || (inv.slots[4] != null && inv.slots[4].itemId == AetherItems.IceRing.id) || (inv.slots[5] != null && inv.slots[5].itemId == AetherItems.IceRing.id)) {
+            if ((inv.slots[0] != null && inv.slots[0].itemId == AetherItems.IcePendant.id) || (inv.slots[4] != null && inv.slots[4].itemId == AetherItems.IceRing.id) || (inv.slots[5] != null && inv.slots[5].itemId == AetherItems.IceRing.id)) {
                 final int i = MathHelper.floor(player.x);
                 final int j = MathHelper.floor(player.boundingBox.minY);
                 final int k = MathHelper.floor(player.z);
@@ -253,7 +260,7 @@ public class AetherItems {
                     }
                 }
             }
-            if ((inv.slots[3] != null && inv.slots[3].itemId == AetherItems.GoldenFeather.id) || (inv.slots[7] != null && inv.slots[7].itemId == AetherItems.GoldenFeather.id)) {
+            /*if ((inv.slots[3] != null && inv.slots[3].itemId == AetherItems.GoldenFeather.id) || (inv.slots[7] != null && inv.slots[7].itemId == AetherItems.GoldenFeather.id)) {
                 if (!player.onGround && player.velocityY < 0.0 && !((EntityBaseAccessor)player).get1612()) {
                     final PlayerBase playerBase = player;
                     playerBase.velocityY *= 0.6;
