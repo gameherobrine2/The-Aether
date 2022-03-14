@@ -12,11 +12,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.inventory.InventoryAether;
-import net.minecraft.entity.EntityBase;
-import net.minecraft.entity.player.AbstractClientPlayer;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.level.dimension.DimensionFile;
-import net.minecraft.util.io.AbstractTag;
 import net.minecraft.util.io.CompoundTag;
 import net.minecraft.util.io.ListTag;
 import net.minecraft.util.io.NBTIO;
@@ -26,13 +23,13 @@ public class PlayerBaseMixin {
 	@Inject(method = "remove", at = @At(value = "TAIL"))
     private void setEntityDead(CallbackInfo ci) {
 		Aether.inv.dropAllItems();
-		this.writeCustomData(new InventoryAether(MinecraftClientAccessor.getMCinstance().player));
+		this.writeCustomData(new InventoryAether((PlayerBase)(Object)this));
     }
 	
 	private void writeCustomData(final InventoryAether inv) {
         final CompoundTag customData = new CompoundTag();
         Aether.inv = inv;
-        AbstractClientPlayer player = AbstractClientPlayer.class.cast(this);
+        PlayerBase player = (PlayerBase)(Object)this;
         customData.put("MaxHealth", (byte)Aether.maxHealth);
         customData.put("Inventory",inv.writeToNBT(new ListTag()));
         try {

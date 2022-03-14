@@ -29,16 +29,17 @@
       	"com.gildedgames.aether.registry.AetherItems",
       	"com.gildedgames.aether.event.listener.BlockPlacementListener",
       	"com.gildedgames.aether.registry.AetherDimensions",
-      	"com.gildedgames.aether.event.listener.EntityRendererListener",
 	"com.gildedgames.aether.event.listener.RecipeListener",
 	"com.gildedgames.aether.event.listener.EntityRegistry",
 	"com.gildedgames.aether.event.listener.TileEntityListener",
-	"com.gildedgames.aether.registry.AetherAchievements"
+	"com.gildedgames.aether.event.listener.PlayerHandlerListener"
     ],
     "stationapi:event_bus_client": [
+      	"com.gildedgames.aether.event.listener.EntityRendererListener",
       	"com.gildedgames.aether.client.level.AetherLevelListeners",
       	"com.gildedgames.aether.event.listener.TextureListener",
-      	"com.gildedgames.aether.event.listener.GuiListener"
+      	"com.gildedgames.aether.event.listener.GuiListener",
+	"com.gildedgames.aether.registry.AetherAchievements"
 	
     ]
   },
