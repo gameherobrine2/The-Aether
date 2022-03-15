@@ -27,14 +27,14 @@ public class Aether {
     public static InventoryAether inv;
     public static int maxHealth = 20;
 	public static EntityBase currentBoss;
-	public static void giveAchievement(final Achievement a) {
+	public static void giveAchievement(final Achievement a) { 
         giveAchievement(a, MinecraftClientAccessor.getMCinstance().player);
     }
     public static void giveAchievement(final Achievement a, final PlayerBase p) {
         if (MinecraftClientAccessor.getMCinstance().statFileWriter.isAchievementUnlocked(a)) {
             return;
         }
-        MinecraftClientAccessor.getMCinstance().soundHelper.playSound("aether.sound.other.achievement.achievementGen", 1.0f, 1.0f); //TODO: sounds
+        MinecraftClientAccessor.getMCinstance().soundHelper.playSound(Aether.MODID+":aether.sound.other.achievement.achievementgen", 1.0f, 1.0f); //TODO: sounds
         p.incrementStat(a);
     }
     public static boolean invisible(final PlayerBase player) {

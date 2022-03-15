@@ -93,11 +93,11 @@ public class EntityZephyr extends FlyingBase implements MonsterEntityType {
             this.field_1012 = n;
             if (this.method_928(this.targetedEntity)) {
                 if (this.attackCounter == 10) {
-                    this.level.playSound((EntityBase)this, "aether.sound.mobs.zephyr.zephyrCall", this.getSoundVolume(), (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
+                    this.level.playSound((EntityBase)this, "aether:aether.sound.mobs.zephyr.zephyrcall", this.getSoundVolume(), (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
                 }
                 ++this.attackCounter;
                 if (this.attackCounter == 20) {
-                    this.level.playSound((EntityBase)this, "aether.sound.mobs.zephyr.zephyrShoot", this.getSoundVolume(), (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
+                    this.level.playSound((EntityBase)this, "aether:aether.sound.mobs.zephyr.zephyrshoot", this.getSoundVolume(), (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
                     final EntityZephyrSnowball entitysnowball = new EntityZephyrSnowball(this.level, this, d6, d7, d8);
                     final double d9 = 4.0;
                     final Vec3f vec3d = this.method_926(1.0f);
@@ -143,17 +143,17 @@ public class EntityZephyr extends FlyingBase implements MonsterEntityType {
     
     @Override
     protected String getAmbientSound() {
-        return "aether.sound.mobs.zephyr.zephyrCall";
+        return "aether:aether.sound.mobs.zephyr.zephyrcall";
     }
     
     @Override
     protected String getHurtSound() {
-        return "aether.sound.mobs.zephyr.zephyrCall";
+        return "aether:aether.sound.mobs.zephyr.zephyrcall";
     }
     
     @Override
     protected String getDeathSound() {
-        return "aether.sound.mobs.zephyr.zephyrCall";
+        return "aether:aether.sound.mobs.zephyr.zephyrcall";
     }
     
     @Override

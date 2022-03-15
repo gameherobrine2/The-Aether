@@ -191,7 +191,7 @@ public class EntityAerbunny extends EntityAetherAnimal {
         }
         else if (this.onGround) {
             this.grab = false;
-            this.level.playSound((EntityBase)this, "aether.sound.mobs.aerbunny.aerbunnyLand", 1.0f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
+            this.level.playSound((EntityBase)this, "aether:aether.sound.mobs.aerbunny.aerbunnyland", 1.0f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
             final List list = this.level.getEntities(this, this.boundingBox.expand(12.0, 12.0, 12.0));
             for (int m = 0; m < list.size(); ++m) {
                 final EntityBase entity = (EntityBase)list.get(m);
@@ -271,7 +271,7 @@ public class EntityAerbunny extends EntityAetherAnimal {
             this.grab = true;
         }
         else {
-            this.level.playSound((EntityBase)this, "aether.sound.mobs.aerbunny.aerbunnyLift", 1.0f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
+            this.level.playSound((EntityBase)this, "aether:aether.sound.mobs.aerbunny.aerbunnylift", 1.0f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
         }
         this.jumping = false;
         this.field_1029 = 0.0f;
@@ -318,12 +318,12 @@ public class EntityAerbunny extends EntityAetherAnimal {
     
     @Override
     protected String getHurtSound() {
-        return "aether.sound.mobs.aerbunny.aerbunnyHurt";
+        return "aether:aether.sound.mobs.aerbunny.aerbunnyhurt";
     }
     
     @Override
     protected String getDeathSound() {
-        return "aether.sound.mobs.aerbunny.aerbunnyDeath";
+        return "aether:aether.sound.mobs.aerbunny.aerbunnydeath";
     }
     
     @Override

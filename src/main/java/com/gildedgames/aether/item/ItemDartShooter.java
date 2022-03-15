@@ -54,7 +54,7 @@ public class ItemDartShooter extends TemplateItemBase {
     public ItemInstance use(final ItemInstance item, final Level level, final PlayerBase player) {
         final int consume = this.consumeItem(player, AetherItems.Dart.id, item.getDamage());
         if (consume != -1) {
-            level.playSound((EntityBase)player, "aether.sound.other.dartshooter.shootDart", 2.0f, 1.0f / (ItemDartShooter.rand.nextFloat() * 0.4f + 0.8f));
+            level.playSound((EntityBase)player, "aether:aether.sound.other.dartshooter.shootdart", 2.0f, 1.0f / (ItemDartShooter.rand.nextFloat() * 0.4f + 0.8f));
             if (!level.isServerSide) {
                 EntityDartGolden dart = null;
                 switch(consume) {

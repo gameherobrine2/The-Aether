@@ -153,7 +153,7 @@ public class EntityAechorPlant extends EntityAetherAnimal {
         d2 *= d3;
         final EntityPoisonNeedle entityarrow = new EntityPoisonNeedle(this.level, this);
         entityarrow.y = this.y + 0.5;
-        this.level.playSound((EntityBase)this, "aether.sound.other.dartshooter.shootDart", 2.0f, 1.0f / (this.rand.nextFloat() * 0.4f + 0.8f));
+        this.level.playSound((EntityBase)this, "aether:aether.sound.other.dartshooter.shootdart", 2.0f, 1.0f / (this.rand.nextFloat() * 0.4f + 0.8f));
         this.level.spawnEntity(entityarrow);
         entityarrow.setArrowHeading(d1, d4, d2, 0.285f + (float)d4 * 0.05f, 1.0f);
     }

@@ -86,7 +86,7 @@ public class EntityCockatrice extends MonsterBase {
                 entityPoisonNeedle.y += 1.399999976158142;
                 final double d3 = target.y + target.getStandingEyeHeight() - 0.20000000298023224 - entityarrow.y;
                 final float f2 = MathHelper.sqrt(d * d + d2 * d2) * 0.2f;
-                this.level.playSound((EntityBase)this, "mob.aether.dartshoot", 1.0f, 1.0f / (this.rand.nextFloat() * 0.4f + 0.8f));
+                this.level.playSound((EntityBase)this, "aether:aether.sound.other.dartshooter.shootdart", 1.0f, 1.0f / (this.rand.nextFloat() * 0.4f + 0.8f));
                 this.level.spawnEntity(entityarrow);
                 entityarrow.setArrowHeading(d, d3 + f2, d2, 0.6f, 12.0f);
                 this.attackTime = 30;

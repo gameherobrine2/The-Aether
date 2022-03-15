@@ -11,6 +11,8 @@ import net.minecraft.entity.EntityBase;
 import net.minecraft.level.Level;
 import net.minecraft.block.material.Material;
 import com.gildedgames.aether.mixin.EntityBaseAccessor;
+import com.gildedgames.aether.registry.AetherAchievements;
+import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.event.listener.TextureListener;
 
 @HasMetaBlockItem
@@ -29,7 +31,7 @@ public class BlockAercloud extends TemplateBlockBase implements MetaNamedBlockIt
         if (level.getTileMeta(x, y, z) == 1) {
             entityBase.velocityY = 2.0;
             if (entityBase instanceof PlayerBase) {
-                //mod_Aether.giveAchievement(AetherAchievements.blueCloud, (PlayerBase)entityBase);
+                Aether.giveAchievement(AetherAchievements.blueCloud, (PlayerBase)entityBase);
             }
         }
         else if (entityBase.velocityY < 0.0) {
