@@ -10,3 +10,4 @@ Experimental Port of Aether to StationAPI forked from [mine_diver's Aether port]
 - Added Trees and Aerclouds generation
 - Added ores generation
 - All bosses were added
+- Sounds
