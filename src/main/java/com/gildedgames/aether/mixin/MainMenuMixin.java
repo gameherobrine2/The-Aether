@@ -2,7 +2,9 @@ package com.gildedgames.aether.mixin;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,11 +21,15 @@ import net.minecraft.client.gui.screen.menu.MainMenu;
 import net.minecraft.client.gui.widgets.Button;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.resource.language.TranslationStorage;
+import net.minecraft.level.storage.LevelMetadata;
+import net.minecraft.level.storage.LevelStorage;
 import net.minecraft.util.maths.MathHelper;
 
-@Mixin(MainMenu.class)
+@Mixin(value = MainMenu.class)
 public class MainMenuMixin extends ScreenBase{
 	private String hoverText = "";
+	private List saveList;
+    private int selectedWorld;
     public void drawAetherDefaultBackground() {
         this.drawAetherWorldBackground(0);
     }
@@ -176,18 +182,18 @@ public class MainMenuMixin extends ScreenBase{
         final TranslationStorage var1 = TranslationStorage.getInstance();
         if (Aether.renderOption) {
             minecraft.interactionManager = new SinglePlayerClientInteractionManager(minecraft);
-            //if (minecraft.level == null) {
-             //   this.loadSaves();
-             //   final String var2 = this.getSaveFileName(0);
-             //   final String var3 = this.getSaveName(0);
-             //   if (var3 == null || var2 == null) {
-            //        Aether.renderOption = false;
-            //    }
-            //    else {
-            //        minecraft.createOrLoadWorld(var2, var3, 0L);
-            //        ((LevelAccessor)minecraft.level).set212(999999999);
-           //     }
-            //}
+            if (minecraft.level == null) {
+                this.loadSaves();
+                final String var2 = this.getSaveFileName(0);
+                final String var3 = this.getSaveName(0);
+                if (var3 == null || var2 == null) {
+                    Aether.renderOption = false;
+                }
+                else {
+                    minecraft.createOrLoadWorld(var2, var3, 0L);
+                    ((LevelAccessor)minecraft.level).set212(999999999);
+                }
+            }
         }
         else if (Aether.themeOption) {
             this.drawAetherDefaultBackground();
@@ -244,5 +250,27 @@ public class MainMenuMixin extends ScreenBase{
                 //this.multiplayerButton.active = false;
             }
         }
+    }
+	protected String getSaveName(final int i) {
+        if (this.saveList.size() < i + 1) {
+            return null;
+        }
+        String s = ((LevelMetadata)this.saveList.get(i)).getLevelName();
+        if (s == null || MathHelper.isStringEmpty(s)) {
+            final TranslationStorage stringtranslate = TranslationStorage.getInstance();
+            s = stringtranslate.translate("selectWorld.world") + " " + (i + 1);
+        }
+        return s;
+    }
+	protected String getSaveFileName(final int i) {
+        if (this.saveList.size() < i + 1) {
+            return null;
+        }
+        return ((LevelMetadata)this.saveList.get(i)).getFileName();
+    }
+	private void loadSaves() {
+        final LevelStorage isaveformat = this.minecraft.getLevelStorage();
+        Collections.sort(this.saveList = isaveformat.getMetadata());
+        this.selectedWorld = -1;
     }
 }
