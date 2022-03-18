@@ -14,7 +14,7 @@ public class AetherBiomeSource extends BiomeSource {
 
     public AetherBiomeSource(double temperature) {
         biome = AetherBiomes.AETHER;
-        this.temperature = temperature;
+        this.temperature = temperature; 
     }
 
     @Override

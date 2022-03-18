@@ -67,7 +67,13 @@ public class Aether {
         final ItemInstance itemstack = MinecraftClientAccessor.getMCinstance().player.inventory.getHeldItem();
         return itemstack != null && itemstack.itemId == AetherItems.AxeSkyroot.id;
     }
-
+    
+	public static boolean mmactive;
+    public static int musicId;
+    public static boolean loadingWorld;
+    public static boolean renderOption;
+    public static boolean themeOption;
+    
     public static int raritySwet;
     public static int rarityAechorPlant;
     public static int rarityCockatrice;

@@ -66,7 +66,7 @@ public class AetherLevelSource implements LevelSource {
         perlinOctaveNoise5 = new PerlinOctaveNoise(random, 4);
         perlinOctaveNoise6 = new PerlinOctaveNoise(random, 10);
         perlinOctaveNoise7 = new PerlinOctaveNoise(random, 16);
-        perlinOctaveNoise8 = new PerlinOctaveNoise(random, 8);
+        perlinOctaveNoise8 = new PerlinOctaveNoise(random, 8); 
         this.level = level;
     }
 

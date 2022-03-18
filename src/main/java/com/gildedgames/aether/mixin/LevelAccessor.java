@@ -11,5 +11,6 @@ public interface LevelAccessor {
 	
 	@Accessor("dimensionData")
 	DimensionData getDimData();
-	
+	@Accessor("field_212")
+	int set212(int i);
 }
