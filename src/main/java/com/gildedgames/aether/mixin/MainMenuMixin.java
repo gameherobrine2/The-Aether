@@ -10,6 +10,9 @@ import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.gen.Accessor;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.gui.misc.GuiAetherButton;
@@ -147,6 +150,14 @@ public class MainMenuMixin extends ScreenBase{
         super.render(mouseX, mouseY, delta);
     }
     
+    @Inject(method = "buttonClicked",at = @At(value = "TAIL"))
+    private void buttonClickedInj(final Button button,CallbackInfo ci) {
+    	 if (button.id == 6) {
+             Aether.themeOption = !Aether.themeOption; //skidded from relique
+         }
+    }
+    
+    
 	@Overwrite
     public void init() {
 		Minecraft minecraft = MinecraftClientAccessor.getMCinstance();
@@ -155,6 +166,7 @@ public class MainMenuMixin extends ScreenBase{
         //minecraft.overlay = new GuiIngameAether(minecraft);
         if (Aether.musicId == -1 && !Aether.loadingWorld) {
             minecraft.soundHelper.playSound("aether:aether.music.menu", 1.0f, 1.0f);
+            Aether.musicId = ((SoundHelperAccessor)minecraft.soundHelper).getSoundUID();
             /*try {
                 //Aether.musicId = (int)ModLoader.getPrivateValue((Class)SoundHelper.class, minecraft.soundHelper, "e");
                 //ModLoader.setPrivateValue((Class)SoundHelper.class, minecraft.soundHelper, "i", 999999999);

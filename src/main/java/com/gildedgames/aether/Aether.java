@@ -69,7 +69,7 @@ public class Aether {
     }
     
 	public static boolean mmactive;
-    public static int musicId;
+    public static int musicId = -1;
     public static boolean loadingWorld;
     public static boolean renderOption;
     public static boolean themeOption;

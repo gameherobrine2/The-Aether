@@ -26,7 +26,8 @@
 	"LivingEntityRendererAccessor",
 	"PlayerRendererMixin",
 	"EntityRenderAccessor",
-	"SinglePlayerClientInteractionManagerMixin"
+	"SinglePlayerClientInteractionManagerMixin",
+	"SoundHelperAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
