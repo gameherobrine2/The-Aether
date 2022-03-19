@@ -34,6 +34,8 @@ import com.gildedgames.aether.item.ItemGravititeSpade;
 import com.gildedgames.aether.item.ItemHolystoneAxe;
 import com.gildedgames.aether.item.ItemHolystonePickaxe;
 import com.gildedgames.aether.item.ItemHolystoneSpade;
+import com.gildedgames.aether.item.ItemLance;
+import com.gildedgames.aether.item.ItemLifeShard;
 import com.gildedgames.aether.item.ItemLoreBook;
 import com.gildedgames.aether.item.ItemMoaEgg;
 import com.gildedgames.aether.item.ItemMoreArmor;
@@ -143,13 +145,17 @@ public class AetherItems {
         AetherItems.NeptuneLeggings = new ItemColouredArmor(Identifier.of(MOD_ID, "item_neptune_legs"), 3, "Neptune_2", 2, 2512127).setTexturePosition(33).setTranslationKey("NeptuneLegs");
         AetherItems.NeptuneBoots = new ItemColouredArmor(Identifier.of(MOD_ID, "item_neptune_boots"), 3, "Neptune_1", 3, 2512127).setTexturePosition(49).setTranslationKey("NeptuneBoots");
         /*AetherItems.PigSlayer = new ItemPigSlayer(mod_Aether.idItemPigSlayer).setTexturePosition(this.override("PigSlayer.png")).setTranslationKey("PigSlayer");*/
+        AetherItems.LifeShard = new ItemLifeShard(Identifier.of(MOD_ID, "item_life_shard")).setTranslationKey("LifeShard");
+        AetherItems.GoldenFeather = new ItemMoreArmor(Identifier.of(MOD_ID, "item_golden_feather"), 0, 0, 7).setTranslationKey("GoldenFeather");
+        AetherItems.Lance = new ItemLance(Identifier.of(MOD_ID, "item_lance"), mat).setTranslationKey("Lance");
+        AetherItems.RepShield = new ItemMoreArmor(Identifier.of(MOD_ID, "item_rep_shield"), 0, 0, 6, 16777215).setTranslationKey("RepShield").setDurability(512);
         
     }
     
     public static void tick(final Minecraft game) {
         if (true) {
             final PlayerBase player = game.player;
-            final InventoryAether inv = Aether.inv;
+            final InventoryAether inv = Aether.getPlayerHandler(player).inv;
             if(inv == null || inv.slots == null) {
             	return;
             }
@@ -281,20 +287,20 @@ public class AetherItems {
                     }
                 }
             }
-            /*if ((inv.slots[3] != null && inv.slots[3].itemId == AetherItems.GoldenFeather.id) || (inv.slots[7] != null && inv.slots[7].itemId == AetherItems.GoldenFeather.id)) {
+            if ((inv.slots[3] != null && inv.slots[3].itemId == AetherItems.GoldenFeather.id) || (inv.slots[7] != null && inv.slots[7].itemId == AetherItems.GoldenFeather.id)) {
                 if (!player.onGround && player.velocityY < 0.0 && !((EntityBaseAccessor)player).get1612()) {
                     final PlayerBase playerBase = player;
                     playerBase.velocityY *= 0.6;
                 }
                 ((EntityBaseAccessor)player).setFallDistance(-1.0f);
-            }*/
+            }
             if (inv.slots[1] != null && inv.slots[1].itemId == AetherItems.AgilityCape.id) {
                 player.field_1641 = 1.0f;
             }
             else {
                 player.field_1641 = 0.5f;
             }
-            if (AetherItems.ticks % 200 == 0 && player.health < Aether.maxHealth && ((inv.slots[3] != null && inv.slots[3].itemId == AetherItems.RegenerationStone.id) || (inv.slots[7] != null && inv.slots[7].itemId == AetherItems.RegenerationStone.id))) {
+            if (AetherItems.ticks % 200 == 0 && player.health < Aether.getPlayerHandler(player).maxHealth && ((inv.slots[3] != null && inv.slots[3].itemId == AetherItems.RegenerationStone.id) || (inv.slots[7] != null && inv.slots[7].itemId == AetherItems.RegenerationStone.id))) {
                 player.addHealth(1);
             }
             ++AetherItems.ticks;

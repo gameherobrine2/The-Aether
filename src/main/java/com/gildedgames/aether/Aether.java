@@ -3,6 +3,7 @@ package com.gildedgames.aether;
 import com.gildedgames.aether.entity.boss.EntitySlider;
 import com.gildedgames.aether.inventory.InventoryAether;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.player.AetherPlayerHandler;
 import com.gildedgames.aether.registry.AetherItems;
 
 import net.minecraft.achievement.Achievement;
@@ -14,6 +15,7 @@ import net.modificationstation.stationapi.api.mod.entrypoint.EventBusPolicy;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.registry.ModID;
 import net.modificationstation.stationapi.api.util.Null;
+import net.modificationstation.stationapi.impl.entity.player.PlayerAPI;
 
 @Entrypoint(eventBus = @EventBusPolicy(registerInstance = false, registerStatic = false))
 public class Aether {
@@ -23,9 +25,12 @@ public class Aether {
     public static Identifier of(String id) {
         return Identifier.of(MODID, id);
     }
-    
-    public static InventoryAether inv;
-    public static int maxHealth = 20;
+    public static AetherPlayerHandler getPlayerHandler() {
+    	return getPlayerHandler(MinecraftClientAccessor.getMCinstance().player);
+    }
+    public static AetherPlayerHandler getPlayerHandler(PlayerBase player) {
+    	return (AetherPlayerHandler) PlayerAPI.getPlayerHandler(player, com.gildedgames.aether.player.AetherPlayerHandler.class);
+    }
 	public static EntityBase currentBoss;
 	public static void giveAchievement(final Achievement a) { 
         giveAchievement(a, MinecraftClientAccessor.getMCinstance().player);
@@ -38,7 +43,7 @@ public class Aether {
         p.incrementStat(a);
     }
     public static boolean invisible(final PlayerBase player) {
-        return (!player.handSwinging && inv.slots[1] != null && inv.slots[1].itemId == AetherItems.InvisibilityCloak.id);
+        return (!player.handSwinging && getPlayerHandler(player).inv.slots[1] != null && getPlayerHandler(player).inv.slots[1].itemId == AetherItems.InvisibilityCloak.id);
     }
 	public static int getCurrentDimension() {
         final PlayerBase player = MinecraftClientAccessor.getMCinstance().player;

@@ -22,15 +22,15 @@ import net.minecraft.util.io.NBTIO;
 public class PlayerBaseMixin {
 	@Inject(method = "remove", at = @At(value = "TAIL"))
     private void setEntityDead(CallbackInfo ci) {
-		Aether.inv.dropAllItems();
+		Aether.getPlayerHandler(PlayerBase.class.cast(this)).inv.dropAllItems();
 		this.writeCustomData(new InventoryAether((PlayerBase)(Object)this));
     }
 	
 	private void writeCustomData(final InventoryAether inv) {
         final CompoundTag customData = new CompoundTag();
-        Aether.inv = inv;
+        Aether.getPlayerHandler(PlayerBase.class.cast(this)).inv = inv;
         PlayerBase player = (PlayerBase)(Object)this;
-        customData.put("MaxHealth", (byte)Aether.maxHealth);
+        customData.put("MaxHealth", (byte)Aether.getPlayerHandler(PlayerBase.class.cast(this)).maxHealth);
         customData.put("Inventory",inv.writeToNBT(new ListTag()));
         try {
             final File file = new File(((DimesnionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
