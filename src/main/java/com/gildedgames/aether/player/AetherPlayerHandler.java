@@ -54,6 +54,19 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
 		
     }
 	@Override
+	public boolean heal(final int i) {
+        if (this.player.health <= 0) {
+            return false;
+        }
+        final AbstractClientPlayer player = (AbstractClientPlayer) this.player;
+        player.health += i;
+        if (this.player.health > this.maxHealth) {
+            this.player.health = this.maxHealth;
+        }
+        this.player.field_1613 = this.player.field_1009 / 2;
+        return true;
+    }
+	@Override
 	public boolean readEntityBaseFromNBT(CompoundTag tag) {
 		CompoundTag customData = new CompoundTag();
         try {
