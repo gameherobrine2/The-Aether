@@ -18,6 +18,7 @@
   "client": [
 	"PlayerInventoryGuiMixin",
 	"ScreenBaseAccessor",
+	"MinecraftMixin",
 	"MainMenuMixin",
 	"MainMenuAccessor",
 	"ContainerBaseAccessor",
