@@ -110,7 +110,7 @@ public class AetherLevelSource implements LevelSource {
                                 tiles[j2] = (byte) l2;
                                 j2 += c;
                                 d15 += d16;
-                            }
+                            } 
                             d10 += d12;
                             d11 += d13;
                         }
@@ -294,12 +294,12 @@ public class AetherLevelSource implements LevelSource {
             final int z = l + this.random.nextInt(16);
             new AetherGenMinable(AetherBlocks.ZANITE_ORE.id, 8).generate(this.level, this.random, x, y, z);
         }
-        /*for (int n = 0; n < 8; ++n) {
+        for (int n = 0; n < 8; ++n) {
             final int x = k + this.random.nextInt(16);
             final int y = this.random.nextInt(32);
             final int z = l + this.random.nextInt(16);
-            new AetherGenMinable(AetherBlocks.GravititeOre.id, 7).generate(this.level, this.random, x, y, z);
-        }*/
+            new AetherGenMinable(AetherBlocks.GRAVITITE_ORE.id, 7).generate(this.level, this.random, x, y, z);
+        }
         if (this.random.nextInt(50) == 0) {
             final int x2 = k + this.random.nextInt(16);
             final int y2 = this.random.nextInt(32) + 96;

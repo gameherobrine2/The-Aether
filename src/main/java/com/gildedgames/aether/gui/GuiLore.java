@@ -87,7 +87,7 @@ public class GuiLore extends ContainerBase {
         this.minecraft.textureManager.bindTexture(i);
         final int j = (this.width - this.containerWidth) / 2;
         final int k = (this.height - this.containerHeight) / 2;
-        this.blit(j, k, 0, 0, this.containerWidth, this.containerHeight);
+        this.blit(j, k, 0, 0, this.containerWidth, this.containerHeight); 
     }
     
     static {

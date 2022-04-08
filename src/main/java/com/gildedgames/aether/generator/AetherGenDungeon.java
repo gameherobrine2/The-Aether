@@ -196,58 +196,58 @@ public class AetherGenDungeon extends Structure {
     }
     
     private ItemInstance getGoldLoot(final Random random) {
-        final int item = random.nextInt(8); //TODO: fix after adding items
+        final int item = random.nextInt(8);
         switch (item) {
             case 0: {
-                //return new ItemInstance(AetherItems.IronBubble);
+                return new ItemInstance(AetherItems.IronBubble);
             }
             case 1: {
-                //return new ItemInstance(AetherItems.VampireBlade);
+                return new ItemInstance(AetherItems.VampireBlade);
             }
             case 2: {
-                //return new ItemInstance(AetherItems.PigSlayer);
+                return new ItemInstance(AetherItems.PigSlayer);
             }
             case 3: {
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.PhoenixHelm);
+                    return new ItemInstance(AetherItems.PhoenixHelm);
                 }
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.PhoenixLegs);
+                    return new ItemInstance(AetherItems.PhoenixLegs);
                 }
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.PhoenixBody);
+                    return new ItemInstance(AetherItems.PhoenixBody);
                 }
                 break;
             }
             case 4: {
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.PhoenixBoots);
+                    return new ItemInstance(AetherItems.PhoenixBoots);
                 }
-                //return new ItemInstance(AetherItems.PhoenixGlove);
+                return new ItemInstance(AetherItems.PhoenixGlove);
             }
             case 5: {
-                //return new ItemInstance(AetherItems.LifeShard);
+                return new ItemInstance(AetherItems.LifeShard);
             }
             case 6: {
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.GravititeHelmet);
+                    return new ItemInstance(AetherItems.GravititeHelmet);
                 }
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.GravititePlatelegs);
+                    return new ItemInstance(AetherItems.GravititePlatelegs);
                 }
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.GravititeBodyplate);
+                    return new ItemInstance(AetherItems.GravititeBodyplate);
                 }
                 break;
             }
             case 7: {
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.GravititeBoots);
+                    return new ItemInstance(AetherItems.GravititeBoots);
                 }
-                //return new ItemInstance(AetherItems.GravititeGlove);
+                return new ItemInstance(AetherItems.GravititeGlove);
             }
         }
-        return null;
-        //return new ItemInstance(AetherItems.ObsidianBody);
+        //return null;
+        return new ItemInstance(AetherItems.ObsidianBody);
     }
 }

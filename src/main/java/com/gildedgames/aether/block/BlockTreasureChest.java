@@ -113,7 +113,7 @@ public class BlockTreasureChest extends TemplateBlockWithEntity {
             level.setTileEntity(x, y, z, chest);
             return true;
         }
-        return false; //TODO: fix all stuff here(too lazy to do it now)
+        return false; //TODO: fix all stuff here(too lazy to do it now) 
     	//return true;
     }
     

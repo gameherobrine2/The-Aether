@@ -75,10 +75,26 @@ public class RecipeListener {
 	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.YellowCape, 1), new Object[] { "XX", "XX", "XX", 'X', new ItemInstance(BlockBase.WOOL, 1, 4) });
 	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.CloudParachute), new Object[] { "CC", "CC", 'C', new ItemInstance(AetherBlocks.AERCLOUD, 1, 0) });
 	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.CloudParachuteGold), new Object[] { "CC", "CC", 'C', new ItemInstance(AetherBlocks.AERCLOUD, 1, 2) });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.DartShooter, 1), new Object[] { "X", "X", "Y", 'X', AetherBlocks.SKYROOT_PLANKS, 'Y', AetherItems.Zanite });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.CloudParachute, 1), new Object[] { "UU", "UU", 'U', new ItemInstance(AetherBlocks.AERCLOUD, 0) });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.CloudParachuteGold, 1), new Object[] { "UU", "UU", 'U', new ItemInstance(AetherBlocks.AERCLOUD, 2) });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(ItemBase.saddle, 1), new Object[] { "XXX", "XZX", 'X', ItemBase.leather, 'Z', ItemBase.string });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.NatureStaff, 1), new Object[] { "Y", "X", 'X', AetherItems.Stick, 'Y', AetherItems.Zanite });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.GravititeHelmet, 1), new Object[] { "XXX", "X X", 'X', AetherBlocks.ENCHANTED_GRAVITITE });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.GravititeBodyplate, 1), new Object[] { "X X", "XXX", "XXX", 'X', AetherBlocks.ENCHANTED_GRAVITITE });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.GravititePlatelegs, 1), new Object[] { "XXX", "X X", "X X", 'X', AetherBlocks.ENCHANTED_GRAVITITE });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.GravititeBoots, 1), new Object[] { "X X", "X X", 'X', AetherBlocks.ENCHANTED_GRAVITITE });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.ZaniteHelmet, 1), new Object[] { "XXX", "X X", 'X', AetherItems.Zanite });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.ZaniteChestplate, 1), new Object[] { "X X", "XXX", "XXX", 'X', AetherItems.Zanite });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.ZaniteLeggings, 1), new Object[] { "XXX", "X X", "X X", 'X', AetherItems.Zanite });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.ZaniteBoots, 1), new Object[] { "X X", "X X", 'X', AetherItems.Zanite });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.CloudParachute), new Object[] { "CC", "CC", 'C', new ItemInstance(AetherBlocks.AERCLOUD, 1, 0) });
+	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.CloudParachuteGold), new Object[] { "CC", "CC", 'C', new ItemInstance(AetherBlocks.AERCLOUD, 1, 2) });
 	 }
 	 private void registerShapelessRecipes() {
 		 CraftingRegistry.addShapelessRecipe(new ItemInstance(AetherBlocks.SKYROOT_PLANKS,4), new ItemInstance(AetherBlocks.LOG));
 		 CraftingRegistry.addShapelessRecipe(new ItemInstance(AetherItems.DartShooter, 1, 1), new Object[] { new ItemInstance(AetherItems.DartShooter, 1, 0), AetherItems.AechorPetal });
 	     CraftingRegistry.addShapelessRecipe(new ItemInstance(AetherItems.Zanite, 4), new Object[] { AetherBlocks.ZANITE_BLOCK });
+	     CraftingRegistry.addShapelessRecipe(new ItemInstance(ItemBase.dyePowder, 2, 5), new Object[] { AetherBlocks.PURPLE_FLOWER });
 	 }
 }

@@ -34,7 +34,7 @@ public class ItemLoreBook extends TemplateItemBase {
     @Override
     public ItemInstance use(final ItemInstance item, final Level level, final PlayerBase player) {
     	MinecraftClientAccessor.getMCinstance().openScreen(new GuiLore(player.inventory, item.getDamage()));
-        //ModLoader.OpenGUI(player, (ScreenBase)new GuiLore(player.inventory, item.getDamage())); TODO
+        //TODO ModLoader.OpenGUI(player, (ScreenBase)new GuiLore(player.inventory, item.getDamage()));
         return item;
     }
     

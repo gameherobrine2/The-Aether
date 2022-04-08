@@ -16,7 +16,7 @@ public class AetherACPage extends AchievementPage {
     }
     @Override
     public int getBackgroundTexture(final Random random, final int i, final int j, int randomizedRow, int currentTexture) {
-        int k = BlockBase.SAND.texture;
+        int k = BlockBase.SAND.texture; 
         final int l = randomizedRow;
         if (l > 37 || j == 35) {
         	k = TextureListener.sprAercloud;

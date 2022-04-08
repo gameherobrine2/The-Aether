@@ -243,8 +243,8 @@ public class TileEntityEnchanter extends TileEntityBase implements InventoryBase
         addEnchantment(new ItemInstance(ItemBase.diamondHoe, 1), new ItemInstance(ItemBase.diamondHoe, 1), 6000);
         addEnchantment(new ItemInstance(ItemBase.fishingRod, 1), new ItemInstance(ItemBase.fishingRod, 1), 500);
         addEnchantment(new ItemInstance(AetherBlocks.QUICKSOIL, 1), new ItemInstance(AetherBlocks.QUICKSOIL_GLASS, 1), 250);
-        //addEnchantment(new ItemInstance(AetherBlocks.HOLYSTONE, 1), new ItemInstance(AetherItems.HealingStone, 1), 750);
-        /*addEnchantment(new ItemInstance(AetherItems.GravititeHelmet, 1), new ItemInstance(AetherItems.GravititeHelmet, 1), 12000);
+        addEnchantment(new ItemInstance(AetherBlocks.HOLYSTONE, 1), new ItemInstance(AetherItems.HealingStone, 1), 750);
+        addEnchantment(new ItemInstance(AetherItems.GravititeHelmet, 1), new ItemInstance(AetherItems.GravititeHelmet, 1), 12000);
         addEnchantment(new ItemInstance(AetherItems.GravititeBodyplate, 1), new ItemInstance(AetherItems.GravititeBodyplate, 1), 20000);
         addEnchantment(new ItemInstance(AetherItems.GravititePlatelegs, 1), new ItemInstance(AetherItems.GravititePlatelegs, 1), 15000);
         addEnchantment(new ItemInstance(AetherItems.GravititeBoots, 1), new ItemInstance(AetherItems.GravititeBoots, 1), 12000);
@@ -253,13 +253,13 @@ public class TileEntityEnchanter extends TileEntityBase implements InventoryBase
         addEnchantment(new ItemInstance(AetherItems.ZaniteChestplate, 1), new ItemInstance(AetherItems.ZaniteChestplate, 1), 10000);
         addEnchantment(new ItemInstance(AetherItems.ZaniteLeggings, 1), new ItemInstance(AetherItems.ZaniteLeggings, 1), 8000);
         addEnchantment(new ItemInstance(AetherItems.ZaniteBoots, 1), new ItemInstance(AetherItems.ZaniteBoots, 1), 5000);
-        addEnchantment(new ItemInstance(AetherItems.ZaniteGlove, 1), new ItemInstance(AetherItems.ZaniteGlove, 1), 4000);*/ //TODO: fix2
+        addEnchantment(new ItemInstance(AetherItems.ZaniteGlove, 1), new ItemInstance(AetherItems.ZaniteGlove, 1), 4000);
         addEnchantment(new ItemInstance(AetherItems.ZaniteRing, 1), new ItemInstance(AetherItems.ZaniteRing, 1), 2000);
         addEnchantment(new ItemInstance(AetherItems.ZanitePendant, 1), new ItemInstance(AetherItems.ZanitePendant, 1), 2000);
-        /* addEnchantment(new ItemInstance(AetherItems.LeatherGlove, 1), new ItemInstance(AetherItems.LeatherGlove, 1), 300);
+        addEnchantment(new ItemInstance(AetherItems.LeatherGlove, 1), new ItemInstance(AetherItems.LeatherGlove, 1), 300);
         addEnchantment(new ItemInstance(AetherItems.IronGlove, 1), new ItemInstance(AetherItems.IronGlove, 1), 1200);
         addEnchantment(new ItemInstance(AetherItems.GoldGlove, 1), new ItemInstance(AetherItems.GoldGlove, 1), 800);
         addEnchantment(new ItemInstance(AetherItems.DiamondGlove, 1), new ItemInstance(AetherItems.DiamondGlove, 1), 4000);
-        addEnchantment(new ItemInstance(AetherItems.DartShooter, 1, 0), new ItemInstance(AetherItems.DartShooter, 1, 2), 2000); */
+        addEnchantment(new ItemInstance(AetherItems.DartShooter, 1, 0), new ItemInstance(AetherItems.DartShooter, 1, 2), 2000);
     }
 }

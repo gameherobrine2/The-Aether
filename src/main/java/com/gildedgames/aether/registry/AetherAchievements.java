@@ -35,9 +35,9 @@ public class AetherAchievements {
         AetherAchievements.incubator = new Achievement(805, "incubator", 2, -1, AetherBlocks.INCUBATOR, AetherAchievements.enterAether).register();
         AetherAchievements.blueCloud = new Achievement(806, "blueCloud", -2, -1, new ItemInstance(AetherBlocks.AERCLOUD, 1, 1), AetherAchievements.enterAether).register();
         AetherAchievements.flyingPig = new Achievement(807, "flyingPig", -2, 1, ItemBase.saddle, AetherAchievements.enterAether).register();
-        AetherAchievements.gravTools = new Achievement(808, "gravTools", -1, -3, /*TODO AetherItems.PickGravitite*/ AetherItems.IronRing, AetherAchievements.enterAether).register();
+        AetherAchievements.gravTools = new Achievement(808, "gravTools", -1, -3, AetherItems.PickGravitite, AetherAchievements.enterAether).register();
         AetherAchievements.lore = new Achievement(809, "lore", 1, -3, ItemBase.book, AetherAchievements.enterAether).register();
-        AetherAchievements.loreception = new Achievement(810, "loreception", 1, -5, ItemBase.book, AetherAchievements.lore).register();
+        AetherAchievements.loreception = new Achievement(810, "loreception", 1, -5, ItemBase.book, AetherAchievements.lore).register(); 
         event.achievements.add(AetherAchievements.enterAether);/*, "Hostile Paradise", "Ascend to the Aether");*/
         event.achievements.add(AetherAchievements.defeatBronze);/*, "Like a Bossaru!", "Defeat the bronze boss");*/
         event.achievements.add(AetherAchievements.defeatSilver);/*, "Dethroned", "Defeat the silver boss");*/

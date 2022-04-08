@@ -14,7 +14,6 @@ import com.gildedgames.aether.registry.AetherItems;
 import net.minecraft.level.Level;
 
 public class AetherGenDungeonSilver extends AetherGenBuildings {
-	//TODO: fix after adding more stuff
 	private int baseMeta1;
     private int baseMeta2;
     private int lockedBlockID1;
@@ -350,68 +349,68 @@ public class AetherGenDungeonSilver extends AetherGenBuildings {
     private ItemInstance getNormalLoot(final Random random) {
         final int item = random.nextInt(15); 
         switch (item) {
-            case 0: { //TODO: add items
-                //return new ItemInstance(AetherItems.PickZanite);
+            case 0: {
+                return new ItemInstance(AetherItems.PickZanite);
             }
             case 1: {
-                //return new ItemInstance(AetherItems.Bucket, 1, 2);
+                return new ItemInstance(AetherItems.Bucket, 1, 2);
             }
             case 2: {
-                //return new ItemInstance(AetherItems.DartShooter);
+                return new ItemInstance(AetherItems.DartShooter);
             }
             case 3: {
-                //return new ItemInstance(AetherItems.MoaEgg, 1, 0);
+                return new ItemInstance(AetherItems.MoaEgg, 1, 0);
             }
             case 4: {
                 return new ItemInstance(AetherItems.AmbrosiumShard, random.nextInt(10) + 1);
             }
             case 5: {
-                //return new ItemInstance(AetherItems.Dart, random.nextInt(5) + 1, 0);
+                return new ItemInstance(AetherItems.Dart, random.nextInt(5) + 1, 0);
             }
             case 6: {
-                //return new ItemInstance(AetherItems.Dart, random.nextInt(3) + 1, 1);
+                return new ItemInstance(AetherItems.Dart, random.nextInt(3) + 1, 1);
             }
             case 7: {
-                //return new ItemInstance(AetherItems.Dart, random.nextInt(3) + 1, 2);
+                return new ItemInstance(AetherItems.Dart, random.nextInt(3) + 1, 2);
             }
             case 8: {
                 if (random.nextInt(20) == 0) {
-                    //return new ItemInstance(AetherItems.BlueMusicDisk);
+                    return new ItemInstance(AetherItems.BlueMusicDisk);
                 }
                 break;
             }
             case 9: {
-                //return new ItemInstance(AetherItems.Bucket);
+                return new ItemInstance(AetherItems.Bucket);
             }
             case 10: {
                 if (random.nextInt(10) == 0) {
-                    //return new ItemInstance(ItemBase.byId[ItemBase.record13.id + random.nextInt(2)]);
+                    return new ItemInstance(ItemBase.byId[ItemBase.record13.id + random.nextInt(2)]);
                 }
                 break;
             }
             case 11: {
                 if (random.nextInt(2) == 0) {
-                    //return new ItemInstance(AetherItems.ZaniteBoots);
+                    return new ItemInstance(AetherItems.ZaniteBoots);
                 }
                 if (random.nextInt(2) == 0) {
-                    //return new ItemInstance(AetherItems.ZaniteHelmet);
+                    return new ItemInstance(AetherItems.ZaniteHelmet);
                 }
                 if (random.nextInt(2) == 0) {
-                    //return new ItemInstance(AetherItems.ZaniteLeggings);
+                    return new ItemInstance(AetherItems.ZaniteLeggings);
                 }
                 if (random.nextInt(2) == 0) {
-                    //return new ItemInstance(AetherItems.ZaniteChestplate);
+                    return new ItemInstance(AetherItems.ZaniteChestplate);
                 }
                 break;
             }
             case 12: {
                 if (random.nextInt(4) == 0) {
-                   // return new ItemInstance(AetherItems.IronPendant);
+                    return new ItemInstance(AetherItems.IronPendant);
                 }
             }
             case 13: {
                 if (random.nextInt(10) == 0) {
-                   // return new ItemInstance(AetherItems.GoldPendant);
+                    return new ItemInstance(AetherItems.GoldPendant);
                 }
             }
             case 14: {
@@ -428,55 +427,54 @@ public class AetherGenDungeonSilver extends AetherGenBuildings {
         final int item = random.nextInt(9);
         switch (item) {
             case 0: {
-                //return new ItemInstance(AetherItems.GummieSwet, random.nextInt(16));
+                return new ItemInstance(AetherItems.GummieSwet, random.nextInt(16));
             }
             case 1: {
-                //return new ItemInstance(AetherItems.SwordLightning);
+                return new ItemInstance(AetherItems.SwordLightning);
             }
             case 2: {
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.AxeValkyrie);
+                    return new ItemInstance(AetherItems.AxeValkyrie);
                 }
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.ShovelValkyrie);
+                    return new ItemInstance(AetherItems.ShovelValkyrie);
                 }
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.PickValkyrie);
+                    return new ItemInstance(AetherItems.PickValkyrie);
                 }
                 break;
             }
             case 3: {
-                //return new ItemInstance(AetherItems.SwordHoly);
+                return new ItemInstance(AetherItems.SwordHoly);
             }
             case 4: {
-                //return new ItemInstance(AetherItems.GoldenFeather);
+                return new ItemInstance(AetherItems.GoldenFeather);
             }
             case 5: {
-                //return new ItemInstance(AetherItems.RegenerationStone);
+                return new ItemInstance(AetherItems.RegenerationStone);
             }
             case 6: {
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.NeptuneHelmet);
+                    return new ItemInstance(AetherItems.NeptuneHelmet);
                 }
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.NeptuneLeggings);
+                    return new ItemInstance(AetherItems.NeptuneLeggings);
                 }
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.NeptuneChestplate);
+                    return new ItemInstance(AetherItems.NeptuneChestplate);
                 }
                 break;
             }
             case 7: {
                 if (random.nextBoolean()) {
-                    //return new ItemInstance(AetherItems.NeptuneBoots);
+                    return new ItemInstance(AetherItems.NeptuneBoots);
                 }
-                //return new ItemInstance(AetherItems.NeptuneGlove);
+                return new ItemInstance(AetherItems.NeptuneGlove);
             }
             case 8: {
-                //return new ItemInstance(AetherItems.InvisibilityCloak);
+                return new ItemInstance(AetherItems.InvisibilityCloak);
             }
         }
-        return null; //TODO: add items too
-        //return new ItemInstance(AetherItems.ZanitePendant);
+        return new ItemInstance(AetherItems.ZanitePendant);
     }
 }
