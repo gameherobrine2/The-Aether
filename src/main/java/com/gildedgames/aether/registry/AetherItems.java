@@ -6,6 +6,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import com.gildedgames.aether.mixin.EntityBaseAccessor;
 import com.gildedgames.aether.mixin.LivingAccessor;
+import com.gildedgames.aether.utils.EnumElement;
 
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemBase;
@@ -26,30 +27,38 @@ import com.gildedgames.aether.item.ItemAetherRecord;
 import com.gildedgames.aether.item.ItemAmbrosium;
 import com.gildedgames.aether.item.ItemColouredArmor;
 import com.gildedgames.aether.item.ItemCloudParachute;
+import com.gildedgames.aether.item.ItemCloudStaff;
 import com.gildedgames.aether.item.ItemDart;
 import com.gildedgames.aether.item.ItemDartShooter;
 import com.gildedgames.aether.item.ItemGravititeAxe;
 import com.gildedgames.aether.item.ItemGravititePickaxe;
 import com.gildedgames.aether.item.ItemGravititeSpade;
+import com.gildedgames.aether.item.ItemGummieSwet;
 import com.gildedgames.aether.item.ItemHolystoneAxe;
 import com.gildedgames.aether.item.ItemHolystonePickaxe;
 import com.gildedgames.aether.item.ItemHolystoneSpade;
 import com.gildedgames.aether.item.ItemLance;
 import com.gildedgames.aether.item.ItemLifeShard;
+import com.gildedgames.aether.item.ItemLightningKnife;
 import com.gildedgames.aether.item.ItemLoreBook;
 import com.gildedgames.aether.item.ItemMoaEgg;
 import com.gildedgames.aether.item.ItemMoreArmor;
+import com.gildedgames.aether.item.ItemNotchHammer;
+import com.gildedgames.aether.item.ItemPhoenixBow;
+import com.gildedgames.aether.item.ItemPigSlayer;
 import com.gildedgames.aether.item.ItemSkyrootAxe;
 import com.gildedgames.aether.item.ItemSkyrootBucket;
 import com.gildedgames.aether.item.ItemSkyrootPickaxe;
 import com.gildedgames.aether.item.ItemSkyrootSpade;
 import com.gildedgames.aether.item.ItemSkyrootSword;
+import com.gildedgames.aether.item.ItemSwordElemental;
 import com.gildedgames.aether.item.ItemSwordGravitite;
 import com.gildedgames.aether.item.ItemSwordHolystone;
 import com.gildedgames.aether.item.ItemSwordZanite;
 import com.gildedgames.aether.item.ItemValkyrieAxe;
 import com.gildedgames.aether.item.ItemValkyriePickaxe;
 import com.gildedgames.aether.item.ItemValkyrieSpade;
+import com.gildedgames.aether.item.ItemVampireBlade;
 import com.gildedgames.aether.item.ItemZaniteAxe;
 import com.gildedgames.aether.item.ItemZanitePickaxe;
 import com.gildedgames.aether.item.ItemZaniteSpade;
@@ -73,7 +82,7 @@ public class AetherItems {
         AetherItems.ZanitePendant = new ItemMoreArmor(Identifier.of(MOD_ID, "zanite_pendant"), 0, "/assets/aether/stationapi/textures/armor/Accessories.png", 4, 7412456).setTranslationKey("ZanitePendant");
         AetherItems.IcePendant = new ItemMoreArmor(Identifier.of(MOD_ID, "ice_pendant"), 0, "/assets/aether/stationapi/textures/armor/Accessories.png", 4, 9823975).setTranslationKey("IcePendant");
         AetherItems.LoreBook = new ItemLoreBook(Identifier.of(MOD_ID, "lore_book")).setTexturePosition(59).setTranslationKey("LoreBook");
-        AetherItems.MoaEgg = new ItemMoaEgg(Identifier.of(MOD_ID, "moa_egg")).setTranslationKey("MoaEgg");
+        AetherItems.MoaEgg = new ItemMoaEgg(Identifier.of(MOD_ID, "moa_egg")).setTranslationKey("MoaEgg"); 
         AetherItems.AechorPetal = new ItemAether(Identifier.of(MOD_ID, "aechor_petal")).setTranslationKey("AechorPetal");
         AetherItems.GoldenAmber = new ItemAether(Identifier.of(MOD_ID, "golden_amber")).setTranslationKey("GoldenAmber");
         AetherItems.Dart = new ItemDart(Identifier.of(MOD_ID, "item_dart")).setHasSubItems(true).setTranslationKey("Dart");
@@ -144,12 +153,21 @@ public class AetherItems {
         AetherItems.NeptuneChestplate = new ItemColouredArmor(Identifier.of(MOD_ID, "item_neptune_body"), 3, "Neptune_1", 1, 2512127).setTexturePosition(17).setTranslationKey("NeptuneBody");
         AetherItems.NeptuneLeggings = new ItemColouredArmor(Identifier.of(MOD_ID, "item_neptune_legs"), 3, "Neptune_2", 2, 2512127).setTexturePosition(33).setTranslationKey("NeptuneLegs");
         AetherItems.NeptuneBoots = new ItemColouredArmor(Identifier.of(MOD_ID, "item_neptune_boots"), 3, "Neptune_1", 3, 2512127).setTexturePosition(49).setTranslationKey("NeptuneBoots");
-        /*AetherItems.PigSlayer = new ItemPigSlayer(mod_Aether.idItemPigSlayer).setTexturePosition(this.override("PigSlayer.png")).setTranslationKey("PigSlayer");*/
         AetherItems.LifeShard = new ItemLifeShard(Identifier.of(MOD_ID, "item_life_shard")).setTranslationKey("LifeShard");
         AetherItems.GoldenFeather = new ItemMoreArmor(Identifier.of(MOD_ID, "item_golden_feather"), 0, 0, 7).setTranslationKey("GoldenFeather");
         AetherItems.Lance = new ItemLance(Identifier.of(MOD_ID, "item_lance"), mat).setTranslationKey("Lance");
         AetherItems.RepShield = new ItemMoreArmor(Identifier.of(MOD_ID, "item_rep_shield"), 0, 0, 6, 16777215).setTranslationKey("RepShield").setDurability(512);
-        
+        AetherItems.PigSlayer = new ItemPigSlayer(Identifier.of(MOD_ID, "item_pig_slayer")).setTranslationKey("PigSlayer");
+        AetherItems.VampireBlade = new ItemVampireBlade(Identifier.of(MOD_ID, "item_vampire_blade")).setTranslationKey("VampireBlade");
+        AetherItems.NatureStaff = new ItemAether(Identifier.of(MOD_ID, "item_rep_shield")).setMaxStackSize(1).setTranslationKey("NatureStaff");
+        AetherItems.SwordFire = new ItemSwordElemental(Identifier.of(MOD_ID, "item_fire_sword"), EnumElement.Fire, -20609).setTranslationKey("SwordFire");
+        AetherItems.SwordHoly = new ItemSwordElemental(Identifier.of(MOD_ID, "item_holy_sword"), EnumElement.Holy, -81).setTranslationKey("SwordHoly");
+        AetherItems.SwordLightning = new ItemSwordElemental(Identifier.of(MOD_ID, "item_lightning_sword"), EnumElement.Lightning, -5242881).setTranslationKey("SwordLightning");
+        AetherItems.LightningKnife = new ItemLightningKnife(Identifier.of(MOD_ID, "item_lightning_knife")).setTranslationKey("LightningKnife");
+        AetherItems.GummieSwet = new ItemGummieSwet(Identifier.of(MOD_ID, "item_gummie_swet")).setTranslationKey("GummieSwet");
+        AetherItems.HammerNotch = new ItemNotchHammer(Identifier.of(MOD_ID, "item_notch_hammer")).setTranslationKey("HammerNotch");
+        AetherItems.CloudStaff = new ItemCloudStaff(Identifier.of(MOD_ID, "item_cloud_staff")).setTranslationKey("CloudStaff");
+        AetherItems.PhoenixBow = new ItemPhoenixBow(Identifier.of(MOD_ID, "item_phoenix_bow")).setTranslationKey("PhoenixBow");
     }
     
     public static void tick(final Minecraft game) {

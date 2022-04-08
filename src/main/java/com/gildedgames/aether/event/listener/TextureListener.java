@@ -143,7 +143,18 @@ public class TextureListener {
         ((ItemLifeShard)AetherItems.LifeShard).setTexture(Identifier.of(MOD_ID, "items/LifeShard"));
         ((ItemMoreArmor)AetherItems.GoldenFeather).setTexture(Identifier.of(MOD_ID, "items/GoldenFeather"));
         ((ItemLance)AetherItems.Lance).setTexture(Identifier.of(MOD_ID, "items/Lance"));
-        ((ItemMoreArmor)AetherItems.RepShield).setTexture(Identifier.of(MOD_ID, "items/RepulsionShield"));
+        ((ItemMoreArmor)AetherItems.RepShield).setTexture(Identifier.of(MOD_ID, "items/RepulsionShield")); 
+        ((ItemPigSlayer)AetherItems.PigSlayer).setTexture(Identifier.of(MOD_ID, "items/PigSlayer"));
+        ((ItemVampireBlade)AetherItems.VampireBlade).setTexture(Identifier.of(MOD_ID, "items/VampireBlade"));
+        ((ItemAether)AetherItems.NatureStaff).setTexture(Identifier.of(MOD_ID, "items/NatureStaff"));
+        ((ItemSwordElemental)AetherItems.SwordFire).setTexture(Identifier.of(MOD_ID, "items/ElementalSword"));
+        ((ItemSwordElemental)AetherItems.SwordHoly).setTexture(Identifier.of(MOD_ID, "items/ElementalSword"));
+        ((ItemSwordElemental)AetherItems.SwordLightning).setTexture(Identifier.of(MOD_ID, "items/ElementalSword"));
+        ((ItemLightningKnife)AetherItems.LightningKnife).setTexture(Identifier.of(MOD_ID, "items/LightningKnife"));
+        ((ItemGummieSwet)AetherItems.GummieSwet).setTexture(Identifier.of(MOD_ID, "items/GummieSwet"));
+        ((ItemNotchHammer)AetherItems.HammerNotch).setTexture(Identifier.of(MOD_ID, "items/HammerNotch"));
+        ((ItemCloudStaff)AetherItems.CloudStaff).setTexture(Identifier.of(MOD_ID, "items/CloudStaff"));
+        ((ItemPhoenixBow)AetherItems.PhoenixBow).setTexture(Identifier.of(MOD_ID, "items/PhoenixBow"));
 	}
 	//this is Alias code but i changed public static booleans to ints and renamed them
 	public static int sprIncubatorSide, sprIncubatorTop,sprPortal;

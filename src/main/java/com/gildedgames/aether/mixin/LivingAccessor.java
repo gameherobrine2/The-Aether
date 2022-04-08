@@ -21,6 +21,9 @@ public interface LivingAccessor{
 	 void set1029(float f);
 	 @Accessor("field_1060")
 	 void set1060(float f);
+	 
+	 @Invoker("getDrops")
+	 void invokeGetDrops();
 	 //@Invoker("setSize")
 	 //void setSize(float f, float f1);
 }
