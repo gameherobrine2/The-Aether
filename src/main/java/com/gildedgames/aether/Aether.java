@@ -25,8 +25,9 @@ public class Aether {
     public static Identifier of(String id) {
         return Identifier.of(MODID, id);
     }
+    
     public static AetherPlayerHandler getPlayerHandler() {
-    	return getPlayerHandler(MinecraftClientAccessor.getMCinstance().player);
+    	return getPlayerHandler((PlayerBase)MinecraftClientAccessor.getMCinstance().player);
     }
     public static AetherPlayerHandler getPlayerHandler(PlayerBase player) {
     	return (AetherPlayerHandler) PlayerAPI.getPlayerHandler(player, com.gildedgames.aether.player.AetherPlayerHandler.class);
