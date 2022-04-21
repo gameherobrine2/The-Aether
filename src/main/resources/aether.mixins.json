@@ -8,7 +8,7 @@
 	"LivingAccessor",
 	"MinecraftClientAccessor",
 	"PlayerBaseAccessor",
-	"DimesnionFileAccessor",
+	"DimensionFileAccessor",
 	"LevelAccessor",
 	"PlayerBaseMixin",
 	"ParticleBaseAccessor"
