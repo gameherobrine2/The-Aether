@@ -33,7 +33,7 @@ public class PlayerBaseMixin {
         customData.put("MaxHealth", (byte)Aether.getPlayerHandler(PlayerBase.class.cast(this)).maxHealth);
         customData.put("Inventory",inv.writeToNBT(new ListTag()));
         try {
-            final File file = new File(((DimesnionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
+            final File file = new File(((DimensionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
             NBTIO.writeGzipped(customData, (OutputStream)new FileOutputStream(file));
         }
         catch (IOException ioexception) {

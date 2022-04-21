@@ -13,6 +13,7 @@ import com.gildedgames.aether.entity.animal.EntityMoa;
 import com.gildedgames.aether.entity.animal.EntityPhyg;
 import com.gildedgames.aether.entity.animal.EntitySheepuff;
 import com.gildedgames.aether.entity.animal.EntitySwet;
+import com.gildedgames.aether.entity.animal.Whirly;
 import com.gildedgames.aether.entity.mobs.EntityAerwhale;
 import com.gildedgames.aether.entity.mobs.EntityCockatrice;
 import com.gildedgames.aether.entity.mobs.EntityZephyr;
@@ -26,7 +27,6 @@ public class Aether extends Biome {
         monsters.clear();
         creatures.clear();
         waterCreatures.clear();
-        //TODO: entities
         if (com.gildedgames.aether.Aether.raritySwet != 0) {
            this.creatures.add(new EntityEntry(EntitySwet.class, com.gildedgames.aether.Aether.raritySwet));
         }
@@ -55,7 +55,7 @@ public class Aether extends Biome {
             this.creatures.add(new EntityEntry(EntityFlyingCow.class, com.gildedgames.aether.Aether.rarityFlyingCow));
         }
         if (com.gildedgames.aether.Aether.rarityWhirlwind != 0) {
-            //this.creatures.add(new EntityEntry(Whirly.class, com.gildedgames.aether.Aether.rarityWhirlwind));
+            this.creatures.add(new EntityEntry(Whirly.class, com.gildedgames.aether.Aether.rarityWhirlwind));
         }
         if (com.gildedgames.aether.Aether.rarityAerbunny != 0) {
             this.creatures.add(new EntityEntry(EntityAerbunny.class, com.gildedgames.aether.Aether.rarityAerbunny));

@@ -30,7 +30,6 @@ public class PlayerRendererMixin {
 	@Inject(method = "render(Lnet/minecraft/entity/player/PlayerBase;DDDFF)V", at = @At(value = "TAIL"))
 	private void renderEntityCustom(PlayerBase entity, double x, double y, double z, float f, float f1,CallbackInfo ci) {
 		try {
-			//this.renderEnergyShield((PlayerBase)entity, x, y, z, f, f1);
 			this.renderEnergyShield((PlayerBase)entity, x, y, z, f, f1);
 			this.renderMisc((PlayerBase)entity, x, y, z, f, f1);
 		}catch(Exception e) {e.printStackTrace();}

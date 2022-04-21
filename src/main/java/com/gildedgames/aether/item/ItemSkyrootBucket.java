@@ -14,6 +14,7 @@ import net.minecraft.item.ItemInstance;
 import org.jetbrains.annotations.NotNull;
 
 import com.gildedgames.aether.effect.AetherPoison;
+import com.gildedgames.aether.entity.animal.EntityAechorPlant;
 import com.gildedgames.aether.entity.animal.EntityFlyingCow;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherItems;
@@ -79,8 +80,8 @@ public class ItemSkyrootBucket extends TemplateItemBase {
         final double d4 = 5.0;
         final Vec3f vec3d2 = vec3d.method_1301(f8 * d4, f9 * d4, f10 * d4);
         final HitResult movingobjectposition = level.method_161(vec3d, vec3d2, item.getDamage() == 0);
-        if (item.getDamage() == 2 && (MinecraftClientAccessor.getMCinstance().hitResult == null || MinecraftClientAccessor.getMCinstance().hitResult.field_1989 == null/* ||
-        		!(MinecraftClientAccessor.getMCinstance().hitResult.field_1989 instanceof EntityAechorPlant)*/)) { //TODO: fixafter adding entity
+        if (item.getDamage() == 2 && (MinecraftClientAccessor.getMCinstance().hitResult == null || MinecraftClientAccessor.getMCinstance().hitResult.field_1989 == null ||
+        		!(MinecraftClientAccessor.getMCinstance().hitResult.field_1989 instanceof EntityAechorPlant))) {
             if (AetherPoison.afflictPoison()) {
                 item.setDamage(0);
                 return item;

@@ -12,6 +12,7 @@ import static com.gildedgames.aether.Aether.MODID;
 import static net.modificationstation.stationapi.api.registry.Identifier.of;
 import com.gildedgames.aether.client.render.entity.RenderSlider;
 import com.gildedgames.aether.client.render.entity.RenderSwet;
+import com.gildedgames.aether.client.render.entity.RenderWhirly;
 import com.gildedgames.aether.client.render.entity.RenderZephyr;
 import com.gildedgames.aether.client.render.entity.RenderZephyrSnowball;
 import com.gildedgames.aether.client.render.model.ModelAechorPlant;
@@ -33,6 +34,7 @@ import com.gildedgames.aether.entity.animal.EntityMoa;
 import com.gildedgames.aether.entity.animal.EntityPhyg;
 import com.gildedgames.aether.entity.animal.EntitySheepuff;
 import com.gildedgames.aether.entity.animal.EntitySwet;
+import com.gildedgames.aether.entity.animal.Whirly;
 import com.gildedgames.aether.entity.boss.EntityFireMonster;
 import com.gildedgames.aether.entity.boss.EntitySlider;
 import com.gildedgames.aether.entity.boss.EntityValkyrie;
@@ -81,6 +83,8 @@ public class EntityRegistry {
     	 event.registry.register(of(MODID,"entity_phyg"),EntityPhyg::new);
     	 event.registry.register(of(MODID,"entity_swet"),EntitySwet::new);
     	 event.registry.register(of(MODID,"entity_cloud"),EntityMiniCloud::new);
+    	 event.registry.register(of(MODID,"entity_whirly"),Whirly::new);
+    	 event.registry.register(of(MODID,"entity_homeshot"),EntityHomeShot::new);	
     }
     
     @EventListener
@@ -112,5 +116,7 @@ public class EntityRegistry {
         event.register(EntityCloudParachute.class,"entity_parachute");
         event.register(EntityMiniCloud.class,"entity_cloud");
         event.register(EntityFlamingArrow.class,"entity_arrow");
+        event.register(Whirly.class, "entity_whirly");
+        event.register(EntityHomeShot.class,"entity_homeshot");
     }
 }

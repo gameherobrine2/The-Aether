@@ -80,7 +80,7 @@ public class BlockTreasureChest extends TemplateBlockWithEntity {
     
     @Override
     public boolean canPlaceAt(final Level level, final int x, final int y, final int z) {
-        return true; //TODO: change to false later(did it for debug now)
+        return false;
     }
     
     @Override

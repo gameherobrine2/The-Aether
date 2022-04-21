@@ -49,9 +49,9 @@ public class BlockAetherLog extends TemplateBlockBase implements MetaNamedBlockI
         }
         this.drop(level, x, y, z, stack);
         final ItemInstance itemstack = playerBase.inventory.getHeldItem();
-        //TODO: if (itemstack == null || (itemstack.itemId != AetherItems.AxeZanite.id && itemstack.itemId != AetherItems.AxeGravitite.id && meta >= 2)) {
-        //    return;
-        //}
+        if (itemstack == null || (itemstack.itemId != AetherItems.AxeZanite.id && itemstack.itemId != AetherItems.AxeGravitite.id && meta >= 2)) {
+            return;
+        }
         if (meta > 1 && BlockAetherLog.rand.nextBoolean()) {
             stack = new ItemInstance(AetherItems.GoldenAmber.id, 2 + BlockAetherLog.rand.nextInt(2), 0);
             this.drop(level, x, y, z, stack);

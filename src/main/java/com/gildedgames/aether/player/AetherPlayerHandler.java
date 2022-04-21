@@ -10,7 +10,7 @@ import java.io.OutputStream;
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.gui.container.ContainerAether;
 import com.gildedgames.aether.inventory.InventoryAether;
-import com.gildedgames.aether.mixin.DimesnionFileAccessor;
+import com.gildedgames.aether.mixin.DimensionFileAccessor;
 import com.gildedgames.aether.mixin.LevelAccessor;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherItems;
@@ -44,7 +44,7 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
     		customData.put("MaxHealth", (byte)this.maxHealth);
     		customData.put("Inventory", (AbstractTag)this.inv.writeToNBT(new ListTag()));
         
-        	final File file = new File(((DimesnionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
+        	final File file = new File(((DimensionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
             NBTIO.writeGzipped(customData, (OutputStream)new FileOutputStream(file));
         }
         catch (Exception ioexception) {
@@ -70,7 +70,7 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
 	public boolean readEntityBaseFromNBT(CompoundTag tag) {
 		CompoundTag customData = new CompoundTag();
         try {
-        	final File file = new File(((DimesnionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
+        	final File file = new File(((DimensionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
             customData = NBTIO.readGzipped((InputStream)new FileInputStream(file));
             
             this.maxHealth = customData.getByte("MaxHealth");
@@ -89,7 +89,7 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
 	private void readCustomData() {
     	CompoundTag customData = new CompoundTag();
         try {
-        	final File file = new File(((DimesnionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
+        	final File file = new File(((DimensionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
             customData = NBTIO.readGzipped((InputStream)new FileInputStream(file));
             
             this.maxHealth = customData.getByte("MaxHealth");
@@ -111,7 +111,7 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
         customData.put("MaxHealth", (byte)this.maxHealth);
         customData.put("Inventory",inv.writeToNBT(new ListTag()));
         try {
-            final File file = new File(((DimesnionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
+            final File file = new File(((DimensionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
             NBTIO.writeGzipped(customData, (OutputStream)new FileOutputStream(file));
         }
         catch (IOException ioexception) {

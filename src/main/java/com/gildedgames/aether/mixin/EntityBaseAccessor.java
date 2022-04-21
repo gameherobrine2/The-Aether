@@ -21,6 +21,10 @@ public interface EntityBaseAccessor{
      public boolean getImmunityToFire();
 	 
 	 /*SETTERS*/
+     @Accessor("")
+     void setHeight(float f);
+     @Accessor("width")
+     void setWidth(float f);
 	 @Accessor("fallDistance")
 	 void setFallDistance(float f);
  	 @Accessor("immuneToFire")

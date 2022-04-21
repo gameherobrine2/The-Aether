@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import net.minecraft.level.dimension.DimensionFile;
 
 @Mixin(DimensionFile.class)
-public interface DimesnionFileAccessor {
+public interface DimensionFileAccessor {
 	@Accessor("parentFolder")
 	public File getSaveFolder();
 }

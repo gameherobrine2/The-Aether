@@ -40,7 +40,7 @@ public class Aether {
         if (MinecraftClientAccessor.getMCinstance().statFileWriter.isAchievementUnlocked(a)) {
             return;
         }
-        MinecraftClientAccessor.getMCinstance().soundHelper.playSound(Aether.MODID+":aether.sound.other.achievement.achievementgen", 1.0f, 1.0f); //TODO: sounds
+        MinecraftClientAccessor.getMCinstance().soundHelper.playSound(Aether.MODID+":aether.sound.other.achievement.achievementgen", 1.0f, 1.0f);
         p.incrementStat(a);
     }
     public static boolean invisible(final PlayerBase player) {

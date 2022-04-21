@@ -3,9 +3,12 @@ import java.util.Map;
 import net.minecraft.client.render.Tessellator;
 import org.lwjgl.opengl.GL11;
 
+import com.gildedgames.aether.entity.animal.EntityAechorPlant;
 import com.gildedgames.aether.entity.boss.EntityFireMonster;
 import com.gildedgames.aether.entity.boss.EntitySlider;
+import com.gildedgames.aether.entity.mobs.EntityCockatrice;
 import com.gildedgames.aether.entity.mobs.EntityHomeShot;
+import com.gildedgames.aether.entity.mobs.EntityMiniCloud;
 import com.gildedgames.aether.entity.mobs.EntitySentry;
 import com.gildedgames.aether.entity.projectile.EntityFiroBall;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
@@ -41,10 +44,10 @@ public class AetherPoison {
 
     }
     
-    public static boolean canPoison(final EntityBase entity) { //TODO: fix after adding entities
+    public static boolean canPoison(final EntityBase entity) {
         return !(entity instanceof EntitySlider) && !(entity instanceof EntitySentry) 
-        		/*&& !(entity instanceof EntityMiniCloud)*/ && !(entity instanceof EntityFireMonster) /*&& !(entity instanceof EntityAechorPlant)*/ 
-        		&& !(entity instanceof EntityFiroBall) /*&& !(entity instanceof EntityCockatrice)*/ && !(entity instanceof EntityHomeShot);
+        		&& !(entity instanceof EntityMiniCloud) && !(entity instanceof EntityFireMonster) && !(entity instanceof EntityAechorPlant) 
+        		&& !(entity instanceof EntityFiroBall) && !(entity instanceof EntityCockatrice) && !(entity instanceof EntityHomeShot);
     }
     
     public static void distractEntity(final EntityBase ent) {
