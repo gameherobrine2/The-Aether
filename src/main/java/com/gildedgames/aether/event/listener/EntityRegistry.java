@@ -41,12 +41,14 @@ import com.gildedgames.aether.entity.mobs.EntityCockatrice;
 import com.gildedgames.aether.entity.mobs.EntityFireMinion;
 import com.gildedgames.aether.entity.mobs.EntityHomeShot;
 import com.gildedgames.aether.entity.mobs.EntityMimic;
+import com.gildedgames.aether.entity.mobs.EntityMiniCloud;
 import com.gildedgames.aether.entity.mobs.EntitySentry;
 import com.gildedgames.aether.entity.mobs.EntityZephyr;
 import com.gildedgames.aether.entity.projectile.EntityDartEnchanted;
 import com.gildedgames.aether.entity.projectile.EntityDartGolden;
 import com.gildedgames.aether.entity.projectile.EntityDartPoison;
 import com.gildedgames.aether.entity.projectile.EntityFiroBall;
+import com.gildedgames.aether.entity.projectile.EntityFlamingArrow;
 import com.gildedgames.aether.entity.projectile.EntityFloatingBlock;
 import com.gildedgames.aether.entity.projectile.EntityPoisonNeedle;
 import com.gildedgames.aether.entity.projectile.EntityZephyrSnowball;
@@ -78,6 +80,7 @@ public class EntityRegistry {
     	 event.registry.register(of(MODID,"entity_sheepuff"),EntitySheepuff::new);
     	 event.registry.register(of(MODID,"entity_phyg"),EntityPhyg::new);
     	 event.registry.register(of(MODID,"entity_swet"),EntitySwet::new);
+    	 event.registry.register(of(MODID,"entity_cloud"),EntityMiniCloud::new);
     }
     
     @EventListener
@@ -107,5 +110,7 @@ public class EntityRegistry {
         event.register(EntityAechorPlant.class,"entity_aechor_plant");
         event.register(EntityAerbunny.class,"entity_aerbunny");
         event.register(EntityCloudParachute.class,"entity_parachute");
+        event.register(EntityMiniCloud.class,"entity_cloud");
+        event.register(EntityFlamingArrow.class,"entity_arrow");
     }
 }

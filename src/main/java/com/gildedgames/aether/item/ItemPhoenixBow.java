@@ -4,6 +4,8 @@ import net.minecraft.entity.Living;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.gildedgames.aether.entity.projectile.EntityFlamingArrow;
+
 import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.level.Level;
@@ -22,7 +24,7 @@ public class ItemPhoenixBow extends ItemAether {
         if (player.inventory.decreaseAmountOfItem(ItemBase.arrow.id)) {
             level.playSound((EntityBase)player, "mob.ghast.fireball", 1.0f, 1.0f / (ItemPhoenixBow.rand.nextFloat() * 0.4f + 0.8f));
             if (!level.isServerSide) {
-                //TODO flamingarrow level.spawnEntity(new EntityFlamingArrow(level, player));
+               level.spawnEntity(new EntityFlamingArrow(level, player));
             }
         }
         return item;
