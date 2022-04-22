@@ -19,8 +19,7 @@ import com.gildedgames.aether.client.render.entity.RenderPhyg;
 import com.gildedgames.aether.client.render.entity.RenderPoisonNeedle;
 import com.gildedgames.aether.client.render.entity.RenderSheepuff;
 
-import static com.gildedgames.aether.Aether.MODID;
-import static net.modificationstation.stationapi.api.registry.Identifier.of;
+
 import com.gildedgames.aether.client.render.entity.RenderSlider;
 import com.gildedgames.aether.client.render.entity.RenderSwet;
 import com.gildedgames.aether.client.render.entity.RenderValkyrie;
@@ -71,15 +70,11 @@ import com.gildedgames.aether.entity.projectile.EntityFlamingArrow;
 import com.gildedgames.aether.entity.projectile.EntityFloatingBlock;
 import com.gildedgames.aether.entity.projectile.EntityPoisonNeedle;
 import com.gildedgames.aether.entity.projectile.EntityZephyrSnowball;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
-
-import io.github.prospector.modmenu.mixin.MinecraftAccessor;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.client.render.entity.BipedEntityRenderer;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.model.Slime;
 import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
-import net.modificationstation.stationapi.api.event.registry.MobHandlerRegistryEvent;
 public class EntityRendererListener {
     @EventListener
     private static void registerEntity(EntityRendererRegisterEvent event) {

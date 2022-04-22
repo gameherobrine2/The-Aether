@@ -1,6 +1,5 @@
 package com.gildedgames.aether.block;
 
-import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.Item;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.util.maths.MathHelper;
@@ -8,7 +7,6 @@ import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 import net.minecraft.entity.Living;
 import net.minecraft.tileentity.TileEntityBase;
-import net.minecraft.client.gui.screen.ScreenBase;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.block.BlockBase;
 import net.minecraft.level.Level;
@@ -19,9 +17,6 @@ import com.gildedgames.aether.entity.tile.TileEntityEnchanter;
 import com.gildedgames.aether.event.listener.TextureListener;
 import com.gildedgames.aether.gui.GuiEnchanter;
 import com.gildedgames.aether.mixin.MinecraftClientAccessor;
-
-import io.github.prospector.modmenu.mixin.MinecraftAccessor;
-import net.minecraft.block.BlockWithEntity;
 
 public class BlockEnchanter extends TemplateBlockWithEntity {
     private Random EnchanterRand;

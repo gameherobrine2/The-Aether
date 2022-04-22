@@ -143,8 +143,8 @@ dependencies {
 	modImplementation('com.github.calmilamsy:HowManyItems-Fabric-Unofficial:1c6873a') {
 		exclude module: 'StationAPI'
 		exclude module: 'cursed-fabric-loader'
+		exclude module: 'ModMenu'
 	}
-
 	modImplementation("com.github.calmilamsy:ModMenu:dcef643")
 }
 

@@ -66,7 +66,6 @@ public class EntityRegistry {
     public void registerMobHandlers(MobHandlerRegistryEvent event) {
     	 event.registry.register(of(MODID, "flying_cow"), EntityFlyingCow::new);
     	 event.registry.register(of(MODID, "awful_monster"), EntityZephyr::new);
-    	 //event.registry.register(of(MODID, "dangerous_weapon_zephyrsnowball"), EntityZephyrSnowball::new);
     	 event.registry.register(of(MODID, "boss_slider"), EntitySlider::new);
     	 event.registry.register(of(MODID, "entity_sentry"), EntitySentry::new);
     	 event.registry.register(of(MODID, "entity_mimic"), EntityMimic::new);
