@@ -16,6 +16,7 @@
   "server": [
   ],
   "client": [
+	"MinecraftClientMixin",
 	"PlayerInventoryGuiMixin",
 	"ScreenBaseAccessor",
 	"MinecraftMixin",
@@ -28,7 +29,9 @@
 	"PlayerRendererMixin",
 	"EntityRenderAccessor",
 	"SinglePlayerClientInteractionManagerMixin",
-	"SoundHelperAccessor"
+	"SoundHelperAccessor",
+	"SoundMapAccessor",
+	"MinecraftClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1
