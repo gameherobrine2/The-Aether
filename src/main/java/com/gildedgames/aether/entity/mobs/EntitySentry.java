@@ -22,7 +22,7 @@ public class EntitySentry extends EntityDungeonMob {
     
     public EntitySentry(final Level level) {
         super(level);
-        this.texture = "/aether/mobs/Sentry.png";
+        this.texture = "/aether:textures/entity/Sentry.png";
         this.size = 2;
         this.standingEyeHeight = 0.0f;
         this.movementSpeed = 1.0f;
@@ -34,7 +34,7 @@ public class EntitySentry extends EntityDungeonMob {
     
     public EntitySentry(final Level world, final double x, final double y, final double z) {
         super(world);
-        this.texture = "/aether/mobs/Sentry.png";
+        this.texture = "/aether:textures/entity/Sentry.png";
         this.size = 2;
         this.standingEyeHeight = 0.0f;
         this.movementSpeed = 1.0f;
@@ -100,7 +100,7 @@ public class EntitySentry extends EntityDungeonMob {
             this.active = true;
             this.lostyou = 0;
             this.entity = target;
-            this.texture = "/aether/mobs/SentryLit.png";
+            this.texture = "/aether:textures/entity/SentryLit.png";
         }
         return flag;
     }
@@ -109,7 +109,7 @@ public class EntitySentry extends EntityDungeonMob {
         this.counter = -64;
         this.active = false;
         this.entity = null;
-        this.texture = "/aether/mobs/Sentry.png";
+        this.texture = "/aether:textures/entity/Sentry.png";
         this.setTarget(null);
         this.field_1060 = 0.0f;
         this.field_1029 = 0.0f;
@@ -157,7 +157,7 @@ public class EntitySentry extends EntityDungeonMob {
                 this.entity = entityplayer;
                 this.active = true;
                 this.lostyou = 0;
-                this.texture = "/aether/mobs/SentryLit.png";
+                this.texture = "/aether:textures/entity/SentryLit.png";
             }
             this.counter = 0;
         }

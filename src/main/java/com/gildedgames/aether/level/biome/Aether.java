@@ -19,7 +19,6 @@ import com.gildedgames.aether.entity.mobs.EntityCockatrice;
 import com.gildedgames.aether.entity.mobs.EntityZephyr;
 import com.gildedgames.aether.generator.AetherGenGoldenOak;
 import com.gildedgames.aether.generator.AetherGenSkyroot;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
 
 public class Aether extends Biome {
 

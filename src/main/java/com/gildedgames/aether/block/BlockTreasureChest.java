@@ -1,11 +1,7 @@
 package com.gildedgames.aether.block;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.tileentity.TileEntityBase;
-import net.minecraft.client.gui.screen.ScreenBase;
-import net.minecraft.client.gui.screen.container.ContainerBase;
-import net.minecraft.inventory.InventoryBase;
 import net.minecraft.tileentity.TileEntityChest;
-import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 import net.minecraft.entity.player.PlayerBase;
@@ -15,13 +11,11 @@ import net.minecraft.level.BlockView;
 import net.minecraft.block.material.Material;
 import java.util.Random;
 
-import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.event.listener.TextureListener;
 import com.gildedgames.aether.gui.GuiTreasureChest;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherItems;
 
-import net.minecraft.block.BlockWithEntity;
 import static net.modificationstation.stationapi.api.registry.Identifier.of;
 public class BlockTreasureChest extends TemplateBlockWithEntity {
     private Random random;

@@ -1,39 +1,40 @@
 {
-  "required": true,
-  "minVersion": "0.8",
-  "package": "com.gildedgames.aether.mixin",
-  "compatibilityLevel": "JAVA_17",
-  "mixins": [
-	"EntityBaseAccessor",
-	"LivingAccessor",
-	"MinecraftClientAccessor",
-	"PlayerBaseAccessor",
-	"DimensionFileAccessor",
-	"LevelAccessor",
-	"PlayerBaseMixin",
-	"ParticleBaseAccessor"
-  ],
-  "server": [
-  ],
-  "client": [
-	"MinecraftClientMixin",
-	"PlayerInventoryGuiMixin",
-	"ScreenBaseAccessor",
-	"MinecraftMixin",
-	"MainMenuMixin",
-	"MainMenuAccessor",
-	"ContainerBaseAccessor",
-	"GameRendererMixin",
-	"MinecraftClientAccessor",
-	"LivingEntityRendererAccessor",
-	"PlayerRendererMixin",
-	"EntityRenderAccessor",
-	"SinglePlayerClientInteractionManagerMixin",
-	"SoundHelperAccessor",
-	"SoundMapAccessor",
-	"MinecraftClientMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  }
+	"required": true,
+	"minVersion": "0.8",
+	"package": "com.gildedgames.aether.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"access.EntityBaseAccessor",
+		"access.LevelAccessor",
+		"access.LivingAccessor",
+		"access.MinecraftClientAccessor",
+		"access.ParticleBaseAccessor",
+		"access.PlayerBaseAccessor",
+		"data.DimensionFileAccessor",
+		"data.PlayerBaseMixin"
+	],
+	"server": [
+	],
+	"client": [
+		"access.EntityRenderAccessor",
+		"access.LivingEntityRendererAccessor",
+		"access.MinecraftClientAccessor",
+		"gui.mainmenu.MainMenuAccessor",
+		"gui.mainmenu.MainMenuImageMixin",
+		"gui.mainmenu.MainMenuMixinAlt",
+		"gui.mainmenu.ModMenuCompatMixin",
+		"gui.ButtonAccessor",
+		"gui.ContainerBaseAccessor",
+		"gui.ScreenBaseAccessor",
+		"gui.PlayerInventoryGuiMixin",
+		"sound.MinecraftClientMixin",
+		"sound.SoundHelperAccessor",
+		"sound.SoundMapAccessor",
+		"GameRendererMixin",
+		"MinecraftMixin",
+		"PlayerRendererMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
 }

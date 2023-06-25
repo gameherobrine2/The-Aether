@@ -19,8 +19,9 @@ public class ItemNotchHammer extends ItemAether {
     public ItemNotchHammer(final @NotNull Identifier identifier) {
         super(identifier);
         this.maxStackSize = 1;
-        this.setDurability(ToolMaterial.IRON.getDurability());
-        this.weaponDamage = 4 + ToolMaterial.IRON.getAttackDamage() * 2;
+        // field_1690 is IRON
+        this.setDurability(ToolMaterial.field_1690.getDurability());
+        this.weaponDamage = 4 + ToolMaterial.field_1690.getAttackDamage() * 2;
     }
     
     @Override

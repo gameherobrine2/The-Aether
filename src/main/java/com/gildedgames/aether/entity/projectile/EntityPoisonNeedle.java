@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.gildedgames.aether.effect.AetherPoison;
 import com.gildedgames.aether.entity.base.EntityProjectileBase;
-import com.gildedgames.aether.mixin.ParticleBaseAccessor;
+import com.gildedgames.aether.mixin.access.ParticleBaseAccessor;
 
 import net.minecraft.entity.player.AbstractClientPlayer;
 import net.minecraft.entity.EntityBase;

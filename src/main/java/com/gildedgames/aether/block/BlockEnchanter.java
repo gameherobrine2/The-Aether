@@ -16,7 +16,7 @@ import java.util.Random;
 import com.gildedgames.aether.entity.tile.TileEntityEnchanter;
 import com.gildedgames.aether.event.listener.TextureListener;
 import com.gildedgames.aether.gui.GuiEnchanter;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 
 public class BlockEnchanter extends TemplateBlockWithEntity {
     private Random EnchanterRand;

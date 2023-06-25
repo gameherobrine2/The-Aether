@@ -16,7 +16,7 @@ public class AetherGenGoldenOak extends Structure {
             j += directionY;
             k += directionZ;
             if (world.getTileId(i, j, k) == AetherBlocks.GOLDEN_OAK_LEAVES.id) {
-                world.setTileWithMetadata(i, j, k, AetherBlocks.LOG.id, 2);
+                world.setTile(i, j, k, AetherBlocks.GOLDEN_OAK_LOG.id);
             }
         }
         return true;
@@ -41,7 +41,7 @@ public class AetherGenGoldenOak extends Structure {
             if (n > 4 && rand.nextInt(3) > 0) {
                 this.branch(level, rand, x, y + n, z, n / 4 - 1);
             }
-            level.setTileWithMetadata(x, y + n, z, AetherBlocks.LOG.id, 2);
+            level.setTile(x, y + n, z, AetherBlocks.GOLDEN_OAK_LOG.id);
         }
         return true;
     }

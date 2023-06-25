@@ -8,6 +8,7 @@ import java.util.Random;
 import com.gildedgames.aether.registry.AetherBlocks;
 
 import net.minecraft.level.Level;
+import net.minecraft.level.structure.Lake;
 import net.minecraft.level.structure.Structure;
 
 public class AetherGenLakes extends Structure {
@@ -71,7 +72,8 @@ public class AetherGenLakes extends Structure {
         for (int l3 = 0; l3 < 16; ++l3) {
             for (int l4 = 0; l4 < 16; ++l4) {
                 for (int l5 = 4; l5 < 8; ++l5) {
-                    if (aflag[(l3 * 16 + l4) * 8 + l5] && level.getTileId(x + l3, y + l5 - 1, z + l4) == AetherBlocks.AETHER_DIRT.id && level.method_164(LightType.SKY, x + l3, y + l5, z + l4) > 0) {
+                    // field_2757 is SKY
+                    if (aflag[(l3 * 16 + l4) * 8 + l5] && level.getTileId(x + l3, y + l5 - 1, z + l4) == AetherBlocks.AETHER_DIRT.id && level.method_164(LightType.field_2757, x + l3, y + l5, z + l4) > 0) {
                         level.setTileInChunk(x + l3, y + l5 - 1, z + l4, AetherBlocks.AETHER_GRASS_BLOCK.id);
                     }
                 }

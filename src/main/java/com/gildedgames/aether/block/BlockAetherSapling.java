@@ -1,4 +1,5 @@
 package com.gildedgames.aether.block;
+import net.minecraft.block.BlockBase;
 import net.minecraft.level.structure.Structure;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.BlockTemplate;
@@ -34,15 +35,15 @@ public class BlockAetherSapling extends TemplatePlant {
     @Override
     public int getTextureForSide(final int side, final int meta) {
         if (this.id == AetherBlocks.GOLDEN_OAK_SAPLING.id) {
-        	if(this.texture != TextureListener.sprGoldenOak) {
-        		this.texture = TextureListener.sprGoldenOak;
+        	if(this.texture != TextureListener.sprGoldenSapling) {
+        		this.texture = TextureListener.sprGoldenSapling;
         	}
-            return TextureListener.sprGoldenOak;
+            return TextureListener.sprGoldenSapling;
         }
-    	if(this.texture != TextureListener.sprSkyroot) {
-    		this.texture = TextureListener.sprSkyroot;
+    	if(this.texture != TextureListener.sprOakSapling) {
+    		this.texture = TextureListener.sprOakSapling;
     	}
-        return TextureListener.sprSkyroot;
+        return TextureListener.sprOakSapling;
     }
     
     @Override
@@ -52,7 +53,7 @@ public class BlockAetherSapling extends TemplatePlant {
     
     @Override
     protected boolean canPlantOnTopOf(final int id) {
-        return id == AetherBlocks.AETHER_GRASS_BLOCK.id || id == AetherBlocks.AETHER_DIRT.id;
+        return id == AetherBlocks.AETHER_GRASS_BLOCK.id || id == AetherBlocks.AETHER_DIRT.id || id == BlockBase.DIRT.id || id == BlockBase.GRASS.id;
     }
     
     @Override

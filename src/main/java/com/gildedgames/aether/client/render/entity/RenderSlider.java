@@ -27,14 +27,14 @@ public class RenderSlider extends LivingEntityRenderer {
         }
         if (slider.awake) {
             if (slider.criticalCondition()) {
-                this.bindTexture("/assets/aether/stationapi/textures/entity/sliderAwakeGlow_red.png");
+                this.bindTexture("aether:textures/entity/sliderAwakeGlow_red.png");
             }
             else {
-                this.bindTexture("/assets/aether/stationapi/textures/entity/sliderAwakeGlow.png");
+                this.bindTexture("aether:textures/entity/sliderAwakeGlow.png");
             }
         }
         else {
-            this.bindTexture("/assets/aether/stationapi/textures/entity/sliderSleepGlow.png");
+            this.bindTexture("aether:textures/entity/sliderSleepGlow.png");
         }
         final float f2 = (1.0f - slider.getBrightnessAtEyes(1.0f)) * 0.5f;
         GL11.glEnable(3042);

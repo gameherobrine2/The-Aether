@@ -6,7 +6,7 @@ import net.minecraft.entity.monster.MonsterBase;
 public class EntityFireMinion extends MonsterBase {
     public EntityFireMinion(final Level level) {
         super(level);
-        this.texture = "/assets/aether/stationapi/textures/entity/firemonster.png";
+        this.texture = "aether:textures/entity/firemonster.png";
         this.movementSpeed = 1.5f;
         this.attackDamage = 5;
         this.health = 40;

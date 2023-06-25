@@ -77,7 +77,7 @@ public class EntityDungeonMob extends WalkingBase implements MonsterEntityType {
         final int i = MathHelper.floor(this.x);
         final int j = MathHelper.floor(this.boundingBox.minY);
         final int k = MathHelper.floor(this.z);
-        if (this.level.method_164(LightType.SKY, i, j, k) > this.rand.nextInt(32)) {
+        if (this.level.method_164(LightType.field_2757, i, j, k) > this.rand.nextInt(32)) {
             return false;
         }
         int l = this.level.placeTile(i, j, k);

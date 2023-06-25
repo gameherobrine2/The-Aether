@@ -10,7 +10,7 @@ import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.level.Level;
 import net.minecraft.block.material.Material;
-import com.gildedgames.aether.mixin.EntityBaseAccessor;
+import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
 import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.event.listener.TextureListener;

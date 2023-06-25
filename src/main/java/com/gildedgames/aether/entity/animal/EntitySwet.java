@@ -10,8 +10,8 @@ import java.util.List;
 
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.EntityAetherAnimal;
-import com.gildedgames.aether.mixin.EntityBaseAccessor;
-import com.gildedgames.aether.mixin.LivingAccessor;
+import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
+import com.gildedgames.aether.mixin.access.LivingAccessor;
 import com.gildedgames.aether.registry.AetherBlocks;
 
 import net.minecraft.entity.EntityBase;
@@ -41,11 +41,11 @@ public class EntitySwet extends EntityAetherAnimal {
             }
         }
         if (this.textureNum == 1) {
-            this.texture = "/assets/aether/stationapi/textures/entity/swets.png";
+            this.texture = "aether:textures/entity/swets.png";
             this.movementSpeed = 1.5f;
         }
         else {
-            this.texture = "/assets/aether/stationapi/textures/entity/goldswets.png";
+            this.texture = "aether:textures/entity/goldswets.png";
             this.movementSpeed = 3.0f;
         }
         this.setSize(0.8f, 0.8f);
@@ -419,11 +419,11 @@ public class EntitySwet extends EntityAetherAnimal {
         this.textureSet = tag.getBoolean("textureSet");
         this.textureNum = tag.getShort("textureNum");
         if (this.textureNum == 1) {
-            this.texture = "/assets/aether/stationapi/textures/entity/swets.png";
+            this.texture = "aether:textures/entity/swets.png";
             this.movementSpeed = 1.5f;
         }
         else {
-            this.texture = "/assets/aether/stationapi/textures/entity/goldswets.png";
+            this.texture = "aether:textures/entity/goldswets.png";
             this.movementSpeed = 3.0f;
         }
     }

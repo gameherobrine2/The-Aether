@@ -11,8 +11,8 @@ import java.util.List;
 
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.EntityAetherAnimal;
-import com.gildedgames.aether.mixin.EntityBaseAccessor;
-import com.gildedgames.aether.mixin.LivingAccessor;
+import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
+import com.gildedgames.aether.mixin.access.LivingAccessor;
 
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.level.Level;
@@ -30,7 +30,7 @@ public class EntityAerbunny extends EntityAetherAnimal {
     public EntityAerbunny(final Level level) {
         super(level);
         this.movementSpeed = 2.5f;
-        this.texture = "/assets/aether/stationapi/textures/entity/aerbunny.png";
+        this.texture = "aether:textures/entity/aerbunny.png";
         this.standingEyeHeight = -0.16f;
         this.setSize(0.4f, 0.4f);
         this.health = 6;
@@ -191,7 +191,7 @@ public class EntityAerbunny extends EntityAetherAnimal {
         }
         else if (this.onGround) {
             this.grab = false;
-            this.level.playSound((EntityBase)this, "aether:aether.sound.mobs.aerbunny.aerbunnyland", 1.0f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
+            this.level.playSound((EntityBase)this, "assets/aether/stationapi/aether.sound.mobs.aerbunny.aerbunnyland", 1.0f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
             final List list = this.level.getEntities(this, this.boundingBox.expand(12.0, 12.0, 12.0));
             for (int m = 0; m < list.size(); ++m) {
                 final EntityBase entity = (EntityBase)list.get(m);
@@ -271,7 +271,7 @@ public class EntityAerbunny extends EntityAetherAnimal {
             this.grab = true;
         }
         else {
-            this.level.playSound((EntityBase)this, "aether:aether.sound.mobs.aerbunny.aerbunnylift", 1.0f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
+            this.level.playSound((EntityBase)this, "assets/aether/stationapi/aether.sound.mobs.aerbunny.aerbunnylift", 1.0f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
         }
         this.jumping = false;
         this.field_1029 = 0.0f;
@@ -318,12 +318,12 @@ public class EntityAerbunny extends EntityAetherAnimal {
     
     @Override
     protected String getHurtSound() {
-        return "aether:aether.sound.mobs.aerbunny.aerbunnyhurt";
+        return "assets/aether/stationapi/aether.sound.mobs.aerbunny.aerbunnyhurt";
     }
     
     @Override
     protected String getDeathSound() {
-        return "aether:aether.sound.mobs.aerbunny.aerbunnydeath";
+        return "assets/aether/stationapi/aether.sound.mobs.aerbunny.aerbunnydeath";
     }
     
     @Override

@@ -51,7 +51,7 @@ public class BlockTrap extends TemplateTranslucentBlock {
     @Override
     public void onSteppedOn(final Level level, final int x, final int y, final int z, final EntityBase entityBase) {
         if (entityBase instanceof PlayerBase) {
-            level.playSound((double)(x + 0.5f), (double)(y + 0.5f), (double)(z + 0.5f), "aether:aether.sound.other.dungeontrap.activatetrap", 1.0f, 1.0f);
+            level.playSound((double)(x + 0.5f), (double)(y + 0.5f), (double)(z + 0.5f), "assets/aether/stationapi/aether.sound.other.dungeontrap.activatetrap", 1.0f, 1.0f);
             final int x2 = MathHelper.floor((double)x);
             final int y2 = MathHelper.floor((double)y);
             final int z2 = MathHelper.floor((double)z);

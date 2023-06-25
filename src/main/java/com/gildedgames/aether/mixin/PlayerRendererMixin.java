@@ -1,11 +1,15 @@
 package com.gildedgames.aether.mixin;
 
+import com.gildedgames.aether.mixin.access.EntityRenderAccessor;
+import com.gildedgames.aether.mixin.access.LivingAccessor;
+import com.gildedgames.aether.mixin.access.LivingEntityRendererAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
+import net.minecraft.entity.EntityBase;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.inventory.InventoryAether;
@@ -23,20 +27,21 @@ import net.minecraft.util.maths.MathHelper;
 @Mixin(PlayerRenderer.class)
 public class PlayerRendererMixin {
 	//TODO: render
-	@Inject(method = "render(Lnet/minecraft/entity/player/PlayerBase;DDDFF)V", at = @At(value = "HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
-	private void renderEntityCustomHEAD(PlayerBase entity, double x, double y, double z, float f, float f1,CallbackInfo ci) {
+	//@Inject(method = "render(Lnet/minecraft/entity/player/PlayerBase;DDDFF)V", at = @At(value = "HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+	@Inject(method = "render(Lnet/minecraft/entity/EntityBase;DDDFF)V", at = @At(value = "HEAD"))
+    private void renderEntityCustomHEAD(EntityBase d, double e, double f, double g, float h, float par6, CallbackInfo ci) {
 		if(Aether.invisible(MinecraftClientAccessor.getMCinstance().player)) ci.cancel();
 	}
-	@Inject(method = "render(Lnet/minecraft/entity/player/PlayerBase;DDDFF)V", at = @At(value = "TAIL"))
-	private void renderEntityCustom(PlayerBase entity, double x, double y, double z, float f, float f1,CallbackInfo ci) {
+	@Inject(method = "render(Lnet/minecraft/entity/EntityBase;DDDFF)V", at = @At(value = "TAIL"))
+	private void renderEntityCustom(EntityBase d, double e, double f, double g, float h, float par6, CallbackInfo ci) {
 		try {
-			this.renderEnergyShield((PlayerBase)entity, x, y, z, f, f1);
-			this.renderMisc((PlayerBase)entity, x, y, z, f, f1);
-		}catch(Exception e) {e.printStackTrace();}
+			this.renderEnergyShield((PlayerBase)d, e, f, g, h, par6);
+			this.renderMisc((PlayerBase)d, e, f, g, h, par6);
+		}catch(Exception ex) {ex.printStackTrace();}
 	}
 	@Inject(method = "method_827", at = @At(value = "TAIL"))
-	private void method_827_handle(PlayerBase arg, float f,CallbackInfo ci) {
-		renderCape(arg,f);
+	private void method_827_handle(Living f, float par2, CallbackInfo ci) {
+		renderCape((PlayerBase)f,par2);
 	}
 	public void renderEnergyShield(final PlayerBase entityplayer, final double d, final double d1, final double d2, final float f, final float f1) {
         final ItemInstance itemstack = entityplayer.inventory.getHeldItem();
@@ -62,7 +67,7 @@ public class PlayerRendererMixin {
             this.modelMisc.setAngles(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0625f);
             this.modelMisc.field_622.method_1815(0.0625f);
             final ItemMoreArmor glove = (ItemMoreArmor)inv.slots[6].getType();
-            ((com.gildedgames.aether.mixin.EntityRenderAccessor)this).invokeBindTexture(glove.texture);
+            ((EntityRenderAccessor)this).invokeBindTexture(glove.texture);
             final int colour = glove.getColourMultiplier(0);
             final float red = (colour >> 16 & 0xFF) / 255.0f;
             final float green = (colour >> 8 & 0xFF) / 255.0f;
@@ -84,7 +89,7 @@ public class PlayerRendererMixin {
             //if (cape.itemId == AetherItems.RepShield.id) {
             //    return;
             //}
-            ((com.gildedgames.aether.mixin.EntityRenderAccessor)this).invokeBindTexture(((ItemMoreArmor)cape.getType()).texture);
+            ((EntityRenderAccessor)this).invokeBindTexture(((ItemMoreArmor)cape.getType()).texture);
             GL11.glPushMatrix();
             GL11.glTranslatef(0.0f, 0.0f, 0.125f);
             final double d = entityplayer.field_530 + (entityplayer.field_533 - entityplayer.field_530) * f - (entityplayer.prevX + (entityplayer.x - entityplayer.prevX) * f);
@@ -160,7 +165,7 @@ public class PlayerRendererMixin {
             final InventoryAether inv = Aether.getPlayerHandler(player).inv;
             if (inv.slots[0] != null) {
                 final ItemMoreArmor pendant = (ItemMoreArmor)inv.slots[0].getType();
-                ((com.gildedgames.aether.mixin.EntityRenderAccessor)this).invokeBindTexture(pendant.texture);
+                ((EntityRenderAccessor)this).invokeBindTexture(pendant.texture);
                 final int colour = pendant.getColourMultiplier(0);
                 final float red = (colour >> 16 & 0xFF) / 255.0f;
                 final float green = (colour >> 8 & 0xFF) / 255.0f;
@@ -175,7 +180,7 @@ public class PlayerRendererMixin {
             }
             if (inv.slots[6] != null) {
                 final ItemMoreArmor glove = (ItemMoreArmor)inv.slots[6].getType();
-                ((com.gildedgames.aether.mixin.EntityRenderAccessor)this).invokeBindTexture(glove.texture);
+                ((EntityRenderAccessor)this).invokeBindTexture(glove.texture);
                 final int colour = glove.getColourMultiplier(0);
                 final float red = (colour >> 16 & 0xFF) / 255.0f;
                 final float green = (colour >> 8 & 0xFF) / 255.0f;
@@ -241,7 +246,7 @@ public class PlayerRendererMixin {
         final boolean flag = inv != null && inv.slots[2] != null && inv.slots[2].itemId == AetherItems.RepShield.id;
         if (flag) {
             if ((player.onGround || (player.vehicle != null && player.vehicle.onGround)) && ((LivingAccessor)player).get1029() == 0.0f && ((LivingAccessor)player).get1060() == 0.0f) {
-            	((com.gildedgames.aether.mixin.EntityRenderAccessor)this).invokeBindTexture("/assets/aether/stationapi/textures/entity/energyGlow.png");
+            	((EntityRenderAccessor)this).invokeBindTexture("/aether:textures/entity/energyGlow.png");
                 GL11.glEnable(2977);
                 GL11.glEnable(3042);
                 GL11.glBlendFunc(770, 771);
@@ -251,7 +256,7 @@ public class PlayerRendererMixin {
                 GL11.glEnable(2977);
                 GL11.glEnable(3042);
                 GL11.glBlendFunc(770, 771);
-                ((com.gildedgames.aether.mixin.EntityRenderAccessor)this).invokeBindTexture("/assets/aether/stationapi/textures/entity/energyNotGlow.png");
+                ((EntityRenderAccessor)this).invokeBindTexture("/aether:textures/entity/energyNotGlow.png");
             }
             return true;
         }

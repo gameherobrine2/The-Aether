@@ -15,13 +15,12 @@ import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.EntityDungeonMob;
 import com.gildedgames.aether.entity.base.IAetherBoss;
 import com.gildedgames.aether.entity.mobs.EntityHomeShot;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.NameGen;
 
-import net.minecraft.class_61;
 import net.minecraft.level.Level;
 
 public class EntityValkyrie extends EntityDungeonMob implements IAetherBoss {
@@ -47,7 +46,7 @@ public class EntityValkyrie extends EntityDungeonMob implements IAetherBoss {
     public EntityValkyrie(final Level level) {
         super(level);
         this.setSize(0.8f, 1.6f);
-        this.texture = "/assets/aether/stationapi/textures/entity/valkyrie.png";
+        this.texture = "aether:textures/entity/valkyrie.png";
         this.teleTimer = this.rand.nextInt(250);
         this.health = 50;
         this.movementSpeed = 0.5f;
@@ -62,9 +61,9 @@ public class EntityValkyrie extends EntityDungeonMob implements IAetherBoss {
         super(world);
         this.setSize(0.8f, 1.6f);
         this.bossName = NameGen.gen();
-        this.texture = "/assets/aether/stationapi/textures/entity/valkyrie.png";
+        this.texture = "aether:textures/entity/valkyrie.png";
         if (flag) {
-            this.texture = "/assets/aether/stationapi/textures/entity/valkyrie2.png";
+            this.texture = "aether:textures/entity/valkyrie2.png";
             this.health = 500;
             this.boss = true;
         }
@@ -372,7 +371,7 @@ public class EntityValkyrie extends EntityDungeonMob implements IAetherBoss {
         this.dungeonZ = tag.getInt("DungeonZ");
         this.dungeonEntranceZ = tag.getInt("DungeonEntranceZ");
         if (this.boss) {
-            this.texture = "/assets/aether/stationapi/textures/entity/valkyrie2.png";
+            this.texture = "aether:textures/entity/valkyrie2.png";
         }
         final ListTag nbttaglist = tag.getListTag("SafePos");
         this.safeX = ((DoubleTag)nbttaglist.get(0)).data;

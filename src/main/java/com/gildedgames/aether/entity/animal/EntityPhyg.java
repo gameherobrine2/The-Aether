@@ -2,12 +2,10 @@ package com.gildedgames.aether.entity.animal;
 
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.EntityAetherAnimal;
-import com.gildedgames.aether.mixin.EntityBaseAccessor;
-import com.gildedgames.aether.mixin.LivingAccessor;
+import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
+import com.gildedgames.aether.mixin.access.LivingAccessor;
 import com.gildedgames.aether.registry.AetherAchievements;
 
-import net.minecraft.entity.EntityBase;
-import net.minecraft.item.ItemInstance;
 import net.minecraft.item.ItemBase;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.entity.Living;
@@ -27,7 +25,7 @@ public class EntityPhyg extends EntityAetherAnimal {
     public EntityPhyg(final Level level) {
         super(level);
         this.getSaddled = false;
-        this.texture = "/assets/aether/stationapi/textures/entity/Mob_FlyingPigBase.png";
+        this.texture = "aether:textures/entity/FlyingPigBase.png";
         this.setSize(0.9f, 1.3f);
         this.jrem = 0;
         this.jumps = 1;
@@ -66,7 +64,7 @@ public class EntityPhyg extends EntityAetherAnimal {
         this.jrem = tag.getShort("Remaining");
         this.getSaddled = tag.getBoolean("getSaddled");
         if (this.getSaddled) {
-            this.texture = "/assets/aether/stationapi/textures/entity/Mob_FlyingPigSaddle.png";
+            this.texture = "aether:textures/entity/FlyingPigSaddle.png";
         }
     }
     
@@ -184,7 +182,7 @@ public class EntityPhyg extends EntityAetherAnimal {
         if (!this.getSaddled && entityplayer.inventory.getHeldItem() != null && entityplayer.inventory.getHeldItem().itemId == ItemBase.saddle.id) {
             entityplayer.inventory.setInventoryItem(entityplayer.inventory.selectedHotbarSlot, null);
             this.getSaddled = true;
-            this.texture = "/assets/aether/stationapi/textures/entity/Mob_FlyingPigSaddle.png";
+            this.texture = "aether:textures/entity/FlyingPigSaddle.png";
             return true;
         }
         if (this.getSaddled && !this.level.isServerSide && (this.passenger == null || this.passenger == entityplayer)) {

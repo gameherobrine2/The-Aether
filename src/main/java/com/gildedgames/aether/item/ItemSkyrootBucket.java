@@ -16,11 +16,10 @@ import org.jetbrains.annotations.NotNull;
 import com.gildedgames.aether.effect.AetherPoison;
 import com.gildedgames.aether.entity.animal.EntityAechorPlant;
 import com.gildedgames.aether.entity.animal.EntityFlyingCow;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherItems;
 
 import net.minecraft.block.BlockBase;
-import net.minecraft.item.ItemBase;
 
 public class ItemSkyrootBucket extends TemplateItemBase {
     public static int sprEmpty;
@@ -91,7 +90,8 @@ public class ItemSkyrootBucket extends TemplateItemBase {
             item.setDamage(0);
             return item;
         }
-        if (movingobjectposition != null && movingobjectposition.type == HitType.TILE && (item.getDamage() == 0 || item.getDamage() == BlockBase.FLOWING_WATER.id)) {
+        // (HitType) field_789 = TILE, field_790 = ENTITY
+        if (movingobjectposition != null && movingobjectposition.type == HitType.field_789 && (item.getDamage() == 0 || item.getDamage() == BlockBase.FLOWING_WATER.id)) {
             int i = movingobjectposition.x;
             int j = movingobjectposition.y;
             int k = movingobjectposition.z;

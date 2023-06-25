@@ -19,7 +19,7 @@ public class RenderPhyg extends LivingEntityRenderer {
     
     protected boolean setWoolColorAndRender(final EntityPhyg pig, final int i, final float f) {
         if (i == 0) {
-            this.bindTexture("/assets/aether/stationapi/textures/entity/Mob_FlyingPigWings.png");
+            this.bindTexture("aether:textures/entity/FlyingPigWings.png");
             ModelFlyingPig2.pig = pig;
             return true;
         }

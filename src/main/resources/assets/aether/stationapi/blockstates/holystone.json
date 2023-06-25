@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "": {
+      "model": "aether:block/holystone"
+    },
+    "meta=0": {
+      "model": "aether:block/holystone"
+    },
+    "meta=1": {
+      "model": "aether:block/mossy_holystone"
+    },
+    "meta=2": {
+      "model": "aether:block/mossy_holystone"
+    },
+    "meta=3": {
+      "model": "aether:block/mossy_holystone"
+    }
+  }
+}

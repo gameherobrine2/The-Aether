@@ -1,5 +1,4 @@
 package com.gildedgames.aether.effect;
-import java.util.Map;
 import net.minecraft.client.render.Tessellator;
 import org.lwjgl.opengl.GL11;
 
@@ -11,7 +10,7 @@ import com.gildedgames.aether.entity.mobs.EntityHomeShot;
 import com.gildedgames.aether.entity.mobs.EntityMiniCloud;
 import com.gildedgames.aether.entity.mobs.EntitySentry;
 import com.gildedgames.aether.entity.projectile.EntityFiroBall;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 
 import net.minecraft.client.util.ScreenScaler;
 import net.minecraft.entity.EntityBase;
@@ -122,14 +121,14 @@ public class AetherPoison {
         if (AetherPoison.mc.currentScreen != null) {
             return;
         }
-        flashColor("%blur%/assets/aether/stationapi/poison/curevignette.png", getCureAlpha(-(float)AetherPoison.poisonTime / 500.0f));
+        flashColor("%blur%assets/aether/textures/poison/curevignette.png", getCureAlpha(-(float)AetherPoison.poisonTime / 500.0f));
     }
     
     public static void displayPoisonEffect(final int mod) {
         if (AetherPoison.mc.currentScreen != null) {
             return;
         }
-        flashColor("%blur%/assets/aether/stationapi/poison/poisonvignette.png", getPoisonAlpha(mod / 50.0f));
+        flashColor("%blur%assets/aether/textures/poison/poisonvignette.png", getPoisonAlpha(mod / 50.0f));
     }
     
     public static void flashColor(final String file, final float a) {

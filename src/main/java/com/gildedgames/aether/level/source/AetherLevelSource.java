@@ -8,6 +8,8 @@ import com.gildedgames.aether.generator.AetherGenGumdrop;
 import com.gildedgames.aether.generator.AetherGenLiquids;
 import com.gildedgames.aether.generator.AetherGenMinable;
 import com.gildedgames.aether.generator.AetherGenQuicksoil;
+import com.gildedgames.aether.level.biome.Aether;
+import com.gildedgames.aether.level.biome.AetherBiomes;
 import com.gildedgames.aether.registry.AetherBlocks;
 
 import net.minecraft.block.BlockBase;
@@ -22,6 +24,7 @@ import net.minecraft.level.structure.Lake;
 import net.minecraft.level.structure.Structure;
 import net.minecraft.util.ProgressListener;
 import net.minecraft.util.noise.PerlinOctaveNoise;
+import net.modificationstation.stationapi.impl.level.chunk.StationFlatteningChunk;
 
 import java.util.*;
 
@@ -169,12 +172,17 @@ public class AetherLevelSource implements LevelSource {
     public Chunk loadChunk(int chunkX, int chunkZ) {
         random.setSeed((long)chunkX * 0x4f9939f508L + (long)chunkZ * 0x1ef1565bd5L);
         byte[] tiles = new byte[32768];
-        Chunk chunk = new Chunk(level, tiles, chunkX, chunkZ);
+        //Chunk chunk = new Chunk(level, tiles, chunkX, chunkZ);
         biomes = level.getBiomeSource().getBiomes(biomes, chunkX * 16, chunkZ * 16, 16, 16);
         double[] temperatures = level.getBiomeSource().temperatureNoises;
         shapeChunk(chunkX, chunkZ, tiles, biomes, temperatures);
         buildSurface(chunkX, chunkZ, tiles, biomes);
         caveGen.generate(this, level, chunkX, chunkZ, tiles);
+        //
+        //return chunk;
+
+        StationFlatteningChunk chunk = new StationFlatteningChunk(level, chunkX, chunkZ);
+        chunk.fromLegacy(tiles);
         chunk.generateHeightmap();
         return chunk;
     }
@@ -328,13 +336,13 @@ public class AetherLevelSource implements LevelSource {
             final int x = k + this.random.nextInt(16);
             final int y = 32 + this.random.nextInt(64);
             final int z = l + this.random.nextInt(16);
-            new AetherGenDungeonBronze(AetherBlocks.LOCKED_DUNGEON_STONE.id, AetherBlocks.LOCKED_LIGHT_DUNGEON_STONE.id, AetherBlocks.DUNGEON_STONE.id, AetherBlocks.LIGHT_DUNGEON_STONE.id, AetherBlocks.HOLYSTONE.id, 2, AetherBlocks.HOLYSTONE.id, 0, 16, true).generate(this.level, this.random, x, y, z);
+            new AetherGenDungeonBronze(AetherBlocks.LOCKED_DUNGEON_STONE.id, AetherBlocks.LOCKED_LIGHT_DUNGEON_STONE.id, AetherBlocks.DUNGEON_STONE.id, AetherBlocks.LIGHT_DUNGEON_STONE.id, AetherBlocks.MOSSY_HOLYSTONE.id, 0, AetherBlocks.HOLYSTONE.id, 0, 16, true).generate(this.level, this.random, x, y, z);
         }
         if (this.random.nextInt(500) == 0) {
             final int x2 = k + this.random.nextInt(16);
             final int y2 = this.random.nextInt(32) + 64;
             final int z2 = l + this.random.nextInt(16);
-            new AetherGenDungeonSilver(AetherBlocks.LOCKED_DUNGEON_STONE.id, AetherBlocks.LOCKED_LIGHT_DUNGEON_STONE.id, AetherBlocks.DUNGEON_STONE.id, AetherBlocks.LIGHT_DUNGEON_STONE.id, AetherBlocks.HOLYSTONE.id, 2, AetherBlocks.HOLYSTONE.id, 0, AetherBlocks.PILLAR.id).generate(this.level, this.random, x2, y2, z2);
+            new AetherGenDungeonSilver(AetherBlocks.LOCKED_DUNGEON_STONE.id, AetherBlocks.LOCKED_LIGHT_DUNGEON_STONE.id, AetherBlocks.DUNGEON_STONE.id, AetherBlocks.LIGHT_DUNGEON_STONE.id, AetherBlocks.MOSSY_HOLYSTONE.id, 0, AetherBlocks.HOLYSTONE.id, 0, AetherBlocks.PILLAR.id).generate(this.level, this.random, x2, y2, z2);
         }
         if (this.random.nextInt(5) == 0) {
             for (int x2 = k; x2 < k + 16; ++x2) {
@@ -354,28 +362,10 @@ public class AetherLevelSource implements LevelSource {
         if (this.random.nextInt(10) == 0) {
             ++l4;
         }
-        if (biomegenbase == Biome.FOREST) {
-            l4 += k2 + 5;
+        if (biomegenbase == AetherBiomes.AETHER) {
+            l4 += k2 + 3;
         }
-        if (biomegenbase == Biome.RAINFOREST) {
-            l4 += k2 + 5;
-        }
-        if (biomegenbase == Biome.SEASONAL_FOREST) {
-            l4 += k2 + 2;
-        }
-        if (biomegenbase == Biome.TAIGA) {
-            l4 += k2 + 5;
-        }
-        if (biomegenbase == Biome.DESERT) {
-            l4 -= 20;
-        }
-        if (biomegenbase == Biome.TUNDRA) {
-            l4 -= 20;
-        }
-        if (biomegenbase == Biome.PLAINS) {
-            l4 -= 20;
-        }
-        l4 += k2;
+
         for (int i11 = 0; i11 < l4; ++i11) {
             final int k3 = k + this.random.nextInt(16) + 8;
             final int j18 = l + this.random.nextInt(16) + 8;
@@ -383,6 +373,7 @@ public class AetherLevelSource implements LevelSource {
             worldgenerator.method_1143(1.0, 1.0, 1.0);
             worldgenerator.generate(this.level, this.random, k3, this.level.getHeight(k3, j18), j18);
         }
+
         for (int k4 = 0; k4 < 50; ++k4) {
             final int j19 = k + this.random.nextInt(16) + 8;
             final int l5 = this.random.nextInt(this.random.nextInt(120) + 8);

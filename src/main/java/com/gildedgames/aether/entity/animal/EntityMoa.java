@@ -9,9 +9,9 @@ import net.minecraft.level.Level;
 
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.EntityAetherAnimal;
-import com.gildedgames.aether.mixin.EntityBaseAccessor;
-import com.gildedgames.aether.mixin.LivingAccessor;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
+import com.gildedgames.aether.mixin.access.LivingAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.MoaColour;
 
@@ -242,17 +242,17 @@ public class EntityMoa extends EntityAetherAnimal {
     
     @Override
     protected String getAmbientSound() {
-        return "aether:aether.sound.mobs.moa.idlecall";
+        return "assets/aether/stationapi/aether.sound.mobs.moa.idlecall";
     }
     
     @Override
     protected String getHurtSound() {
-        return "aether:aether.sound.mobs.moa.idlecall";
+        return "assets/aether/stationapi/aether.sound.mobs.moa.idlecall";
     }
     
     @Override
     protected String getDeathSound() {
-        return "aether:aether.sound.mobs.moa.idlecall";
+        return "assets/aether/stationapi/aether.sound.mobs.moa.idlecall";
     }
     
     @Override

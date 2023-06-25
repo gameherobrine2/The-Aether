@@ -7,12 +7,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.gui.container.ContainerAether;
 import com.gildedgames.aether.inventory.InventoryAether;
-import com.gildedgames.aether.mixin.DimensionFileAccessor;
-import com.gildedgames.aether.mixin.LevelAccessor;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.data.DimensionFileAccessor;
+import com.gildedgames.aether.mixin.access.LevelAccessor;
 import com.gildedgames.aether.registry.AetherItems;
 
 import net.minecraft.entity.player.AbstractClientPlayer;

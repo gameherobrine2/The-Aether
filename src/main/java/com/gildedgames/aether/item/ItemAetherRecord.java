@@ -3,7 +3,7 @@ import net.minecraft.block.Jukebox;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 
 import net.minecraft.block.BlockBase;
 import net.minecraft.level.Level;
@@ -11,7 +11,6 @@ import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.TemplateRecord;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
-import net.minecraft.item.Record;
 
 public class ItemAetherRecord extends TemplateRecord {
     public ItemAetherRecord(final @NotNull Identifier identifier, final String title) {

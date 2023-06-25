@@ -42,7 +42,7 @@ public class EntityZephyr extends FlyingBase implements MonsterEntityType {
         this.aggroCooldown = 0;
         this.prevAttackCounter = 0;
         this.attackCounter = 0;
-        this.texture = "/assets/aether/stationapi/textures/entity/Zephyr.png";
+        this.texture = "aether:textures/entity/Zephyr.png";
         this.setSize(4.0f, 4.0f);
     }
     
@@ -93,11 +93,11 @@ public class EntityZephyr extends FlyingBase implements MonsterEntityType {
             this.field_1012 = n;
             if (this.method_928(this.targetedEntity)) {
                 if (this.attackCounter == 10) {
-                    this.level.playSound((EntityBase)this, "aether:aether.sound.mobs.zephyr.zephyrcall", this.getSoundVolume(), (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
+                    this.level.playSound((EntityBase)this, "assets/aether/stationapi/aether.sound.mobs.zephyr.zephyrcall", this.getSoundVolume(), (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
                 }
                 ++this.attackCounter;
                 if (this.attackCounter == 20) {
-                    this.level.playSound((EntityBase)this, "aether:aether.sound.mobs.zephyr.zephyrshoot", this.getSoundVolume(), (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
+                    this.level.playSound((EntityBase)this, "assets/aether/stationapi/aether.sound.mobs.zephyr.zephyrshoot", this.getSoundVolume(), (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
                     final EntityZephyrSnowball entitysnowball = new EntityZephyrSnowball(this.level, this, d6, d7, d8);
                     final double d9 = 4.0;
                     final Vec3f vec3d = this.method_926(1.0f);
@@ -120,7 +120,7 @@ public class EntityZephyr extends FlyingBase implements MonsterEntityType {
                 --this.attackCounter;
             }
         }
-        this.texture = ((this.attackCounter <= 10) ? "/assets/aether/stationapi/textures/entity/Zephyr.png" : "/assets/aether/stationapi/textures/entity/Zephyr.png");
+        this.texture = ((this.attackCounter <= 10) ? "aether:textures/entity/Zephyr.png" : "aether:textures/entity/Zephyr.png");
         //if (!this.level.isServerSide && this.level.difficulty == 0) {
         //this.remove();
         //}
@@ -143,17 +143,17 @@ public class EntityZephyr extends FlyingBase implements MonsterEntityType {
     
     @Override
     protected String getAmbientSound() {
-        return "aether:aether.sound.mobs.zephyr.zephyrcall";
+        return "assets/aether/stationapi/aether.sound.mobs.zephyr.zephyrcall";
     }
     
     @Override
     protected String getHurtSound() {
-        return "aether:aether.sound.mobs.zephyr.zephyrcall";
+        return "assets/aether/stationapi/aether.sound.mobs.zephyr.zephyrcall";
     }
     
     @Override
     protected String getDeathSound() {
-        return "aether:aether.sound.mobs.zephyr.zephyrcall";
+        return "assets/aether/stationapi/aether.sound.mobs.zephyr.zephyrcall";
     }
     
     @Override

@@ -1,7 +1,7 @@
 package com.gildedgames.aether.entity.boss;
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.IAetherBoss;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
@@ -17,7 +17,6 @@ import net.minecraft.util.io.CompoundTag;
 import net.minecraft.level.Level;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.item.tool.Pickaxe;
-import net.minecraft.item.tool.ToolBase;
 import net.minecraft.entity.living.FlyingBase;
 //TODO: add render
 public class EntitySlider extends FlyingBase implements IAetherBoss {
@@ -44,7 +43,7 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
         this.setSize(2.0f, 2.0f);
         this.health = 500;
         this.dennis = 1;
-        this.texture = "/assets/aether/stationapi/textures/entity/sliderSleep.png"; 
+        this.texture = "aether:textures/entity/sliderSleep.png";
         this.chatTime = 60;
         this.bossName = NameGen.gen();
     }
@@ -72,7 +71,7 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
     
     @Override
     protected String getDeathSound() {
-        return "aether:aether.sound.bosses.slider.sliderdeath";
+        return "assets/aether/stationapi/aether.sound.bosses.slider.sliderdeath";
     }
     
     @Override
@@ -107,10 +106,10 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
         this.bossName = tag.getString("BossName");
         if (this.awake) {
             if (this.criticalCondition()) {
-                this.texture = "/assets/aether/stationapi/textures/entity/sliderAwake_red.png";
+                this.texture = "aether:textures/entity/sliderAwake_red.png";
             }
             else {
-                this.texture = "/assets/aether/stationapi/textures/entity/sliderAwake.png";
+                this.texture = "aether:textures/entity/sliderAwake.png";
             }
         }
     }
@@ -133,7 +132,7 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
                     this.awake = false;
                     Aether.currentBoss = null;
                     this.target = null;
-                    this.texture = "/assets/aether/stationapi/textures/entity/sliderSleep.png";
+                    this.texture = "aether:textures/entity/sliderSleep.png";
                     this.stop();
                     this.openDoor();
                     this.moveTimer = 0;
@@ -145,7 +144,7 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
                     this.awake = false;
                     Aether.currentBoss = null;
                     this.target = null;
-                    this.texture = "/assets/aether/stationapi/textures/entity/sliderSleep.png";
+                    this.texture = "aether:textures/entity/sliderSleep.png";
                     this.stop();
                     this.openDoor();
                     this.moveTimer = 0;
@@ -157,7 +156,7 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
                         this.awake = false;
                         Aether.currentBoss = null;
                         this.target = null;
-                        this.texture = "/assets/aether/stationapi/textures/entity/sliderSleep.png";
+                        this.texture = "aether:textures/entity/sliderSleep.png";
                         this.stop();
                         this.openDoor();
                         this.moveTimer = 0;
@@ -217,7 +216,7 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
                     }
                     if (this.crushed) {
                         this.level.playSound(this.x, this.y, this.z, "random.explode", 3.0f, (0.625f + (this.level.rand.nextFloat() - this.level.rand.nextFloat()) * 0.2f) * 0.7f);
-                        this.level.playSound((EntityBase)this, "aether:aether.sound.bosses.slider.slidercollide", 2.5f, 1.0f / (this.rand.nextFloat() * 0.2f + 0.9f));
+                        this.level.playSound((EntityBase)this, "assets/aether/stationapi/aether.sound.bosses.slider.slidercollide", 2.5f, 1.0f / (this.rand.nextFloat() * 0.2f + 0.9f));
                     }
                     this.stop();
                 }
@@ -303,7 +302,7 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
                         this.direction = 1;
                     }
                 }
-                this.level.playSound((EntityBase)this, "aether:aether.sound.bosses.slider.slidermove", 2.5f, 1.0f / (this.rand.nextFloat() * 0.2f + 0.9f));
+                this.level.playSound((EntityBase)this, "assets/aether/stationapi/aether.sound.bosses.slider.slidermove", 2.5f, 1.0f / (this.rand.nextFloat() * 0.2f + 0.9f));
                 this.gotMovement = true;
             }
         }
@@ -328,7 +327,7 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
         if (this.awake && this.gotMovement) {
             final boolean flag = entity.damage(this, 6);
             if (flag && entity instanceof Living) {
-                this.level.playSound((EntityBase)this, "aether:aether.sound.bosses.slider.slidercollide", 2.5f, 1.0f / (this.rand.nextFloat() * 0.2f + 0.9f));
+                this.level.playSound((EntityBase)this, "assets/aether/stationapi/aether.sound.bosses.slider.slidercollide", 2.5f, 1.0f / (this.rand.nextFloat() * 0.2f + 0.9f));
                 if (entity instanceof WalkingBase || entity instanceof PlayerBase) {
                     final Living living;
                     final Living ek = living = (Living)entity;
@@ -417,10 +416,10 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
                 Aether.currentBoss = null;
             }
             else if (!this.awake) {
-                this.level.playSound((EntityBase)this, "aether:aether.sound.bosses.slider.sliderawaken", 2.5f, 1.0f / (this.rand.nextFloat() * 0.2f + 0.9f));
+                this.level.playSound((EntityBase)this, "assets/aether/stationapi/aether.sound.bosses.slider.sliderawaken", 2.5f, 1.0f / (this.rand.nextFloat() * 0.2f + 0.9f));
                 this.awake = true;
                 this.target = target;
-                this.texture = "/assets/aether/stationapi/textures/entity/sliderAwake.png";
+                this.texture = "aether:textures/entity/sliderAwake.png";
                 final int x = this.dungeonX + 15;
                 for (int y = this.dungeonY + 1; y < this.dungeonY + 8; ++y) {
                     for (int z = this.dungeonZ + 5; z < this.dungeonZ + 11; ++z) {
@@ -450,10 +449,10 @@ public class EntitySlider extends FlyingBase implements IAetherBoss {
             }
             this.harvey = 0.7f - this.health / 875.0f;
             if (this.criticalCondition()) {
-                this.texture = "/assets/aether/stationapi/textures/entity/sliderAwake_red.png";
+                this.texture = "aether:textures/entity/sliderAwake_red.png";
             }
             else {
-                this.texture = "/assets/aether/stationapi/textures/entity/sliderAwake.png";
+                this.texture = "aether:textures/entity/sliderAwake.png";
             }
         }
         return flag;

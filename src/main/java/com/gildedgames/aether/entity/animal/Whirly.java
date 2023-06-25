@@ -3,7 +3,6 @@ import net.minecraft.util.io.CompoundTag;
 import net.minecraft.item.ItemBase;
 import net.minecraft.block.BlockBase;
 import net.minecraft.util.maths.MathHelper;
-import net.minecraft.class_61;
 import net.minecraft.client.render.particle.Smoke;
 import net.minecraft.entity.ParticleBase;
 import net.minecraft.client.render.particle.Explosion;
@@ -20,11 +19,10 @@ import net.minecraft.client.particle.ParticleManager;
 import java.util.List;
 
 import com.gildedgames.aether.entity.base.EntityAetherAnimal;
-import com.gildedgames.aether.mixin.LevelAccessor;
-import com.gildedgames.aether.mixin.LivingAccessor;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
-import com.gildedgames.aether.mixin.DimensionFileAccessor;
-import com.gildedgames.aether.mixin.EntityBaseAccessor;
+import com.gildedgames.aether.mixin.access.LevelAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.data.DimensionFileAccessor;
+import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
 
 public class Whirly extends EntityAetherAnimal {
     public int entcount;

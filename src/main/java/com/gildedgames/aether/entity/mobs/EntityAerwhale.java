@@ -45,7 +45,7 @@ public class EntityAerwhale extends FlyingBase implements MonsterEntityType {
         this.aggroCooldown = 0;
         this.prevAttackCounter = 0;
         this.attackCounter = 0;
-        this.texture = "/assets/aether/stationapi/textures/entity/Mob_Aerwhale.png";
+        this.texture = "aether:textures/entity/Aerwhale.png";
         this.setSize(4.0f, 4.0f);
         this.movementSpeed = 0.5f;
         this.health = 20;
@@ -67,7 +67,7 @@ public class EntityAerwhale extends FlyingBase implements MonsterEntityType {
     @Override
     public void tick() {
         final int byte0 = this.dataTracker.getInt(16);
-        this.texture = ((byte0 != 1) ? "/assets/aether/stationapi/textures/entity/Mob_Aerwhale.png" : "/assets/aether/stationapi/textures/entity/Mob_Aerwhale.png");
+        this.texture = ((byte0 != 1) ? "aether:textures/entity/Aerwhale.png" : "aether:textures/entity/Aerwhale.png");
         final double[] distances = { this.openSpace(0.0f, 0.0f), this.openSpace(45.0f, 0.0f), this.openSpace(0.0f, 45.0f), this.openSpace(-45.0f, 0.0f), this.openSpace(0.0f, -45.0f) };
         int longest = 0;
         for (int i = 1; i < 5; ++i) {
@@ -180,7 +180,8 @@ public class EntityAerwhale extends FlyingBase implements MonsterEntityType {
         if (movingobjectposition == null) {
             return 50.0;
         }
-        if (movingobjectposition.type == HitType.TILE) {
+        // field_789 is TILE, field_790 is ENTITY
+        if (movingobjectposition.type == HitType.field_789) {
             final double i = movingobjectposition.x - this.x;
             final double j = movingobjectposition.y - this.y;
             final double k = movingobjectposition.z - this.z;
@@ -231,17 +232,17 @@ public class EntityAerwhale extends FlyingBase implements MonsterEntityType {
     
     @Override
     protected String getAmbientSound() {
-        return "aether:aether.sound.mobs.aerwhale.aerwhalecall";
+        return "assets/aether/stationapi/aether.sound.mobs.aerwhale.aerwhalecall";
     }
     
     @Override
     protected String getHurtSound() {
-        return "aether:aether.sound.mobs.aerwhale.aerwhaledeath";
+        return "assets/aether/stationapi/aether.sound.mobs.aerwhale.aerwhaledeath";
     }
     
     @Override
     protected String getDeathSound() {
-        return "aether:aether.sound.mobs.aerwhale.aerwhaledeath";
+        return "assets/aether/stationapi/aether.sound.mobs.aerwhale.aerwhaledeath";
     }
     
     @Override

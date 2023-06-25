@@ -1,31 +1,8 @@
 package com.gildedgames.aether.event.listener;
 
-import com.gildedgames.aether.client.render.entity.RenderAechorPlant;
-import com.gildedgames.aether.client.render.entity.RenderAerbunny;
-import com.gildedgames.aether.client.render.entity.RenderCloudParachute;
-import com.gildedgames.aether.client.render.entity.RenderCockatrice;
-import com.gildedgames.aether.client.render.entity.RenderFlyingCow;
-import com.gildedgames.aether.client.render.entity.RenderPhyg;
-import com.gildedgames.aether.client.render.entity.RenderSheepuff;
-
 import static com.gildedgames.aether.Aether.MODID;
 import static net.modificationstation.stationapi.api.registry.Identifier.of;
-import com.gildedgames.aether.client.render.entity.RenderSlider;
-import com.gildedgames.aether.client.render.entity.RenderSwet;
-import com.gildedgames.aether.client.render.entity.RenderWhirly;
-import com.gildedgames.aether.client.render.entity.RenderZephyr;
-import com.gildedgames.aether.client.render.entity.RenderZephyrSnowball;
-import com.gildedgames.aether.client.render.model.ModelAechorPlant;
-import com.gildedgames.aether.client.render.model.ModelAerbunny;
-import com.gildedgames.aether.client.render.model.ModelCockatrice;
-import com.gildedgames.aether.client.render.model.ModelFlyingCow1;
-import com.gildedgames.aether.client.render.model.ModelFlyingCow2;
-import com.gildedgames.aether.client.render.model.ModelFlyingPig1;
-import com.gildedgames.aether.client.render.model.ModelFlyingPig2;
-import com.gildedgames.aether.client.render.model.ModelSheepuff1;
-import com.gildedgames.aether.client.render.model.ModelSheepuff2;
-import com.gildedgames.aether.client.render.model.ModelSheepuff3;
-import com.gildedgames.aether.client.render.model.ModelSlider;
+
 import com.gildedgames.aether.entity.EntityCloudParachute;
 import com.gildedgames.aether.entity.animal.EntityAechorPlant;
 import com.gildedgames.aether.entity.animal.EntityAerbunny;
@@ -54,36 +31,35 @@ import com.gildedgames.aether.entity.projectile.EntityFlamingArrow;
 import com.gildedgames.aether.entity.projectile.EntityFloatingBlock;
 import com.gildedgames.aether.entity.projectile.EntityPoisonNeedle;
 import com.gildedgames.aether.entity.projectile.EntityZephyrSnowball;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.client.render.entity.model.Slime;
 import net.modificationstation.stationapi.api.event.entity.EntityRegister;
 import net.modificationstation.stationapi.api.event.registry.MobHandlerRegistryEvent;
+import net.modificationstation.stationapi.api.registry.Registry;
 
 public class EntityRegistry {
     @EventListener
     public void registerMobHandlers(MobHandlerRegistryEvent event) {
-    	 event.registry.register(of(MODID, "flying_cow"), EntityFlyingCow::new);
-    	 event.registry.register(of(MODID, "awful_monster"), EntityZephyr::new);
-    	 event.registry.register(of(MODID, "boss_slider"), EntitySlider::new);
-    	 event.registry.register(of(MODID, "entity_sentry"), EntitySentry::new);
-    	 event.registry.register(of(MODID, "entity_mimic"), EntityMimic::new);
-    	 event.registry.register(of(MODID, "entity_valkyre"), EntityValkyrie::new);
-    	 event.registry.register(of(MODID, "entity_homeshot"), EntityHomeShot::new);
-    	 event.registry.register(of(MODID,"boss_sunspirit"), EntityFireMonster::new);
-    	 event.registry.register(of(MODID,"entity_fireminion"), EntityFireMinion::new);
-    	 event.registry.register(of(MODID,"entity_moa"), EntityMoa::new);
-    	 event.registry.register(of(MODID,"entity_aerwhale"), EntityAerwhale::new);
-    	 event.registry.register(of(MODID,"entity_aechor_plant"), EntityAechorPlant::new);
-    	 event.registry.register(of(MODID,"entity_aerbunny"), EntityAerbunny::new);
-    	 event.registry.register(of(MODID,"entity_cockatrice"),EntityCockatrice::new);
-    	 event.registry.register(of(MODID,"entity_sheepuff"),EntitySheepuff::new);
-    	 event.registry.register(of(MODID,"entity_phyg"),EntityPhyg::new);
-    	 event.registry.register(of(MODID,"entity_swet"),EntitySwet::new);
-    	 event.registry.register(of(MODID,"entity_cloud"),EntityMiniCloud::new);
-    	 event.registry.register(of(MODID,"entity_whirly"),Whirly::new);
-    	 event.registry.register(of(MODID,"entity_homeshot"),EntityHomeShot::new);	
+    	 Registry.register(event.registry, of(MODID, "flying_cow"), EntityFlyingCow::new);
+    	 Registry.register(event.registry, of(MODID, "awful_monster"), EntityZephyr::new);
+    	 Registry.register(event.registry, of(MODID, "boss_slider"), EntitySlider::new);
+    	 Registry.register(event.registry, of(MODID, "entity_sentry"), EntitySentry::new);
+    	 Registry.register(event.registry, of(MODID, "entity_mimic"), EntityMimic::new);
+    	 Registry.register(event.registry, of(MODID, "entity_valkyre"), EntityValkyrie::new);
+    	 Registry.register(event.registry, of(MODID, "entity_homeshot"), EntityHomeShot::new);
+    	 Registry.register(event.registry, of(MODID,"boss_sunspirit"), EntityFireMonster::new);
+    	 Registry.register(event.registry, of(MODID,"entity_fireminion"), EntityFireMinion::new);
+    	 Registry.register(event.registry, of(MODID,"entity_moa"), EntityMoa::new);
+    	 Registry.register(event.registry, of(MODID,"entity_aerwhale"), EntityAerwhale::new);
+    	 Registry.register(event.registry, of(MODID,"entity_aechor_plant"), EntityAechorPlant::new);
+    	 Registry.register(event.registry, of(MODID,"entity_aerbunny"), EntityAerbunny::new);
+    	 Registry.register(event.registry, of(MODID,"entity_cockatrice"),EntityCockatrice::new);
+    	 Registry.register(event.registry, of(MODID,"entity_sheepuff"),EntitySheepuff::new);
+    	 Registry.register(event.registry, of(MODID,"entity_phyg"),EntityPhyg::new);
+    	 Registry.register(event.registry, of(MODID,"entity_swet"),EntitySwet::new);
+    	 Registry.register(event.registry, of(MODID,"entity_cloud"),EntityMiniCloud::new);
+    	 Registry.register(event.registry, of(MODID,"entity_whirly"),Whirly::new);
+    	 Registry.register(event.registry, of(MODID,"entity_homeshot"),EntityHomeShot::new);	
     }
     
     @EventListener

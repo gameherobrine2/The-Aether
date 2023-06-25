@@ -10,8 +10,8 @@ import net.minecraft.level.Level;
 import java.util.Map;
 
 import com.gildedgames.aether.client.render.particle.EntityCloudSmokeFX;
-import com.gildedgames.aether.mixin.EntityBaseAccessor;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 
 import net.minecraft.entity.Living;
 import net.minecraft.entity.EntityBase;

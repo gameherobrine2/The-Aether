@@ -19,7 +19,7 @@ public class EntityHomeShot extends FlyingBase {
     
     public EntityHomeShot(final Level level) {
         super(level);
-        this.texture = "/aether/mobs/electroball.png";
+        this.texture = "/aether:textures/entity/electroball.png";
         this.lifeSpan = 200;
         this.life = this.lifeSpan;
         this.setSize(0.7f, 0.7f);
@@ -33,7 +33,7 @@ public class EntityHomeShot extends FlyingBase {
     
     public EntityHomeShot(final Level world, final double x, final double y, final double z, final Living ep) {
         super(world);
-        this.texture = "/aether/mobs/electroball.png";
+        this.texture = "/aether:textures/entity/electroball.png";
         this.lifeSpan = 200;
         this.life = this.lifeSpan;
         this.setSize(0.7f, 0.7f);

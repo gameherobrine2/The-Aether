@@ -1,20 +1,16 @@
 package com.gildedgames.aether.item;
 
-import net.minecraft.entity.EntityBase;
-import net.minecraft.entity.player.PlayerBase;
-import net.minecraft.entity.Living;
+import com.gildedgames.aether.Aether;
 import net.minecraft.block.BlockBase;
+import net.minecraft.entity.EntityBase;
+import net.minecraft.entity.Living;
+import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.item.tool.ToolMaterial;
 import net.modificationstation.stationapi.api.registry.Identifier;
-
-import java.util.Random;
-
 import org.jetbrains.annotations.NotNull;
 
-import com.gildedgames.aether.Aether;
-
-import net.minecraft.item.ItemBase;
+import java.util.Random;
 
 public class ItemVampireBlade extends ItemAether {
     private int weaponDamage;
@@ -23,8 +19,8 @@ public class ItemVampireBlade extends ItemAether {
     public ItemVampireBlade(final @NotNull Identifier identifier) {
         super(identifier);
         this.maxStackSize = 1;
-        this.setDurability(ToolMaterial.EMERALD.getDurability());
-        this.weaponDamage = 4 + ToolMaterial.EMERALD.getAttackDamage() * 2;
+        this.setDurability(ToolMaterial.field_1691.getDurability()); // (ToolMaterial) field_1691 = emerald
+        this.weaponDamage = 4 + ToolMaterial.field_1691.getAttackDamage() * 2;
     }
     
     @Override

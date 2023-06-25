@@ -16,7 +16,7 @@ public class RenderCockatrice extends LivingEntityRenderer {
     }
     
     public void renderChicken(final EntityCockatrice entitybadmoa, final double d, final double d1, final double d2, final float f, final float f1) {
-        super.render(entitybadmoa, d, d1, d2, f, f1);
+        super.method_822(entitybadmoa, d, d1, d2, f, f1);
     }
     
     protected float getWingRotation(final EntityCockatrice entitybadmoa, final float f) {
@@ -31,7 +31,7 @@ public class RenderCockatrice extends LivingEntityRenderer {
     }
     
     @Override
-    public void render(final Living entity, final double x, final double y, final double z, final float f, final float f1) {
+    public void method_822(final Living entity, final double x, final double y, final double z, final float f, final float f1) {
         this.renderChicken((EntityCockatrice)entity, x, y, z, f, f1);
     }
     

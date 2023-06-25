@@ -1,0 +1,49 @@
+{
+  "sources": [
+    {
+      "type": "directory",
+      "source": "blocks",
+      "prefix": "blocks/"
+    },
+    {
+      "type": "directory",
+      "source": "block",
+      "prefix": "block/"
+    },
+    {
+      "type": "directory",
+      "source": "items",
+      "prefix": "items/"
+    },
+    {
+      "type": "directory",
+      "source": "armor",
+      "prefix": "armor/"
+    },
+    {
+      "type": "directory",
+      "source": "capes",
+      "prefix": "capes/"
+    },
+    {
+      "type": "directory",
+      "source": "entity",
+      "prefix": "entity/"
+    },
+    {
+      "type": "directory",
+      "source": "gui",
+      "prefix": "gui/"
+    },
+    {
+      "type": "directory",
+      "source": "tile",
+      "prefix": "tile/"
+    },
+    {
+      "type": "directory",
+      "source": "title",
+      "prefix": "title/"
+    }
+  ]
+}

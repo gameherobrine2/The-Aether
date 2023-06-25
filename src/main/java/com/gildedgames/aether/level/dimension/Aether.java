@@ -1,9 +1,8 @@
 package com.gildedgames.aether.level.dimension;
 
 import com.gildedgames.aether.level.gen.AetherBiomeSource;
-import net.minecraft.client.gui.screen.menu.Achievements;
 import com.gildedgames.aether.level.source.AetherLevelSource;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherAchievements;
 
 import net.fabricmc.api.EnvType;

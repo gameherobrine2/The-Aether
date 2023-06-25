@@ -10,8 +10,8 @@ import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.IAetherBoss;
 import com.gildedgames.aether.entity.mobs.EntityFireMinion;
 import com.gildedgames.aether.entity.projectile.EntityFiroBall;
-import com.gildedgames.aether.mixin.EntityBaseAccessor;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
@@ -46,7 +46,7 @@ public class EntityFireMonster extends FlyingBase implements IAetherBoss {
     
     public EntityFireMonster(final Level level) {
         super(level);
-        this.texture = "/assets/aether/stationapi/textures/entity/firemonster.png";
+        this.texture = "aether:textures/entity/firemonster.png";
         this.setSize(2.25f, 2.5f);
         this.field_1642 = true;
         this.orgX = MathHelper.floor(this.x);
@@ -62,7 +62,7 @@ public class EntityFireMonster extends FlyingBase implements IAetherBoss {
     
     public EntityFireMonster(final Level world, final int x, final int y, final int z, final int rad, final int dir) {
         super(world);
-        this.texture = "/assets/aether/stationapi/textures/entity/firemonster.png";
+        this.texture = "aether:textures/entity/firemonster.png";
         this.setSize(2.25f, 2.5f);
         this.setPosition(x + 0.5, y, z + 0.5);
         this.wideness = rad - 2;
@@ -102,7 +102,7 @@ public class EntityFireMonster extends FlyingBase implements IAetherBoss {
             if (this.hurtness > 0) {
                 --this.hurtness;
                 if (this.hurtness == 0) {
-                    this.texture = "/assets/aether/stationapi/textures/entity/firemonster.png";
+                    this.texture = "aether:textures/entity/firemonster.png";
                 }
             }
         }
@@ -371,7 +371,7 @@ public class EntityFireMonster extends FlyingBase implements IAetherBoss {
         final boolean flag = super.damage(target, amount);
         if (flag) {
             this.hurtness = 15;
-            this.texture = "/assets/aether/stationapi/textures/entity/firemonsterHurt.png";
+            this.texture = "aether:textures/entity/firemonsterHurt.png";
             final EntityFireMinion minion = new EntityFireMinion(this.level);
             minion.setPositionAndAngles(this.x, this.y, this.z, this.yaw, 0.0f);
             this.level.spawnEntity(minion);

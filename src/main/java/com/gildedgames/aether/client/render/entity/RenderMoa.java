@@ -1,4 +1,5 @@
 package com.gildedgames.aether.client.render.entity;
+import net.minecraft.client.render.entity.ChickenRenderer;
 import org.lwjgl.opengl.GL11;
 
 import com.gildedgames.aether.entity.animal.EntityMoa;
@@ -15,7 +16,7 @@ public class RenderMoa extends LivingEntityRenderer {
     }
     
     public void renderChicken(final EntityMoa entitymoa, final double d, final double d1, final double d2, final float f, final float f1) {
-        super.render(entitymoa, d, d1, d2, f, f1);
+        super.method_822(entitymoa, d, d1, d2, f, f1);
     }
     
     protected float getWingRotation(final EntityMoa entitymoa, final float f) {
@@ -30,7 +31,7 @@ public class RenderMoa extends LivingEntityRenderer {
     }
     
     @Override
-    public void render(final Living entity, final double x, final double y, final double z, final float f, final float f1) {
+    public void method_822(final Living entity, final double x, final double y, final double z, final float f, final float f1) {
         this.renderChicken((EntityMoa)entity, x, y, z, f, f1);
     }
     

@@ -11,8 +11,6 @@ import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.Lore;
 
-import net.minecraft.entity.player.PlayerBase;
-import java.util.Iterator;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.entity.player.PlayerInventory;
 import java.util.ArrayList;
@@ -82,14 +80,34 @@ public class GuiLore extends ContainerBase {
     protected void renderContainerBackground(final float tickDelta) {
         this.containerWidth = 256;
         this.containerHeight = 195;
-        final int i = this.minecraft.textureManager.getTextureId("/assets/aether/stationapi/textures/gui/lore.png");
+        final int i = this.minecraft.textureManager.getTextureId("/assets/aether/textures/gui/lore.png");
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         this.minecraft.textureManager.bindTexture(i);
         final int j = (this.width - this.containerWidth) / 2;
         final int k = (this.height - this.containerHeight) / 2;
         this.blit(j, k, 0, 0, this.containerWidth, this.containerHeight); 
     }
-    
+
+    /* todo: Add these to lore book:
+	(pulled from lang file)
+    item.IronGlove.name=Iron Glove
+    item.GoldGlove.name=Gold Glove
+    item.DiamondGlove.name=Diamond Glove
+    item.WhiteCape.name=White Cape
+    item.AetherCape.name=Aether Cape
+	item.LeatherGlove.name=Leather Glove
+    item.IronGlove.name=Iron Glove
+    item.GoldGlove.name=Gold Glove
+    item.DiamondGlove.name=Diamond Glove
+	item.IronPendant.name=Iron Pendant
+    item.GoldPendant.name=Gold Pendant
+	item.IronRing.name=Iron Ring
+    item.GoldRing.name=Gold Ring
+    tile.SkyrootLeaves.name=Skyroot Leaves
+    tile.GoldenOakLog.name=Golden Oak Log
+    tile.GoldenOakLeaves.name=Golden Oak Leaves
+*/
+
     static {
         (GuiLore.lores = new ArrayList<Lore>()).add(new Lore(BlockBase.STONE, "Stone", "Found everywhere.", "Makes steps", "", "", "", "", 0));
         GuiLore.lores.add(new Lore((BlockBase)BlockBase.GRASS, "Grass", "Found in light.", "Spreads to dirt.", "Flowers and trees", "will grow on it.", "Click with a hoe", "to make farmland", 0));
@@ -277,11 +295,11 @@ public class GuiLore extends ContainerBase {
         GuiLore.lores.add(new Lore(AetherBlocks.SKYROOT_SAPLING, "Skyroot Sapling", "Dropped by ", "skyroot leaves.", "Plants a skyroot", "tree", "", "", 2));
         GuiLore.lores.add(new Lore(AetherBlocks.GOLDEN_OAK_SAPLING, "Golden Oak Sapling", "Dropped by golden", "oak leaves.", "Plants a golden", "oak", "", "", 2));
         GuiLore.lores.add(new Lore(AetherBlocks.QUICKSOIL, "Quicksoil", "Found at the edge", "of islands.", "Speeds up anything", "on it.", "Use it with blue", "clouds for epicness", 2));
-        GuiLore.lores.add(new Lore(AetherBlocks.LOG, "Skyroot Wood", "Wood from skyroot", "trees.", "Makes skyroot", "planks", "", "", 2));
+        GuiLore.lores.add(new Lore(AetherBlocks.SKYROOT_LOG, "Skyroot Log", "Wood from skyroot", "trees.", "Makes skyroot", "planks", "", "", 2));
         GuiLore.lores.add(new Lore(AetherBlocks.ICESTONE, "Icestone", "Found in Holystone.", "Freezes water", "around it on", "placement", "", "", 2));
         GuiLore.lores.add(new Lore(AetherBlocks.GRAVITITE_ORE, "Gravitite Ore", "Found under big", "islands.", "Floats upwards,", "and can be made", "into tools.", "Can be enchanted", 2));
         GuiLore.lores.add(new Lore(AetherBlocks.ENCHANTED_GRAVITITE, "Enchanted Gravitite", "Floats upwards", "when powered by", "redstone", "", "", "", 2));
-        GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.HOLYSTONE, 1, 2), "Mossy Holystone", "Found in dungeons.", "Decorative block", "", "", "", "", 2));
+        GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.MOSSY_HOLYSTONE, 1), "Mossy Holystone", "Found in dungeons.", "Decorative block", "", "", "", "", 2));
         GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.AERCLOUD, 1, 1), "Blue Aercloud", "Found in clouds.", "When landed on,", "it will bounce you", "sky-high", "", "", 2));
         GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.AERCLOUD, 1, 0), "Cold Aercloud", "Found in clouds.", "Stops fall damage", "when landed on", "", "", "", 2));
         GuiLore.lores.add(new Lore(new ItemInstance(AetherBlocks.AERCLOUD, 1, 2), "Gold Aercloud", "Found in clouds.", "Stops fall damage", "when landed on.", "Quite rare", "", "", 2));

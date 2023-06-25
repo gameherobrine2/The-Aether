@@ -3,10 +3,8 @@ import net.minecraft.client.render.TextRenderer;
 import org.lwjgl.opengl.GL11;
 
 import com.gildedgames.aether.Aether;
-import com.gildedgames.aether.mixin.MainMenuMixin;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.menu.MainMenu;
 import net.minecraft.client.gui.widgets.Button;
 
 public class GuiAetherButton extends Button {
@@ -87,7 +85,7 @@ public class GuiAetherButton extends Button {
         }
         if (Aether.themeOption) {
             final TextRenderer fontrenderer = minecraft.textRenderer;
-            GL11.glBindTexture(3553, minecraft.textureManager.getTextureId("/assets/aether/stationapi/textures/gui/buttons.png"));
+            GL11.glBindTexture(3553, minecraft.textureManager.getTextureId("/assets/aether/textures/gui/buttons.png"));
             GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
             final boolean flag = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
             final int k = this.getYImage(flag);

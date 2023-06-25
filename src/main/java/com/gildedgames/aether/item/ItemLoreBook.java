@@ -2,15 +2,13 @@ package com.gildedgames.aether.item;
 import org.jetbrains.annotations.NotNull;
 
 import com.gildedgames.aether.gui.GuiLore;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 
-import net.minecraft.client.gui.screen.ScreenBase;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.level.Level;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
 import net.minecraft.item.ItemInstance;
-import net.minecraft.item.ItemBase;
 
 public class ItemLoreBook extends TemplateItemBase {
     public ItemLoreBook(final @NotNull Identifier identifier) {

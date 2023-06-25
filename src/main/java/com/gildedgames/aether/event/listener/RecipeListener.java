@@ -92,7 +92,8 @@ public class RecipeListener {
 	     CraftingRegistry.addShapedRecipe(new ItemInstance(AetherItems.CloudParachuteGold), new Object[] { "CC", "CC", 'C', new ItemInstance(AetherBlocks.AERCLOUD, 1, 2) });
 	 }
 	 private void registerShapelessRecipes() {
-		 CraftingRegistry.addShapelessRecipe(new ItemInstance(AetherBlocks.SKYROOT_PLANKS,4), new ItemInstance(AetherBlocks.LOG));
+		 CraftingRegistry.addShapelessRecipe(new ItemInstance(AetherBlocks.SKYROOT_PLANKS,4), new ItemInstance(AetherBlocks.SKYROOT_LOG));
+		 CraftingRegistry.addShapelessRecipe(new ItemInstance(AetherBlocks.SKYROOT_PLANKS,4), new ItemInstance(AetherBlocks.GOLDEN_OAK_LOG));
 		 CraftingRegistry.addShapelessRecipe(new ItemInstance(AetherItems.DartShooter, 1, 1), new Object[] { new ItemInstance(AetherItems.DartShooter, 1, 0), AetherItems.AechorPetal });
 	     CraftingRegistry.addShapelessRecipe(new ItemInstance(AetherItems.Zanite, 4), new Object[] { AetherBlocks.ZANITE_BLOCK });
 	     CraftingRegistry.addShapelessRecipe(new ItemInstance(ItemBase.dyePowder, 2, 5), new Object[] { AetherBlocks.PURPLE_FLOWER });

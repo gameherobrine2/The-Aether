@@ -1,11 +1,6 @@
 package com.gildedgames.aether.event.listener;
 
-import com.gildedgames.aether.block.BlockAetherLeaves;
-import com.gildedgames.aether.block.BlockAetherLog;
 import com.gildedgames.aether.block.BlockAmbrosiumTorch;
-import com.gildedgames.aether.block.BlockDungeon;
-import com.gildedgames.aether.block.BlockPillar;
-import com.gildedgames.aether.block.BlockTrap;
 import com.gildedgames.aether.item.*;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
@@ -22,9 +17,9 @@ public class TextureListener {
 	@EventListener
     public void registerTextures(TextureRegisterEvent event) {
 		//Sprites for blocks ^-^
-		sprTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/SkyrootLogTop")).index;
-		sprSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/SkyrootLogSide")).index;
-		sprGoldenSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/GoldenOak")).index;
+		sprSkyrootLogTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/SkyrootLogTop")).index;
+		sprSkyrootLogSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/SkyrootLogSide")).index;
+		sprGoldenLogSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/GoldenOak")).index;
 		sprSkyroot = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/SkyrootLeaves")).index;
         sprGoldenOak = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/GoldenOakLeaves")).index;
         sprAercloud = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/Aercloud")).index;
@@ -53,7 +48,7 @@ public class TextureListener {
         sprPillarTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/PillarTop")).index;
         sprPillarSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/PillarSide")).index;
         sprPillarTopSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/PillarCarved")).index;
-        sprHolystone = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/HolyStone")).index;
+        sprHolystone = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/Holystone")).index;
         sprMossyHolystone = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/MossyHolystone")).index;
         sprFreezerTop = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/FreezerTop")).index;
         sprFreezerSide = Atlases.getTerrain().addTexture(Identifier.of(MOD_ID, "block/FreezerSide")).index;
@@ -101,10 +96,10 @@ public class TextureListener {
         ((ItemAmbrosium)AetherItems.HealingStone).setTexture(Identifier.of(MOD_ID, "items/HealingStone"));
         ((ItemAether)AetherItems.Zanite).setTexture(Identifier.of(MOD_ID,"items/Zanite"));
         ((ItemAetherRecord)AetherItems.BlueMusicDisk).setTexture(Identifier.of(MOD_ID, "items/BlueMusicDisk"));
-        ((ItemSkyrootPickaxe)AetherItems.PickSkyroot).setTexture(Identifier.of(MOD_ID, "items/PickSkyroot"));
-        ((ItemSkyrootSpade)AetherItems.ShovelSkyroot).setTexture(Identifier.of(MOD_ID, "items/ShovelSkyroot"));
-        ((ItemSkyrootAxe)AetherItems.AxeSkyroot).setTexture(Identifier.of(MOD_ID, "items/AxeSkyroot"));
-        ((ItemSkyrootSword)AetherItems.SwordSkyroot).setTexture(Identifier.of(MOD_ID, "items/SwordSkyroot"));
+        AetherItems.PickSkyroot.setTexture(Identifier.of(MOD_ID, "items/PickSkyroot"));
+        AetherItems.ShovelSkyroot.setTexture(Identifier.of(MOD_ID, "items/ShovelSkyroot"));
+        AetherItems.AxeSkyroot.setTexture(Identifier.of(MOD_ID, "items/AxeSkyroot"));
+        AetherItems.SwordSkyroot.setTexture(Identifier.of(MOD_ID, "items/SwordSkyroot"));
         ((ItemHolystonePickaxe)AetherItems.PickHolystone).setTexture(Identifier.of(MOD_ID, "items/PickHolystone"));
         ((ItemHolystoneSpade)AetherItems.ShovelHolystone).setTexture(Identifier.of(MOD_ID, "items/ShovelHolystone"));
         ((ItemHolystoneAxe)AetherItems.AxeHolystone).setTexture(Identifier.of(MOD_ID, "items/AxeHolystone"));
@@ -167,7 +162,7 @@ public class TextureListener {
     public static int sprDartPoison;
 	public static int sprFreezerTop;
 	public static int sprFreezerSide;
-    public static int sprPillarTop,sprHolystone,sprMossyHolystone;
+    public static int sprPillarTop, sprHolystone, sprMossyHolystone;
     public static int sprPillarSide;
     public static int sprPillarTopSide;
     public static int sprBronze,sprChestFront,sprChestSide;
@@ -183,9 +178,9 @@ public class TextureListener {
 	public static int sprAercloud;
     public static int sprSkyroot;
     public static int sprGoldenOak;
-    public static int sprTop;
-    public static int sprSide;
-    public static int sprGoldenSide;
+    public static int sprSkyrootLogTop;
+    public static int sprSkyrootLogSide;
+    public static int sprGoldenLogSide;
 	public static int sprZaniteOre;
 	public static int sprGravititeOre;
     @Entrypoint.ModID

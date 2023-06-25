@@ -3,6 +3,9 @@ package com.gildedgames.aether.mixin;
 import java.util.List;
 import java.util.Random;
 
+import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
+import com.gildedgames.aether.mixin.access.LivingAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -69,7 +72,7 @@ public class GameRendererMixin {
             final int height = scaledresolution.getScaledHeight();
             final String s = ((IAetherBoss)Aether.currentBoss).getBossTitle();
             mc.textRenderer.drawTextWithShadow(s, width / 2 - mc.textRenderer.getTextWidth(s) / 2, 2, -1);
-            GL11.glBindTexture(3553, mc.textureManager.getTextureId("/assets/aether/stationapi/textures/gui/bossHPBar.png"));
+            GL11.glBindTexture(3553, mc.textureManager.getTextureId("/assets/aether/textures/gui/bossHPBar.png"));
             GL11.glEnable(3042);
             GL11.glBlendFunc(775, 769);
             GL11.glColor3f(1.0f, 1.0f, 1.0f);
@@ -90,7 +93,7 @@ public class GameRendererMixin {
         GL11.glDisable(3008);
         GL11.glEnable(2977);
         GL11.glEnable(3042);
-        GL11.glBindTexture(3553, game.textureManager.getTextureId("/assets/aether/stationapi/textures/capes/shieldEffect.png"));
+        GL11.glBindTexture(3553, game.textureManager.getTextureId("/assets/aether/textures/capes/shieldEffect.png"));
         final Tessellator tessellator = Tessellator.INSTANCE;
         tessellator.start();
         tessellator.vertex(0.0, j, -90.0, 0.0, 1.0);

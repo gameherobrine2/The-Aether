@@ -8,9 +8,9 @@ import java.util.List;
 
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.projectile.EntityPoisonNeedle;
-import com.gildedgames.aether.mixin.EntityBaseAccessor;
-import com.gildedgames.aether.mixin.LivingAccessor;
-import com.gildedgames.aether.mixin.MinecraftClientAccessor;
+import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
+import com.gildedgames.aether.mixin.access.LivingAccessor;
+import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherBlocks;
 
 import net.minecraft.entity.EntityBase;
@@ -39,7 +39,7 @@ public class EntityCockatrice extends MonsterBase {
         this.field_1641 = 1.0f;
         this.jrem = 0;
         this.jumps = 3;
-        this.texture = "/assets/aether/stationapi/textures/entity/Cockatrice.png";
+        this.texture = "aether:textures/entity/Cockatrice.png";
         this.setSize(1.0f, 2.0f);
         this.health = 20;
         this.timeUntilNextEgg = this.rand.nextInt(6000) + 6000;
@@ -86,7 +86,7 @@ public class EntityCockatrice extends MonsterBase {
                 entityPoisonNeedle.y += 1.399999976158142;
                 final double d3 = target.y + target.getStandingEyeHeight() - 0.20000000298023224 - entityarrow.y;
                 final float f2 = MathHelper.sqrt(d * d + d2 * d2) * 0.2f;
-                this.level.playSound((EntityBase)this, "aether:aether.sound.other.dartshooter.shootdart", 1.0f, 1.0f / (this.rand.nextFloat() * 0.4f + 0.8f));
+                this.level.playSound((EntityBase)this, "assets/aether/stationapi/aether.sound.other.dartshooter.shootdart", 1.0f, 1.0f / (this.rand.nextFloat() * 0.4f + 0.8f));
                 this.level.spawnEntity(entityarrow);
                 entityarrow.setArrowHeading(d, d3 + f2, d2, 0.6f, 12.0f);
                 this.attackTime = 30;

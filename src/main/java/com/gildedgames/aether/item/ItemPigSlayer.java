@@ -2,8 +2,8 @@ package com.gildedgames.aether.item;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.gildedgames.aether.mixin.EntityBaseAccessor;
-import com.gildedgames.aether.mixin.LivingAccessor;
+import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
+import com.gildedgames.aether.mixin.access.LivingAccessor;
 import net.minecraft.entity.EntityRegistry;
 import net.minecraft.entity.Living;
 import net.minecraft.item.ItemInstance;
@@ -13,7 +13,8 @@ import net.modificationstation.stationapi.api.template.item.tool.TemplateSword;
 
 public class ItemPigSlayer extends TemplateSword {
     public ItemPigSlayer(final @NotNull Identifier identifier) {
-        super(identifier, ToolMaterial.IRON);
+        // field_1690 is IRON
+        super(identifier, ToolMaterial.field_1690);
         this.setDurability(0);
     }
     

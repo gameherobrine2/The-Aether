@@ -3,30 +3,29 @@ package com.gildedgames.aether.block;
 import net.minecraft.item.ItemBase;
 import java.util.Random;
 
-import com.gildedgames.aether.mixin.PlayerBaseAccessor;
-import com.gildedgames.aether.mixin.LivingAccessor;
+import com.gildedgames.aether.mixin.access.PlayerBaseAccessor;
 import net.minecraft.level.BlockView;
 import net.minecraft.sortme.MagicBedNumbers;
 import net.minecraft.block.Bed;
 import net.minecraft.util.Vec3i;
 import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
+import net.modificationstation.stationapi.api.template.block.TemplateBed;
 
-import java.util.Iterator;
 import net.minecraft.util.SleepStatus;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.level.Level;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.BlockBase;
 
-public class BlockAetherBed extends TemplateBlockBase {
+public class BlockAetherBed extends TemplateBed {
     public static final int[][] headBlockToFootBlockMap;
-    
-    public BlockAetherBed(final Identifier id) {
-        super(id, 134, Material.WOOL);
+
+    public BlockAetherBed(Identifier identifier)
+    {
+        super(identifier);
         this.setBounds();
     }
-    
+
+
     @Override
     public boolean canUse(final Level level, int x, final int y, int z, final PlayerBase player) {
         //if (level.isServerSide) {
@@ -61,7 +60,7 @@ public class BlockAetherBed extends TemplateBlockBase {
             setBedOccupied(level, x, y, z, false);
         }
         final SleepStatus enumstatus = this.sleepInBedAt(player, x, y, z);
-        if (enumstatus == SleepStatus.OK) {
+        if (enumstatus == SleepStatus.field_2660) {
             setBedOccupied(level, x, y, z, true);
             return true;
         }
@@ -81,7 +80,7 @@ public class BlockAetherBed extends TemplateBlockBase {
             return SleepStatus.DAY_TIME;
         }
         if (Math.abs(player.x - i) > 3.0 || Math.abs(player.y - j) > 2.0 || Math.abs(player.z - k) > 3.0) {
-            return SleepStatus.TOO_FAR_AWAY;
+            return SleepStatus.CANT_SLEEP_HERE;
         }
         //}
         player.width = 0.2f;
@@ -124,7 +123,7 @@ public class BlockAetherBed extends TemplateBlockBase {
         //if (!worldObj.isServerSide) {
             worldObj.onPlayerDisconnect();
         //}
-        return SleepStatus.OK;
+        return SleepStatus.field_2660;
     }
     
     private void func_22052_e(final PlayerBase player, final int i) {

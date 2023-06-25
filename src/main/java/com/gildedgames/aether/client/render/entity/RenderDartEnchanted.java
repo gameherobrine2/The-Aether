@@ -14,7 +14,7 @@ public class RenderDartEnchanted extends EntityRenderer {
         if (entitygolden.victim != null) {
             return;
         }
-        this.bindTexture("/aether/mobs/entityenchanteddart.png");
+        this.bindTexture("aether:textures/entity/entityenchanteddart.png");
         GL11.glPushMatrix();
         GL11.glTranslatef((float)d, (float)d1, (float)d2);
         GL11.glRotatef(entitygolden.prevYaw + (entitygolden.yaw - entitygolden.prevYaw) * f1 - 90.0f, 0.0f, 1.0f, 0.0f);

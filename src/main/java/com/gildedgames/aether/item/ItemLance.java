@@ -3,9 +3,11 @@ package com.gildedgames.aether.item;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.Living;
 
+import net.minecraft.entity.player.PlayerBase;
+import net.minecraft.util.hit.HitType;
+import net.modificationstation.stationapi.api.item.CustomReachProvider;
 import org.jetbrains.annotations.NotNull;
 
-import com.gildedgames.aether.item.base.IReach;
 import com.gildedgames.aether.registry.AetherItems;
 
 import net.minecraft.block.BlockBase;
@@ -15,7 +17,7 @@ import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
 import net.minecraft.item.ItemBase;
 
-public class ItemLance extends TemplateItemBase implements IReach {
+public class ItemLance extends TemplateItemBase implements CustomReachProvider {
     private int weaponDamage;
     
     public ItemLance(final @NotNull Identifier identifier, final ToolMaterial enumtoolmaterial) {
@@ -60,9 +62,9 @@ public class ItemLance extends TemplateItemBase implements IReach {
     public boolean reachItemMatches(final ItemInstance itemstack) {
         return itemstack != null && itemstack.itemId == AetherItems.Lance.id;
     }
-    
+
     @Override
-    public float getReach(final ItemInstance itemstack) {
-        return 10.0f;
+    public double getReach(ItemInstance itemInstance, PlayerBase player, HitType type, double currentReach) {
+        return 10.f;
     }
 }

@@ -24,7 +24,7 @@ public class MoaColour {
     }
     
     public String getTexture(final boolean saddled) {
-        return "/assets/aether/stationapi/textures/entity/" + this.name + (saddled ? "MoaSaddle.png" : "Moa.png");
+        return "aether:textures/entity/" + this.name + (saddled ? "MoaSaddle.png" : "Moa.png");
     }
     
     public static MoaColour pickRandomMoa() {

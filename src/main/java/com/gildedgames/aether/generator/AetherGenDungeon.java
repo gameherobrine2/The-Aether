@@ -106,7 +106,7 @@ public class AetherGenDungeon extends Structure {
                     if (!AetherBlocks.isGood(world.getTileId(x + a2, y + m, z + b), world.getTileMeta(x + a2, y + m, z + b))) {
                         flag = true;
                         if (m == -3) {
-                            this.setBlock(world, random, x + a2, y + m, z + b, AetherBlocks.HOLYSTONE.id, 0, AetherBlocks.HOLYSTONE.id, 2, 5);
+                            this.setBlock(world, random, x + a2, y + m, z + b, AetherBlocks.HOLYSTONE.id, 0, AetherBlocks.MOSSY_HOLYSTONE.id, 0, 5);
                         }
                         else if (m < 1) {
                             if (l == wid) {
@@ -118,7 +118,7 @@ public class AetherGenDungeon extends Structure {
                                 }
                             }
                             else if (k2 == 3 || k2 == -3) {
-                                this.setBlock(world, random, x + a2, y + m, z + b, AetherBlocks.HOLYSTONE.id, 0, AetherBlocks.HOLYSTONE.id, 2, 5);
+                                this.setBlock(world, random, x + a2, y + m, z + b, AetherBlocks.HOLYSTONE.id, 0, AetherBlocks.MOSSY_HOLYSTONE.id, 0, 5);
                             }
                             else {
                                 world.setTileInChunk(x + a2, y + m, z + b, 0);
@@ -131,7 +131,7 @@ public class AetherGenDungeon extends Structure {
                             this.setBlock(world, random, x + a2, y + m, z + b, this.walls(), 2, this.ceilings(), 2, 5);
                         }
                         else {
-                            this.setBlock(world, random, x + a2, y + m, z + b, AetherBlocks.HOLYSTONE.id, 0, AetherBlocks.HOLYSTONE.id, 2, 5);
+                            this.setBlock(world, random, x + a2, y + m, z + b, AetherBlocks.HOLYSTONE.id, 0, AetherBlocks.MOSSY_HOLYSTONE.id, 0, 5);
                         }
                     }
                     a2 = -a2;

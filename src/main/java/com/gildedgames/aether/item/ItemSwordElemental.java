@@ -31,7 +31,7 @@ public class ItemSwordElemental extends TemplateSword {
     private int colour;
     
     public ItemSwordElemental(final @NotNull Identifier identifier, final EnumElement element, final int colour) {
-        super(identifier, ToolMaterial.EMERALD);
+        super(identifier, ToolMaterial.field_1691); // (ToolMaterial) field_1691 = EMERALD
         this.maxStackSize = 1;
         this.setDurability((element == EnumElement.Holy) ? 128 : 32);
         this.weaponDamage = 4;

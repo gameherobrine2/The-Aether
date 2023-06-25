@@ -25,7 +25,7 @@ public class EntityMiniCloud extends FlyingBase {
     
     public EntityMiniCloud(final Level level) {
         super(level);
-        this.texture = "/assets/aether/stationapi/textures/entity/minicloud.png";
+        this.texture = "aether:textures/entity/minicloud.png";
         this.setSize(0.0f, 0.0f);
         this.field_1642 = true;
         this.field_1643 = 1.75f;
@@ -33,7 +33,7 @@ public class EntityMiniCloud extends FlyingBase {
     
     public EntityMiniCloud(final Level world, final PlayerBase ep, final boolean flag) {
         super(world);
-        this.texture = "/assets/aether/stationapi/textures/entity/minicloud.png";
+        this.texture = "aether:textures/entity/minicloud.png";
         this.setSize(0.5f, 0.45f);
         this.dude = ep;
         this.toLeft = flag;
@@ -157,7 +157,7 @@ public class EntityMiniCloud extends FlyingBase {
                     eh.smotionZ = vec3d.z * 1.5;
                 }
                 eh.smacked = true;
-                this.level.playSound((EntityBase)this, "aether:aether.sound.mobs.zephyr.zephyrshoot", 0.75f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
+                this.level.playSound((EntityBase)this, "assets/aether/stationapi/aether.sound.mobs.zephyr.zephyrshoot", 0.75f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
                 this.shotTimer = 40;
             }
         }

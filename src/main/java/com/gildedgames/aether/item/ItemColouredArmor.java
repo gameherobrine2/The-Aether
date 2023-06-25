@@ -1,15 +1,18 @@
 package com.gildedgames.aether.item;
-import net.minecraft.item.ItemInstance;
-import net.modificationstation.stationapi.api.client.item.ArmorTextureProvider;
+import net.minecraft.item.ItemBase;
+import net.minecraft.item.armour.Armour;
+import net.modificationstation.stationapi.api.client.item.ArmourTextureProvider;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.armour.TemplateArmour;
 
-public class ItemColouredArmor extends TemplateArmour implements ArmorTextureProvider{
+public class ItemColouredArmor extends TemplateArmour implements ArmourTextureProvider {
     private int colour;
     private String armorTexture;
+    private String name;
     public ItemColouredArmor(final Identifier i, final int j, final String s, final int l, final int col) {
         super(i, j, 0, l);
-        this.armorTexture = "/assets/aether/stationapi/textures/armor/"+s+".png";
+        this.name = s;
+        this.armorTexture = s;
         this.colour = col;
     }
     
@@ -18,15 +21,8 @@ public class ItemColouredArmor extends TemplateArmour implements ArmorTexturePro
         return this.colour;
     }
 
-	@Override
-	public String getChestplateModelTexture(ItemInstance itemInstance) {
-		System.out.println(armorTexture);
-		return armorTexture;
-	}
-
-	@Override
-	public String getOtherModelTexture(ItemInstance itemInstance) {
-		System.out.println(armorTexture);
-		return armorTexture;
-	}
+    @Override
+    public Identifier getTexture(Armour armour) {
+        return Identifier.of(name);
+    }
 }

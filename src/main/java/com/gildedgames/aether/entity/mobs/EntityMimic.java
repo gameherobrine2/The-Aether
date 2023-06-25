@@ -14,7 +14,7 @@ public class EntityMimic extends EntityDungeonMob {
     public EntityMimic(final Level level) {
         super(level);
         this.legsDirection = 1.0f;
-        this.texture = "/assets/aether/stationapi/textures/entity/Mimic.png";
+        this.texture = "aether:textures/entity/Mimic.png";
         this.standingEyeHeight = 0.0f;
         this.setSize(1.0f, 2.0f);
         this.health = 40;

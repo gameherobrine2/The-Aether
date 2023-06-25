@@ -13,7 +13,7 @@ public class RenderFlamingArrow extends EntityRenderer {
         if (entityarrow.prevYaw == 0.0f && entityarrow.prevPitch == 0.0f) {
             return;
         }
-        this.bindTexture("/assets/aether/stationapi/textures/tile/FlamingArrows.png");
+        this.bindTexture("assets/aether/textures/tile/FlamingArrows.png");
         GL11.glPushMatrix();
         GL11.glTranslatef((float)d, (float)d1, (float)d2);
         GL11.glRotatef(entityarrow.prevYaw + (entityarrow.yaw - entityarrow.prevYaw) * f1 - 90.0f, 0.0f, 1.0f, 0.0f);

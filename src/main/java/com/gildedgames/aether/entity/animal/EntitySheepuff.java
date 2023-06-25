@@ -21,7 +21,7 @@ public class EntitySheepuff extends EntityAetherAnimal {
     
     public EntitySheepuff(final Level level) {
         super(level);
-        this.texture = "/assets/aether/stationapi/textures/entity/sheepuff.png";
+        this.texture = "aether:textures/entity/sheepuff.png";
         this.setSize(0.9f, 1.3f);
         this.setFleeceColor(getRandomFleeceColor(this.rand));
         this.amountEaten = 0;

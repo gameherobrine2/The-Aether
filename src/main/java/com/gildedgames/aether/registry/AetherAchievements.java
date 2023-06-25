@@ -27,17 +27,17 @@ public class AetherAchievements {
     public static Achievement loreception;
     @EventListener
     private void registerAchievements(AchievementRegisterEvent event) {
-    	AetherAchievements.enterAether = new Achievement(800, "enterAether", 0, 0, BlockBase.GLOWSTONE, (Achievement)null).register();
-        AetherAchievements.defeatBronze = new Achievement(801, "defeatBronze", -2, 3, new ItemInstance(AetherItems.Key, 1, 0), AetherAchievements.enterAether).register();
-        AetherAchievements.defeatSilver = new Achievement(802, "defeatSilver", 0, 4, new ItemInstance(AetherItems.Key, 1, 1), AetherAchievements.enterAether).register();
-        AetherAchievements.defeatGold = new Achievement(803, "defeatGold", 2, 3, new ItemInstance(AetherItems.Key, 1, 2), AetherAchievements.enterAether).register();
-        AetherAchievements.enchanter = new Achievement(804, "enchanter", 2, 1, AetherBlocks.ENCHANTER, AetherAchievements.enterAether).register();
-        AetherAchievements.incubator = new Achievement(805, "incubator", 2, -1, AetherBlocks.INCUBATOR, AetherAchievements.enterAether).register();
-        AetherAchievements.blueCloud = new Achievement(806, "blueCloud", -2, -1, new ItemInstance(AetherBlocks.AERCLOUD, 1, 1), AetherAchievements.enterAether).register();
-        AetherAchievements.flyingPig = new Achievement(807, "flyingPig", -2, 1, ItemBase.saddle, AetherAchievements.enterAether).register();
-        AetherAchievements.gravTools = new Achievement(808, "gravTools", -1, -3, AetherItems.PickGravitite, AetherAchievements.enterAether).register();
-        AetherAchievements.lore = new Achievement(809, "lore", 1, -3, ItemBase.book, AetherAchievements.enterAether).register();
-        AetherAchievements.loreception = new Achievement(810, "loreception", 1, -5, ItemBase.book, AetherAchievements.lore).register(); 
+    	AetherAchievements.enterAether = new Achievement(800, "aether:enterAether", 0, 0, BlockBase.GLOWSTONE, (Achievement)null);
+        AetherAchievements.defeatBronze = new Achievement(801, "aether:defeatBronze", -2, 3, new ItemInstance(AetherItems.Key, 1, 0), AetherAchievements.enterAether);
+        AetherAchievements.defeatSilver = new Achievement(802, "aether:defeatSilver", 0, 4, new ItemInstance(AetherItems.Key, 1, 1), AetherAchievements.enterAether);
+        AetherAchievements.defeatGold = new Achievement(803, "aether:defeatGold", 2, 3, new ItemInstance(AetherItems.Key, 1, 2), AetherAchievements.enterAether);
+        AetherAchievements.enchanter = new Achievement(804, "aether:enchanter", 2, 1, AetherBlocks.ENCHANTER, AetherAchievements.enterAether);
+        AetherAchievements.incubator = new Achievement(805, "aether:incubator", 2, -1, AetherBlocks.INCUBATOR, AetherAchievements.enterAether);
+        AetherAchievements.blueCloud = new Achievement(806, "aether:blueCloud", -2, -1, new ItemInstance(AetherBlocks.AERCLOUD, 1, 1), AetherAchievements.enterAether);
+        AetherAchievements.flyingPig = new Achievement(807, "aether:flyingPig", -2, 1, ItemBase.saddle, AetherAchievements.enterAether);
+        AetherAchievements.gravTools = new Achievement(808, "aether:gravTools", -1, -3, AetherItems.PickGravitite, AetherAchievements.enterAether);
+        AetherAchievements.lore = new Achievement(809, "aether:lore", 1, -3, ItemBase.book, AetherAchievements.enterAether);
+        AetherAchievements.loreception = new Achievement(810, "aether:loreception", 1, -5, ItemBase.book, AetherAchievements.lore);
         event.achievements.add(AetherAchievements.enterAether);/*, "Hostile Paradise", "Ascend to the Aether");*/
         event.achievements.add(AetherAchievements.defeatBronze);/*, "Like a Bossaru!", "Defeat the bronze boss");*/
         event.achievements.add(AetherAchievements.defeatSilver);/*, "Dethroned", "Defeat the silver boss");*/
@@ -50,7 +50,7 @@ public class AetherAchievements {
         event.achievements.add(AetherAchievements.lore);/*, "The more you know!", "Read a book of lore");*/
         event.achievements.add(AetherAchievements.loreception);/*, "Lore-ception", "It's a book in a book in a book in...");*/
         final AchievementPage page = new AetherACPage();
-        page.addAchievements(new Achievement[] { AetherAchievements.enterAether, AetherAchievements.defeatBronze, AetherAchievements.defeatSilver, AetherAchievements.defeatGold, AetherAchievements.enchanter, AetherAchievements.incubator, AetherAchievements.gravTools, AetherAchievements.blueCloud, AetherAchievements.flyingPig, AetherAchievements.lore, AetherAchievements.loreception });
+        page.addAchievements(AetherAchievements.enterAether, AetherAchievements.defeatBronze, AetherAchievements.defeatSilver, AetherAchievements.defeatGold, AetherAchievements.enchanter, AetherAchievements.incubator, AetherAchievements.gravTools, AetherAchievements.blueCloud, AetherAchievements.flyingPig, AetherAchievements.lore, AetherAchievements.loreception);
     }
     
 }

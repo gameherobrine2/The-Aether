@@ -2,8 +2,8 @@ package com.gildedgames.aether.entity.animal;
 
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.EntityAetherAnimal;
-import com.gildedgames.aether.mixin.LivingAccessor;
-import com.gildedgames.aether.mixin.EntityBaseAccessor;
+import com.gildedgames.aether.mixin.access.LivingAccessor;
+import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
 import net.minecraft.entity.Living;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemBase;
@@ -23,7 +23,7 @@ public class EntityFlyingCow extends EntityAetherAnimal {
     public EntityFlyingCow(Level level) {
         super(level);
         this.getSaddled = false;
-        this.texture = "/assets/aether/stationapi/textures/entity/Mob_FlyingCowBase.png";
+        this.texture = "aether:textures/entity/Mob_FlyingCowBase.png";
         this.setSize(0.9f, 1.3f);
         this.jrem = 0;
         this.jumps = 1;
@@ -62,7 +62,7 @@ public class EntityFlyingCow extends EntityAetherAnimal {
         this.jrem = tag.getShort("Remaining");
         this.getSaddled = tag.getBoolean("getSaddled");
         if (this.getSaddled) {
-            this.texture = "/assets/aether/stationapi/textures/entity/Mob_FlyingCowSaddle.png";
+            this.texture = "aether:textures/entity/Mob_FlyingCowSaddle.png";
         }
     }
     
@@ -185,7 +185,7 @@ public class EntityFlyingCow extends EntityAetherAnimal {
         if (!this.getSaddled && playerBase.inventory.getHeldItem() != null && playerBase.inventory.getHeldItem().itemId == ItemBase.saddle.id) {
             playerBase.inventory.setInventoryItem(playerBase.inventory.selectedHotbarSlot, null);
             this.getSaddled = true;
-            this.texture = "/assets/aether/stationapi/textures/entity/Mob_FlyingCowSaddle.png";
+            this.texture = "aether:textures/entity/Mob_FlyingCowSaddle.png";
             return true;
         }
         if (this.getSaddled /*&& !this.level.isServerSide*/ && (this.passenger == null || this.passenger == playerBase)) {

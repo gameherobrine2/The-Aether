@@ -55,7 +55,7 @@ public class InventoryAether implements InventoryBase {
         for (int j = 0; j < this.slots.length; ++j) {
             if (this.slots[j] != null) {
                 final CompoundTag nbttagcompound1 = new CompoundTag();
-                System.out.println(this.slots[j].getTranslationKey());
+                //System.out.println(this.slots[j].getTranslationKey());
                 nbttagcompound1.put("Slot", (byte)j);
                 this.slots[j].toTag(nbttagcompound1);
                 nbttaglist.add(nbttagcompound1);

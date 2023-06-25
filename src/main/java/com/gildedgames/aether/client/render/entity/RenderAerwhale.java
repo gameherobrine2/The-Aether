@@ -18,7 +18,7 @@ public class RenderAerwhale extends EntityRenderer {
     @Override
     public void render(final EntityBase entity, final double x, final double y, final double z, final float f, final float f1) {
         GL11.glPushMatrix();
-        this.bindTexture("/assets/aether/stationapi/textures/entity/Mob_Aerwhale.png");
+        this.bindTexture("aether:textures/entity/Aerwhale.png");
         GL11.glTranslatef((float)x, (float)y, (float)z);
         GL11.glRotatef(90.0f - entity.yaw, 0.0f, 1.0f, 0.0f);
         GL11.glRotatef(180.0f - entity.pitch, 1.0f, 0.0f, 0.0f);

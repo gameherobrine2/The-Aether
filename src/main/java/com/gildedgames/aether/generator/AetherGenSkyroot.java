@@ -60,7 +60,7 @@ public class AetherGenSkyroot extends Structure {
         for (int l4 = 0; l4 < l; ++l4) {
             final int k3 = level.getTileId(x, y + l4, z);
             if (k3 == 0 || k3 == AetherBlocks.SKYROOT_LEAVES.id) {
-                level.setTileWithMetadata(x, y + l4, z, AetherBlocks.LOG.id, 0);
+                level.setTileWithMetadata(x, y + l4, z, AetherBlocks.SKYROOT_LOG.id, 0);
             }
         }
         return true;

@@ -1,151 +1,63 @@
-buildscript {
-	repositories {
-		maven {
-			name = 'Glass-Maven'
-			url = "https://maven.glass-launcher.net/snapshots"
-		}
-		maven {
-			name = 'Fabric'
-			url = "https://maven.fabricmc.net/"
-		}
-		gradlePluginPortal()
-		mavenCentral()
-		maven {
-			name = "Jitpack"
-			url = 'https://jitpack.io/'
-		}
-	}
-	dependencies {
-		classpath 'net.fabricmc:fabric-loom:0.2.8-SNAPSHOT'
-	}
-}
-
 plugins {
+	id 'babric-loom' version '1.1-SNAPSHOT'
 	id 'maven-publish'
 }
 
-apply plugin: "fabric-loom"
-
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
-idea {
-	module {
-		downloadJavadoc = true
-	}
-}
-
-eclipse {
-	classpath {
-		downloadJavadoc = true
-	}
+loom {
+	gluedMinecraftJar()
+	customMinecraftManifest.set("https://babric.github.io/manifest-polyfill/${minecraft_version}.json")
+	intermediaryUrl.set("https://maven.glass-launcher.net/babric/babric/intermediary/%1\$s/intermediary-%1\$s-v2.jar")
 }
 
 repositories {
 	maven {
-		name = 'Glass-Maven'
-		url = "https://maven.glass-launcher.net/snapshots"
+		name = 'Babric'
+		url = 'https://maven.glass-launcher.net/babric'
 	}
 	maven {
-		name = 'HalfOf2'
-		url = 'https://storage.googleapis.com/devan-maven/'
+		name = 'Glass Snapshots'
+		url = 'https://maven.glass-launcher.net/snapshots'
 	}
 	maven {
-		name = 'Forge'
-		url = 'https://maven.minecraftforge.net/'
+		name = 'Glass Releases'
+		url = 'https://maven.glass-launcher.net/releases'
 	}
 	maven {
-		name = 'Jitpack'
-		url = "https://jitpack.io/"
+		name = "Jitpack"
+		url "https://jitpack.io/"
 	}
-	mavenCentral()
-}
-
-minecraft {
+	maven {
+		url 'https://maven.minecraftforge.net/'
+	}
 }
 
 dependencies {
-	/*
-	 * Specially required libraries for Fabric.
-	 */
-	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.0'
-	annotationProcessor group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.0'
-	implementation 'net.fabricmc:sponge-mixin:0.11.1+mixin.0.8.5'
-
-	/*
-	 * To change the versions see the gradle.properties file
-	 */
+	implementation 'org.projectlombok:lombok:1.18.26'
+	implementation 'org.projectlombok:lombok:1.18.26'
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.glasslauncher:bin:${project.yarn_mappings}"
+	modImplementation "babric:fabric-loader:${project.loader_version}"
 
-	/*
-	 * Here workspace defines mappings to use.
-	 * You can use other mappings, like Plasma or BIN-Mappings.
-	 */
-	mappings loom.fromCommit("calmilamsy/BIN-Mappings", "${project.yarn_mappings}") {spec ->
-		spec.version = "b1.7.3-${project.yarn_mappings}"
-	}
+	implementation "org.slf4j:slf4j-api:1.8.0-beta4"
+	implementation "org.apache.logging.log4j:log4j-slf4j18-impl:2.16.0"
+	modImplementation("net.modificationstation:StationAPI:${project.stapi_version}")
+	modImplementation("com.github.calmilamsy:ModMenu:${project.modmenu_version}")
 
-	/*
-	 * Lombok Library.
-	 *
-	 * Adds some useful annotations for data classes, although does not add any dependencies.
-	 */
-	implementation /*Only*/ 'org.projectlombok:lombok:1.18.22'
-	annotationProcessor 'org.projectlombok:lombok:1.18.22'
-
-	/*
-	 * Jetbrains Annotation Library.
-	 *
-	 * Adds some useful annotations for miscellaneous uses. does not add any dependencies,
-	 * though people without the lib will be missing some useful context hints.
-	 *
-	 * You can remove if you don't want to use it.
-	 */
-	implementation 'org.jetbrains:annotations:16.0.2'
-
-	/*
-	 * Cursed-Fabric-Loader - fabric loader library.
-	 */
-	modImplementation("com.github.calmilamsy:cursed-fabric-loader:91f8c4c") {
+	modLocalRuntime("com.github.calmilamsy:ModMenu:${project.modmenu_version}") {
 		transitive false
 	}
-
-	///START API PART
-	/*
-	 * Optional, but really useful for creating content mods that add bunch of things to the game.
-	 */
-
-	/*
-	 * SEARCH INDEXES IN:
-	 * https://maven.glass-launcher.net/#/snapshots/net/modificationstation/StationAPI
-	 */
-	modImplementation("net.modificationstation:StationAPI:${project.stapi_version}") {
-		exclude group: 'io.github.minecraft-cursed-legacy', module: 'cursed-fabric-loader'
+	modLocalRuntime("net.glasslauncher.mods:GlassConfigAPI:${project.gcapi_version}") {
+		transitive false
 	}
-
-	implementation /*Only*/ 'org.apache.commons:commons-lang3:3.12.0'
-	implementation /*Only*/ 'commons-io:commons-io:2.11.0'
-
-	implementation "net.jodah:typetools:${project.typetools_version}"
-	implementation "com.github.mineLdiver:expressions:${project.expressions_version}"
-	implementation "com.github.mineLdiver:UnsafeEvents:${project.unsafeevents_version}"
-	implementation "it.unimi.dsi:fastutil:${project.fastutil_version}"
-	//noinspection GradlePackageUpdate
-	implementation "com.github.ben-manes.caffeine:caffeine:${project.caffeine_version}"
-	implementation "com.mojang:datafixerupper:${project.dfu_version}"
-
-	///END API PART
-	implementation "blue.endless:jankson:1.2.1"
-	modImplementation('com.github.calmilamsy:HowManyItems-Fabric-Unofficial:1c6873a') {
-		exclude module: 'StationAPI'
-		exclude module: 'cursed-fabric-loader'
-		exclude module: 'ModMenu'
+	modLocalRuntime("net.glasslauncher:HowManyItems-Fabric-Unofficial:5.0.12") {
+		transitive false
 	}
-	modImplementation("com.github.calmilamsy:ModMenu:dcef643")
 }
 
 processResources {
@@ -156,57 +68,32 @@ processResources {
 	}
 }
 
-// ensure that the encoding is set to UTF-8, no matter what the system default is
-// this fixes some edge cases with special characters not displaying correctly
-// see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
-tasks.withType(JavaCompile) {
-	options.encoding = "UTF-8"
+java {
+	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+	// if it is present.
+	// If you remove this line, sources will not be generated.
+	withSourcesJar()
 }
 
-//StationAPI uses Java 17 and higher.
-tasks.withType(JavaCompile).configureEach {
-	it.options.release = 17
-}
-
-// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-// if it is present.
-// If you remove this task, sources will not be generated.
-task sourcesJar(type: Jar, dependsOn: classes) {
-	classifier = "sources"
-	from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar) {
-	from javadoc
-	classifier = 'javadoc'
-}
-
-tasks.publishToMavenLocal.dependsOn(tasks.remapJar)
-
-publishing {
-	repositories {
-		mavenLocal()
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.archivesBaseName}" }
 	}
+}
 
+// configure the maven publication
+publishing {
 	publications {
 		mavenJava(MavenPublication) {
-			artifactId project.archives_base_name
-			artifact ("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}.jar") {
-				classifier null
-				builtBy remapJar
-			}
-
-			artifact ("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}-dev.jar") {
-				classifier 'dev'
-				builtBy remapJar
-			}
-			pom.withXml {
-				asNode().dependencies.dependency.each { dep ->
-					if(dep.artifactId.last().value().last().toLowerCase() in ["cursed-fabric-loader", "stationapi"]) {
-						assert dep.parent().remove(dep)
-					}
-				}
-			}
+			from components.java
 		}
+	}
+
+	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+	repositories {
+		// Add repositories to publish to here.
+		// Notice: This block does NOT have the same function as the block in the top level.
+		// The repositories here will be used for publishing your artifact, not for
+		// retrieving dependencies.
 	}
 }

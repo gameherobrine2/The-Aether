@@ -3,7 +3,7 @@ import net.minecraft.util.io.CompoundTag;
 import net.minecraft.util.maths.Box;
 import java.util.List;
 
-import com.gildedgames.aether.mixin.LivingAccessor;
+import com.gildedgames.aether.mixin.access.LivingAccessor;
 
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.maths.Vec3f;
