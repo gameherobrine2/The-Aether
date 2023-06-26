@@ -232,17 +232,17 @@ public class EntityAerwhale extends FlyingBase implements MonsterEntityType {
     
     @Override
     protected String getAmbientSound() {
-        return "assets/aether/stationapi/aether.sound.mobs.aerwhale.aerwhalecall";
+        return "aether:aether.sound.mobs.aerwhale.aerwhalecall";
     }
     
     @Override
     protected String getHurtSound() {
-        return "assets/aether/stationapi/aether.sound.mobs.aerwhale.aerwhaledeath";
+        return "aether:aether.sound.mobs.aerwhale.aerwhaledeath";
     }
     
     @Override
     protected String getDeathSound() {
-        return "assets/aether/stationapi/aether.sound.mobs.aerwhale.aerwhaledeath";
+        return "aether:aether.sound.mobs.aerwhale.aerwhaledeath";
     }
     
     @Override

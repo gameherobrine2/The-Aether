@@ -157,7 +157,7 @@ public class EntityMiniCloud extends FlyingBase {
                     eh.smotionZ = vec3d.z * 1.5;
                 }
                 eh.smacked = true;
-                this.level.playSound((EntityBase)this, "assets/aether/stationapi/aether.sound.mobs.zephyr.zephyrshoot", 0.75f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
+                this.level.playSound((EntityBase)this, "aether:aether.sound.mobs.zephyr.zephyrshoot", 0.75f, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f);
                 this.shotTimer = 40;
             }
         }

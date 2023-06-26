@@ -242,17 +242,17 @@ public class EntityMoa extends EntityAetherAnimal {
     
     @Override
     protected String getAmbientSound() {
-        return "assets/aether/stationapi/aether.sound.mobs.moa.idlecall";
+        return "aether:aether.sound.mobs.moa.idlecall";
     }
     
     @Override
     protected String getHurtSound() {
-        return "assets/aether/stationapi/aether.sound.mobs.moa.idlecall";
+        return "aether:aether.sound.mobs.moa.idlecall";
     }
     
     @Override
     protected String getDeathSound() {
-        return "assets/aether/stationapi/aether.sound.mobs.moa.idlecall";
+        return "aether:aether.sound.mobs.moa.idlecall";
     }
     
     @Override

@@ -72,7 +72,7 @@ public class GameRendererMixin {
             final int height = scaledresolution.getScaledHeight();
             final String s = ((IAetherBoss)Aether.currentBoss).getBossTitle();
             mc.textRenderer.drawTextWithShadow(s, width / 2 - mc.textRenderer.getTextWidth(s) / 2, 2, -1);
-            GL11.glBindTexture(3553, mc.textureManager.getTextureId("/assets/aether/textures/gui/bossHPBar.png"));
+            GL11.glBindTexture(3553, mc.textureManager.getTextureId("aether:textures/gui/bossHPBar.png"));
             GL11.glEnable(3042);
             GL11.glBlendFunc(775, 769);
             GL11.glColor3f(1.0f, 1.0f, 1.0f);
