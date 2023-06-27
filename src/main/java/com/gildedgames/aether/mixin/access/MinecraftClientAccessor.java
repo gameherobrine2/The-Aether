@@ -4,8 +4,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.render.Tessellator;
-import net.minecraft.entity.Living;
 
 @Mixin(Minecraft.class)
 public interface MinecraftClientAccessor{

@@ -1,7 +1,6 @@
 package com.gildedgames.aether.item;
 import org.jetbrains.annotations.NotNull;
 
-import net.minecraft.item.ItemBase;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
 

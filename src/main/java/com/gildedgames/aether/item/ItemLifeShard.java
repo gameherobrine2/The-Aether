@@ -9,7 +9,6 @@ import net.minecraft.level.Level;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
 import net.minecraft.item.ItemInstance;
-import net.minecraft.item.ItemBase;
 
 public class ItemLifeShard extends TemplateItemBase {
     public ItemLifeShard(final @NotNull Identifier identifier) {

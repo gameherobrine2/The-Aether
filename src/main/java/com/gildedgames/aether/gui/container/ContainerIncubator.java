@@ -2,7 +2,6 @@ package com.gildedgames.aether.gui.container;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.container.slot.Slot;
-import net.minecraft.inventory.InventoryBase;
 import net.minecraft.entity.player.PlayerInventory;
 
 import com.gildedgames.aether.entity.tile.TileEntityIncubator;

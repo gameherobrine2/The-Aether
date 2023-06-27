@@ -11,7 +11,6 @@ import com.gildedgames.aether.registry.AetherBlocks;
 
 import net.minecraft.level.Level;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.BlockBase;
 
 public class BlockAetherFlower extends TemplateBlockBase {
     public BlockAetherFlower(final Identifier id, final int var2) {

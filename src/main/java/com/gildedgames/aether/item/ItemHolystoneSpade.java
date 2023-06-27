@@ -1,22 +1,14 @@
 package com.gildedgames.aether.item;
 
 import net.minecraft.entity.Living;
-import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.item.tool.ToolMaterial;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.tool.TemplateShovel;
-import net.modificationstation.stationapi.api.template.item.tool.TemplateToolBase;
-
-import java.util.Random;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
-
-import net.minecraft.block.BlockBase;
-import net.minecraft.item.tool.ToolBase;
 
 public class ItemHolystoneSpade extends TemplateShovel {
     

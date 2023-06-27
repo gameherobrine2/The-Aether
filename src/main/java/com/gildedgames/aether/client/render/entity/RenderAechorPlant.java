@@ -6,7 +6,6 @@ import com.gildedgames.aether.client.render.model.ModelAechorPlant;
 import com.gildedgames.aether.entity.animal.EntityAechorPlant;
 
 import net.minecraft.entity.Living;
-import net.minecraft.client.render.entity.model.EntityModelBase;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
 
 public class RenderAechorPlant extends LivingEntityRenderer {

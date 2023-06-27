@@ -7,8 +7,6 @@ import org.jetbrains.annotations.NotNull;
 
 import com.gildedgames.aether.event.listener.TextureListener;
 
-import net.minecraft.item.ItemBase;
-
 public class ItemDart extends TemplateItemBase {
     
     public ItemDart(final @NotNull Identifier identifier) {

@@ -8,7 +8,6 @@ import java.util.Random;
 import com.gildedgames.aether.registry.AetherBlocks;
 
 import net.minecraft.level.Level;
-import net.minecraft.level.structure.Lake;
 import net.minecraft.level.structure.Structure;
 
 public class AetherGenLakes extends Structure {

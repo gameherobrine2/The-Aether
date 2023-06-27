@@ -1,7 +1,5 @@
 package com.gildedgames.aether.item;
 
-import net.minecraft.entity.Living;
-
 import org.jetbrains.annotations.NotNull;
 
 import com.gildedgames.aether.entity.projectile.EntityFlamingArrow;

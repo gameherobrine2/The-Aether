@@ -5,7 +5,6 @@ import com.gildedgames.aether.registry.AetherBlocks;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.BlockBase;
 import net.modificationstation.stationapi.api.event.level.BlockSetEvent;
-import net.modificationstation.stationapi.api.event.level.LevelEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.mod.entrypoint.EventBusPolicy;
 

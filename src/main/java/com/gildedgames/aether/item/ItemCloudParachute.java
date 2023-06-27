@@ -5,13 +5,11 @@ import com.gildedgames.aether.entity.EntityCloudParachute;
 import com.gildedgames.aether.registry.AetherItems;
 
 import net.minecraft.entity.EntityBase;
-import net.minecraft.entity.Living;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.level.Level;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
 import net.minecraft.item.ItemInstance;
-import net.minecraft.item.ItemBase;
 
 public class ItemCloudParachute extends TemplateItemBase {
     

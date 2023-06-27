@@ -1,14 +1,11 @@
 package com.gildedgames.aether.gui.container;
 import net.minecraft.container.slot.Slot;
-import net.minecraft.inventory.InventoryBase;
-import net.minecraft.item.ItemInstance;
 import net.minecraft.container.slot.CraftingResult;
 import net.minecraft.inventory.Chest;
 
 import com.gildedgames.aether.inventory.InventoryAether;
 import com.gildedgames.aether.slot.SlotMoreArmor;
 import com.gildedgames.aether.slot.SlotArmor;
-import net.minecraft.container.ContainerBase;
 import net.minecraft.inventory.Crafting;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.PlayerContainer;

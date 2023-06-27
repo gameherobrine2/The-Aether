@@ -8,7 +8,6 @@ import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.MoaColour;
 
-import net.minecraft.entity.EntityBase;
 import net.minecraft.util.io.AbstractTag;
 import net.minecraft.util.io.ListTag;
 import net.minecraft.util.io.CompoundTag;

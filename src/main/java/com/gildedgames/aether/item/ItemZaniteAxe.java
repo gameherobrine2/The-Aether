@@ -4,14 +4,10 @@ import net.minecraft.item.ItemInstance;
 import net.minecraft.item.tool.ToolMaterial;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.tool.TemplateHatchet;
-import net.modificationstation.stationapi.api.template.item.tool.TemplateToolBase;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.gildedgames.aether.registry.AetherBlocks;
-
 import net.minecraft.block.BlockBase;
-import net.minecraft.item.tool.ToolBase;
 
 public class ItemZaniteAxe extends TemplateHatchet {
     public ItemZaniteAxe(final @NotNull Identifier identifier, final ToolMaterial enumtoolmaterial) {

@@ -6,7 +6,6 @@ import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.level.Level;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.minecraft.item.ItemInstance;
-import net.minecraft.item.ItemBase;
 
 public class ItemGummieSwet extends ItemAether {
     private int healAmount;

@@ -7,8 +7,6 @@ import net.minecraft.block.material.Material;
 
 import com.gildedgames.aether.event.listener.TextureListener;
 
-import net.minecraft.block.BlockBase;
-
 public class BlockAerogel extends TemplateBlockBase {
     public BlockAerogel(final Identifier id) {
         super(id, /*ModLoader.addOverride("/terrain.png", "/aether/blocks/Aerogel.png"),*/ Material.STONE);

@@ -16,7 +16,6 @@ import com.gildedgames.aether.gui.GuiTreasureChest;
 import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherItems;
 
-import static net.modificationstation.stationapi.api.registry.Identifier.of;
 public class BlockTreasureChest extends TemplateBlockWithEntity {
     private Random random;
     

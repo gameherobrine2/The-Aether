@@ -4,14 +4,9 @@ import net.minecraft.item.ItemInstance;
 
 import net.minecraft.stat.Stats;
 import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
 import net.minecraft.entity.player.PlayerBase;
-import java.util.Collection;
-import java.util.Arrays;
 import net.minecraft.level.BlockView;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import net.minecraft.level.Level;
 import net.minecraft.item.ItemBase;
 import java.util.Random;
@@ -20,7 +15,6 @@ import com.gildedgames.aether.event.listener.TextureListener;
 import com.gildedgames.aether.registry.AetherBlocks;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.block.LeavesBase;
 
 public class BlockAetherLeaves extends TemplateBlockBase {
 

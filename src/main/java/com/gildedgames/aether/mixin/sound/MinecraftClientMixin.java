@@ -5,14 +5,12 @@ import java.io.IOException;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.gildedgames.aether.utils.SkiddedUtils;
 
 import org.spongepowered.asm.mixin.injection.At;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.sound.SoundEntry;
 
 @Mixin(Minecraft.class)
 public class MinecraftClientMixin {

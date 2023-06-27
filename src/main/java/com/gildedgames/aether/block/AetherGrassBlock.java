@@ -9,7 +9,6 @@ import net.minecraft.level.Level;
 import net.minecraft.stat.Stats;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
-import net.modificationstation.stationapi.api.util.math.Direction;
 
 import java.util.*;
 

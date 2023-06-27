@@ -8,7 +8,6 @@ import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
 import com.gildedgames.aether.event.listener.TextureListener;
 import com.gildedgames.aether.registry.AetherBlocks;
 
-import net.minecraft.block.BlockBase;
 @HasMetaBlockItem
 public class BlockDungeon extends TemplateBlockBase implements MetaNamedBlockItemProvider{
 

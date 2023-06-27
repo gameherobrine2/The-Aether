@@ -9,8 +9,6 @@ import net.minecraft.block.material.Material;
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.event.listener.TextureListener;
 
-import net.minecraft.block.BlockBase;
-
 public class BlockQuicksoil extends TemplateBlockBase {
     public BlockQuicksoil(final Identifier id) {
         super(id, Material.SAND);

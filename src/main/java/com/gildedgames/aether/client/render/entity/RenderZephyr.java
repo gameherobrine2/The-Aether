@@ -5,7 +5,6 @@ import org.lwjgl.opengl.GL11;
 import com.gildedgames.aether.client.render.model.ModelZephyr;
 import com.gildedgames.aether.entity.mobs.EntityZephyr;
 
-import net.minecraft.client.render.entity.model.EntityModelBase;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
 
 public class RenderZephyr extends LivingEntityRenderer {

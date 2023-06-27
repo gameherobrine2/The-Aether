@@ -3,19 +3,16 @@ package com.gildedgames.aether;
 import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.player.AetherPlayerHandler;
 import com.gildedgames.aether.registry.AetherItems;
-
 import net.minecraft.achievement.Achievement;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
-import net.modificationstation.stationapi.api.client.resource.CustomSoundMap;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.mod.entrypoint.EventBusPolicy;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.registry.ModID;
 import net.modificationstation.stationapi.api.util.Null;
 import net.modificationstation.stationapi.impl.entity.player.PlayerAPI;
-import net.modificationstation.stationapi.mixin.audio.client.MixinSoundMap;
 
 @Entrypoint(eventBus = @EventBusPolicy(registerInstance = false, registerStatic = false))
 public class Aether {

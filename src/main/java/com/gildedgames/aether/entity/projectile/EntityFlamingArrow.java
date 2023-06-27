@@ -6,7 +6,6 @@ import java.util.List;
 import net.minecraft.util.maths.Box;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.maths.Vec3f;
-import net.minecraft.level.BlockView;
 import net.minecraft.block.BlockBase;
 import net.minecraft.util.maths.MathHelper;
 import net.minecraft.entity.player.PlayerBase;

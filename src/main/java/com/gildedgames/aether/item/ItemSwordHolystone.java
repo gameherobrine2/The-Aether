@@ -1,6 +1,5 @@
 package com.gildedgames.aether.item;
 
-import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.player.PlayerBase;
 import java.util.Random;
 
@@ -13,7 +12,6 @@ import net.minecraft.item.ItemInstance;
 import net.minecraft.item.tool.ToolMaterial;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.tool.TemplateSword;
-import net.minecraft.item.tool.Sword;
 
 public class ItemSwordHolystone extends TemplateSword {
     public ItemSwordHolystone(final @NotNull Identifier identifier, final ToolMaterial mat) {

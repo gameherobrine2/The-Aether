@@ -1,6 +1,5 @@
 package com.gildedgames.aether.client.render.entity;
 import net.minecraft.entity.EntityBase;
-import net.minecraft.level.BlockView;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.level.Level;
 import net.minecraft.util.maths.MathHelper;

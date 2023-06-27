@@ -1,5 +1,4 @@
 package com.gildedgames.aether.client.render.entity;
-import net.minecraft.client.render.entity.ChickenRenderer;
 import org.lwjgl.opengl.GL11;
 
 import com.gildedgames.aether.entity.animal.EntityMoa;

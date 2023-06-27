@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import net.minecraft.block.BlockBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.item.tool.ToolMaterial;
-import net.minecraft.item.ItemBase;
 
 public class ItemNotchHammer extends ItemAether {
     private int weaponDamage;

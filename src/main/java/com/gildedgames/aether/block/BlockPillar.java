@@ -5,8 +5,6 @@ import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
 
 import com.gildedgames.aether.event.listener.TextureListener;
 
-import net.minecraft.block.BlockBase;
-
 public class BlockPillar extends TemplateBlockBase {
     
     public BlockPillar(final Identifier id) {

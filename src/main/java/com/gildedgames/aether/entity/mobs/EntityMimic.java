@@ -5,7 +5,7 @@ import net.minecraft.block.BlockBase;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.level.Level;
-//TODO: add render
+
 public class EntityMimic extends EntityDungeonMob {
     public float mouth;
     public float legs;

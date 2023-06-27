@@ -3,7 +3,7 @@ import net.minecraft.item.ItemBase;
 import net.minecraft.block.BlockBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.tileentity.TileEntityChest;
-import net.minecraft.entity.EntityBase;
+
 import java.util.Random;
 
 import com.gildedgames.aether.entity.boss.EntitySlider;

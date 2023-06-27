@@ -2,7 +2,6 @@ package com.gildedgames.aether.entity.mobs;
 
 import net.minecraft.util.maths.Box;
 import net.minecraft.util.maths.Vec3f;
-import net.minecraft.entity.Living;
 import net.minecraft.util.maths.MathHelper;
 import net.minecraft.level.Level;
 

@@ -5,12 +5,11 @@ import net.minecraft.entity.player.PlayerBase;
 import com.gildedgames.aether.entity.base.EntityDungeonMob;
 import com.gildedgames.aether.registry.AetherBlocks;
 
-import net.minecraft.class_61;
 import net.minecraft.entity.Living;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.util.io.CompoundTag;
 import net.minecraft.level.Level;
-//TODO: add render
+
 public class EntitySentry extends EntityDungeonMob {
     public float field_100021_a;
     public float field_100020_b;
@@ -22,7 +21,7 @@ public class EntitySentry extends EntityDungeonMob {
     
     public EntitySentry(final Level level) {
         super(level);
-        this.texture = "/aether:textures/entity/Sentry.png";
+        this.texture = "aether:textures/entity/Sentry.png";
         this.size = 2;
         this.standingEyeHeight = 0.0f;
         this.movementSpeed = 1.0f;
@@ -34,7 +33,7 @@ public class EntitySentry extends EntityDungeonMob {
     
     public EntitySentry(final Level world, final double x, final double y, final double z) {
         super(world);
-        this.texture = "/aether:textures/entity/Sentry.png";
+        this.texture = "aether:textures/entity/Sentry.png";
         this.size = 2;
         this.standingEyeHeight = 0.0f;
         this.movementSpeed = 1.0f;
@@ -100,7 +99,7 @@ public class EntitySentry extends EntityDungeonMob {
             this.active = true;
             this.lostyou = 0;
             this.entity = target;
-            this.texture = "/aether:textures/entity/SentryLit.png";
+            this.texture = "aether:textures/entity/SentryLit.png";
         }
         return flag;
     }
@@ -109,7 +108,7 @@ public class EntitySentry extends EntityDungeonMob {
         this.counter = -64;
         this.active = false;
         this.entity = null;
-        this.texture = "/aether:textures/entity/Sentry.png";
+        this.texture = "aether:textures/entity/Sentry.png";
         this.setTarget(null);
         this.field_1060 = 0.0f;
         this.field_1029 = 0.0f;
@@ -122,18 +121,14 @@ public class EntitySentry extends EntityDungeonMob {
         if (!this.removed && this.entity != null && entity != null && this.entity == entity) {
             this.level.createExplosion(this, this.x, this.y, this.z, 0.1f);
             entity.damage(null, 2);
-            if (entity instanceof Living) {
-                final Living entityliving = (Living)entity;
+            if (entity instanceof Living entityliving) {
                 double d;
                 double d2;
                 for (d = entityliving.x - this.x, d2 = entityliving.z - this.z; d * d + d2 * d2 < 1.0E-4; d = (Math.random() - Math.random()) * 0.01, d2 = (Math.random() - Math.random()) * 0.01) {}
                 entityliving.method_925(this, 5, -d, -d2);
-                final Living living = entityliving;
-                living.velocityX *= 4.0;
-                final Living living2 = entityliving;
-                living2.velocityY *= 4.0;
-                final Living living3 = entityliving;
-                living3.velocityZ *= 4.0;
+                entityliving.velocityX *= 4.0;
+                entityliving.velocityY *= 4.0;
+                entityliving.velocityZ *= 4.0;
             }
             final float f = 0.01745329f;
             for (int i = 0; i < 40; ++i) {
@@ -141,7 +136,7 @@ public class EntitySentry extends EntityDungeonMob {
                 final double d4 = (float)this.y + 0.5f;
                 final double d5 = (float)this.z + this.rand.nextFloat() * 0.25f;
                 final float f2 = this.rand.nextFloat() * 360.0f;
-                this.level.addParticle("explode", d3, d4, d5, -Math.sin((double)(f * f2)) * 0.75, 0.125, Math.cos((double)(f * f2)) * 0.75);
+                this.level.addParticle("explode", d3, d4, d5, -Math.sin(f * f2) * 0.75, 0.125, Math.cos(f * f2) * 0.75);
             }
             this.health = 0;
             this.remove();
@@ -157,7 +152,7 @@ public class EntitySentry extends EntityDungeonMob {
                 this.entity = entityplayer;
                 this.active = true;
                 this.lostyou = 0;
-                this.texture = "/aether:textures/entity/SentryLit.png";
+                this.texture = "aether:textures/entity/SentryLit.png";
             }
             this.counter = 0;
         }
@@ -200,7 +195,7 @@ public class EntitySentry extends EntityDungeonMob {
             this.jumping = true;
             this.field_1060 = 0.5f - this.rand.nextFloat();
             this.field_1029 = 1.0f;
-            this.level.playSound((EntityBase)this, "mob.slime", this.getSoundVolume(), ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f) * 0.8f);
+            this.level.playSound(this, "mob.slime", this.getSoundVolume(), ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f) * 0.8f);
             if (this.entity != null) {
                 this.jcount /= 2;
                 this.field_1029 = 1.0f;

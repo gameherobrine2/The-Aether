@@ -7,8 +7,6 @@ import org.jetbrains.annotations.NotNull;
 
 import com.gildedgames.aether.utils.MoaColour;
 
-import net.minecraft.item.ItemBase;
-
 public class ItemMoaEgg extends TemplateItemBase {
     public ItemMoaEgg(final @NotNull Identifier identifier) {
         super(identifier);

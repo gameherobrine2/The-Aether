@@ -11,7 +11,6 @@ import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.level.Level;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.minecraft.item.ItemInstance;
-import net.minecraft.item.ItemBase;
 
 public class ItemCloudStaff extends ItemAether {
     public ItemCloudStaff(final @NotNull Identifier identifier) {

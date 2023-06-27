@@ -2,8 +2,6 @@ package com.gildedgames.aether.inventory;
 
 import com.gildedgames.aether.item.ItemMoreArmor;
 
-import net.minecraft.entity.EntityBase;
-import net.minecraft.util.io.AbstractTag;
 import net.minecraft.util.io.CompoundTag;
 import net.minecraft.util.io.ListTag;
 import net.minecraft.entity.player.PlayerBase;

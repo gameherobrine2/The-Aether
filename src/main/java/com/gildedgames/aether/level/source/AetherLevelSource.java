@@ -8,7 +8,6 @@ import com.gildedgames.aether.generator.AetherGenGumdrop;
 import com.gildedgames.aether.generator.AetherGenLiquids;
 import com.gildedgames.aether.generator.AetherGenMinable;
 import com.gildedgames.aether.generator.AetherGenQuicksoil;
-import com.gildedgames.aether.level.biome.Aether;
 import com.gildedgames.aether.level.biome.AetherBiomes;
 import com.gildedgames.aether.registry.AetherBlocks;
 

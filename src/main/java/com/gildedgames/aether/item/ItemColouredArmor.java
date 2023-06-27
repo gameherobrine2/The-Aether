@@ -1,5 +1,4 @@
 package com.gildedgames.aether.item;
-import net.minecraft.item.ItemBase;
 import net.minecraft.item.armour.Armour;
 import net.modificationstation.stationapi.api.client.item.ArmourTextureProvider;
 import net.modificationstation.stationapi.api.registry.Identifier;

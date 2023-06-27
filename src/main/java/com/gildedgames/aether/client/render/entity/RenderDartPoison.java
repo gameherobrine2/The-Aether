@@ -14,7 +14,7 @@ public class RenderDartPoison extends EntityRenderer {
         if (entitypoisondart.victim != null) {
             return;
         }
-        this.bindTexture("/aether:textures/entity/entitypoisondart.png");
+        this.bindTexture("aether:textures/entity/entitypoisondart.png");
         GL11.glPushMatrix();
         GL11.glTranslatef((float)d, (float)d1, (float)d2);
         GL11.glRotatef(entitypoisondart.prevYaw + (entitypoisondart.yaw - entitypoisondart.prevYaw) * f1 - 90.0f, 0.0f, 1.0f, 0.0f);

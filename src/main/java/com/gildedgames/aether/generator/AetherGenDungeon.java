@@ -1,7 +1,6 @@
 package com.gildedgames.aether.generator;
 
 import net.minecraft.item.ItemInstance;
-import net.minecraft.entity.EntityBase;
 import net.minecraft.tileentity.TileEntityChest;
 import java.util.Random;
 

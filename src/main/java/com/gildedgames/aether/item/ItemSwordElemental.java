@@ -1,11 +1,10 @@
 package com.gildedgames.aether.item;
 
+import com.gildedgames.aether.entity.projectile.EntityAetherLightning;
 import net.minecraft.entity.monster.ZombiePigman;
 import net.minecraft.entity.monster.Skeleton;
 import net.minecraft.entity.monster.Zombie;
 
-import com.gildedgames.aether.event.listener.TextureListener;
-import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.EnumElement;
 
 import net.minecraft.entity.EntityBase;
@@ -19,8 +18,6 @@ import net.modificationstation.stationapi.api.template.item.tool.TemplateSword;
 import java.util.ArrayList;
 
 import org.jetbrains.annotations.NotNull;
-
-import net.minecraft.item.tool.Sword;
 
 public class ItemSwordElemental extends TemplateSword {
     public static ArrayList<Class<? extends Living>> undead;
@@ -57,6 +54,7 @@ public class ItemSwordElemental extends TemplateSword {
             damageSource.fire = 600;
         }
         else if (this.element == EnumElement.Lightning) {
+            damageTarget.level.spawnEntity(new EntityAetherLightning(damageSource.level, damageSource.x, damageSource.y, damageSource.z));
             //todo: aether lightning ModLoader.getMinecraftInstance().level.spawnEntity(new EntityAetherLightning(ModLoader.getMinecraftInstance().level, (int)damageSource.x, (int)damageSource.y, (int)damageSource.z));
         }
         itemstack.applyDamage(1, damageTarget);

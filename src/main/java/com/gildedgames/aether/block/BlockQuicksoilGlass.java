@@ -8,7 +8,6 @@ import java.util.Random;
 import com.gildedgames.aether.event.listener.TextureListener;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.block.TranslucentBlock;
 
 public class BlockQuicksoilGlass extends TemplateTranslucentBlock {
     public BlockQuicksoilGlass(final Identifier id) {

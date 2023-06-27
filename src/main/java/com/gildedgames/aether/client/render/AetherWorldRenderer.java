@@ -1,7 +1,6 @@
 package com.gildedgames.aether.client.render;
 
 import com.gildedgames.aether.client.render.particle.AetherPortal;
-import lombok.RequiredArgsConstructor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.player.PlayerBase;

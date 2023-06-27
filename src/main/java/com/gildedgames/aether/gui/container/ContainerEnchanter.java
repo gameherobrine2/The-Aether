@@ -3,7 +3,6 @@ import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.container.ContainerListener;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.container.slot.FurnaceOutput;
-import net.minecraft.inventory.InventoryBase;
 import net.minecraft.container.slot.Slot;
 import net.minecraft.entity.player.PlayerInventory;
 

@@ -1,6 +1,5 @@
 package com.gildedgames.aether.block;
 import com.gildedgames.aether.registry.AetherBlocks;
-import net.minecraft.entity.Item;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.stat.Stats;
 import net.modificationstation.stationapi.api.registry.Identifier;

@@ -8,7 +8,6 @@ import net.minecraft.util.io.CompoundTag;
 import net.minecraft.util.maths.MathHelper;
 import net.minecraft.entity.Item;
 import net.minecraft.block.Wool;
-import net.minecraft.entity.EntityBase;
 import net.minecraft.item.ItemBase;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
@@ -30,7 +29,7 @@ public class EntitySheepuff extends EntityAetherAnimal {
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
-        this.dataTracker.startTracking(16, new Byte((byte)0));
+        this.dataTracker.startTracking(16, (byte) 0);
     }
     
     @Override

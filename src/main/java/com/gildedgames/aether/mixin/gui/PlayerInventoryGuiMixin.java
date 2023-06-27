@@ -1,79 +1,58 @@
 package com.gildedgames.aether.mixin.gui;
 
-import org.lwjgl.opengl.GL11;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.container.PlayerInventory;
-import net.minecraft.client.render.RenderHelper;
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
+import net.minecraft.client.render.TextRenderer;
+import net.minecraft.client.texture.TextureManager;
+import net.minecraft.entity.player.AbstractClientPlayer;
+import org.lwjgl.opengl.GL11;
+import org.objectweb.asm.Opcodes;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(PlayerInventory.class)
+@Mixin(value = PlayerInventory.class)
 public class PlayerInventoryGuiMixin {
-    private float xSize_lo;
-    private float ySize_lo;
-    
+    @Shadow private float mouseX;
 
-    @Inject(method = "render", at = @At(value = "HEAD"))
-    public void render(final int mouseX, final int mouseY, final float delta,CallbackInfo ci) {
-        this.xSize_lo = (float)mouseX;
-        this.ySize_lo = (float)mouseY;
-    }
-    @Overwrite // net.minecraft.client.gui.screen.container.ContainerBase
-    public void renderForeground() {
-    	
-    }
-	/**
-     * @author
-     * @reason
-     */
-    @Overwrite
-    public void renderContainerBackground(float tickDelta)
+    @Redirect(method = "renderContainerBackground", at=@At(value = "INVOKE", target = "Lnet/minecraft/client/texture/TextureManager;bindTexture(I)V"))
+    protected void bindAetherPlayerGuiTexture(TextureManager instance, int i)
     {
-		Minecraft minecraft = ((ScreenBaseAccessor)this.getClass().cast(this)).getMinecraftInstance();
-		int width = PlayerInventory.class.cast(this).width;
-		int height = PlayerInventory.class.cast(this).height;
-        final int i = minecraft.textureManager.getTextureId("aether:textures/gui/inventory.png");
-        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-        minecraft.textureManager.bindTexture(i);
-        final int j = (width - ((ContainerBaseAccessor)PlayerInventory.class.cast(this)).getContainerWidth()) / 2;
-        final int k = (height - ((ContainerBaseAccessor)PlayerInventory.class.cast(this)).getContainerHeight()) / 2;
-        PlayerInventory.class.cast(this).blit(j, k, 0, 0, ((ContainerBaseAccessor)PlayerInventory.class.cast(this)).getContainerWidth(), ((ContainerBaseAccessor)PlayerInventory.class.cast(this)).getContainerHeight());
-        GL11.glEnable(32826);
-        GL11.glEnable(2903);
-        GL11.glPushMatrix();
-        GL11.glTranslatef((float)(j + 33), (float)(k + 75), 50.0f);
-        final float f1 = 30.0f;
-        GL11.glScalef(-f1, f1, f1);
-        GL11.glRotatef(180.0f, 0.0f, 0.0f, 1.0f);
-        final float f2 = minecraft.player.field_1012;
-        final float f3 = minecraft.player.yaw;
-        final float f4 = minecraft.player.pitch;
-        final float f5 = j + 33 - this.xSize_lo;
-        final float f6 = k + 75 - 50 - this.ySize_lo;
-        GL11.glRotatef(135.0f, 0.0f, 1.0f, 0.0f);
-        RenderHelper.enableLighting();
-        GL11.glRotatef(-135.0f, 0.0f, 1.0f, 0.0f);
-        GL11.glRotatef(-(float)Math.atan((double)(f6 / 40.0f)) * 20.0f, 1.0f, 0.0f, 0.0f);
-        minecraft.player.field_1012 = (float)Math.atan((double)(f5 / 40.0f)) * 20.0f;
-        minecraft.player.yaw = (float)Math.atan((double)(f5 / 40.0f)) * 40.0f;
-        minecraft.player.pitch = -(float)Math.atan((double)(f6 / 40.0f)) * 20.0f;
-        minecraft.player.field_1617 = 1.0f;
-        GL11.glTranslatef(0.0f, minecraft.player.standingEyeHeight, 0.0f);
-        EntityRenderDispatcher.INSTANCE.field_2497 = 180.0f;
-        EntityRenderDispatcher.INSTANCE.method_1920(minecraft.player, 0.0, 0.0, 0.0, 0.0f, 1.0f);
-        minecraft.player.field_1617 = 0.0f;
-        minecraft.player.field_1012 = f2;
-        minecraft.player.yaw = f3;
-        minecraft.player.pitch = f4;
-        GL11.glPopMatrix();
-        RenderHelper.disableLighting();
-        GL11.glDisable(32826);
+        Minecraft minecraft = ((ScreenBaseAccessor)this.getClass().cast(this)).getMinecraftInstance();
+        minecraft.textureManager.bindTexture(minecraft.textureManager.getTextureId("aether:textures/gui/inventory.png"));
     }
-	
-	
+
+    int wpx;
+    @Redirect(method = "renderContainerBackground", at=@At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/container/PlayerInventory;blit(IIIIII)V"))
+    public void blitButCaptureWindowPos(PlayerInventory instance, int i, int j, int k, int l, int m, int n) {
+        instance.blit(i,j,k,l,m,n);
+        wpx = i; // window pos x
+    }
+
+    @Redirect(method = "renderContainerBackground", at=@At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glTranslatef(FFF)V"))
+    protected void translateAetherPlayerModel(float x, float y, float z)
+    {
+        if (x != 0.f)
+        {
+            GL11.glTranslatef(x - 18,y-50,z);
+        }
+    }
+
+    @Redirect(method = "renderContainerBackground", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/AbstractClientPlayer;yaw:F", opcode = Opcodes.PUTFIELD, ordinal = 0))
+    private void injected(AbstractClientPlayer instance, float value) {
+        float var9 = (float)(wpx + 33) - this.mouseX;
+        instance.field_1012 = (float)Math.atan((double)(var9 / 40.0F)) * 20.0F;
+        instance.yaw = (float)Math.atan((double)(var9 / 40.0F)) * 40.0F;
+    }
+
+    /**
+     * @author Matthew Periut
+     * @reason Removes "Crafting" from main menu, if conflicting with your mod, change to injecting at TAIL not HEAD
+     */
+    @Redirect(method = "renderForeground", at=@At(value = "INVOKE", target = "Lnet/minecraft/client/render/TextRenderer;drawText(Ljava/lang/String;III)V", ordinal = 0)) // net.minecraft.client.gui.screen.container.ContainerBase
+    public void renderForeground(TextRenderer instance, String i, int j, int k, int color)
+    {
+
+    }
 }

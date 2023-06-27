@@ -11,7 +11,6 @@ import com.gildedgames.aether.event.listener.TextureListener;
 import com.gildedgames.aether.registry.AetherItems;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.block.BlockBase;
 
 public class BlockAmbrosiumOre extends TemplateBlockBase {
     public BlockAmbrosiumOre(final Identifier id) {

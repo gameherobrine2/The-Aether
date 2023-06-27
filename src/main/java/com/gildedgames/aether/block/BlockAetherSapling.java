@@ -2,7 +2,6 @@ package com.gildedgames.aether.block;
 import net.minecraft.block.BlockBase;
 import net.minecraft.level.structure.Structure;
 import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.template.block.BlockTemplate;
 import net.modificationstation.stationapi.api.template.block.TemplatePlant;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.item.ItemBase;
@@ -15,8 +14,6 @@ import com.gildedgames.aether.generator.AetherGenSkyroot;
 import com.gildedgames.aether.registry.AetherBlocks;
 
 import net.minecraft.level.Level;
-import net.minecraft.block.Plant;
-import net.minecraft.block.material.Material;
 
 public class BlockAetherSapling extends TemplatePlant {
     public BlockAetherSapling(final Identifier id,boolean isGold) {

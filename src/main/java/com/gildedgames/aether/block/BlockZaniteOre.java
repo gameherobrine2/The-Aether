@@ -8,7 +8,6 @@ import com.gildedgames.aether.registry.AetherItems;
 import net.minecraft.block.material.Material;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockBase;
-import net.minecraft.block.BlockBase;
 
 public class BlockZaniteOre extends TemplateBlockBase {
     public BlockZaniteOre(final Identifier id) {

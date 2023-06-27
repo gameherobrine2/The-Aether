@@ -5,8 +5,6 @@ import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
 
 import org.jetbrains.annotations.NotNull;
 
-import net.minecraft.item.ItemBase;
-
 public class ItemAetherKey extends TemplateItemBase {
     public ItemAetherKey(final @NotNull Identifier identifier) {
         super(identifier);

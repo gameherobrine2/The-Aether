@@ -6,7 +6,6 @@ import net.minecraft.util.io.CompoundTag;
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.projectile.EntityFiroBall;
 
-import net.minecraft.client.gui.screen.menu.MainMenu;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.level.Level;

@@ -15,7 +15,6 @@ import net.minecraft.item.ItemInstance;
 import net.minecraft.item.tool.ToolMaterial;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
-import net.minecraft.item.ItemBase;
 
 public class ItemLance extends TemplateItemBase implements CustomReachProvider {
     private int weaponDamage;

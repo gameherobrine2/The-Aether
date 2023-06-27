@@ -1,6 +1,5 @@
 package com.gildedgames.aether.item;
 import net.minecraft.inventory.InventoryBase;
-import net.minecraft.entity.Living;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -16,7 +15,6 @@ import net.minecraft.level.Level;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
 import net.minecraft.item.ItemInstance;
-import net.minecraft.item.ItemBase;
 
 public class ItemDartShooter extends TemplateItemBase {
 

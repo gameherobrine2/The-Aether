@@ -1,5 +1,4 @@
 package com.gildedgames.aether.block;
-import net.minecraft.entity.EntityBase;
 import java.util.Random;
 
 import com.gildedgames.aether.entity.projectile.EntityFloatingBlock;

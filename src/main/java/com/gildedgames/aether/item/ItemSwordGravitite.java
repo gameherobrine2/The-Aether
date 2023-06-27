@@ -2,14 +2,12 @@ package com.gildedgames.aether.item;
 
 import org.jetbrains.annotations.NotNull;
 
-import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.entity.Living;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.item.tool.ToolMaterial;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.tool.TemplateSword;
-import net.minecraft.item.tool.Sword;
 
 public class ItemSwordGravitite extends TemplateSword {
     public ItemSwordGravitite(final @NotNull Identifier identifier, final ToolMaterial mat) {

@@ -13,7 +13,6 @@ import com.gildedgames.aether.event.listener.TextureListener;
 import com.gildedgames.aether.registry.AetherBlocks;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.block.TranslucentBlock;
 
 public class BlockTrap extends TemplateTranslucentBlock {
     
@@ -57,8 +56,7 @@ public class BlockTrap extends TemplateTranslucentBlock {
             final int z2 = MathHelper.floor((double)z);
             switch (level.getTileMeta(x, y, z)) {
                 case 0: {
-                    final EntitySentry entitysentry = new EntitySentry(level);
-                    entitysentry.setPosition(x2 + 0.5, y2 + 1.5, z2 + 0.5);
+                    final EntitySentry entitysentry = new EntitySentry(level, x2 + 0.5, y2 + 1.5, z2 + 0.5);
                     level.spawnEntity(entitysentry);
                     break;
                 }

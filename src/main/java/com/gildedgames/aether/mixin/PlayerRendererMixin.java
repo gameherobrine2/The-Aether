@@ -246,7 +246,7 @@ public class PlayerRendererMixin {
         final boolean flag = inv != null && inv.slots[2] != null && inv.slots[2].itemId == AetherItems.RepShield.id;
         if (flag) {
             if ((player.onGround || (player.vehicle != null && player.vehicle.onGround)) && ((LivingAccessor)player).get1029() == 0.0f && ((LivingAccessor)player).get1060() == 0.0f) {
-            	((EntityRenderAccessor)this).invokeBindTexture("/aether:textures/entity/energyGlow.png");
+            	((EntityRenderAccessor)this).invokeBindTexture("aether:textures/entity/energyGlow.png");
                 GL11.glEnable(2977);
                 GL11.glEnable(3042);
                 GL11.glBlendFunc(770, 771);
@@ -256,7 +256,7 @@ public class PlayerRendererMixin {
                 GL11.glEnable(2977);
                 GL11.glEnable(3042);
                 GL11.glBlendFunc(770, 771);
-                ((EntityRenderAccessor)this).invokeBindTexture("/aether:textures/entity/energyNotGlow.png");
+                ((EntityRenderAccessor)this).invokeBindTexture("aether:textures/entity/energyNotGlow.png");
             }
             return true;
         }
