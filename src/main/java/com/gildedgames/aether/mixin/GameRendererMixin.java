@@ -54,7 +54,7 @@ public class GameRendererMixin {
 			AetherItems.tick(minecraft);
 			renderBossHP();
 			renderHearts();
-			this.repShieldUpdate(minecraft);
+			// this.repShieldUpdate(minecraft); todo: move to EnergyShield.class
 			AetherPoison.tickRender(minecraft);
 			++this.updateCounter;
 		} //onTickInGame =P
@@ -82,32 +82,6 @@ public class GameRendererMixin {
             this.drawTexturedModalRect(width / 2 - 128, 12, 0, 0, w, 16);
         }
     }
-	private void renderShieldEffect(final Minecraft game) {
-        final ScreenScaler scaledresolution = new ScreenScaler(game.options, game.actualWidth, game.actualHeight);
-        final int i = scaledresolution.getScaledWidth();
-        final int j = scaledresolution.getScaledHeight();
-        GL11.glDisable(2929);
-        GL11.glDepthMask(false);
-        GL11.glBlendFunc(770, 771);
-        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-        GL11.glDisable(3008);
-        GL11.glEnable(2977);
-        GL11.glEnable(3042);
-        GL11.glBindTexture(3553, game.textureManager.getTextureId("/assets/aether/textures/capes/shieldEffect.png"));
-        final Tessellator tessellator = Tessellator.INSTANCE;
-        tessellator.start();
-        tessellator.vertex(0.0, j, -90.0, 0.0, 1.0);
-        tessellator.vertex(i, j, -90.0, 1.0, 1.0);
-        tessellator.vertex(i, 0.0, -90.0, 1.0, 0.0);
-        tessellator.vertex(0.0, 0.0, -90.0, 0.0, 0.0);
-        tessellator.draw();
-        GL11.glDepthMask(true);
-        GL11.glEnable(2929);
-        GL11.glEnable(3008);
-        GL11.glDisable(2977);
-        GL11.glDisable(3042);
-        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-    }
 	private void renderHearts() {
         final Minecraft mc = MinecraftClientAccessor.getMCinstance();
         final ScreenScaler scaledresolution = new ScreenScaler(mc.options, mc.actualWidth, mc.actualHeight);
@@ -127,7 +101,7 @@ public class GameRendererMixin {
         this.rand.setSeed((long)(this.updateCounter * 312871));
         if (mc.interactionManager.method_1722()) {
             for (int heart = 0; heart < Aether.getPlayerHandler(mc.player).maxHealth / 2 - 10; ++heart) {
-                int yPos = height - 44;
+                int yPos = height - 42;
                 if (mc.player.isInFluid(Material.WATER)) {
                     yPos -= 9;
                 }
@@ -158,6 +132,7 @@ public class GameRendererMixin {
         }
         GL11.glDisable(3042);
     }
+    /*
 	public void repShieldUpdate(final Minecraft game) {
         final Level world = game.level;
         if (world != null && !world.isServerSide) {
@@ -269,7 +244,7 @@ public class GameRendererMixin {
                 }
             }
         }
-    }
+    }*/
 	private float zLevel = -90;
 	public void drawTexturedModalRect(final int i, final int j, final int k, final int l, final int i1, final int j1) {
         final float f = 0.00390625f;

@@ -3,6 +3,8 @@ package com.gildedgames.aether;
 import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.player.AetherPlayerHandler;
 import com.gildedgames.aether.registry.AetherItems;
+import com.matthewperiut.accessoryapi.api.Accessory;
+import com.matthewperiut.accessoryapi.api.AccessoryAccess;
 import net.minecraft.achievement.Achievement;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.player.PlayerBase;
@@ -41,7 +43,7 @@ public class Aether {
         p.incrementStat(a);
     }
     public static boolean invisible(final PlayerBase player) {
-        return (!player.handSwinging && getPlayerHandler(player).inv.slots[1] != null && getPlayerHandler(player).inv.slots[1].itemId == AetherItems.InvisibilityCloak.id);
+        return AccessoryAccess.hasThisAccessory(player, AetherItems.InvisibilityCloak, Accessory.Type.cape);
     }
 	public static int getCurrentDimension() {
         final PlayerBase player = MinecraftClientAccessor.getMCinstance().player;

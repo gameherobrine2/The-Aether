@@ -23,7 +23,8 @@ import net.minecraft.level.structure.Lake;
 import net.minecraft.level.structure.Structure;
 import net.minecraft.util.ProgressListener;
 import net.minecraft.util.noise.PerlinOctaveNoise;
-import net.modificationstation.stationapi.impl.level.chunk.StationFlatteningChunk;
+import net.modificationstation.stationapi.api.world.chunk.StationFlatteningChunk;
+import net.modificationstation.stationapi.impl.level.chunk.FlattenedChunk;
 
 import java.util.*;
 
@@ -180,7 +181,7 @@ public class AetherLevelSource implements LevelSource {
         //
         //return chunk;
 
-        StationFlatteningChunk chunk = new StationFlatteningChunk(level, chunkX, chunkZ);
+        FlattenedChunk chunk = new FlattenedChunk(level, chunkX, chunkZ);
         chunk.fromLegacy(tiles);
         chunk.generateHeightmap();
         return chunk;

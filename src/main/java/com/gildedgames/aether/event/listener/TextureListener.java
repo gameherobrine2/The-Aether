@@ -2,6 +2,8 @@ package com.gildedgames.aether.event.listener;
 
 import com.gildedgames.aether.block.BlockAmbrosiumTorch;
 import com.gildedgames.aether.item.*;
+import com.gildedgames.aether.item.misc.*;
+import com.gildedgames.aether.item.tool.*;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 
@@ -124,21 +126,21 @@ public class TextureListener {
         ((ItemValkyriePickaxe)AetherItems.PickValkyrie).setTexture(Identifier.of(MOD_ID, "items/ValkyriePickaxe"));
         ((ItemValkyrieSpade)AetherItems.ShovelValkyrie).setTexture(Identifier.of(MOD_ID, "items/ValkyrieShovel"));
         ((ItemValkyrieAxe)AetherItems.AxeValkyrie).setTexture(Identifier.of(MOD_ID, "items/ValkyrieAxe"));
-        ((ItemMoreArmor)AetherItems.IronBubble).setTexture(Identifier.of(MOD_ID, "items/IronBubble"));
-        ((ItemMoreArmor)AetherItems.AetherCape).setTexture(Identifier.of(MOD_ID,"items/AetherCape"));
+        AetherItems.IronBubble.setTexture(Identifier.of(MOD_ID, "items/IronBubble"));
+        AetherItems.AetherCape.setTexture(Identifier.of(MOD_ID,"items/AetherCape"));
         ((ItemMoreArmor)AetherItems.RegenerationStone).setTexture(Identifier.of(MOD_ID,"items/RegenerationStone"));
         ((ItemMoreArmor)AetherItems.InvisibilityCloak).setTexture(Identifier.of(MOD_ID,"items/InvisibilityCloak"));
-        ((ItemMoreArmor)AetherItems.AgilityCape).setTexture(Identifier.of(MOD_ID, "items/AgilityCape"));
-        ((ItemMoreArmor)AetherItems.WhiteCape).setTexture(Identifier.of(MOD_ID, "items/Cape"));
-        ((ItemMoreArmor)AetherItems.RedCape).setTexture(Identifier.of(MOD_ID, "items/Cape"));
-        ((ItemMoreArmor)AetherItems.YellowCape).setTexture(Identifier.of(MOD_ID, "items/Cape"));
-        ((ItemMoreArmor)AetherItems.BlueCape).setTexture(Identifier.of(MOD_ID, "items/Cape"));
+        AetherItems.AgilityCape.setTexture(Identifier.of(MOD_ID, "items/AgilityCape"));
+        AetherItems.WhiteCape.setTexture(Identifier.of(MOD_ID, "items/Cape"));
+        AetherItems.RedCape.setTexture(Identifier.of(MOD_ID, "items/Cape"));
+        AetherItems.YellowCape.setTexture(Identifier.of(MOD_ID, "items/Cape"));
+        AetherItems.BlueCape.setTexture(Identifier.of(MOD_ID, "items/Cape"));
         ((ItemCloudParachute)AetherItems.CloudParachute).setTexture(Identifier.of(MOD_ID, "items/CloudParachute"));
         ((ItemCloudParachute)AetherItems.CloudParachuteGold).setTexture(Identifier.of(MOD_ID, "items/CloudParachute"));
         ((ItemLifeShard)AetherItems.LifeShard).setTexture(Identifier.of(MOD_ID, "items/LifeShard"));
         ((ItemMoreArmor)AetherItems.GoldenFeather).setTexture(Identifier.of(MOD_ID, "items/GoldenFeather"));
         ((ItemLance)AetherItems.Lance).setTexture(Identifier.of(MOD_ID, "items/Lance"));
-        ((ItemMoreArmor)AetherItems.RepShield).setTexture(Identifier.of(MOD_ID, "items/RepulsionShield")); 
+        AetherItems.RepShield.setTexture(Identifier.of(MOD_ID, "items/RepulsionShield"));
         ((ItemPigSlayer)AetherItems.PigSlayer).setTexture(Identifier.of(MOD_ID, "items/PigSlayer"));
         ((ItemVampireBlade)AetherItems.VampireBlade).setTexture(Identifier.of(MOD_ID, "items/VampireBlade"));
         ((ItemAether)AetherItems.NatureStaff).setTexture(Identifier.of(MOD_ID, "items/NatureStaff"));

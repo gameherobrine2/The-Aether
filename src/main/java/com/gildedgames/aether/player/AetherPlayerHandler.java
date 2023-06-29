@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import com.gildedgames.aether.gui.container.ContainerAether;
-import com.gildedgames.aether.inventory.InventoryAether;
 import com.gildedgames.aether.mixin.data.DimensionFileAccessor;
 import com.gildedgames.aether.mixin.access.LevelAccessor;
 import com.gildedgames.aether.registry.AetherItems;
@@ -26,7 +24,6 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
 	public AetherPlayerHandler(PlayerBase playerBase) {
 		player = playerBase;
 	}
-    public static InventoryAether inv;
     public static int maxHealth = 20;
 	public void increaseMaxHP(final int i) {
         if (this.maxHealth <= 40 - i) {
@@ -40,7 +37,6 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
 		try {
     		final CompoundTag customData = new CompoundTag();
     		customData.put("MaxHealth", (byte)this.maxHealth);
-    		customData.put("Inventory", (AbstractTag)this.inv.writeToNBT(new ListTag()));
         
         	final File file = new File(((DimensionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
             NBTIO.writeGzipped(customData, (OutputStream)new FileOutputStream(file));
@@ -75,8 +71,6 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
             if (this.maxHealth < 20) {
                 this.maxHealth = 20;
             }
-            final ListTag nbttaglist = customData.getListTag("Inventory");
-            this.inv.readFromNBT(nbttaglist);
         }
         catch (Exception ioexception) {
             System.out.println("Failed to read player data. Making new");
@@ -94,20 +88,16 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
             if (this.maxHealth < 20) {
                 this.maxHealth = 20;
             }
-            final ListTag nbttaglist = customData.getListTag("Inventory");
-            this.inv.readFromNBT(nbttaglist);
         }
         catch (Exception ioexception) {
             System.out.println("Failed to read player data. Making new");
             this.maxHealth = 20;
         }
     }
-	private void writeCustomData(final InventoryAether inv) {
+	private void writeCustomData() {
         final CompoundTag customData = new CompoundTag();
-        this.inv = inv;
         AbstractClientPlayer player = AbstractClientPlayer.class.cast(this);
         customData.put("MaxHealth", (byte)this.maxHealth);
-        customData.put("Inventory",inv.writeToNBT(new ListTag()));
         try {
             final File file = new File(((DimensionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
             NBTIO.writeGzipped(customData, (OutputStream)new FileOutputStream(file));
@@ -119,17 +109,10 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
     }
 	@Override
 	public boolean onLivingUpdate() {
-    	if(this.inv == null) {
-    		this.inv = new InventoryAether(player);
-    		readCustomData();
-    	}
-    	if(!(player.playerContainer instanceof ContainerAether)) {
-        	player.playerContainer = new ContainerAether(player.inventory, this.inv, true);
-        	player.container = player.playerContainer;
-    	}
         //if (MainMenu.mmactive) {
         //    player.setPosition(player.prevRenderX, player.prevRenderY, player.prevRenderZ);
         //}
+        /*
         if (player.field_1645 % 400 == 0) {
             if (this.inv.slots[0] != null && this.inv.slots[0].itemId == AetherItems.ZanitePendant.id) {
                 this.inv.slots[0].applyDamage(1, player);
@@ -170,7 +153,7 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
         }
         if (player.level.difficulty == 0 && player.health >= 20 && player.health < this.maxHealth && player.field_1645 % 20 == 0) {
             player.addHealth(1);
-        }
+        }*/
 		return false;
 	}
 }

@@ -39,7 +39,8 @@
       	"com.gildedgames.aether.client.level.AetherLevelListeners",
       	"com.gildedgames.aether.event.listener.TextureListener",
       	"com.gildedgames.aether.event.listener.GuiListener",
-	    "com.gildedgames.aether.registry.AetherAchievements"
+	    "com.gildedgames.aether.registry.AetherAchievements",
+      "com.gildedgames.aether.client.color.ItemColorListener"
 	
     ]
   },

@@ -59,7 +59,6 @@ public class EntityRegistry {
     	 Registry.register(event.registry, of(MODID,"entity_swet"),EntitySwet::new);
     	 Registry.register(event.registry, of(MODID,"entity_cloud"),EntityMiniCloud::new);
     	 Registry.register(event.registry, of(MODID,"entity_whirly"),Whirly::new);
-    	 Registry.register(event.registry, of(MODID,"entity_homeshot"),EntityHomeShot::new);	
     }
     
     @EventListener
