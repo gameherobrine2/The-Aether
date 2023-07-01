@@ -1,18 +1,17 @@
 package com.gildedgames.aether.entity.projectile;
 
-import net.minecraft.entity.ParticleBase;
-import net.minecraft.client.render.particle.Poof;
-import net.minecraft.item.ItemBase;
-import java.util.List;
-
 import com.gildedgames.aether.effect.AetherPoison;
 import com.gildedgames.aether.entity.base.EntityProjectileBase;
 import com.gildedgames.aether.mixin.access.ParticleBaseAccessor;
-
-import net.minecraft.entity.player.AbstractClientPlayer;
+import net.minecraft.client.render.particle.Poof;
 import net.minecraft.entity.EntityBase;
-import net.minecraft.level.Level;
 import net.minecraft.entity.Living;
+import net.minecraft.entity.ParticleBase;
+import net.minecraft.entity.player.PlayerBase;
+import net.minecraft.item.ItemBase;
+import net.minecraft.level.Level;
+
+import java.util.List;
 
 public class EntityPoisonNeedle extends EntityProjectileBase {
     public Living victim;
@@ -48,7 +47,7 @@ public class EntityPoisonNeedle extends EntityProjectileBase {
             return super.onHitTarget(entity);
         }
         final Living ent = (Living)entity;
-        if (ent instanceof AbstractClientPlayer) {
+        if (ent instanceof PlayerBase) {
             AetherPoison.afflictPoison();
             return super.onHitTarget(entity);
         }

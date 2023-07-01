@@ -1,6 +1,5 @@
 package com.gildedgames.aether.item.accessory;
 
-import com.gildedgames.aether.item.ItemMoreArmor;
 import com.gildedgames.aether.mixin.access.EntityRenderAccessor;
 import com.matthewperiut.accessoryapi.api.Accessory;
 import net.fabricmc.api.EnvType;
@@ -8,10 +7,8 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.PlayerRenderer;
 import net.minecraft.client.render.entity.model.Biped;
 import net.minecraft.entity.player.PlayerBase;
-import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.util.maths.MathHelper;
-import net.modificationstation.stationapi.api.client.color.item.ItemColorProvider;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
 import org.lwjgl.opengl.GL11;
@@ -19,12 +16,12 @@ import org.lwjgl.opengl.GL11;
 public class CosmeticCape extends TemplateItemBase implements Accessory
 {
     public String texture;
-    public int color;
+    public int colour;
     public CosmeticCape(Identifier identifier, String texture, int color)
     {
         super(identifier);
         this.texture = texture;
-        this.color = color;
+        this.colour = color;
         this.setMaxStackSize(1);
         this.setDurability(500);
     }
@@ -36,7 +33,7 @@ public class CosmeticCape extends TemplateItemBase implements Accessory
 
     @Environment(EnvType.CLIENT)
     public int getColourMultiplier(int i) {
-        return color;
+        return colour;
     }
 
     @Override

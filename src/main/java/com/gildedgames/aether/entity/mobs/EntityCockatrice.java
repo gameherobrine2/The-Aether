@@ -1,23 +1,22 @@
 package com.gildedgames.aether.entity.mobs;
 
-import net.minecraft.item.ItemBase;
-import net.minecraft.entity.player.PlayerBase;
-import net.minecraft.util.io.CompoundTag;
-import net.minecraft.entity.Living;
-import java.util.List;
-
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.projectile.EntityPoisonNeedle;
 import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
 import com.gildedgames.aether.mixin.access.LivingAccessor;
 import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherBlocks;
-
-import net.minecraft.entity.EntityBase;
-import net.minecraft.util.maths.MathHelper;
-import net.minecraft.level.Level;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityBase;
+import net.minecraft.entity.Living;
 import net.minecraft.entity.monster.MonsterBase;
+import net.minecraft.entity.player.PlayerBase;
+import net.minecraft.item.ItemBase;
+import net.minecraft.level.Level;
+import net.minecraft.util.io.CompoundTag;
+import net.minecraft.util.maths.MathHelper;
+
+import java.util.List;
 
 public class EntityCockatrice extends MonsterBase {
     public static Minecraft mc;
@@ -236,17 +235,17 @@ public class EntityCockatrice extends MonsterBase {
     
     @Override
     protected String getAmbientSound() {
-        return "aether:aether.sound.mobs.moa.idleCall";
+        return "aether:aether.sound.mobs.moa.idlecall";
     }
     
     @Override
     protected String getHurtSound() {
-        return "aether:aether.sound.mobs.moa.idleCall";
+        return "aether:aether.sound.mobs.moa.idlecall";
     }
     
     @Override
     protected String getDeathSound() {
-        return "aether:aether.sound.mobs.moa.idleCall";
+        return "aether:aether.sound.mobs.moa.idlecall";
     }
     
     public boolean interact(final PlayerBase entityplayer) {

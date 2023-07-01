@@ -3,8 +3,6 @@ package com.gildedgames.aether;
 import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.player.AetherPlayerHandler;
 import com.gildedgames.aether.registry.AetherItems;
-import com.matthewperiut.accessoryapi.api.Accessory;
-import com.matthewperiut.accessoryapi.api.AccessoryAccess;
 import net.minecraft.achievement.Achievement;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.player.PlayerBase;
@@ -25,14 +23,11 @@ public class Aether {
         return Identifier.of(MODID, id);
     }
 
-    public static AetherPlayerHandler getPlayerHandler() {
-    	return getPlayerHandler((PlayerBase)MinecraftClientAccessor.getMCinstance().player);
-    }
     public static AetherPlayerHandler getPlayerHandler(PlayerBase player) {
     	return (AetherPlayerHandler) PlayerAPI.getPlayerHandler(player, com.gildedgames.aether.player.AetherPlayerHandler.class);
     }
 	public static EntityBase currentBoss;
-	public static void giveAchievement(final Achievement a) { 
+	public static void giveAchievement(final Achievement a) {
         giveAchievement(a, MinecraftClientAccessor.getMCinstance().player);
     }
     public static void giveAchievement(final Achievement a, final PlayerBase p) {
@@ -41,9 +36,6 @@ public class Aether {
         }
         MinecraftClientAccessor.getMCinstance().soundHelper.playSound(Aether.MODID+":aether.sound.other.achievement.achievementgen", 1.0f, 1.0f);
         p.incrementStat(a);
-    }
-    public static boolean invisible(final PlayerBase player) {
-        return AccessoryAccess.hasThisAccessory(player, AetherItems.InvisibilityCloak, Accessory.Type.cape);
     }
 	public static int getCurrentDimension() {
         final PlayerBase player = MinecraftClientAccessor.getMCinstance().player;

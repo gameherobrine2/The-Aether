@@ -1,34 +1,26 @@
 package com.gildedgames.aether.player;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import com.gildedgames.aether.mixin.data.DimensionFileAccessor;
 import com.gildedgames.aether.mixin.access.LevelAccessor;
-import com.gildedgames.aether.registry.AetherItems;
-
-import net.minecraft.entity.player.AbstractClientPlayer;
+import com.gildedgames.aether.mixin.data.DimensionFileAccessor;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.level.dimension.DimensionFile;
-import net.minecraft.util.io.AbstractTag;
 import net.minecraft.util.io.CompoundTag;
-import net.minecraft.util.io.ListTag;
 import net.minecraft.util.io.NBTIO;
+
+import java.io.*;
 
 public class AetherPlayerHandler implements net.modificationstation.stationapi.api.entity.player.PlayerHandler{
 	private PlayerBase player;
+
 	public AetherPlayerHandler(PlayerBase playerBase) {
 		player = playerBase;
 	}
-    public static int maxHealth = 20;
+    public int maxHealth = 20;
+    public boolean visible = true;
 	public void increaseMaxHP(final int i) {
         if (this.maxHealth <= 40 - i) {
             this.maxHealth += i;
-            final AbstractClientPlayer player = (AbstractClientPlayer) this.player;
+            final PlayerBase player = (PlayerBase) this.player;
             player.health += i;
         }
     }
@@ -37,6 +29,7 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
 		try {
     		final CompoundTag customData = new CompoundTag();
     		customData.put("MaxHealth", (byte)this.maxHealth);
+            customData.put("visible", visible);
         
         	final File file = new File(((DimensionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
             NBTIO.writeGzipped(customData, (OutputStream)new FileOutputStream(file));
@@ -52,7 +45,7 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
         if (this.player.health <= 0) {
             return false;
         }
-        final AbstractClientPlayer player = (AbstractClientPlayer) this.player;
+        final PlayerBase player = (PlayerBase) this.player;
         player.health += i;
         if (this.player.health > this.maxHealth) {
             this.player.health = this.maxHealth;
@@ -68,6 +61,8 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
             customData = NBTIO.readGzipped((InputStream)new FileInputStream(file));
             
             this.maxHealth = customData.getByte("MaxHealth");
+            this.visible = customData.getBoolean("visible");
+
             if (this.maxHealth < 20) {
                 this.maxHealth = 20;
             }
@@ -85,6 +80,7 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
             customData = NBTIO.readGzipped((InputStream)new FileInputStream(file));
             
             this.maxHealth = customData.getByte("MaxHealth");
+            this.visible = customData.getBoolean("visible");
             if (this.maxHealth < 20) {
                 this.maxHealth = 20;
             }
@@ -96,8 +92,10 @@ public class AetherPlayerHandler implements net.modificationstation.stationapi.a
     }
 	private void writeCustomData() {
         final CompoundTag customData = new CompoundTag();
-        AbstractClientPlayer player = AbstractClientPlayer.class.cast(this);
+        PlayerBase player = PlayerBase.class.cast(this);
         customData.put("MaxHealth", (byte)this.maxHealth);
+        customData.put("visible", visible);
+
         try {
             final File file = new File(((DimensionFileAccessor)((DimensionFile)((LevelAccessor)player.level).getDimData())).getSaveFolder(), "aether.dat");
             NBTIO.writeGzipped(customData, (OutputStream)new FileOutputStream(file));

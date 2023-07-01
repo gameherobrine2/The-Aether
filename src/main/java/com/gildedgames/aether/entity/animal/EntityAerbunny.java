@@ -1,22 +1,21 @@
 package com.gildedgames.aether.entity.animal;
 
-import net.minecraft.item.ItemBase;
-import net.minecraft.class_61;
-import net.minecraft.block.BlockBase;
-import net.minecraft.entity.monster.MonsterBase;
-import net.minecraft.util.maths.MathHelper;
-import net.minecraft.entity.Living;
-import net.minecraft.util.io.CompoundTag;
-import java.util.List;
-
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.entity.base.EntityAetherAnimal;
 import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
 import com.gildedgames.aether.mixin.access.LivingAccessor;
-
-import net.minecraft.entity.player.PlayerBase;
-import net.minecraft.level.Level;
+import net.minecraft.block.BlockBase;
+import net.minecraft.class_61;
 import net.minecraft.entity.EntityBase;
+import net.minecraft.entity.Living;
+import net.minecraft.entity.monster.MonsterBase;
+import net.minecraft.entity.player.PlayerBase;
+import net.minecraft.item.ItemBase;
+import net.minecraft.level.Level;
+import net.minecraft.util.io.CompoundTag;
+import net.minecraft.util.maths.MathHelper;
+
+import java.util.List;
 
 public class EntityAerbunny extends EntityAetherAnimal {
     public int age;
@@ -40,7 +39,12 @@ public class EntityAerbunny extends EntityAetherAnimal {
         this.age = this.rand.nextInt(64);
         this.mate = 0;
     }
-    
+
+    @Override
+    public boolean isInsideWall() {
+        return false; // stops them from dying while on your head, going through doors etc
+    }
+
     @Override
     public void tick() {
         if (this.gotrider) {

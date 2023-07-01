@@ -13,6 +13,8 @@ public class IronBubble extends TemplateItemBase implements Accessory
     public IronBubble(Identifier identifier)
     {
         super(identifier);
+        this.setMaxStackSize(1);
+        this.setDurability(500);
     }
 
     @Override

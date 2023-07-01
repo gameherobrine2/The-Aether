@@ -1,6 +1,4 @@
 package com.gildedgames.aether.effect;
-import net.minecraft.client.render.Tessellator;
-import org.lwjgl.opengl.GL11;
 
 import com.gildedgames.aether.entity.animal.EntityAechorPlant;
 import com.gildedgames.aether.entity.boss.EntityFireMonster;
@@ -10,12 +8,14 @@ import com.gildedgames.aether.entity.mobs.EntityHomeShot;
 import com.gildedgames.aether.entity.mobs.EntityMiniCloud;
 import com.gildedgames.aether.entity.mobs.EntitySentry;
 import com.gildedgames.aether.entity.projectile.EntityFiroBall;
-import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
-
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.util.ScreenScaler;
 import net.minecraft.entity.EntityBase;
-import net.minecraft.client.Minecraft;
 import net.minecraft.level.Level;
+import org.lwjgl.opengl.GL11;
 
 public class AetherPoison {
     public static long clock;
@@ -60,7 +60,8 @@ public class AetherPoison {
         ent.yaw += (float)AetherPoison.rotD;
         ent.pitch += (float)AetherPoison.rotD;
     }
-    
+
+    @Environment(EnvType.CLIENT)
     public static void tickRender(final Minecraft game) {
         if (AetherPoison.world != game.level || (game.player != null && (game.player.removed || game.player.health <= 0))) {
             AetherPoison.world = game.level;
@@ -156,7 +157,6 @@ public class AetherPoison {
     }
     
     static {
-        AetherPoison.mc = MinecraftClientAccessor.getMCinstance();
         AetherPoison.rotDFac = 0.7853981633974483;
         AetherPoison.rotTaper = 0.125;
         AetherPoison.motTaper = 0.2;

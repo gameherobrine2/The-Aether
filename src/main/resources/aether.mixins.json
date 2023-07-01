@@ -4,6 +4,7 @@
   "package": "com.gildedgames.aether.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "EntityBaseMixinStopFloatingSteps",
     "access.EntityBaseAccessor",
     "access.LevelAccessor",
     "access.LivingAccessor",
@@ -17,7 +18,8 @@
   ],
   "client": [
     "GameRendererMixin",
-    "MinecraftMixin",
+    "InGameGuiMixin",
+    "Mixinclass_556",
     "PlayerRendererMixin",
     "access.EntityRenderAccessor",
     "access.LivingEntityRendererAccessor",
