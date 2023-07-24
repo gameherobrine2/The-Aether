@@ -8,7 +8,6 @@
     "access.EntityBaseAccessor",
     "access.LevelAccessor",
     "access.LivingAccessor",
-    "access.MinecraftClientAccessor",
     "access.ParticleBaseAccessor",
     "access.PlayerBaseAccessor",
     "data.DimensionFileAccessor",
@@ -17,13 +16,11 @@
   "server": [
   ],
   "client": [
-    "GameRendererMixin",
     "InGameGuiMixin",
     "Mixinclass_556",
     "PlayerRendererMixin",
     "access.EntityRenderAccessor",
     "access.LivingEntityRendererAccessor",
-    "access.MinecraftClientAccessor",
     "gui.ButtonAccessor",
     "gui.ContainerBaseAccessor",
     "gui.ScreenBaseAccessor",

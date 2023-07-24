@@ -7,8 +7,9 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(Button.class)
 public interface ButtonAccessor
 {
-	@Accessor(value = "width")
-	int getWidth();
-	@Accessor(value = "height")
-	int getHeight();
+    @Accessor(value = "width")
+    int getWidth();
+
+    @Accessor(value = "height")
+    int getHeight();
 }

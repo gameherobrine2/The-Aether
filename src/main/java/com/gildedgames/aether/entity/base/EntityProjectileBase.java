@@ -1,20 +1,21 @@
 package com.gildedgames.aether.entity.base;
-import net.minecraft.util.io.CompoundTag;
-import net.minecraft.util.maths.Box;
-import java.util.List;
 
 import com.gildedgames.aether.mixin.access.LivingAccessor;
-
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.maths.Vec3f;
-import net.minecraft.util.maths.MathHelper;
-import net.minecraft.entity.player.PlayerBase;
-import net.minecraft.level.Level;
-import net.minecraft.entity.Living;
-import net.minecraft.item.ItemInstance;
 import net.minecraft.entity.EntityBase;
+import net.minecraft.entity.Living;
+import net.minecraft.entity.player.PlayerBase;
+import net.minecraft.item.ItemInstance;
+import net.minecraft.level.Level;
+import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.io.CompoundTag;
+import net.minecraft.util.maths.Box;
+import net.minecraft.util.maths.MathHelper;
+import net.minecraft.util.maths.Vec3f;
 
-public abstract class EntityProjectileBase extends EntityBase {
+import java.util.List;
+
+public abstract class EntityProjectileBase extends EntityBase
+{
     public float speed;
     public float slowdown;
     public float curvature;
@@ -34,17 +35,20 @@ public abstract class EntityProjectileBase extends EntityBase {
     public int ticksInGround;
     public int ticksFlying;
     public boolean shotByPlayer;
-    
-    public EntityProjectileBase(final Level level) {
+
+    public EntityProjectileBase(final Level level)
+    {
         super(level);
     }
-    
-    public EntityProjectileBase(final Level world, final double d, final double d1, final double d2) {
+
+    public EntityProjectileBase(final Level world, final double d, final double d1, final double d2)
+    {
         this(world);
         this.method_1338(d, d1, d2, this.yaw, this.pitch);
     }
-    
-    public EntityProjectileBase(final Level world, final Living entityliving) {
+
+    public EntityProjectileBase(final Level world, final Living entityliving)
+    {
         this(world);
         this.shooter = entityliving;
         this.shotByPlayer = (entityliving instanceof PlayerBase);
@@ -58,9 +62,10 @@ public abstract class EntityProjectileBase extends EntityBase {
         this.velocityY = -MathHelper.sin(this.pitch / 180.0f * 3.141593f);
         this.setArrowHeading(this.velocityX, this.velocityY, this.velocityZ, this.speed, this.precision);
     }
-    
+
     @Override
-    protected void initDataTracker() {
+    protected void initDataTracker()
+    {
         this.xTile = -1;
         this.yTile = -1;
         this.zTile = -1;
@@ -79,14 +84,16 @@ public abstract class EntityProjectileBase extends EntityBase {
         this.ttlInGround = 1200;
         this.item = null;
     }
-    
+
     @Override
-    public void remove() {
+    public void remove()
+    {
         this.shooter = null;
         super.remove();
     }
-    
-    public void setArrowHeading(double d, double d1, double d2, final float f, final float f1) {
+
+    public void setArrowHeading(double d, double d1, double d2, final float f, final float f1)
+    {
         final float f2 = MathHelper.sqrt(d * d + d1 * d1 + d2 * d2);
         d /= f2;
         d1 /= f2;
@@ -101,53 +108,61 @@ public abstract class EntityProjectileBase extends EntityBase {
         this.velocityY = d1;
         this.velocityZ = d2;
         final float f3 = MathHelper.sqrt(d * d + d2 * d2);
-        final float n = (float)(Math.atan2(d, d2) * 180.0 / 3.1415927410125732);
+        final float n = (float) (Math.atan2(d, d2) * 180.0 / 3.1415927410125732);
         this.yaw = n;
         this.prevYaw = n;
-        final float n2 = (float)(Math.atan2(d1, (double)f3) * 180.0 / 3.1415927410125732);
+        final float n2 = (float) (Math.atan2(d1, (double) f3) * 180.0 / 3.1415927410125732);
         this.pitch = n2;
         this.prevPitch = n2;
         this.ticksInGround = 0;
     }
-    
+
     @Override
-    public void setVelocity(final double velocityX, final double velocityY, final double velocityZ) {
+    public void setVelocity(final double velocityX, final double velocityY, final double velocityZ)
+    {
         this.velocityX = velocityX;
         this.velocityY = velocityY;
         this.velocityZ = velocityZ;
-        if (this.prevPitch == 0.0f && this.prevYaw == 0.0f) {
+        if (this.prevPitch == 0.0f && this.prevYaw == 0.0f)
+        {
             final float f = MathHelper.sqrt(velocityX * velocityX + velocityZ * velocityZ);
-            final float n = (float)(Math.atan2(velocityX, velocityZ) * 180.0 / 3.1415927410125732);
+            final float n = (float) (Math.atan2(velocityX, velocityZ) * 180.0 / 3.1415927410125732);
             this.yaw = n;
             this.prevYaw = n;
-            final float n2 = (float)(Math.atan2(velocityY, (double)f) * 180.0 / 3.1415927410125732);
+            final float n2 = (float) (Math.atan2(velocityY, (double) f) * 180.0 / 3.1415927410125732);
             this.pitch = n2;
             this.prevPitch = n2;
         }
     }
-    
+
     @Override
-    public void tick() {
+    public void tick()
+    {
         super.tick();
-        if (this.prevPitch == 0.0f && this.prevYaw == 0.0f) {
+        if (this.prevPitch == 0.0f && this.prevYaw == 0.0f)
+        {
             final float f = MathHelper.sqrt(this.velocityX * this.velocityX + this.velocityZ * this.velocityZ);
-            final float n = (float)(Math.atan2(this.velocityX, this.velocityZ) * 180.0 / 3.1415927410125732);
+            final float n = (float) (Math.atan2(this.velocityX, this.velocityZ) * 180.0 / 3.1415927410125732);
             this.yaw = n;
             this.prevYaw = n;
-            final float n2 = (float)(Math.atan2(this.velocityY, (double)f) * 180.0 / 3.1415927410125732);
+            final float n2 = (float) (Math.atan2(this.velocityY, (double) f) * 180.0 / 3.1415927410125732);
             this.pitch = n2;
             this.prevPitch = n2;
         }
-        if (this.arrowShake > 0) {
+        if (this.arrowShake > 0)
+        {
             --this.arrowShake;
         }
-        if (this.inGround) {
+        if (this.inGround)
+        {
             final int i = this.level.getTileId(this.xTile, this.yTile, this.zTile);
             final int k = this.level.getTileMeta(this.xTile, this.yTile, this.zTile);
-            if (i == this.inTile && k == this.inData) {
+            if (i == this.inTile && k == this.inData)
+            {
                 ++this.ticksInGround;
                 this.tickInGround();
-                if (this.ticksInGround == this.ttlInGround) {
+                if (this.ticksInGround == this.ttlInGround)
+                {
                     this.remove();
                 }
                 return;
@@ -159,7 +174,8 @@ public abstract class EntityProjectileBase extends EntityBase {
             this.ticksInGround = 0;
             this.ticksFlying = 0;
         }
-        else {
+        else
+        {
             ++this.ticksFlying;
         }
         this.tickFlying();
@@ -168,51 +184,63 @@ public abstract class EntityProjectileBase extends EntityBase {
         HitResult movingobjectposition = this.level.method_160(vec3d, vec3d2);
         vec3d = Vec3f.from(this.x, this.y, this.z);
         vec3d2 = Vec3f.from(this.x + this.velocityX, this.y + this.velocityY, this.z + this.velocityZ);
-        if (movingobjectposition != null) {
+        if (movingobjectposition != null)
+        {
             vec3d2 = Vec3f.from(movingobjectposition.field_1988.x, movingobjectposition.field_1988.y, movingobjectposition.field_1988.z);
         }
         EntityBase entity = null;
         final List list = this.level.getEntities(this, this.boundingBox.method_86(this.velocityX, this.velocityY, this.velocityZ).expand(1.0, 1.0, 1.0));
         double d = 0.0;
-        for (int j = 0; j < list.size(); ++j) {
-            final EntityBase entity2 = (EntityBase)list.get(j);
-            if (this.canBeShot(entity2)) {
+        for (int j = 0; j < list.size(); ++j)
+        {
+            final EntityBase entity2 = (EntityBase) list.get(j);
+            if (this.canBeShot(entity2))
+            {
                 final float f2 = this.hitBox;
                 final Box axisalignedbb = entity2.boundingBox.expand(f2, f2, f2);
                 final HitResult movingobjectposition2 = axisalignedbb.method_89(vec3d, vec3d2);
-                if (movingobjectposition2 != null) {
+                if (movingobjectposition2 != null)
+                {
                     final double d2 = vec3d.method_1294(movingobjectposition2.field_1988);
-                    if (d2 < d || d == 0.0) {
+                    if (d2 < d || d == 0.0)
+                    {
                         entity = entity2;
                         d = d2;
                     }
                 }
             }
         }
-        if (entity != null) {
+        if (entity != null)
+        {
             movingobjectposition = new HitResult(entity);
         }
-        if (movingobjectposition != null && this.onHit()) {
+        if (movingobjectposition != null && this.onHit())
+        {
             final EntityBase ent = movingobjectposition.field_1989;
-            if (ent != null) {
-                if (this.onHitTarget(ent)) {
-                    if (ent instanceof Living && !(ent instanceof PlayerBase)) {
-                        ((LivingAccessor)ent).set1058(0);
+            if (ent != null)
+            {
+                if (this.onHitTarget(ent))
+                {
+                    if (ent instanceof Living && !(ent instanceof PlayerBase))
+                    {
+                        ((LivingAccessor) ent).set1058(0);
                     }
                     ent.damage(this.shooter, this.dmg);
                     this.remove();
                 }
             }
-            else {
+            else
+            {
                 this.xTile = movingobjectposition.x;
                 this.yTile = movingobjectposition.y;
                 this.zTile = movingobjectposition.z;
                 this.inTile = this.level.getTileId(this.xTile, this.yTile, this.zTile);
                 this.inData = this.level.getTileMeta(this.xTile, this.yTile, this.zTile);
-                if (this.onHitBlock(movingobjectposition)) {
-                    this.velocityX = (float)(movingobjectposition.field_1988.x - this.x);
-                    this.velocityY = (float)(movingobjectposition.field_1988.y - this.y);
-                    this.velocityZ = (float)(movingobjectposition.field_1988.z - this.z);
+                if (this.onHitBlock(movingobjectposition))
+                {
+                    this.velocityX = (float) (movingobjectposition.field_1988.x - this.x);
+                    this.velocityY = (float) (movingobjectposition.field_1988.y - this.y);
+                    this.velocityZ = (float) (movingobjectposition.field_1988.z - this.z);
                     final float f3 = MathHelper.sqrt(this.velocityX * this.velocityX + this.velocityY * this.velocityY + this.velocityZ * this.velocityZ);
                     this.x -= this.velocityX / f3 * 0.05000000074505806;
                     this.y -= this.velocityY / f3 * 0.05000000074505806;
@@ -220,7 +248,8 @@ public abstract class EntityProjectileBase extends EntityBase {
                     this.inGround = true;
                     this.arrowShake = 7;
                 }
-                else {
+                else
+                {
                     this.inTile = 0;
                     this.inData = 0;
                 }
@@ -231,29 +260,36 @@ public abstract class EntityProjectileBase extends EntityBase {
         this.z += this.velocityZ;
         this.handleMotionUpdate();
         final float f4 = MathHelper.sqrt(this.velocityX * this.velocityX + this.velocityZ * this.velocityZ);
-        this.yaw = (float)(Math.atan2(this.velocityX, this.velocityZ) * 180.0 / 3.1415927410125732);
-        this.pitch = (float)(Math.atan2(this.velocityY, (double)f4) * 180.0 / 3.1415927410125732);
-        while (this.pitch - this.prevPitch < -180.0f) {
+        this.yaw = (float) (Math.atan2(this.velocityX, this.velocityZ) * 180.0 / 3.1415927410125732);
+        this.pitch = (float) (Math.atan2(this.velocityY, (double) f4) * 180.0 / 3.1415927410125732);
+        while (this.pitch - this.prevPitch < -180.0f)
+        {
             this.prevPitch -= 360.0f;
         }
-        while (this.pitch - this.prevPitch >= 180.0f) {
+        while (this.pitch - this.prevPitch >= 180.0f)
+        {
             this.prevPitch += 360.0f;
         }
-        while (this.yaw - this.prevYaw < -180.0f) {
+        while (this.yaw - this.prevYaw < -180.0f)
+        {
             this.prevYaw -= 360.0f;
         }
-        while (this.yaw - this.prevYaw >= 180.0f) {
+        while (this.yaw - this.prevYaw >= 180.0f)
+        {
             this.prevYaw += 360.0f;
         }
         this.pitch = this.prevPitch + (this.pitch - this.prevPitch) * 0.2f;
         this.yaw = this.prevYaw + (this.yaw - this.prevYaw) * 0.2f;
         this.method_1338(this.x, this.y, this.z, this.yaw, this.pitch);
     }
-    
-    public void handleMotionUpdate() {
+
+    public void handleMotionUpdate()
+    {
         float slow = this.slowdown;
-        if (this.method_1393()) {
-            for (int k = 0; k < 4; ++k) {
+        if (this.method_1393())
+        {
+            for (int k = 0; k < 4; ++k)
+            {
                 final float f6 = 0.25f;
                 this.level.addParticle("bubble", this.x - this.velocityX * f6, this.y - this.velocityY * f6, this.z - this.velocityZ * f6, this.velocityX, this.velocityY, this.velocityZ);
             }
@@ -264,19 +300,21 @@ public abstract class EntityProjectileBase extends EntityBase {
         this.velocityZ *= slow;
         this.velocityY -= this.curvature;
     }
-    
-    public void writeCustomDataToTag(final CompoundTag tag) {
-        tag.put("xTile", (short)this.xTile);
-        tag.put("yTile", (short)this.yTile);
-        tag.put("zTile", (short)this.zTile);
-        tag.put("inTile", (byte)this.inTile);
-        tag.put("inData", (byte)this.inData);
-        tag.put("shake", (byte)this.arrowShake);
-        tag.put("inGround", (byte)(byte)(this.inGround ? 1 : 0));
+
+    public void writeCustomDataToTag(final CompoundTag tag)
+    {
+        tag.put("xTile", (short) this.xTile);
+        tag.put("yTile", (short) this.yTile);
+        tag.put("zTile", (short) this.zTile);
+        tag.put("inTile", (byte) this.inTile);
+        tag.put("inData", (byte) this.inData);
+        tag.put("shake", (byte) this.arrowShake);
+        tag.put("inGround", (byte) (byte) (this.inGround ? 1 : 0));
         tag.put("player", this.shotByPlayer);
     }
-    
-    public void readCustomDataFromTag(final CompoundTag tag) {
+
+    public void readCustomDataFromTag(final CompoundTag tag)
+    {
         this.xTile = tag.getShort("xTile");
         this.yTile = tag.getShort("yTile");
         this.zTile = tag.getShort("zTile");
@@ -286,52 +324,64 @@ public abstract class EntityProjectileBase extends EntityBase {
         this.inGround = (tag.getByte("inGround") == 1);
         this.shotByPlayer = tag.getBoolean("player");
     }
-    
+
     @Override
-    public void onPlayerCollision(final PlayerBase entityplayer) {
-        if (this.item == null) {
+    public void onPlayerCollision(final PlayerBase entityplayer)
+    {
+        if (this.item == null)
+        {
             return;
         }
-        if (this.level.isServerSide) {
+        if (this.level.isServerSide)
+        {
             return;
         }
-        if (this.inGround && this.shotByPlayer && this.arrowShake <= 0 && entityplayer.inventory.addStack(this.item.copy())) {
-            this.level.playSound((EntityBase)this, "random.pop", 0.2f, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7f + 1.0f) * 2.0f);
+        if (this.inGround && this.shotByPlayer && this.arrowShake <= 0 && entityplayer.inventory.addStack(this.item.copy()))
+        {
+            this.level.playSound((EntityBase) this, "random.pop", 0.2f, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7f + 1.0f) * 2.0f);
             entityplayer.onItemPickup(this, 1);
             this.remove();
         }
     }
-    
-    public boolean canBeShot(final EntityBase ent) {
-        return ent.method_1356() && (ent != this.shooter || this.ticksFlying >= 5) && (!(ent instanceof Living) || ((Living)ent).deathTime <= 0);
+
+    public boolean canBeShot(final EntityBase ent)
+    {
+        return ent.method_1356() && (ent != this.shooter || this.ticksFlying >= 5) && (!(ent instanceof Living) || ((Living) ent).deathTime <= 0);
     }
-    
-    public boolean onHit() {
+
+    public boolean onHit()
+    {
         return true;
     }
-    
-    public boolean onHitTarget(final EntityBase target) {
-        this.level.playSound((EntityBase)this, "random.drr", 1.0f, 1.2f / (this.rand.nextFloat() * 0.2f + 0.9f));
+
+    public boolean onHitTarget(final EntityBase target)
+    {
+        this.level.playSound((EntityBase) this, "random.drr", 1.0f, 1.2f / (this.rand.nextFloat() * 0.2f + 0.9f));
         return true;
     }
-    
-    public void tickFlying() {
+
+    public void tickFlying()
+    {
     }
-    
-    public void tickInGround() {
+
+    public void tickInGround()
+    {
     }
-    
-    public boolean onHitBlock(final HitResult mop) {
+
+    public boolean onHitBlock(final HitResult mop)
+    {
         return this.onHitBlock();
     }
-    
-    public boolean onHitBlock() {
-        this.level.playSound((EntityBase)this, "random.drr", 1.0f, 1.2f / (this.rand.nextFloat() * 0.2f + 0.9f));
+
+    public boolean onHitBlock()
+    {
+        this.level.playSound((EntityBase) this, "random.drr", 1.0f, 1.2f / (this.rand.nextFloat() * 0.2f + 0.9f));
         return true;
     }
-    
+
     @Override
-    public float getEyeHeight() {
+    public float getEyeHeight()
+    {
         return 0.0f;
     }
 }

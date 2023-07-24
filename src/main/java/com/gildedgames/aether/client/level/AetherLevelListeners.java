@@ -9,11 +9,14 @@ import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.mod.entrypoint.EventBusPolicy;
 
 @Entrypoint(eventBus = @EventBusPolicy(registerInstance = false))
-public class AetherLevelListeners {
+public class AetherLevelListeners
+{
 
     @EventListener
-    private static void registerLevelListeners(LevelEvent.Init event) {
-        if (!init) {
+    private static void registerLevelListeners(LevelEvent.Init event)
+    {
+        if (!init)
+        {
             init = true;
             //noinspection deprecation
             AETHER_WORLD_RENDERER = new AetherWorldRenderer((Minecraft) FabricLoader.getInstance().getGameInstance());

@@ -1,10 +1,12 @@
 package com.gildedgames.aether.client.render.model;
-import net.minecraft.util.maths.MathHelper;
-import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.model.Cuboid;
 import net.minecraft.client.render.entity.model.Biped;
+import net.minecraft.util.maths.MathHelper;
+import org.lwjgl.opengl.GL11;
 
-public class ModelValkyrie extends Biped {
+public class ModelValkyrie extends Biped
+{
     public Cuboid bipedBody2;
     public Cuboid bipedRightArm2;
     public Cuboid bipedLeftArm2;
@@ -21,16 +23,19 @@ public class ModelValkyrie extends Biped {
     public float sinage;
     public boolean gonRound;
     public boolean halow;
-    
-    public ModelValkyrie() {
+
+    public ModelValkyrie()
+    {
         this(0.0f);
     }
-    
-    public ModelValkyrie(final float f) {
+
+    public ModelValkyrie(final float f)
+    {
         this(f, 0.0f);
     }
-    
-    public ModelValkyrie(final float f, final float f1) {
+
+    public ModelValkyrie(final float f, final float f1)
+    {
         this.field_628 = false;
         this.field_629 = false;
         this.field_630 = false;
@@ -89,7 +94,8 @@ public class ModelValkyrie extends Biped {
         (this.skirt[5] = new Cuboid(55, 19)).method_1818(0.0f, 0.0f, 0.0f, 1, 6, 3, f);
         this.skirt[5].setRotationPoint(3.0f, 9.0f + f1, -1.5f);
         this.strand = new Cuboid[22];
-        for (int i = 0; i < 22; ++i) {
+        for (int i = 0; i < 22; ++i)
+        {
             this.strand[i] = new Cuboid(42 + i % 7, 17);
         }
         this.strand[0].method_1818(-5.0f, -7.0f, -4.0f, 1, 3, 1, f);
@@ -146,9 +152,10 @@ public class ModelValkyrie extends Biped {
         (this.halo[3] = new Cuboid(42, 11)).method_1818(2.5f, -11.0f, -2.5f, 1, 1, 5, f);
         this.halo[3].setRotationPoint(0.0f, 0.0f + f1, 0.0f);
     }
-    
+
     @Override
-    public void render(final float f, final float f1, final float f2, final float f3, final float f4, final float f5) {
+    public void render(final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
+    {
         this.setAngles(f, f1, f2, f3, f4, f5);
         this.field_619.method_1815(f5);
         this.field_621.method_1815(f5);
@@ -161,29 +168,35 @@ public class ModelValkyrie extends Biped {
         this.bipedLeftArm2.method_1815(f5);
         this.wingLeft.method_1815(f5);
         this.wingRight.method_1815(f5);
-        for (int i = 0; i < 5; ++i) {
+        for (int i = 0; i < 5; ++i)
+        {
             this.sword[i].method_1815(f5);
         }
-        for (int i = 0; i < 6; ++i) {
+        for (int i = 0; i < 6; ++i)
+        {
             this.skirt[i].method_1815(f5);
         }
-        for (int i = 0; i < 22; ++i) {
+        for (int i = 0; i < 22; ++i)
+        {
             this.strand[i].method_1815(f5);
         }
-        if (this.halow) {
+        if (this.halow)
+        {
             GL11.glEnable(2977);
             GL11.glEnable(3042);
             GL11.glDisable(3008);
             GL11.glBlendFunc(770, 771);
-            for (int i = 0; i < 4; ++i) {
+            for (int i = 0; i < 4; ++i)
+            {
                 this.halo[i].method_1815(f5);
             }
             GL11.glEnable(3008);
         }
     }
-    
+
     @Override
-    public void setAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5) {
+    public void setAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
+    {
         this.field_619.yaw = f3 / 57.29578f;
         this.field_619.pitch = f4 / 57.29578f;
         this.field_622.pitch = MathHelper.cos(f * 0.6662f + 3.141593f) * 2.0f * f1 * 0.5f;
@@ -194,15 +207,18 @@ public class ModelValkyrie extends Biped {
         this.field_625.pitch = MathHelper.cos(f * 0.6662f + 3.141593f) * 1.4f * f1;
         this.field_624.yaw = 0.0f;
         this.field_625.yaw = 0.0f;
-        for (int i = 0; i < 22; ++i) {
+        for (int i = 0; i < 22; ++i)
+        {
             this.strand[i].yaw = this.field_619.yaw;
             this.strand[i].pitch = this.field_619.pitch;
         }
-        for (int i = 0; i < 4; ++i) {
+        for (int i = 0; i < 4; ++i)
+        {
             this.halo[i].yaw = this.field_619.yaw;
             this.halo[i].pitch = this.field_619.pitch;
         }
-        if (this.isRiding) {
+        if (this.isRiding)
+        {
             final Cuboid field_622 = this.field_622;
             field_622.pitch -= 0.6283185f;
             final Cuboid field_623 = this.field_623;
@@ -212,15 +228,18 @@ public class ModelValkyrie extends Biped {
             this.field_624.yaw = 0.3141593f;
             this.field_625.yaw = -0.3141593f;
         }
-        if (this.field_628) {
+        if (this.field_628)
+        {
             this.field_623.pitch = this.field_623.pitch * 0.5f - 0.3141593f;
         }
-        if (this.field_629) {
+        if (this.field_629)
+        {
             this.field_622.pitch = this.field_622.pitch * 0.5f - 0.3141593f;
         }
         this.field_622.yaw = 0.0f;
         this.field_623.yaw = 0.0f;
-        if (this.handSwingProgress > -9990.0f) {
+        if (this.handSwingProgress > -9990.0f)
+        {
             float f6 = this.handSwingProgress;
             final Cuboid bipedBody2 = this.bipedBody2;
             final Cuboid field_624 = this.field_621;
@@ -240,7 +259,7 @@ public class ModelValkyrie extends Biped {
             final float f7 = MathHelper.sin(f6 * 3.141593f);
             final float f8 = MathHelper.sin(this.handSwingProgress * 3.141593f) * -(this.field_619.pitch - 0.7f) * 0.75f;
             final Cuboid field_628 = this.field_622;
-            field_628.pitch -= (float)(f7 * 1.2 + f8);
+            field_628.pitch -= (float) (f7 * 1.2 + f8);
             final Cuboid field_629 = this.field_622;
             field_629.yaw += this.field_621.yaw * 2.0f;
             this.field_622.roll = MathHelper.sin(this.handSwingProgress * 3.141593f) * -0.4f;
@@ -253,7 +272,8 @@ public class ModelValkyrie extends Biped {
         field_632.pitch += MathHelper.sin(f2 * 0.067f) * 0.05f;
         final Cuboid field_633 = this.field_623;
         field_633.pitch -= MathHelper.sin(f2 * 0.067f) * 0.05f;
-        for (int i = 0; i < 5; ++i) {
+        for (int i = 0; i < 5; ++i)
+        {
             this.sword[i].roll = this.field_622.roll;
             this.sword[i].yaw = this.field_622.yaw;
             this.sword[i].pitch = this.field_622.pitch;
@@ -268,26 +288,28 @@ public class ModelValkyrie extends Biped {
         this.wingLeft.roll = -0.125f;
         this.wingRight.roll = 0.125f;
         final Cuboid wingLeft = this.wingLeft;
-        wingLeft.yaw += (float)(Math.sin((double)this.sinage) / 6.0);
+        wingLeft.yaw += (float) (Math.sin((double) this.sinage) / 6.0);
         final Cuboid wingRight = this.wingRight;
-        wingRight.yaw -= (float)(Math.sin((double)this.sinage) / 6.0);
+        wingRight.yaw -= (float) (Math.sin((double) this.sinage) / 6.0);
         final Cuboid wingLeft2 = this.wingLeft;
-        wingLeft2.roll += (float)(Math.cos((double)this.sinage) / (this.gonRound ? 8.0f : 3.0f));
+        wingLeft2.roll += (float) (Math.cos((double) this.sinage) / (this.gonRound ? 8.0f : 3.0f));
         final Cuboid wingRight2 = this.wingRight;
-        wingRight2.roll -= (float)(Math.cos((double)this.sinage) / (this.gonRound ? 8.0f : 3.0f));
+        wingRight2.roll -= (float) (Math.cos((double) this.sinage) / (this.gonRound ? 8.0f : 3.0f));
         this.skirt[0].pitch = -0.2f;
         this.skirt[1].pitch = -0.2f;
         this.skirt[2].pitch = 0.2f;
         this.skirt[3].pitch = 0.2f;
         this.skirt[4].roll = 0.2f;
         this.skirt[5].roll = -0.2f;
-        if (this.field_625.pitch < -0.3f) {
+        if (this.field_625.pitch < -0.3f)
+        {
             final Cuboid cuboid = this.skirt[1];
             cuboid.pitch += this.field_625.pitch + 0.3f;
             final Cuboid cuboid2 = this.skirt[2];
             cuboid2.pitch -= this.field_625.pitch + 0.3f;
         }
-        if (this.field_625.pitch > 0.3f) {
+        if (this.field_625.pitch > 0.3f)
+        {
             final Cuboid cuboid3 = this.skirt[3];
             cuboid3.pitch += this.field_625.pitch - 0.3f;
             final Cuboid cuboid4 = this.skirt[0];

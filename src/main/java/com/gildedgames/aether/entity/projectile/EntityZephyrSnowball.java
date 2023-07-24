@@ -1,19 +1,22 @@
-package com.gildedgames.aether.entity.projectile; /*name "projectile" was copied from divinerpg =D*/ 
+package com.gildedgames.aether.entity.projectile; /*name "projectile" was copied from divinerpg =D*/
 
+import com.gildedgames.aether.AetherMod;
+import net.minecraft.entity.EntityBase;
+import net.minecraft.entity.Living;
+import net.minecraft.level.Level;
+import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.io.CompoundTag;
 import net.minecraft.util.maths.Box;
+import net.minecraft.util.maths.MathHelper;
+import net.minecraft.util.maths.Vec3f;
+import net.modificationstation.stationapi.api.registry.Identifier;
+import net.modificationstation.stationapi.api.server.entity.MobSpawnDataProvider;
+
 import java.util.List;
 
-import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
-
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.maths.Vec3f;
-import net.minecraft.util.maths.MathHelper;
-import net.minecraft.level.Level;
-import net.minecraft.entity.Living;
-import net.minecraft.entity.EntityBase;
-
-public class EntityZephyrSnowball extends EntityBase {
+// todo: zephyr snowball fixing
+public class EntityZephyrSnowball extends EntityBase implements MobSpawnDataProvider
+{
     private int field_9402_e;
     private int field_9401_f;
     private int field_9400_g;
@@ -26,12 +29,9 @@ public class EntityZephyrSnowball extends EntityBase {
     public double field_9405_b;
     public double field_9404_c;
     public double field_9403_d;
-    
-    public EntityZephyrSnowball() {
-    	this(MinecraftClientAccessor.getMCinstance().level);
-    }
-    
-    public EntityZephyrSnowball(final Level level) {
+
+    public EntityZephyrSnowball(final Level level)
+    {
         super(level);
         this.field_9402_e = -1;
         this.field_9401_f = -1;
@@ -42,19 +42,22 @@ public class EntityZephyrSnowball extends EntityBase {
         this.field_9395_l = 0;
         this.setSize(1.0f, 1.0f);
     }
-    
+
     @Override
-    protected void initDataTracker() {
+    protected void initDataTracker()
+    {
     }
-    
+
     @Override
-    public boolean shouldRenderAtDistance(final double d) {
+    public boolean shouldRenderAtDistance(final double d)
+    {
         double d2 = this.boundingBox.averageDimension() * 4.0;
         d2 *= 64.0;
         return d < d2 * d2;
     }
-    
-    public EntityZephyrSnowball(final Level world, final Living entityliving, double d, double d1, double d2) {
+
+    public EntityZephyrSnowball(final Level world, final Living entityliving, double d, double d1, double d2)
+    {
         super(world);
         this.field_9402_e = -1;
         this.field_9401_f = -1;
@@ -80,18 +83,23 @@ public class EntityZephyrSnowball extends EntityBase {
         this.field_9404_c = d1 / d3 * 0.1;
         this.field_9403_d = d2 / d3 * 0.1;
     }
-    
+
     @Override
-    public void tick() {
+    public void tick()
+    {
         super.tick();
-        if (this.field_9406_a > 0) {
+        if (this.field_9406_a > 0)
+        {
             --this.field_9406_a;
         }
-        if (this.field_9398_i) {
+        if (this.field_9398_i)
+        {
             final int i = this.level.getTileId(this.field_9402_e, this.field_9401_f, this.field_9400_g);
-            if (i == this.field_9399_h) {
+            if (i == this.field_9399_h)
+            {
                 ++this.field_9396_k;
-                if (this.field_9396_k == 1200) {
+                if (this.field_9396_k == 1200)
+                {
                     this.remove();
                 }
                 return;
@@ -103,7 +111,8 @@ public class EntityZephyrSnowball extends EntityBase {
             this.field_9396_k = 0;
             this.field_9395_l = 0;
         }
-        else {
+        else
+        {
             ++this.field_9395_l;
         }
         Vec3f vec3d = Vec3f.from(this.x, this.y, this.z);
@@ -111,22 +120,28 @@ public class EntityZephyrSnowball extends EntityBase {
         HitResult movingobjectposition = this.level.method_160(vec3d, vec3d2);
         vec3d = Vec3f.from(this.x, this.y, this.z);
         vec3d2 = Vec3f.from(this.x + this.velocityX, this.y + this.velocityY, this.z + this.velocityZ);
-        if (movingobjectposition != null) {
+        if (movingobjectposition != null)
+        {
             vec3d2 = Vec3f.from(movingobjectposition.field_1988.x, movingobjectposition.field_1988.y, movingobjectposition.field_1988.z);
         }
         EntityBase entity = null;
         final List list = this.level.getEntities(this, this.boundingBox.method_86(this.velocityX, this.velocityY, this.velocityZ).expand(1.0, 1.0, 1.0));
         double d = 0.0;
-        for (int j = 0; j < list.size(); ++j) {
-            final EntityBase entity2 = (EntityBase)list.get(j);
-            if (entity2.method_1356()) {
-                if (entity2 != this.field_9397_j || this.field_9395_l >= 25) {
+        for (int j = 0; j < list.size(); ++j)
+        {
+            final EntityBase entity2 = (EntityBase) list.get(j);
+            if (entity2.method_1356())
+            {
+                if (entity2 != this.field_9397_j || this.field_9395_l >= 25)
+                {
                     final float f2 = 0.3f;
                     final Box axisalignedbb = entity2.boundingBox.expand(f2, f2, f2);
                     final HitResult movingobjectposition2 = axisalignedbb.method_89(vec3d, vec3d2);
-                    if (movingobjectposition2 != null) {
+                    if (movingobjectposition2 != null)
+                    {
                         final double d2 = vec3d.method_1294(movingobjectposition2.field_1988);
-                        if (d2 < d || d == 0.0) {
+                        if (d2 < d || d == 0.0)
+                        {
                             entity = entity2;
                             d = d2;
                         }
@@ -134,12 +149,17 @@ public class EntityZephyrSnowball extends EntityBase {
                 }
             }
         }
-        if (entity != null) {
+        if (entity != null)
+        {
             movingobjectposition = new HitResult(entity);
         }
-        if (movingobjectposition != null) {
-            if (movingobjectposition.field_1989 != null) {
-                if (!movingobjectposition.field_1989.damage(this.field_9397_j, 0)) {}
+        if (movingobjectposition != null)
+        {
+            if (movingobjectposition.field_1989 != null)
+            {
+                if (!movingobjectposition.field_1989.damage(this.field_9397_j, 0))
+                {
+                }
                 final EntityBase field_1989 = movingobjectposition.field_1989;
                 field_1989.velocityX += this.velocityX;
                 final EntityBase field_1990 = movingobjectposition.field_1989;
@@ -153,25 +173,31 @@ public class EntityZephyrSnowball extends EntityBase {
         this.y += this.velocityY;
         this.z += this.velocityZ;
         final float f3 = MathHelper.sqrt(this.velocityX * this.velocityX + this.velocityZ * this.velocityZ);
-        this.yaw = (float)(Math.atan2(this.velocityX, this.velocityZ) * 180.0 / 3.1415927410125732);
-        this.pitch = (float)(Math.atan2(this.velocityY, (double)f3) * 180.0 / 3.1415927410125732);
-        while (this.pitch - this.prevPitch < -180.0f) {
+        this.yaw = (float) (Math.atan2(this.velocityX, this.velocityZ) * 180.0 / 3.1415927410125732);
+        this.pitch = (float) (Math.atan2(this.velocityY, (double) f3) * 180.0 / 3.1415927410125732);
+        while (this.pitch - this.prevPitch < -180.0f)
+        {
             this.prevPitch -= 360.0f;
         }
-        while (this.pitch - this.prevPitch >= 180.0f) {
+        while (this.pitch - this.prevPitch >= 180.0f)
+        {
             this.prevPitch += 360.0f;
         }
-        while (this.yaw - this.prevYaw < -180.0f) {
+        while (this.yaw - this.prevYaw < -180.0f)
+        {
             this.prevYaw -= 360.0f;
         }
-        while (this.yaw - this.prevYaw >= 180.0f) {
+        while (this.yaw - this.prevYaw >= 180.0f)
+        {
             this.prevYaw += 360.0f;
         }
         this.pitch = this.prevPitch + (this.pitch - this.prevPitch) * 0.2f;
         this.yaw = this.prevYaw + (this.yaw - this.prevYaw) * 0.2f;
         float f4 = 0.95f;
-        if (this.method_1393()) {
-            for (int k = 0; k < 4; ++k) {
+        if (this.method_1393())
+        {
+            for (int k = 0; k < 4; ++k)
+            {
                 final float f5 = 0.25f;
                 this.level.addParticle("bubble", this.x - this.velocityX * f5, this.y - this.velocityY * f5, this.z - this.velocityZ * f5, this.velocityX, this.velocityY, this.velocityZ);
             }
@@ -186,17 +212,19 @@ public class EntityZephyrSnowball extends EntityBase {
         this.level.addParticle("smoke", this.x, this.y + 0.5, this.z, 0.0, 0.0, 0.0);
         this.method_1338(this.x, this.y, this.z, this.yaw, this.pitch);
     }
-    
-    public void writeCustomDataToTag(final CompoundTag tag) {
-        tag.put("xTile", (short)this.field_9402_e);
-        tag.put("yTile", (short)this.field_9401_f);
-        tag.put("zTile", (short)this.field_9400_g);
-        tag.put("inTile", (byte)this.field_9399_h);
-        tag.put("shake", (byte)this.field_9406_a);
-        tag.put("inGround", (byte)(byte)(this.field_9398_i ? 1 : 0));
+
+    public void writeCustomDataToTag(final CompoundTag tag)
+    {
+        tag.put("xTile", (short) this.field_9402_e);
+        tag.put("yTile", (short) this.field_9401_f);
+        tag.put("zTile", (short) this.field_9400_g);
+        tag.put("inTile", (byte) this.field_9399_h);
+        tag.put("shake", (byte) this.field_9406_a);
+        tag.put("inGround", (byte) (byte) (this.field_9398_i ? 1 : 0));
     }
-    
-    public void readCustomDataFromTag(final CompoundTag tag) {
+
+    public void readCustomDataFromTag(final CompoundTag tag)
+    {
         this.field_9402_e = tag.getShort("xTile");
         this.field_9401_f = tag.getShort("yTile");
         this.field_9400_g = tag.getShort("zTile");
@@ -204,18 +232,22 @@ public class EntityZephyrSnowball extends EntityBase {
         this.field_9406_a = (tag.getByte("shake") & 0xFF);
         this.field_9398_i = (tag.getByte("inGround") == 1);
     }
-    
+
     @Override
-    public float method_1369() {
+    public float method_1369()
+    {
         return 1.0f;
     }
-    
+
     @Override
-    public boolean damage(final EntityBase target, final int amount) {
+    public boolean damage(final EntityBase target, final int amount)
+    {
         this.method_1336();
-        if (target != null) {
+        if (target != null)
+        {
             final Vec3f vec3d = target.method_1320();
-            if (vec3d != null) {
+            if (vec3d != null)
+            {
                 this.velocityX = vec3d.x;
                 this.velocityY = vec3d.y;
                 this.velocityZ = vec3d.z;
@@ -227,9 +259,16 @@ public class EntityZephyrSnowball extends EntityBase {
         }
         return false;
     }
-    
+
     @Override
-    public float getEyeHeight() {
+    public float getEyeHeight()
+    {
         return 0.0f;
+    }
+
+    @Override
+    public Identifier getHandlerIdentifier()
+    {
+        return AetherMod.MODID.id("dangerous_weapon_zephyrsnowball");
     }
 }

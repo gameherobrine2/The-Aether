@@ -1,24 +1,26 @@
 package com.gildedgames.aether.generator;
 
-import net.minecraft.util.maths.MathHelper;
-import java.util.Random;
-
 import com.gildedgames.aether.registry.AetherBlocks;
-
 import net.minecraft.level.Level;
 import net.minecraft.level.structure.Structure;
+import net.minecraft.util.maths.MathHelper;
 
-public class AetherGenMinable extends Structure {
+import java.util.Random;
+
+public class AetherGenMinable extends Structure
+{
     private int minableBlockId;
     private int numberOfBlocks;
-    
-    public AetherGenMinable(final int i, final int j) {
+
+    public AetherGenMinable(final int i, final int j)
+    {
         this.minableBlockId = i;
         this.numberOfBlocks = j;
     }
-    
+
     @Override
-    public boolean generate(final Level level, final Random rand, final int x, final int y, final int z) {
+    public boolean generate(final Level level, final Random rand, final int x, final int y, final int z)
+    {
         final float f = rand.nextFloat() * 3.141593f;
         final double d = x + 8 + MathHelper.sin(f) * this.numberOfBlocks / 8.0f;
         final double d2 = x + 8 - MathHelper.sin(f) * this.numberOfBlocks / 8.0f;
@@ -26,7 +28,8 @@ public class AetherGenMinable extends Structure {
         final double d4 = z + 8 - MathHelper.cos(f) * this.numberOfBlocks / 8.0f;
         final double d5 = y + rand.nextInt(3) + 2;
         final double d6 = y + rand.nextInt(3) + 2;
-        for (int l = 0; l <= this.numberOfBlocks; ++l) {
+        for (int l = 0; l <= this.numberOfBlocks; ++l)
+        {
             final double d7 = d + (d2 - d) * l / this.numberOfBlocks;
             final double d8 = d5 + (d6 - d5) * l / this.numberOfBlocks;
             final double d9 = d3 + (d4 - d3) * l / this.numberOfBlocks;
@@ -39,15 +42,21 @@ public class AetherGenMinable extends Structure {
             final int l2 = MathHelper.floor(d7 + d11 / 2.0);
             final int i2 = MathHelper.floor(d8 + d12 / 2.0);
             final int j2 = MathHelper.floor(d9 + d11 / 2.0);
-            for (int k2 = i1; k2 <= l2; ++k2) {
+            for (int k2 = i1; k2 <= l2; ++k2)
+            {
                 final double d13 = (k2 + 0.5 - d7) / (d11 / 2.0);
-                if (d13 * d13 < 1.0) {
-                    for (int l3 = j1; l3 <= i2; ++l3) {
+                if (d13 * d13 < 1.0)
+                {
+                    for (int l3 = j1; l3 <= i2; ++l3)
+                    {
                         final double d14 = (l3 + 0.5 - d8) / (d12 / 2.0);
-                        if (d13 * d13 + d14 * d14 < 1.0) {
-                            for (int i3 = k1; i3 <= j2; ++i3) {
+                        if (d13 * d13 + d14 * d14 < 1.0)
+                        {
+                            for (int i3 = k1; i3 <= j2; ++i3)
+                            {
                                 final double d15 = (i3 + 0.5 - d9) / (d11 / 2.0);
-                                if (d13 * d13 + d14 * d14 + d15 * d15 < 1.0 && level.getTileId(k2, l3, i3) == AetherBlocks.HOLYSTONE.id && level.getTileMeta(k2, l3, i3) <= 1) {
+                                if (d13 * d13 + d14 * d14 + d15 * d15 < 1.0 && level.getTileId(k2, l3, i3) == AetherBlocks.HOLYSTONE.id && level.getTileMeta(k2, l3, i3) <= 1)
+                                {
                                     level.setTileInChunk(k2, l3, i3, this.minableBlockId);
                                 }
                             }

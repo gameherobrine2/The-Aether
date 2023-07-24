@@ -1,9 +1,7 @@
 package com.gildedgames.aether.mixin;
 
-import com.gildedgames.aether.Aether;
-import com.gildedgames.aether.entity.base.IAetherBoss;
+import com.gildedgames.aether.AetherMod;
 import com.gildedgames.aether.mixin.access.LivingAccessor;
-import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
 import com.gildedgames.aether.registry.AetherItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.InGame;
@@ -30,7 +28,7 @@ public class InGameGuiMixin
 
     public void customBlit(InGame instance, int a, int b, int c, int d, int e, int f)
     {
-        if (Aether.getPlayerHandler(minecraft.player).maxHealth > 20)
+        if (AetherMod.getPlayerHandler(minecraft.player).maxHealth > 20)
         {
             instance.blit(a, b - 11, c, d, e, f);
         }
@@ -39,18 +37,22 @@ public class InGameGuiMixin
             instance.blit(a, b - 1, c, d, e, f);
         }
     }
+
     @Redirect(method = "renderHud", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/InGame;blit(IIIIII)V", ordinal = 11))
-    public void blit1(InGame instance, int i, int j, int k, int l, int m, int n) {
+    public void blit1(InGame instance, int i, int j, int k, int l, int m, int n)
+    {
         customBlit(instance, i, j, k, l, m, n);
     }
 
     @Redirect(method = "renderHud", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/InGame;blit(IIIIII)V", ordinal = 12))
-    public void blit2(InGame instance, int i, int j, int k, int l, int m, int n) {
+    public void blit2(InGame instance, int i, int j, int k, int l, int m, int n)
+    {
         customBlit(instance, i, j, k, l, m, n);
     }
-    
+
     @Inject(method = "renderHud", at = @At(value = "TAIL"))
-    public void renderExtraHud(float bl, boolean i, int j, int par4, CallbackInfo ci) {
+    public void renderExtraHud(float bl, boolean i, int j, int par4, CallbackInfo ci)
+    {
         InGame instance = (InGame) (Object) this;
         renderHearts(instance);
         renderShieldEffect();
@@ -59,6 +61,7 @@ public class InGameGuiMixin
 
     private void renderBossHP(InGame instance)
     {
+        /* todo: find a boss within a 50x50x50 block area, render their bar.
         if (Aether.currentBoss != null) {
             if(!(Aether.currentBoss instanceof IAetherBoss)) {
                 return;
@@ -77,12 +80,12 @@ public class InGameGuiMixin
             instance.blit(width / 2 - 128, 12, 0, 16, 256, 32);
             final int w = (int)(((IAetherBoss)Aether.currentBoss).getBossHP() / (float)((IAetherBoss)Aether.currentBoss).getBossMaxHP() * 256.0f);
             instance.blit(width / 2 - 128, 12, 0, 0, w, 16);
-        }
+        }*/
     }
 
     private void renderHearts(InGame instance)
     {
-        int maxHealth = Aether.getPlayerHandler(minecraft.player).maxHealth;
+        int maxHealth = AetherMod.getPlayerHandler(minecraft.player).maxHealth;
         if (!(maxHealth > 20))
             return;
         final ScreenScaler scaledresolution = new ScreenScaler(minecraft.options, minecraft.actualWidth, minecraft.actualHeight);
@@ -94,35 +97,45 @@ public class InGameGuiMixin
         GL11.glColor3f(1.0f, 1.0f, 1.0f);
         GL11.glDisable(3042);
         boolean flag1 = minecraft.player.field_1613 / 3 % 2 == 1;
-        if (minecraft.player.field_1613 < 10) {
+        if (minecraft.player.field_1613 < 10)
+        {
             flag1 = false;
         }
         final int halfHearts = minecraft.player.health - 20;
         final int prevHalfHearts = minecraft.player.field_1037 - 20;
-        if (minecraft.interactionManager.method_1722()) {
-            for (int heart = 0; heart < maxHealth / 2 - 10; ++heart) {
+        if (minecraft.interactionManager.method_1722())
+        {
+            for (int heart = 0; heart < maxHealth / 2 - 10; ++heart)
+            {
                 int yPos = height - 42;
                 int k5 = 0;
-                if (flag1) {
+                if (flag1)
+                {
                     k5 = 1;
                 }
                 final int xPos = width / 2 - 91 + heart * 8;
-                if (minecraft.player.health <= 4) {
+                if (minecraft.player.health <= 4)
+                {
                     yPos += this.rand.nextInt(2);
                 }
                 instance.blit(xPos, yPos, 16 + k5 * 9, 0, 9, 9);
-                if (flag1) {
-                    if (heart * 2 + 1 < prevHalfHearts) {
+                if (flag1)
+                {
+                    if (heart * 2 + 1 < prevHalfHearts)
+                    {
                         instance.blit(xPos, yPos, 70, 0, 9, 9);
                     }
-                    if (heart * 2 + 1 == prevHalfHearts) {
+                    if (heart * 2 + 1 == prevHalfHearts)
+                    {
                         instance.blit(xPos, yPos, 79, 0, 9, 9);
                     }
                 }
-                if (heart * 2 + 1 < halfHearts) {
+                if (heart * 2 + 1 < halfHearts)
+                {
                     instance.blit(xPos, yPos, 52, 0, 9, 9);
                 }
-                if (heart * 2 + 1 == halfHearts) {
+                if (heart * 2 + 1 == halfHearts)
+                {
                     instance.blit(xPos, yPos, 61, 0, 9, 9);
                 }
             }
@@ -130,7 +143,8 @@ public class InGameGuiMixin
         GL11.glDisable(3042);
     }
 
-    private void renderShieldEffect() {
+    private void renderShieldEffect()
+    {
 
         if (minecraft.player.inventory.armour[6] == null)
             return;
@@ -141,7 +155,7 @@ public class InGameGuiMixin
 
         if (!(player.onGround || (player.vehicle != null && player.vehicle.onGround)))
             return;
-        if(!(((LivingAccessor)player).get1029() == 0.0f && ((LivingAccessor)player).get1060() == 0.0f))
+        if (!(((LivingAccessor) player).get1029() == 0.0f && ((LivingAccessor) player).get1060() == 0.0f))
             return;
         if (minecraft.options.thirdPerson)
             return;

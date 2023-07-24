@@ -8,17 +8,22 @@ import net.minecraft.util.maths.Box;
 
 import java.util.List;
 
-public class EntityAetherLightning extends Lightning {
-    public EntityAetherLightning(Level var1, double var2, double var4, double var6) {
+public class EntityAetherLightning extends Lightning
+{
+    public EntityAetherLightning(Level var1, double var2, double var4, double var6)
+    {
         super(var1, var2, var4, var6);
     }
 
     private boolean strike = false;
     private int ticks = 0;
+
     @Override
-    public void tick() {
+    public void tick()
+    {
         ticks++;
-        if (!strike) {
+        if (!strike)
+        {
             strike = true;
             this.level.playSound(this.x, this.y, this.z, "ambient.weather.thunder", 10000.0F, 0.8F + this.rand.nextFloat() * 0.2F);
             this.level.playSound(this.x, this.y, this.z, "random.explode", 2.0F, 0.5F + this.rand.nextFloat() * 0.2F);

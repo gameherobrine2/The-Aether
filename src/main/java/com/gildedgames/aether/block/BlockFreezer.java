@@ -1,38 +1,46 @@
 package com.gildedgames.aether.block;
-import net.minecraft.entity.Item;
-import net.minecraft.item.ItemInstance;
-import net.minecraft.util.maths.MathHelper;
-import net.modificationstation.stationapi.api.registry.Identifier;
-import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
-import net.minecraft.entity.Living;
-import net.minecraft.tileentity.TileEntityBase;
-import net.minecraft.entity.player.PlayerBase;
-import net.minecraft.block.BlockBase;
-import net.minecraft.level.Level;
-import net.minecraft.block.material.Material;
-import java.util.Random;
 
 import com.gildedgames.aether.entity.tile.TileEntityFreezer;
 import com.gildedgames.aether.event.listener.TextureListener;
-import com.gildedgames.aether.gui.GuiFreezer;
-import com.gildedgames.aether.mixin.access.MinecraftClientAccessor;
+import com.gildedgames.aether.gui.container.ContainerFreezer;
+import net.minecraft.block.BlockBase;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.Item;
+import net.minecraft.entity.Living;
+import net.minecraft.entity.player.PlayerBase;
+import net.minecraft.item.ItemInstance;
+import net.minecraft.level.Level;
+import net.minecraft.tileentity.TileEntityBase;
+import net.minecraft.util.maths.MathHelper;
+import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
+import net.modificationstation.stationapi.api.registry.Identifier;
+import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 
-public class BlockFreezer extends TemplateBlockWithEntity {
+import java.util.Random;
+
+import static com.gildedgames.aether.AetherMod.of;
+
+public class BlockFreezer extends TemplateBlockWithEntity
+{
     private Random FrozenRand;
-    
-    public BlockFreezer(final Identifier id) {
+
+    public BlockFreezer(final Identifier id)
+    {
         super(id, Material.STONE);
         this.FrozenRand = new Random();
     }
-    
+
     @Override
-    public void onBlockPlaced(final Level level, final int x, final int y, final int z) {
+    public void onBlockPlaced(final Level level, final int x, final int y, final int z)
+    {
         super.onBlockPlaced(level, x, y, z);
         this.setDefaultDirection(level, x, y, z);
     }
-    
-    private void setDefaultDirection(final Level world, final int i, final int j, final int k) {
-        if (world.isServerSide) {
+
+    private void setDefaultDirection(final Level world, final int i, final int j, final int k)
+    {
+        if (world.isServerSide)
+        {
             return;
         }
         final int l = world.getTileId(i, j, k - 1);
@@ -40,107 +48,131 @@ public class BlockFreezer extends TemplateBlockWithEntity {
         final int j2 = world.getTileId(i - 1, j, k);
         final int k2 = world.getTileId(i + 1, j, k);
         byte byte0 = 3;
-        if (BlockBase.FULL_OPAQUE[l] && !BlockBase.FULL_OPAQUE[i2]) {
+        if (BlockBase.FULL_OPAQUE[l] && !BlockBase.FULL_OPAQUE[i2])
+        {
             byte0 = 3;
         }
-        if (BlockBase.FULL_OPAQUE[i2] && !BlockBase.FULL_OPAQUE[l]) {
+        if (BlockBase.FULL_OPAQUE[i2] && !BlockBase.FULL_OPAQUE[l])
+        {
             byte0 = 2;
         }
-        if (BlockBase.FULL_OPAQUE[j2] && !BlockBase.FULL_OPAQUE[k2]) {
+        if (BlockBase.FULL_OPAQUE[j2] && !BlockBase.FULL_OPAQUE[k2])
+        {
             byte0 = 5;
         }
-        if (BlockBase.FULL_OPAQUE[k2] && !BlockBase.FULL_OPAQUE[j2]) {
+        if (BlockBase.FULL_OPAQUE[k2] && !BlockBase.FULL_OPAQUE[j2])
+        {
             byte0 = 4;
         }
         world.setTileMeta(i, j, k, byte0);
     }
-    
+
     @Override
-    public void randomDisplayTick(final Level level, final int x, final int y, final int z, final Random rand) {
-        final TileEntityFreezer tileentity = (TileEntityFreezer)level.getTileEntity(x, y, z);
-        if (tileentity.isBurning()) {
+    public void randomDisplayTick(final Level level, final int x, final int y, final int z, final Random rand)
+    {
+        /* todo:
+        final TileEntityFreezer tileentity = (TileEntityFreezer) level.getTileEntity(x, y, z);
+        if (tileentity.isBurning())
+        {
             final float f = x + 0.5f;
             final float f2 = y + 1.0f + rand.nextFloat() * 6.0f / 16.0f;
             final float f3 = z + 0.5f;
-            level.addParticle("smoke", (double)f, (double)f2, (double)f3, 0.0, 0.0, 0.0);
-            level.addParticle("largesmoke", (double)f, (double)f2, (double)f3, 0.0, 0.0, 0.0);
-            level.addParticle("snowshovel", (double)f, (double)f2, (double)f3, 0.0, 0.0, 0.0);
-            level.addParticle("snowshovel", (double)f, (double)f2, (double)f3, 0.0, 0.0, 0.0);
-        }
+            level.addParticle("smoke", (double) f, (double) f2, (double) f3, 0.0, 0.0, 0.0);
+            level.addParticle("largesmoke", (double) f, (double) f2, (double) f3, 0.0, 0.0, 0.0);
+            level.addParticle("snowshovel", (double) f, (double) f2, (double) f3, 0.0, 0.0, 0.0);
+            level.addParticle("snowshovel", (double) f, (double) f2, (double) f3, 0.0, 0.0, 0.0);
+        }*/
     }
-    
+
     @Override
-    public int getTextureForSide(final int side) {
-        if (side == 1) {
+    public int getTextureForSide(final int side)
+    {
+        if (side == 1)
+        {
             return TextureListener.sprFreezerTop;
         }
-        if (side == 0) {
+        if (side == 0)
+        {
             return TextureListener.sprFreezerTop;
         }
         return TextureListener.sprFreezerSide;
     }
-    
+
     @Override
-    public boolean canUse(final Level level, final int x, final int y, final int z, final PlayerBase player) {
-        if (level.isServerSide) {
+    public boolean canUse(final Level level, final int x, final int y, final int z, final PlayerBase player)
+    {
+        if (level.isServerSide)
+        {
             return true;
         }
-        final TileEntityFreezer tileentityFreezer = (TileEntityFreezer)level.getTileEntity(x, y, z);
-        MinecraftClientAccessor.getMCinstance().openScreen(new GuiFreezer(player.inventory, tileentityFreezer));
-        //ModLoader.OpenGUI(player, (ScreenBase)new GuiFreezer(player.inventory, tileentityFreezer));
+
+        final TileEntityFreezer tileentityFreezer = (TileEntityFreezer) level.getTileEntity(x, y, z);
+        GuiHelper.openGUI(player, of("freezer"), tileentityFreezer, new ContainerFreezer(player.inventory, tileentityFreezer));
         return true;
     }
-    
-    public static void updateFreezerBlockState(final boolean flag, final Level world, final int i, final int j, final int k) {
+
+    public static void updateFreezerBlockState(final boolean flag, final Level world, final int i, final int j, final int k)
+    {
         final int l = world.getTileMeta(i, j, k);
         final TileEntityBase tileentity = world.getTileEntity(i, j, k);
         world.setTileMeta(i, j, k, l);
         world.setTileEntity(i, j, k, tileentity);
     }
-    
+
     @Override
-    protected TileEntityBase createTileEntity() {
+    protected TileEntityBase createTileEntity()
+    {
         return new TileEntityFreezer();
     }
-    
+
     @Override
-    public void afterPlaced(final Level level, final int x, final int y, final int z, final Living living) {
+    public void afterPlaced(final Level level, final int x, final int y, final int z, final Living living)
+    {
         final int l = MathHelper.floor(living.yaw * 4.0f / 360.0f + 0.5) & 0x3;
-        if (l == 0) {
+        if (l == 0)
+        {
             level.setTileMeta(x, y, z, 2);
         }
-        if (l == 1) {
+        if (l == 1)
+        {
             level.setTileMeta(x, y, z, 5);
         }
-        if (l == 2) {
+        if (l == 2)
+        {
             level.setTileMeta(x, y, z, 3);
         }
-        if (l == 3) {
+        if (l == 3)
+        {
             level.setTileMeta(x, y, z, 4);
         }
     }
-    
+
     @Override
-    public void onBlockRemoved(final Level level, final int x, final int y, final int z) {
-        final TileEntityFreezer tileentityFreezer = (TileEntityFreezer)level.getTileEntity(x, y, z);
-        for (int l = 0; l < tileentityFreezer.getInventorySize(); ++l) {
+    public void onBlockRemoved(final Level level, final int x, final int y, final int z)
+    {
+        final TileEntityFreezer tileentityFreezer = (TileEntityFreezer) level.getTileEntity(x, y, z);
+        for (int l = 0; l < tileentityFreezer.getInventorySize(); ++l)
+        {
             final ItemInstance itemstack = tileentityFreezer.getInventoryItem(l);
-            if (itemstack != null) {
+            if (itemstack != null)
+            {
                 final float f = this.FrozenRand.nextFloat() * 0.8f + 0.1f;
                 final float f2 = this.FrozenRand.nextFloat() * 0.8f + 0.1f;
                 final float f3 = this.FrozenRand.nextFloat() * 0.8f + 0.1f;
-                while (itemstack.count > 0) {
+                while (itemstack.count > 0)
+                {
                     int i1 = this.FrozenRand.nextInt(21) + 10;
-                    if (i1 > itemstack.count) {
+                    if (i1 > itemstack.count)
+                    {
                         i1 = itemstack.count;
                     }
                     final ItemInstance itemInstance = itemstack;
                     itemInstance.count -= i1;
                     final Item entityitem = new Item(level, x + f, y + f2, z + f3, new ItemInstance(itemstack.itemId, i1, itemstack.getDamage()));
                     final float f4 = 0.05f;
-                    entityitem.velocityX = (float)this.FrozenRand.nextGaussian() * f4;
-                    entityitem.velocityY = (float)this.FrozenRand.nextGaussian() * f4 + 0.2f;
-                    entityitem.velocityZ = (float)this.FrozenRand.nextGaussian() * f4;
+                    entityitem.velocityX = (float) this.FrozenRand.nextGaussian() * f4;
+                    entityitem.velocityY = (float) this.FrozenRand.nextGaussian() * f4 + 0.2f;
+                    entityitem.velocityZ = (float) this.FrozenRand.nextGaussian() * f4;
                     level.spawnEntity(entityitem);
                 }
             }

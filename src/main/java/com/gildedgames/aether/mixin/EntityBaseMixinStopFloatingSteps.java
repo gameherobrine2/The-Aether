@@ -9,7 +9,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 @Mixin(EntityBase.class)
-public class EntityBaseMixinStopFloatingSteps {
+public class EntityBaseMixinStopFloatingSteps
+{
     @Redirect(method = "move", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/EntityBase;canClimb()Z"))
     public boolean canClimbOrAir(EntityBase instance)
     {
@@ -19,7 +20,9 @@ public class EntityBaseMixinStopFloatingSteps {
             canClimbMethod.setAccessible(true);
             boolean originalCanClimb = (boolean) canClimbMethod.invoke(instance);
             return instance.onGround && originalCanClimb;
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+        }
+        catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e)
+        {
             e.printStackTrace();
             return false;
         }

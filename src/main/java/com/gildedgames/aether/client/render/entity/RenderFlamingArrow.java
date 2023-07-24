@@ -1,21 +1,23 @@
 package com.gildedgames.aether.client.render.entity;
-import net.minecraft.entity.EntityBase;
-import net.minecraft.util.maths.MathHelper;
-import net.minecraft.client.render.Tessellator;
-import org.lwjgl.opengl.GL11;
 
 import com.gildedgames.aether.entity.projectile.EntityFlamingArrow;
-
+import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.entity.EntityRenderer;
+import net.minecraft.entity.EntityBase;
+import net.minecraft.util.maths.MathHelper;
+import org.lwjgl.opengl.GL11;
 
-public class RenderFlamingArrow extends EntityRenderer {
-    public void func_154_a(final EntityFlamingArrow entityarrow, final double d, final double d1, final double d2, final float f, final float f1) {
-        if (entityarrow.prevYaw == 0.0f && entityarrow.prevPitch == 0.0f) {
+public class RenderFlamingArrow extends EntityRenderer
+{
+    public void func_154_a(final EntityFlamingArrow entityarrow, final double d, final double d1, final double d2, final float f, final float f1)
+    {
+        if (entityarrow.prevYaw == 0.0f && entityarrow.prevPitch == 0.0f)
+        {
             return;
         }
         this.bindTexture("assets/aether/textures/tile/FlamingArrows.png");
         GL11.glPushMatrix();
-        GL11.glTranslatef((float)d, (float)d1, (float)d2);
+        GL11.glTranslatef((float) d, (float) d1, (float) d2);
         GL11.glRotatef(entityarrow.prevYaw + (entityarrow.yaw - entityarrow.prevYaw) * f1 - 90.0f, 0.0f, 1.0f, 0.0f);
         GL11.glRotatef(entityarrow.prevPitch + (entityarrow.pitch - entityarrow.prevPitch) * f1, 0.0f, 0.0f, 1.0f);
         final Tessellator tessellator = Tessellator.INSTANCE;
@@ -31,7 +33,8 @@ public class RenderFlamingArrow extends EntityRenderer {
         final float f10 = 0.05625f;
         GL11.glEnable(32826);
         final float f11 = entityarrow.arrowShake - f1;
-        if (f11 > 0.0f) {
+        if (f11 > 0.0f)
+        {
             final float f12 = -MathHelper.sin(f11 * 3.0f) * f11;
             GL11.glRotatef(f12, 0.0f, 0.0f, 1.0f);
         }
@@ -52,7 +55,8 @@ public class RenderFlamingArrow extends EntityRenderer {
         tessellator.vertex(-7.0, -2.0, 2.0, f7, f9);
         tessellator.vertex(-7.0, -2.0, -2.0, f6, f9);
         tessellator.draw();
-        for (int j = 0; j < 4; ++j) {
+        for (int j = 0; j < 4; ++j)
+        {
             GL11.glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
             GL11.glNormal3f(0.0f, 0.0f, f10);
             tessellator.start();
@@ -65,9 +69,10 @@ public class RenderFlamingArrow extends EntityRenderer {
         GL11.glDisable(32826);
         GL11.glPopMatrix();
     }
-    
+
     @Override
-    public void render(final EntityBase entity, final double x, final double y, final double z, final float f, final float f1) {
-        this.func_154_a((EntityFlamingArrow)entity, x, y, z, f, f1);
+    public void render(final EntityBase entity, final double x, final double y, final double z, final float f, final float f1)
+    {
+        this.func_154_a((EntityFlamingArrow) entity, x, y, z, f, f1);
     }
 }

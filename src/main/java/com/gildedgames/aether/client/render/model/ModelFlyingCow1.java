@@ -1,13 +1,16 @@
 package com.gildedgames.aether.client.render.model;
+
 import net.minecraft.client.model.Cuboid;
 import net.minecraft.client.render.entity.model.AnimalQuadrupedModelBase;
 
-public class ModelFlyingCow1 extends AnimalQuadrupedModelBase {
+public class ModelFlyingCow1 extends AnimalQuadrupedModelBase
+{
     Cuboid udders;
     Cuboid horn1;
     Cuboid horn2;
-    
-    public ModelFlyingCow1() {
+
+    public ModelFlyingCow1()
+    {
         super(12, 0.0f);
         (this.cuboid1 = new Cuboid(0, 0)).method_1818(-4.0f, -4.0f, -6.0f, 8, 8, 6, 0.0f);
         this.cuboid1.setRotationPoint(0.0f, 4.0f, -8.0f);
@@ -37,17 +40,19 @@ public class ModelFlyingCow1 extends AnimalQuadrupedModelBase {
         final Cuboid cuboid10 = this.cuboid6;
         --cuboid10.rotationPointZ;
     }
-    
+
     @Override
-    public void render(final float f, final float f1, final float f2, final float f3, final float f4, final float f5) {
+    public void render(final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
+    {
         super.render(f, f1, f2, f3, f4, f5);
         this.horn1.method_1815(f5);
         this.horn2.method_1815(f5);
         this.udders.method_1815(f5);
     }
-    
+
     @Override
-    public void setAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5) {
+    public void setAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
+    {
         super.setAngles(f, f1, f2, f3, f4, f5);
         this.horn1.yaw = this.cuboid1.yaw;
         this.horn1.pitch = this.cuboid1.pitch;

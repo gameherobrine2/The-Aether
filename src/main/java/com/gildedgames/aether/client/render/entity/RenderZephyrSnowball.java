@@ -1,17 +1,18 @@
 package com.gildedgames.aether.client.render.entity;
-import net.minecraft.entity.EntityBase;
+
+import com.gildedgames.aether.entity.projectile.EntityZephyrSnowball;
 import net.minecraft.client.render.Tessellator;
+import net.minecraft.client.render.entity.EntityRenderer;
+import net.minecraft.entity.EntityBase;
 import net.minecraft.item.ItemBase;
 import org.lwjgl.opengl.GL11;
 
-import com.gildedgames.aether.entity.projectile.EntityZephyrSnowball;
-
-import net.minecraft.client.render.entity.EntityRenderer;
-
-public class RenderZephyrSnowball extends EntityRenderer { /*WARNING: THIS IS VERY DANGEROUS WEAPON(and annoying too =<)*/
-    public void func_4012_a(final EntityZephyrSnowball entityZephyrSnowball, final double d, final double d1, final double d2, final float f, final float f1) {
+public class RenderZephyrSnowball extends EntityRenderer
+{ /*WARNING: THIS IS VERY DANGEROUS WEAPON(and annoying too =<)*/
+    public void func_4012_a(final EntityZephyrSnowball entityZephyrSnowball, final double d, final double d1, final double d2, final float f, final float f1)
+    {
         GL11.glPushMatrix();
-        GL11.glTranslatef((float)d, (float)d1, (float)d2);
+        GL11.glTranslatef((float) d, (float) d1, (float) d2);
         GL11.glEnable(32826);
         final float f2 = 2.0f;
         GL11.glScalef(f2 / 1.0f, f2 / 1.0f, f2 / 1.0f);
@@ -37,9 +38,10 @@ public class RenderZephyrSnowball extends EntityRenderer { /*WARNING: THIS IS VE
         GL11.glDisable(32826);
         GL11.glPopMatrix();
     }
-    
+
     @Override
-    public void render(final EntityBase entity, final double x, final double y, final double z, final float f, final float f1) {
-        this.func_4012_a((EntityZephyrSnowball)entity, x, y, z, f, f1);
+    public void render(final EntityBase entity, final double x, final double y, final double z, final float f, final float f1)
+    {
+        this.func_4012_a((EntityZephyrSnowball) entity, x, y, z, f, f1);
     }
 }

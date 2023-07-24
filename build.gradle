@@ -35,6 +35,17 @@ repositories {
 	maven {
 		url 'https://maven.minecraftforge.net/'
 	}
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = "Modrinth"
+				url = "https://api.modrinth.com/maven"
+			}
+		}
+		filter {
+			includeGroup "maven.modrinth"
+		}
+	}
 }
 
 dependencies {
@@ -48,7 +59,9 @@ dependencies {
 	implementation "org.apache.logging.log4j:log4j-slf4j18-impl:2.16.0"
 	modImplementation("net.modificationstation:StationAPI:${project.stapi_version}")
 
-	modImplementation files("lib/accessoryapi-0.1.0.jar")
+	modImplementation files('lib/accessoryapi-0.3.0.jar') {
+		transitive false
+	}
 
 	modLocalRuntime("com.github.calmilamsy:ModMenu:${project.modmenu_version}") {
 		transitive false
@@ -56,7 +69,7 @@ dependencies {
 	modLocalRuntime("net.glasslauncher.mods:GlassConfigAPI:${project.gcapi_version}") {
 		transitive false
 	}
-	modLocalRuntime("net.glasslauncher:HowManyItems-Fabric-Unofficial:5.0.12") {
+	modLocalRuntime("net.glasslauncher:HowManyItems-Fabric-Unofficial:5.0.13") {
 		transitive false
 	}
 }

@@ -1,18 +1,9 @@
 package com.gildedgames.aether.event.listener;
 
 import com.gildedgames.aether.client.render.entity.*;
-
-
 import com.gildedgames.aether.client.render.model.*;
 import com.gildedgames.aether.entity.EntityCloudParachute;
-import com.gildedgames.aether.entity.animal.EntityAechorPlant;
-import com.gildedgames.aether.entity.animal.EntityAerbunny;
-import com.gildedgames.aether.entity.animal.EntityFlyingCow;
-import com.gildedgames.aether.entity.animal.EntityMoa;
-import com.gildedgames.aether.entity.animal.EntityPhyg;
-import com.gildedgames.aether.entity.animal.EntitySheepuff;
-import com.gildedgames.aether.entity.animal.EntitySwet;
-import com.gildedgames.aether.entity.animal.Whirly;
+import com.gildedgames.aether.entity.animal.*;
 import com.gildedgames.aether.entity.boss.EntityFireMonster;
 import com.gildedgames.aether.entity.boss.EntitySlider;
 import com.gildedgames.aether.entity.boss.EntityValkyrie;
@@ -24,9 +15,12 @@ import net.minecraft.client.render.entity.LightningRenderer;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.model.Slime;
 import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
-public class EntityRendererListener {
+
+public class EntityRendererListener
+{
     @EventListener
-    private static void registerEntity(EntityRendererRegisterEvent event) {
+    private static void registerEntity(EntityRendererRegisterEvent event)
+    {
         event.renderers.put(EntityFlyingCow.class, new RenderFlyingCow(new ModelFlyingCow1(), new ModelFlyingCow2(), 0.7f));
         event.renderers.put(EntityZephyr.class, new RenderZephyr());
         event.renderers.put(EntityZephyrSnowball.class, new RenderZephyrSnowball());

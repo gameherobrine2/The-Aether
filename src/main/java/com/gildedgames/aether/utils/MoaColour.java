@@ -1,9 +1,11 @@
 package com.gildedgames.aether.utils;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.List;
 
-public class MoaColour {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class MoaColour
+{
     public int ID;
     public int colour;
     public int jumps;
@@ -12,8 +14,9 @@ public class MoaColour {
     private static int totalChance;
     public static List<MoaColour> colours;
     private static Random random;
-    
-    public MoaColour(final int i, final int j, final int k, final int l, final String s) {
+
+    public MoaColour(final int i, final int j, final int k, final int l, final String s)
+    {
         this.ID = i;
         this.colour = j;
         this.jumps = k;
@@ -22,32 +25,40 @@ public class MoaColour {
         this.name = s;
         MoaColour.colours.add(this);
     }
-    
-    public String getTexture(final boolean saddled) {
+
+    public String getTexture(final boolean saddled)
+    {
         return "aether:textures/entity/" + this.name + (saddled ? "MoaSaddle.png" : "Moa.png");
     }
-    
-    public static MoaColour pickRandomMoa() {
+
+    public static MoaColour pickRandomMoa()
+    {
         int i = MoaColour.random.nextInt(MoaColour.totalChance);
-        for (int j = 0; j < MoaColour.colours.size(); ++j) {
-            if (i < ((MoaColour)MoaColour.colours.get(j)).chance) {
-                return (MoaColour)MoaColour.colours.get(j);
+        for (int j = 0; j < MoaColour.colours.size(); ++j)
+        {
+            if (i < ((MoaColour) MoaColour.colours.get(j)).chance)
+            {
+                return (MoaColour) MoaColour.colours.get(j);
             }
-            i -= ((MoaColour)MoaColour.colours.get(j)).chance;
+            i -= ((MoaColour) MoaColour.colours.get(j)).chance;
         }
-        return (MoaColour)MoaColour.colours.get(0);
+        return (MoaColour) MoaColour.colours.get(0);
     }
-    
-    public static MoaColour getColour(final int ID) {
-        for (int i = 0; i < MoaColour.colours.size(); ++i) {
-            if (((MoaColour)MoaColour.colours.get(i)).ID == ID) {
-                return (MoaColour)MoaColour.colours.get(i);
+
+    public static MoaColour getColour(final int ID)
+    {
+        for (int i = 0; i < MoaColour.colours.size(); ++i)
+        {
+            if (((MoaColour) MoaColour.colours.get(i)).ID == ID)
+            {
+                return (MoaColour) MoaColour.colours.get(i);
             }
         }
-        return (MoaColour)MoaColour.colours.get(0);
+        return (MoaColour) MoaColour.colours.get(0);
     }
-    
-    static {
+
+    static
+    {
         MoaColour.colours = new ArrayList<MoaColour>();
         MoaColour.random = new Random();
         new MoaColour(0, 7829503, 3, 100, "Blue");

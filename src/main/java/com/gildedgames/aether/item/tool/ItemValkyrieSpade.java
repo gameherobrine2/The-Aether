@@ -12,16 +12,19 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-public class ItemValkyrieSpade extends TemplateShovel implements CustomReachProvider {
+public class ItemValkyrieSpade extends TemplateShovel implements CustomReachProvider
+{
     private static BlockBase[] blocksEffectiveAgainst;
     private static Random random;
-    
-    public ItemValkyrieSpade(final @NotNull Identifier identifier, final ToolMaterial enumtoolmaterial) {
+
+    public ItemValkyrieSpade(final @NotNull Identifier identifier, final ToolMaterial enumtoolmaterial)
+    {
         super(identifier, enumtoolmaterial);
     }
 
     @Override
-    public double getReach(ItemInstance itemInstance, PlayerBase player, HitType type, double currentReach) {
+    public double getReach(ItemInstance itemInstance, PlayerBase player, HitType type, double currentReach)
+    {
         return 10.f;
     }
 }

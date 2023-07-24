@@ -5,7 +5,8 @@ import net.modificationstation.stationapi.api.registry.Identifier;
 
 public class BlockMossyHolystone extends BlockHolystone
 {
-    public BlockMossyHolystone(Identifier identifier) {
+    public BlockMossyHolystone(Identifier identifier)
+    {
         super(identifier);
     }
 

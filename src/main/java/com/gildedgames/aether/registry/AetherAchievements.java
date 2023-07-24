@@ -1,17 +1,16 @@
 package com.gildedgames.aether.registry;
+
+import com.gildedgames.aether.achievement.AetherACPage;
+import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.achievement.Achievement;
+import net.minecraft.block.BlockBase;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
 import net.modificationstation.stationapi.api.client.gui.screen.menu.AchievementPage;
 import net.modificationstation.stationapi.api.event.achievement.AchievementRegisterEvent;
-import net.minecraft.block.BlockBase;
-import com.gildedgames.aether.achievement.AetherACPage;
-import com.gildedgames.aether.registry.AetherBlocks;
-import com.gildedgames.aether.registry.AetherItems;
 
-import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.achievement.Achievement;
-
-public class AetherAchievements {
+public class AetherAchievements
+{
     public static final int acOff = 800;
     public static Achievement enterAether;
     public static Achievement defeatBronze;
@@ -24,9 +23,11 @@ public class AetherAchievements {
     public static Achievement flyingPig;
     public static Achievement lore;
     public static Achievement loreception;
+
     @EventListener
-    private void registerAchievements(AchievementRegisterEvent event) {
-    	AetherAchievements.enterAether = new Achievement(800, "aether:enterAether", 0, 0, BlockBase.GLOWSTONE, (Achievement)null);
+    private void registerAchievements(AchievementRegisterEvent event)
+    {
+        AetherAchievements.enterAether = new Achievement(800, "aether:enterAether", 0, 0, BlockBase.GLOWSTONE, (Achievement) null);
         AetherAchievements.defeatBronze = new Achievement(801, "aether:defeatBronze", -2, 3, new ItemInstance(AetherItems.Key, 1, 0), AetherAchievements.enterAether);
         AetherAchievements.defeatSilver = new Achievement(802, "aether:defeatSilver", 0, 4, new ItemInstance(AetherItems.Key, 1, 1), AetherAchievements.enterAether);
         AetherAchievements.defeatGold = new Achievement(803, "aether:defeatGold", 2, 3, new ItemInstance(AetherItems.Key, 1, 2), AetherAchievements.enterAether);
@@ -51,5 +52,5 @@ public class AetherAchievements {
         final AchievementPage page = new AetherACPage();
         page.addAchievements(AetherAchievements.enterAether, AetherAchievements.defeatBronze, AetherAchievements.defeatSilver, AetherAchievements.defeatGold, AetherAchievements.enchanter, AetherAchievements.incubator, AetherAchievements.gravTools, AetherAchievements.blueCloud, AetherAchievements.flyingPig, AetherAchievements.lore, AetherAchievements.loreception);
     }
-    
+
 }

@@ -1,6 +1,7 @@
 package com.gildedgames.aether.item.accessory;
 
 import com.matthewperiut.accessoryapi.api.Accessory;
+import com.matthewperiut.accessoryapi.api.AccessoryType;
 import net.minecraft.client.render.entity.PlayerRenderer;
 import net.minecraft.client.render.entity.model.Biped;
 import net.minecraft.entity.player.PlayerBase;
@@ -18,9 +19,9 @@ public class IronBubble extends TemplateItemBase implements Accessory
     }
 
     @Override
-    public Type getType()
+    public AccessoryType[] getAccessoryTypes(ItemInstance item)
     {
-        return Type.misc;
+        return new AccessoryType[]{AccessoryType.misc};
     }
 
     @Override

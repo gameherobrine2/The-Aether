@@ -5,7 +5,6 @@ import com.gildedgames.aether.item.misc.*;
 import com.gildedgames.aether.item.tool.*;
 import com.gildedgames.aether.utils.EnumElement;
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.tool.ToolMaterial;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
@@ -18,22 +17,25 @@ import net.modificationstation.stationapi.api.template.item.tool.TemplatePickaxe
 import net.modificationstation.stationapi.api.template.item.tool.TemplateShovel;
 import net.modificationstation.stationapi.api.template.item.tool.TemplateSword;
 
-import static com.gildedgames.aether.Aether.MODID;
+import static com.gildedgames.aether.AetherMod.MODID;
 
 @Entrypoint(eventBus = @EventBusPolicy(registerInstance = false))
-public class AetherItems {
+public class AetherItems
+{
     @Entrypoint.ModID
     private static ModID MOD_ID;
+
     @EventListener
-    private static void registerItems(ItemRegistryEvent event) {
-    	AmbrosiumShard = new ItemAmbrosium(Identifier.of(MOD_ID, "ambrosium_shard"), 1).setTranslationKey(MODID, "AmbrosiumShard");
-    	Stick = new ItemAether(Identifier.of(MOD_ID, "stick")).setTranslationKey(MODID, "SkyrootStick");
+    private static void registerItems(ItemRegistryEvent event)
+    {
+        AmbrosiumShard = new ItemAmbrosium(Identifier.of(MOD_ID, "ambrosium_shard"), 1).setTranslationKey(MODID, "AmbrosiumShard");
+        Stick = new ItemAether(Identifier.of(MOD_ID, "stick")).setTranslationKey(MODID, "SkyrootStick");
         AetherItems.Key = new ItemAetherKey(Identifier.of(MOD_ID, "key")).setTranslationKey(MODID, "AetherKey");
         AetherItems.VictoryMedal = new ItemAether(Identifier.of(MOD_ID, "victory_medal")).setMaxStackSize(10).setTranslationKey(MODID, "VictoryMedal");
         Bucket = new ItemSkyrootBucket(Identifier.of(MOD_ID, "skyroot_bucket")).setTranslationKey(MODID, "SkyrootBucket");
 
         AetherItems.LoreBook = new ItemLoreBook(Identifier.of(MOD_ID, "lore_book")).setTexturePosition(59).setTranslationKey(MODID, "LoreBook");
-        AetherItems.MoaEgg = new ItemMoaEgg(Identifier.of(MOD_ID, "moa_egg")).setTranslationKey(MODID, "MoaEgg"); 
+        AetherItems.MoaEgg = new ItemMoaEgg(Identifier.of(MOD_ID, "moa_egg")).setTranslationKey(MODID, "MoaEgg");
         AetherItems.AechorPetal = new ItemAether(Identifier.of(MOD_ID, "aechor_petal")).setTranslationKey(MODID, "AechorPetal");
         AetherItems.GoldenAmber = new ItemAether(Identifier.of(MOD_ID, "golden_amber")).setTranslationKey(MODID, "GoldenAmber");
         AetherItems.Dart = new ItemDart(Identifier.of(MOD_ID, "item_dart")).setHasSubItems(true).setTranslationKey(MODID, "Dart");
@@ -64,8 +66,8 @@ public class AetherItems {
         AetherItems.PickValkyrie = new ItemValkyriePickaxe(Identifier.of(MOD_ID, "item_valkyre_pickaxe"), mat).setTranslationKey(MODID, "PickValkyrie");
         AetherItems.ShovelValkyrie = new ItemValkyrieSpade(Identifier.of(MOD_ID, "item_valkyre_shovel"), mat).setTranslationKey(MODID, "ShovelValkyrie");
         AetherItems.AxeValkyrie = new ItemValkyrieAxe(Identifier.of(MOD_ID, "item_valkyre_axe"), mat).setTranslationKey(MODID, "AxeValkyrie");
-         AetherItems.CloudParachute = new ItemCloudParachute(Identifier.of(MOD_ID, "item_cloud_parachute"),false).setTranslationKey(MODID, "CloudParachute");
-        AetherItems.CloudParachuteGold = new ItemCloudParachute(Identifier.of(MOD_ID, "item_gold_cloud_parachute"),true).setTranslationKey(MODID, "CloudParachuteGold");
+        AetherItems.CloudParachute = new ItemCloudParachute(Identifier.of(MOD_ID, "item_cloud_parachute"), false).setTranslationKey(MODID, "CloudParachute");
+        AetherItems.CloudParachuteGold = new ItemCloudParachute(Identifier.of(MOD_ID, "item_gold_cloud_parachute"), true).setTranslationKey(MODID, "CloudParachuteGold");
         AetherItems.PhoenixHelm = new ItemColouredArmor(Identifier.of(MOD_ID, "item_phoenix_helmet"), 3, "Phoenix", 0, 16742144).setTexturePosition(1).setTranslationKey(MODID, "PhoenixHelm");
         AetherItems.PhoenixBody = new ItemColouredArmor(Identifier.of(MOD_ID, "item_phoenix_body"), 3, "Phoenix", 1, 16742144).setTexturePosition(17).setTranslationKey(MODID, "PhoenixBody");
         AetherItems.PhoenixLegs = new ItemColouredArmor(Identifier.of(MOD_ID, "item_phoenix_legs"), 3, "Phoenix", 2, 16742144).setTexturePosition(33).setTranslationKey(MODID, "PhoenixLegs");
@@ -81,7 +83,7 @@ public class AetherItems {
         AetherItems.ZaniteHelmet = new ItemColouredArmor(Identifier.of(MOD_ID, "item_zanite_helmet"), 2, "Zanite", 0, 7412456).setTexturePosition(2).setTranslationKey(MODID, "ZaniteHelm");
         AetherItems.ZaniteChestplate = new ItemColouredArmor(Identifier.of(MOD_ID, "item_zanite_body"), 2, "Zanite", 1, 7412456).setTexturePosition(18).setTranslationKey(MODID, "ZaniteBody");
         AetherItems.ZaniteLeggings = new ItemColouredArmor(Identifier.of(MOD_ID, "item_zanite_legs"), 2, "Zanite", 2, 7412456).setTexturePosition(34).setTranslationKey(MODID, "ZaniteLegs");
-        AetherItems.ZaniteBoots = new ItemColouredArmor(Identifier.of(MOD_ID, "item_zanite_boots"), 2,"Zanite", 3, 7412456).setTexturePosition(50).setTranslationKey(MODID, "ZaniteBoots");
+        AetherItems.ZaniteBoots = new ItemColouredArmor(Identifier.of(MOD_ID, "item_zanite_boots"), 2, "Zanite", 3, 7412456).setTexturePosition(50).setTranslationKey(MODID, "ZaniteBoots");
         AetherItems.NeptuneHelmet = new ItemColouredArmor(Identifier.of(MOD_ID, "item_neptune_helmet"), 3, "Neptune", 0, 2512127).setTexturePosition(1).setTranslationKey(MODID, "NeptuneHelm");
         AetherItems.NeptuneChestplate = new ItemColouredArmor(Identifier.of(MOD_ID, "item_neptune_body"), 3, "Neptune", 1, 2512127).setTexturePosition(17).setTranslationKey(MODID, "NeptuneBody");
         AetherItems.NeptuneLeggings = new ItemColouredArmor(Identifier.of(MOD_ID, "item_neptune_legs"), 3, "Neptune", 2, 2512127).setTexturePosition(33).setTranslationKey(MODID, "NeptuneLegs");
@@ -104,7 +106,8 @@ public class AetherItems {
         AetherItems.RepShield = new EnergyShield(Identifier.of(MOD_ID, "item_rep_shield")).setTranslationKey(MODID, "RepShield").setDurability(512);
         AetherItems.AgilityCape = new AgileCape(Identifier.of(MOD_ID, "item_agility_cape"), "aether:textures/capes/AgilityCape.png").setTranslationKey(MODID, "AgilityCape");
         AetherItems.WhiteCape = new CosmeticCape(Identifier.of(MOD_ID, "item_white_cape"), "aether:textures/capes/WhiteCape.png").setTranslationKey(MODID, "WhiteCape");
-        AetherItems.RedCape = new CosmeticCape(Identifier.of(MOD_ID, "item_red_cape"), "aether:textures/capes/RedCape.png", 15208721).setTranslationKey(MODID, "RedCape");;//new ItemMoreArmor(Identifier.of(MOD_ID, "item_red_cape"), 0, "aether:textures/capes/RedCape.png", Accessory.Type.cape, 15208721).setTranslationKey(MODID, "RedCape");
+        AetherItems.RedCape = new CosmeticCape(Identifier.of(MOD_ID, "item_red_cape"), "aether:textures/capes/RedCape.png", 15208721).setTranslationKey(MODID, "RedCape");
+        ;//new ItemMoreArmor(Identifier.of(MOD_ID, "item_red_cape"), 0, "aether:textures/capes/RedCape.png", Accessory.Type.cape, 15208721).setTranslationKey(MODID, "RedCape");
         AetherItems.YellowCape = new CosmeticCape(Identifier.of(MOD_ID, "item_yellow_cape"), "aether:textures/capes/YellowCape.png", 13486862).setTranslationKey(MODID, "YellowCape");
         AetherItems.BlueCape = new CosmeticCape(Identifier.of(MOD_ID, "item_blue_cape"), "aether:textures/capes/BlueCape.png", 1277879).setTranslationKey(MODID, "BlueCape");
         AetherItems.IronBubble = new IronBubble(Identifier.of(MOD_ID, "item_iron_bubble")).setTranslationKey(MODID, "IronBubble");
@@ -132,9 +135,9 @@ public class AetherItems {
         ZaniteRing = new ZaniteRing(Identifier.of(MOD_ID, "zanite_ring"), 7412456).setTranslationKey(MODID, "ZaniteRing");
         IceRing = new IceRing(Identifier.of(MOD_ID, "ice_ring"), 9823975).setTranslationKey(MODID, "IceRing");
     }
-    
+    /*
     public static void tick(final Minecraft game) {
-        /*
+
         if (true) {
 
 
@@ -244,10 +247,10 @@ public class AetherItems {
                 player.addHealth(1);
             }
             ++AetherItems.ticks;
-        }*/
-    }
-    
-    
+        }
+    }*/
+
+
     public static double motionOffset;
     public static double ybuff;
     public static ItemBase VictoryMedal;
@@ -353,5 +356,5 @@ public class AetherItems {
     public static int zaniteArmour;
     public static int neptuneArmour;
     private static boolean debug;
-    
+
 }

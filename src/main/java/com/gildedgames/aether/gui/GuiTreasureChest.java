@@ -1,17 +1,20 @@
 package com.gildedgames.aether.gui;
 
-import org.lwjgl.opengl.GL11;
+import com.gildedgames.aether.entity.tile.TileEntityTreasureChest;
+import net.minecraft.client.gui.screen.container.ContainerBase;
 import net.minecraft.container.Chest;
 import net.minecraft.inventory.InventoryBase;
-import net.minecraft.client.gui.screen.container.ContainerBase;
+import org.lwjgl.opengl.GL11;
 
-public class GuiTreasureChest extends ContainerBase {
+public class GuiTreasureChest extends ContainerBase
+{
     private InventoryBase upperChestInventory;
     private InventoryBase lowerChestInventory;
     private int inventoryRows;
     private String name;
-    
-    public GuiTreasureChest(final InventoryBase iinventory, final InventoryBase iinventory1, final int meta) {
+
+    public GuiTreasureChest(final InventoryBase iinventory, final TileEntityTreasureChest iinventory1)
+    {
         super(new Chest(iinventory, iinventory1));
         this.inventoryRows = 0;
         this.upperChestInventory = iinventory;
@@ -21,30 +24,41 @@ public class GuiTreasureChest extends ContainerBase {
         final int i = c - 'l';
         this.inventoryRows = iinventory1.getInventorySize() / 9;
         this.containerHeight = i + this.inventoryRows * 18;
-        switch (meta) {
-            case 1: {
+
+        switch (iinventory1.rarity)
+        {
+            case 1:
+            {
                 this.name = "Bronze Treasure Chest";
                 break;
             }
-            case 3: {
+            case 2:
+            {
                 this.name = "Silver Treasure Chest";
                 break;
             }
-            case 5: {
+            case 3:
+            {
                 this.name = "Gold Treasure Chest";
                 break;
             }
+            default:
+            {
+                this.name = "Treasure Chest";
+            }
         }
     }
-    
+
     @Override
-    protected void renderForeground() {
+    protected void renderForeground()
+    {
         this.textManager.drawText(this.name, 8, 6, 4210752);
         this.textManager.drawText(this.upperChestInventory.getContainerName(), 8, this.containerHeight - 96 + 2, 4210752);
     }
-    
+
     @Override
-    protected void renderContainerBackground(final float tickDelta) {
+    protected void renderContainerBackground(final float tickDelta)
+    {
         final int i = this.minecraft.textureManager.getTextureId("/gui/container.png");
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         this.minecraft.textureManager.bindTexture(i);

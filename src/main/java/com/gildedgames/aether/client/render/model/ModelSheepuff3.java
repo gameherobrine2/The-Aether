@@ -3,8 +3,10 @@ package com.gildedgames.aether.client.render.model;
 import net.minecraft.client.model.Cuboid;
 import net.minecraft.client.render.entity.model.AnimalQuadrupedModelBase;
 
-public class ModelSheepuff3 extends AnimalQuadrupedModelBase {
-    public ModelSheepuff3() {
+public class ModelSheepuff3 extends AnimalQuadrupedModelBase
+{
+    public ModelSheepuff3()
+    {
         super(12, 0.0f);
         (this.cuboid1 = new Cuboid(0, 0)).method_1818(-3.0f, -4.0f, -4.0f, 6, 6, 6, 0.6f);
         this.cuboid1.setRotationPoint(0.0f, 6.0f, -8.0f);

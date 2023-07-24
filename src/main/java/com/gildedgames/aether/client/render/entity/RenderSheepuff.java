@@ -1,32 +1,36 @@
 package com.gildedgames.aether.client.render.entity;
 
+import com.gildedgames.aether.entity.animal.EntitySheepuff;
+import net.minecraft.client.render.entity.LivingEntityRenderer;
+import net.minecraft.client.render.entity.model.EntityModelBase;
 import net.minecraft.entity.Living;
+import net.minecraft.entity.animal.Sheep;
 import org.lwjgl.opengl.GL11;
 
-import com.gildedgames.aether.entity.animal.EntitySheepuff;
-
-import net.minecraft.entity.animal.Sheep;
-import net.minecraft.client.render.entity.model.EntityModelBase;
-import net.minecraft.client.render.entity.LivingEntityRenderer;
-
-public class RenderSheepuff extends LivingEntityRenderer {
+public class RenderSheepuff extends LivingEntityRenderer
+{
     private EntityModelBase wool;
     private EntityModelBase puffed;
-    
-    public RenderSheepuff(final EntityModelBase modelbase, final EntityModelBase modelbase1, final EntityModelBase modelbase2, final float f) {
+
+    public RenderSheepuff(final EntityModelBase modelbase, final EntityModelBase modelbase1, final EntityModelBase modelbase2, final float f)
+    {
         super(modelbase1, f);
         this.setModel(modelbase);
         this.wool = modelbase;
         this.puffed = modelbase2;
     }
-    
-    protected boolean setWoolColorAndRender(final EntitySheepuff entitysheep, final int i, final float f) {
-        if (i == 0 && !entitysheep.getSheared()) {
-            if (entitysheep.getPuffed()) {
+
+    protected boolean setWoolColorAndRender(final EntitySheepuff entitysheep, final int i, final float f)
+    {
+        if (i == 0 && !entitysheep.getSheared())
+        {
+            if (entitysheep.getPuffed())
+            {
                 this.setModel(this.puffed);
                 this.bindTexture("aether:textures/entity/sheepuff_fur.png");
             }
-            else {
+            else
+            {
                 this.setModel(this.wool);
                 this.bindTexture("aether:textures/entity/sheepuff_fur.png");
             }
@@ -37,9 +41,10 @@ public class RenderSheepuff extends LivingEntityRenderer {
         }
         return false;
     }
-    
+
     @Override
-    protected boolean render(final Living entityliving, final int i, final float f) {
-        return this.setWoolColorAndRender((EntitySheepuff)entityliving, i, f);
+    protected boolean render(final Living entityliving, final int i, final float f)
+    {
+        return this.setWoolColorAndRender((EntitySheepuff) entityliving, i, f);
     }
 }

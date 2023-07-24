@@ -1,11 +1,12 @@
 package com.gildedgames.aether.client.render.model;
 
-import net.minecraft.util.maths.MathHelper;
-import org.lwjgl.opengl.GL11;
 import net.minecraft.client.model.Cuboid;
 import net.minecraft.client.render.entity.model.Biped;
+import net.minecraft.util.maths.MathHelper;
+import org.lwjgl.opengl.GL11;
 
-public class ModelFireMinion extends Biped {
+public class ModelFireMinion extends Biped
+{
     public Cuboid bipedBody2;
     public Cuboid bipedBody3;
     public Cuboid bipedBody4;
@@ -13,16 +14,19 @@ public class ModelFireMinion extends Biped {
     public Cuboid bipedLeftArm2;
     public Cuboid bipedRightArm3;
     public Cuboid bipedLeftArm3;
-    
-    public ModelFireMinion() {
+
+    public ModelFireMinion()
+    {
         this(0.0f);
     }
-    
-    public ModelFireMinion(final float f) {
+
+    public ModelFireMinion(final float f)
+    {
         this(f, 0.0f);
     }
-    
-    public ModelFireMinion(final float f, final float f1) {
+
+    public ModelFireMinion(final float f, final float f1)
+    {
         this.field_628 = false;
         this.field_629 = false;
         this.field_630 = false;
@@ -57,9 +61,10 @@ public class ModelFireMinion extends Biped {
         this.bipedLeftArm3.method_1818(-2.5f, 7.5f, -2.5f, 5, 1, 5, f + 0.25f);
         this.bipedLeftArm3.setRotationPoint(8.0f, 2.0f + f1, 0.0f);
     }
-    
+
     @Override
-    public void render(final float f, final float f1, final float f2, final float f3, final float f4, final float f5) {
+    public void render(final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
+    {
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         GL11.glScalef(1.0f, 1.0f, 1.0f);
         GL11.glTranslatef(0.0f, -0.25f, 0.0f);
@@ -77,9 +82,10 @@ public class ModelFireMinion extends Biped {
         this.bipedLeftArm2.method_1815(f5);
         this.bipedLeftArm3.method_1815(f5);
     }
-    
+
     @Override
-    public void setAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5) {
+    public void setAngles(final float f, final float f1, final float f2, final float f3, final float f4, final float f5)
+    {
         this.field_619.yaw = f3 / 57.29578f;
         this.field_619.pitch = f4 / 57.29578f;
         this.field_620.yaw = this.field_619.yaw;
@@ -88,15 +94,18 @@ public class ModelFireMinion extends Biped {
         this.field_623.pitch = 0.0f;
         this.field_622.roll = 0.0f;
         this.field_623.roll = 0.0f;
-        if (this.field_628) {
+        if (this.field_628)
+        {
             this.field_623.pitch = this.field_623.pitch * 0.5f - 0.3141593f;
         }
-        if (this.field_629) {
+        if (this.field_629)
+        {
             this.field_622.pitch = this.field_622.pitch * 0.5f - 0.3141593f;
         }
         this.field_622.yaw = 0.0f;
         this.field_623.yaw = 0.0f;
-        if (this.handSwingProgress > -9990.0f) {
+        if (this.handSwingProgress > -9990.0f)
+        {
             float f6 = this.handSwingProgress;
             this.field_621.yaw = MathHelper.sin(MathHelper.sqrt(f6) * 3.141593f * 2.0f) * 0.2f;
             final Cuboid field_622 = this.field_622;
@@ -112,7 +121,7 @@ public class ModelFireMinion extends Biped {
             final float f7 = MathHelper.sin(f6 * 3.141593f);
             final float f8 = MathHelper.sin(this.handSwingProgress * 3.141593f) * -(this.field_619.pitch - 0.7f) * 0.75f;
             final Cuboid field_625 = this.field_622;
-            field_625.pitch -= (float)(f7 * 1.2 + f8);
+            field_625.pitch -= (float) (f7 * 1.2 + f8);
             final Cuboid field_626 = this.field_622;
             field_626.yaw += this.field_621.yaw * 2.0f;
             this.field_622.roll = MathHelper.sin(this.handSwingProgress * 3.141593f) * -0.4f;

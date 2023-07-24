@@ -1,57 +1,68 @@
 package com.gildedgames.aether.gui;
 
-import net.minecraft.item.ItemBase;
-import net.minecraft.block.BlockBase;
-import org.lwjgl.opengl.GL11;
-
-import com.gildedgames.aether.Aether;
+import com.gildedgames.aether.AetherMod;
 import com.gildedgames.aether.gui.container.ContainerLore;
 import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.Lore;
-
-import net.minecraft.item.ItemInstance;
-import net.minecraft.entity.player.PlayerInventory;
-import java.util.ArrayList;
+import net.minecraft.block.BlockBase;
 import net.minecraft.client.gui.screen.container.ContainerBase;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemBase;
+import net.minecraft.item.ItemInstance;
+import org.lwjgl.opengl.GL11;
 
-public class GuiLore extends ContainerBase {
+import java.util.ArrayList;
 
-	public GuiLore(net.minecraft.container.ContainerBase container2) {
-		super(container2);
-	}
+public class GuiLore extends ContainerBase
+{
+
+    public GuiLore(net.minecraft.container.ContainerBase container2)
+    {
+        super(container2);
+    }
+
     public static ArrayList<Lore> lores;
     private int type;
-    
-    public GuiLore(final PlayerInventory inventoryplayer, final int i) {
+
+    public GuiLore(final PlayerInventory inventoryplayer, final int i)
+    {
         super(new ContainerLore(inventoryplayer));
         this.type = i;
     }
-    
+
     @Override
-    protected void renderForeground() {
+    protected void renderForeground()
+    {
         this.textManager.drawText("Book Of Lore", 37, 18, 4210752);
         this.textManager.drawText(new StringBuilder().append("Volume ").append(this.type + 1).toString(), 47, 28, 4210752);
-        switch (this.type) {
-            case 0: {
+        switch (this.type)
+        {
+            case 0:
+            {
                 this.textManager.drawText("The Surface", 37, 38, 4210752);
                 break;
             }
-            case 1: {
+            case 1:
+            {
                 this.textManager.drawText("The Nether", 37, 38, 4210752);
                 break;
             }
-            case 2: {
+            case 2:
+            {
                 this.textManager.drawText("The Aether", 37, 38, 4210752);
                 break;
             }
         }
         this.textManager.drawText("Item : ", 46, 72, 4210752);
-        final ItemInstance item = ((ContainerLore)this.container).loreSlot.getInventoryItem(0);
-        if (item != null) {
-            for (final Lore lore : GuiLore.lores) {
-                if (lore.equals(item) && lore.type == this.type) {
+        final ItemInstance item = ((ContainerLore) this.container).loreSlot.getInventoryItem(0);
+        if (item != null)
+        {
+            for (final Lore lore : GuiLore.lores)
+            {
+                if (lore.equals(item) && lore.type == this.type)
+                {
                     this.textManager.drawText(lore.name, 134, 14, 4210752);
                     this.textManager.drawText(lore.line1, 134, 28, 4210752);
                     this.textManager.drawText(lore.line2, 134, 38, 4210752);
@@ -59,9 +70,10 @@ public class GuiLore extends ContainerBase {
                     this.textManager.drawText(lore.line4, 134, 58, 4210752);
                     this.textManager.drawText(lore.line5, 134, 68, 4210752);
                     this.textManager.drawText(lore.line6, 134, 78, 4210752);
-                    Aether.giveAchievement(AetherAchievements.lore);
-                    if (item.itemId == AetherItems.LoreBook.id) {
-                    	 Aether.giveAchievement(AetherAchievements.loreception);
+                    AetherMod.giveAchievement(AetherAchievements.lore);
+                    if (item.itemId == AetherItems.LoreBook.id)
+                    {
+                        AetherMod.giveAchievement(AetherAchievements.loreception);
                         break;
                     }
                     break;
@@ -69,15 +81,17 @@ public class GuiLore extends ContainerBase {
             }
         }
     }
-    
+
     @Override
-    public void onClose() {
+    public void onClose()
+    {
         super.onClose();
         this.container.onClosed(this.minecraft.player);
     }
-    
+
     @Override
-    protected void renderContainerBackground(final float tickDelta) {
+    protected void renderContainerBackground(final float tickDelta)
+    {
         this.containerWidth = 256;
         this.containerHeight = 195;
         final int i = this.minecraft.textureManager.getTextureId("/assets/aether/textures/gui/lore.png");
@@ -85,7 +99,7 @@ public class GuiLore extends ContainerBase {
         this.minecraft.textureManager.bindTexture(i);
         final int j = (this.width - this.containerWidth) / 2;
         final int k = (this.height - this.containerHeight) / 2;
-        this.blit(j, k, 0, 0, this.containerWidth, this.containerHeight); 
+        this.blit(j, k, 0, 0, this.containerWidth, this.containerHeight);
     }
 
     /* todo: Add these to lore book:
@@ -108,9 +122,10 @@ public class GuiLore extends ContainerBase {
     tile.GoldenOakLeaves.name=Golden Oak Leaves
 */
 
-    static {
+    static
+    {
         (GuiLore.lores = new ArrayList<Lore>()).add(new Lore(BlockBase.STONE, "Stone", "Found everywhere.", "Makes steps", "", "", "", "", 0));
-        GuiLore.lores.add(new Lore((BlockBase)BlockBase.GRASS, "Grass", "Found in light.", "Spreads to dirt.", "Flowers and trees", "will grow on it.", "Click with a hoe", "to make farmland", 0));
+        GuiLore.lores.add(new Lore((BlockBase) BlockBase.GRASS, "Grass", "Found in light.", "Spreads to dirt.", "Flowers and trees", "will grow on it.", "Click with a hoe", "to make farmland", 0));
         GuiLore.lores.add(new Lore(BlockBase.DIRT, "Dirt", "Found everywhere.", "Grass, trees and", "flowers will grow", "on it.", "Click with a hoe", "to make farmland", 0));
         GuiLore.lores.add(new Lore(BlockBase.COBBLESTONE, "Cobblestone", "Found when mining", "stone and when", "water meets lava.", "Makes stone tools,", "cobble steps and", "furnaces", 0));
         GuiLore.lores.add(new Lore(BlockBase.WOOD, "Wooden Planks", "Crafted from wood.", "Useful building", "material.", "Makes sticks, tools,", "boats, doors, chests", "and crafting tables", 0));
@@ -131,10 +146,10 @@ public class GuiLore extends ContainerBase {
         GuiLore.lores.add(new Lore(BlockBase.DETECTOR_RAIL, "Detector Rail", "Gives out power", "when a minecart is", "on it.", "", "", "", 0));
         GuiLore.lores.add(new Lore(BlockBase.COBWEB, "Web", "Slows down", "anything that", "enters it", "", "", "", 0));
         GuiLore.lores.add(new Lore(BlockBase.WOOL, "Wool", "Found on sheep.", "Can be dyed.", "Decorative Block", "", "", "", 0));
-        GuiLore.lores.add(new Lore((BlockBase)BlockBase.DANDELION, "Dandelion", "Found on grass.", "Can make", "dandelion yellow", "dye", "", "", 0));
-        GuiLore.lores.add(new Lore((BlockBase)BlockBase.ROSE, "Rose", "Found on grass.", "Can make", "rose red dye", "", "", "", 0));
-        GuiLore.lores.add(new Lore((BlockBase)BlockBase.BROWN_MUSHROOM, "Mushroom", "Found on grass", "and in caves.", "Used to make", "mushroom soup", "", "", 0));
-        GuiLore.lores.add(new Lore((BlockBase)BlockBase.RED_MUSHROOM, "Mushroom", "Found on grass", "and in caves.", "Used to make", "mushroom soup", "", "", 0));
+        GuiLore.lores.add(new Lore((BlockBase) BlockBase.DANDELION, "Dandelion", "Found on grass.", "Can make", "dandelion yellow", "dye", "", "", 0));
+        GuiLore.lores.add(new Lore((BlockBase) BlockBase.ROSE, "Rose", "Found on grass.", "Can make", "rose red dye", "", "", "", 0));
+        GuiLore.lores.add(new Lore((BlockBase) BlockBase.BROWN_MUSHROOM, "Mushroom", "Found on grass", "and in caves.", "Used to make", "mushroom soup", "", "", 0));
+        GuiLore.lores.add(new Lore((BlockBase) BlockBase.RED_MUSHROOM, "Mushroom", "Found on grass", "and in caves.", "Used to make", "mushroom soup", "", "", 0));
         GuiLore.lores.add(new Lore(BlockBase.GOLD_BLOCK, "Gold", "Crafted from 9", "gold ingots.", "Decorative block", "", "", "", 0));
         GuiLore.lores.add(new Lore(BlockBase.IRON_BLOCK, "Iron", "Crafted from 9", "iron ingots.", "Decorative block", "", "", "", 0));
         GuiLore.lores.add(new Lore(BlockBase.STONE_SLAB, "Half-Step", "Used for making", "stairs and such.", "Decorative block", "", "", "", 0));
@@ -167,7 +182,7 @@ public class GuiLore extends ContainerBase {
         GuiLore.lores.add(new Lore(BlockBase.TRAPDOOR, "Trapdoor", "Opens upwards to", "allow access to", "space below", "", "", "", 0));
         GuiLore.lores.add(new Lore(BlockBase.PISTON, "Piston", "Extends when", "powered. Useful", "for traps, doors", "and machines.", "", "", 0));
         GuiLore.lores.add(new Lore(BlockBase.STICKY_PISTON, "Sticky Piston", "Extends when", "powered and pulls", "blocks when", "retracted. Useful", "in making doors", "and hidden blocks", 0));
-        GuiLore.lores.add(new Lore((BlockBase)BlockBase.LEAVES, "Leaves", "Grows on trees.", "Obtainable by", "using shears.", "Decorative block", "", "", 0));
+        GuiLore.lores.add(new Lore((BlockBase) BlockBase.LEAVES, "Leaves", "Grows on trees.", "Obtainable by", "using shears.", "Decorative block", "", "", 0));
         GuiLore.lores.add(new Lore(ItemBase.ironShovel, "Iron Shovel", "Digs grass, dirt,", "sand and gravel.", "Normal Speed", "Many Uses", "", "", 0));
         GuiLore.lores.add(new Lore(ItemBase.ironPickaxe, "Iron Pickaxe", "Digs stone, cobble,", "and other rocks.", "Normal Speed", "Many Uses", "", "", 0));
         GuiLore.lores.add(new Lore(ItemBase.ironAxe, "Iron Axe", "Chops wood and ", "planks.", "Normal Speed", "Many Uses", "", "", 0));
@@ -270,10 +285,10 @@ public class GuiLore extends ContainerBase {
         GuiLore.lores.add(new Lore(ItemBase.bed, "Bed", "Made from planks", "and wool.", "Allows you to", "sleep until", "morning and set", "your spawnpoint", 0));
         GuiLore.lores.add(new Lore(ItemBase.redstoneRepeater, "Repeater", "Made from stone", "and redstone.", "Repeats a signal", "with a delay, set", "by the toggle", "", 0));
         GuiLore.lores.add(new Lore(ItemBase.cookie, "Cookie", "Made from cocoa", "beans and wheat.", "Heals a few hearts", "", "", "", 0));
-        GuiLore.lores.add(new Lore((ItemBase)ItemBase.map, "Map", "Made from paper", "and a compass.", "Makes a map of the", "area you are in", "", "", 0));
+        GuiLore.lores.add(new Lore((ItemBase) ItemBase.map, "Map", "Made from paper", "and a compass.", "Makes a map of the", "area you are in", "", "", 0));
         GuiLore.lores.add(new Lore(ItemBase.record13, "13", "Found in dungeons.", "Playable in jukebox.", "A rather odd tune", "", "", "", 0));
         GuiLore.lores.add(new Lore(ItemBase.recordCat, "Cat", "Found in dungeons.", "Playable in jukebox.", "A very jolly tune", "", "", "", 0));
-        GuiLore.lores.add(new Lore((ItemBase)ItemBase.shears, "Shears", "Made from iron.", "Used to shear", "sheep and to get", "leaf blocks from", "trees.", "", 0));
+        GuiLore.lores.add(new Lore((ItemBase) ItemBase.shears, "Shears", "Made from iron.", "Used to shear", "sheep and to get", "leaf blocks from", "trees.", "", 0));
         GuiLore.lores.add(new Lore(AetherItems.IronRing, "Iron Ring", "Made from iron.", "Wear it in your", "ring slot.", "Purely decorative", "item", "", 0));
         GuiLore.lores.add(new Lore(AetherItems.GoldRing, "Gold Ring", "Made from gold.", "Wear it in your", "ring slot.", "Purely decorative", "item", "", 0));
         GuiLore.lores.add(new Lore(AetherItems.IronPendant, "Iron Pendant", "Made from iron.", "Wear it in your", "pendant slot.", "Purely decorative", "item", "", 0));
