@@ -14,7 +14,7 @@ public class PhoenixGlove extends Glove
     }
 
     @Override
-    public void tickWhileWorn(PlayerBase player, ItemInstance itemInstance)
+    public ItemInstance tickWhileWorn(PlayerBase player, ItemInstance itemInstance)
     {
         if (player.inventory.armour[3] != null && player.inventory.armour[3].itemId == AetherItems.PhoenixHelm.id && player.inventory.armour[2] != null && player.inventory.armour[2].itemId == AetherItems.PhoenixBody.id && player.inventory.armour[1] != null && player.inventory.armour[1].itemId == AetherItems.PhoenixLegs.id && player.inventory.armour[0] != null && player.inventory.armour[0].itemId == AetherItems.PhoenixBoots.id)
         {
@@ -22,6 +22,7 @@ public class PhoenixGlove extends Glove
             player.fire = 0;
             player.level.addParticle("flame", player.x + ((EntityBaseAccessor) player).getRand().nextGaussian() / 5.0, player.y - 0.5 + ((EntityBaseAccessor) player).getRand().nextGaussian() / 5.0, player.z + ((EntityBaseAccessor) player).getRand().nextGaussian() / 3.0, 0.0, 0.0, 0.0);
         }
+        return itemInstance;
     }
 
     @Override

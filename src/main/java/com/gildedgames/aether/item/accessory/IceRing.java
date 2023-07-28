@@ -1,6 +1,5 @@
 package com.gildedgames.aether.item.accessory;
 
-import com.matthewperiut.accessoryapi.api.AccessoryType;
 import net.minecraft.item.ItemInstance;
 import net.modificationstation.stationapi.api.registry.Identifier;
 
@@ -12,8 +11,8 @@ public class IceRing extends IcePendant
     }
 
     @Override
-    public AccessoryType[] getAccessoryTypes(ItemInstance item)
+    public String[] getAccessoryTypes(ItemInstance item)
     {
-        return new AccessoryType[]{AccessoryType.ring};
+        return new String[]{"ring"};
     }
 }

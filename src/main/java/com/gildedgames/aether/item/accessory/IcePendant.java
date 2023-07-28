@@ -14,7 +14,7 @@ public class IcePendant extends Pendant
     }
 
     @Override
-    public void tickWhileWorn(PlayerBase player, ItemInstance itemInstance)
+    public ItemInstance tickWhileWorn(PlayerBase player, ItemInstance itemInstance)
     {
         super.tickWhileWorn(player, itemInstance);
 
@@ -49,5 +49,6 @@ public class IcePendant extends Pendant
                 }
             }
         }
+        return itemInstance;
     }
 }

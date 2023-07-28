@@ -2,9 +2,6 @@ package com.gildedgames.aether.item.accessory;
 
 import com.gildedgames.aether.mixin.access.EntityBaseAccessor;
 import com.matthewperiut.accessoryapi.api.Accessory;
-import com.matthewperiut.accessoryapi.api.AccessoryType;
-import net.minecraft.client.render.entity.PlayerRenderer;
-import net.minecraft.client.render.entity.model.Biped;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
 import net.modificationstation.stationapi.api.registry.Identifier;
@@ -20,9 +17,9 @@ public class GoldenFeather extends TemplateItemBase implements Accessory
     }
 
     @Override
-    public AccessoryType[] getAccessoryTypes(ItemInstance item)
+    public String[] getAccessoryTypes(ItemInstance item)
     {
-        return new AccessoryType[]{AccessoryType.misc};
+        return new String[]{"misc"};
     }
 
     public static void slowFall(PlayerBase player)
@@ -39,26 +36,9 @@ public class GoldenFeather extends TemplateItemBase implements Accessory
     }
 
     @Override
-    public void tickWhileWorn(PlayerBase playerBase, ItemInstance itemInstance)
+    public ItemInstance tickWhileWorn(PlayerBase playerBase, ItemInstance itemInstance)
     {
         slowFall(playerBase);
-    }
-
-    @Override
-    public void renderWhileWorn(PlayerBase playerBase, PlayerRenderer playerRenderer, ItemInstance itemInstance, Biped biped, Object[] objects)
-    {
-
-    }
-
-    @Override
-    public void onAccessoryAdded(PlayerBase playerBase, ItemInstance itemInstance)
-    {
-
-    }
-
-    @Override
-    public void onAccessoryRemoved(PlayerBase playerBase, ItemInstance itemInstance)
-    {
-
+        return itemInstance;
     }
 }

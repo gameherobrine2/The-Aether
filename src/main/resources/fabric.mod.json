@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "id": "aether",
   "version": "${version}",
-
   "name": "The Aether",
   "description": "Gilded Games presents the original Aether mod! The Aether is a dimension high in the sky comprised of floating islands! Ascend through a Glowstone portal and begin a new survival adventure packed with new ores, mythical creatures and perilous Dungeons!",
   "authors": [
@@ -17,10 +16,8 @@
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/the-aether",
     "sources": "https://github.com/mineLdiver/The-Aether"
   },
-
   "license": "GPL-3.0",
   "icon": "assets/aether/icon.png",
-
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
@@ -45,7 +42,6 @@
   "mixins": [
     "aether.mixins.json"
   ],
-
   "depends": {
     "minecraft": "1.0.0-beta.7.3"
   }

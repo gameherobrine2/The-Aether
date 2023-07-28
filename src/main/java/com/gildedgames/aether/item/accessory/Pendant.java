@@ -1,18 +1,19 @@
 package com.gildedgames.aether.item.accessory;
 
 import com.matthewperiut.accessoryapi.api.Accessory;
-import com.matthewperiut.accessoryapi.api.AccessoryType;
-import com.matthewperiut.accessoryapi.api.helper.AccessoryRenderHelper;
+import com.matthewperiut.accessoryapi.api.render.AccessoryRenderer;
+import com.matthewperiut.accessoryapi.api.render.HasCustomRenderer;
+import com.matthewperiut.accessoryapi.api.render.builtin.NecklaceRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.entity.PlayerRenderer;
-import net.minecraft.client.render.entity.model.Biped;
-import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
 
-public class Pendant extends TemplateItemBase implements Accessory
+import java.awt.*;
+import java.util.Optional;
+
+public class Pendant extends TemplateItemBase implements Accessory, HasCustomRenderer
 {
     String texture;
     int colour;
@@ -38,33 +39,22 @@ public class Pendant extends TemplateItemBase implements Accessory
     }
 
     @Override
-    public AccessoryType[] getAccessoryTypes(ItemInstance item)
+    public String[] getAccessoryTypes(ItemInstance item)
     {
-        return new AccessoryType[]{AccessoryType.pendant};
+        return new String[]{"pendant"};
+    }
+
+    AccessoryRenderer renderer;
+
+    @Override
+    public Optional<AccessoryRenderer> getRenderer()
+    {
+        return Optional.ofNullable(renderer);
     }
 
     @Override
-    public void tickWhileWorn(PlayerBase playerBase, ItemInstance itemInstance)
+    public void constructRenderer()
     {
-
-    }
-
-    @Override
-    public void renderWhileWorn(PlayerBase playerBase, PlayerRenderer playerRenderer, ItemInstance itemInstance, Biped model, Object[] objects)
-    {
-        final Pendant pendant = (Pendant) itemInstance.getType();
-        AccessoryRenderHelper.TorsoOverlay(playerBase, pendant.texture, pendant.colour, model, objects);
-    }
-
-    @Override
-    public void onAccessoryAdded(PlayerBase playerBase, ItemInstance itemInstance)
-    {
-
-    }
-
-    @Override
-    public void onAccessoryRemoved(PlayerBase playerBase, ItemInstance itemInstance)
-    {
-
+        renderer = new NecklaceRenderer(texture).withColor(new Color(colour));
     }
 }

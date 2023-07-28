@@ -4,6 +4,7 @@ import com.gildedgames.aether.item.accessory.*;
 import com.gildedgames.aether.item.misc.*;
 import com.gildedgames.aether.item.tool.*;
 import com.gildedgames.aether.utils.EnumElement;
+import com.matthewperiut.accessoryapi.api.AccessoryRegister;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.tool.ToolMaterial;
@@ -28,6 +29,15 @@ public class AetherItems
     @EventListener
     private static void registerItems(ItemRegistryEvent event)
     {
+        AccessoryRegister.add("pendant");
+        AccessoryRegister.add("cape");
+        AccessoryRegister.add("shield");
+        AccessoryRegister.add("misc", 0, 3);
+        AccessoryRegister.add("misc", 1, 3);
+        AccessoryRegister.add("ring");
+        AccessoryRegister.add("ring");
+        AccessoryRegister.add("gloves");
+
         AmbrosiumShard = new ItemAmbrosium(Identifier.of(MOD_ID, "ambrosium_shard"), 1).setTranslationKey(MODID, "AmbrosiumShard");
         Stick = new ItemAether(Identifier.of(MOD_ID, "stick")).setTranslationKey(MODID, "SkyrootStick");
         AetherItems.Key = new ItemAetherKey(Identifier.of(MOD_ID, "key")).setTranslationKey(MODID, "AetherKey");

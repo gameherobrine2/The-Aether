@@ -5,10 +5,15 @@ import com.gildedgames.aether.mixin.access.EntityRenderAccessor;
 import com.gildedgames.aether.mixin.access.LivingAccessor;
 import com.gildedgames.aether.registry.AetherItems;
 import com.matthewperiut.accessoryapi.api.Accessory;
-import com.matthewperiut.accessoryapi.api.AccessoryType;
+import com.matthewperiut.accessoryapi.api.render.AccessoryRenderer;
+import com.matthewperiut.accessoryapi.api.render.HasCustomRenderer;
 import com.matthewperiut.accessoryapi.impl.mixin.client.LivingEntityRendererAccessor;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.entity.PlayerRenderer;
 import net.minecraft.client.render.entity.model.Biped;
+import net.minecraft.client.util.ScreenScaler;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.Living;
 import net.minecraft.entity.player.PlayerBase;
@@ -20,10 +25,10 @@ import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
 import org.lwjgl.opengl.GL11;
 
 import java.util.List;
+import java.util.Optional;
 
-public class EnergyShield extends TemplateItemBase implements Accessory
+public class EnergyShield extends TemplateItemBase implements Accessory, HasCustomRenderer
 {
-
     public EnergyShield(Identifier identifier)
     {
         super(identifier);
@@ -32,13 +37,13 @@ public class EnergyShield extends TemplateItemBase implements Accessory
     }
 
     @Override
-    public AccessoryType[] getAccessoryTypes(ItemInstance item)
+    public String[] getAccessoryTypes(ItemInstance item)
     {
-        return new AccessoryType[]{AccessoryType.shield};
+        return new String[]{"shield"};
     }
 
     @Override
-    public void tickWhileWorn(PlayerBase playerBase, ItemInstance itemInstance)
+    public ItemInstance tickWhileWorn(PlayerBase playerBase, ItemInstance itemInstance)
     {
         final Level world = playerBase.level;
         if (world != null && !world.isServerSide)
@@ -168,104 +173,143 @@ public class EnergyShield extends TemplateItemBase implements Accessory
                 }
             }
         }
+        return itemInstance;
+    }
+
+    AccessoryRenderer renderer;
+
+    @Override
+    public Optional<AccessoryRenderer> getRenderer()
+    {
+        return Optional.ofNullable(renderer);
     }
 
     @Override
-    public void renderWhileWorn(PlayerBase entityplayer, PlayerRenderer playerRenderer, ItemInstance itemInstance, Biped modelEnergyShield, Object[] objects)
+    public void constructRenderer()
     {
-        double d = (double) objects[0];
-        double d1 = (double) objects[1];
-        double d2 = (double) objects[2];
-        float f = (float) objects[3];
-        float f1 = (float) objects[4];
+        renderer = new EnergyShieldRenderer();
+    }
 
-        final ItemInstance itemstack = entityplayer.inventory.getHeldItem();
-        modelEnergyShield.field_629 = (itemstack != null);
-        modelEnergyShield.field_630 = entityplayer.method_1373();
-        double d3 = d1 - entityplayer.standingEyeHeight;
-        if (entityplayer.method_1373() && !(entityplayer instanceof PlayerBase))
+    private static class EnergyShieldRenderer implements AccessoryRenderer
+    {
+        Biped modelEnergyShield = new Biped(1.25F);
+
+        public void renderThirdPerson(PlayerBase player, PlayerRenderer renderer, ItemInstance itemInstance, double x, double y, double z, float h, float v)
         {
-            d3 -= 0.125;
-        }
-        doRenderEnergyShield(entityplayer, playerRenderer, modelEnergyShield, d, d3, d2, f, f1);
-        modelEnergyShield.field_630 = false;
-        modelEnergyShield.field_629 = false;
-
-    }
-
-
-    @Override
-    public void onAccessoryAdded(PlayerBase playerBase, ItemInstance itemInstance)
-    {
-
-    }
-
-    @Override
-    public void onAccessoryRemoved(PlayerBase playerBase, ItemInstance itemInstance)
-    {
-
-    }
-
-    private void doRenderEnergyShield(final Living entityliving, PlayerRenderer playerRenderer, Biped modelEnergyShield, final double d, final double d1, final double d2, final float f, final float f1)
-    {
-        GL11.glPushMatrix();
-        GL11.glEnable(2884);
-        modelEnergyShield.handSwingProgress = ((LivingEntityRendererAccessor) playerRenderer).invoke820(entityliving, f1);
-        modelEnergyShield.isRiding = entityliving.method_1360();
-        try
-        {
-            final float f2 = entityliving.field_1013 + (entityliving.field_1012 - entityliving.field_1013) * f1;
-            final float f3 = entityliving.prevYaw + (entityliving.yaw - entityliving.prevYaw) * f1;
-            final float f4 = entityliving.prevPitch + (entityliving.pitch - entityliving.prevPitch) * f1;
-            ((LivingEntityRendererAccessor) playerRenderer).invoke826(entityliving, d, d1, d2);
-            final float f5 = ((LivingEntityRendererAccessor) playerRenderer).invoke828(entityliving, f1);
-            ((LivingEntityRendererAccessor) playerRenderer).invoke824(entityliving, f5, f2, f1);
-            final float f6 = 0.0625f;
-            GL11.glEnable(32826);
-            GL11.glScalef(-1.0f, -1.0f, 1.0f);
-            ((LivingEntityRendererAccessor) playerRenderer).invoke823(entityliving, f1);
-            GL11.glTranslatef(0.0f, -24.0f * f6 - 0.0078125f, 0.0f);
-            float f7 = entityliving.field_1048 + (entityliving.limbDistance - entityliving.field_1048) * f1;
-            final float f8 = entityliving.field_1050 - entityliving.limbDistance * (1.0f - f1);
-            if (f7 > 1.0f)
+            final ItemInstance itemstack = player.inventory.getHeldItem();
+            modelEnergyShield.field_629 = (itemstack != null);
+            modelEnergyShield.field_630 = player.method_1373();
+            double d3 = y - player.standingEyeHeight;
+            if (player.method_1373() && !(player instanceof PlayerBase))
             {
-                f7 = 1.0f;
+                d3 -= 0.125;
             }
-            GL11.glEnable(3008);
-            if (setEnergyShieldBrightness((PlayerBase) entityliving, playerRenderer, 0, f1))
-            {
-                modelEnergyShield.render(f8, f7, f5, f3 - f2, f4, f6);
-                GL11.glDisable(3042);
-                GL11.glEnable(3008);
-            }
-            GL11.glDisable(32826);
+            doRenderEnergyShield(player, renderer, modelEnergyShield, x, d3, z, h, v);
+            modelEnergyShield.field_630 = false;
+            modelEnergyShield.field_629 = false;
         }
-        catch (Exception exception)
-        {
-            exception.printStackTrace();
-        }
-        GL11.glEnable(2884);
-        GL11.glPopMatrix();
-    }
 
-    protected boolean setEnergyShieldBrightness(final PlayerBase player, PlayerRenderer playerRenderer, final int i, final float f)
-    {
-        if (i != 0) return false;
-        if ((player.onGround || (player.vehicle != null && player.vehicle.onGround)) && ((LivingAccessor) player).get1029() == 0.0f && ((LivingAccessor) player).get1060() == 0.0f)
+        public void renderFirstPerson(PlayerBase player, PlayerRenderer renderer, ItemInstance itemInstance)
         {
-            ((EntityRenderAccessor) playerRenderer).invokeBindTexture("aether:textures/entity/energyGlow.png");
-            GL11.glEnable(2977);
-            GL11.glEnable(3042);
+            // todo: make this work
+
+            Minecraft minecraft = (Minecraft) FabricLoader.getInstance().getGameInstance();
+
+            if (!(player.onGround || (player.vehicle != null && player.vehicle.onGround)))
+                return;
+            if (!(((LivingAccessor) player).get1029() == 0.0f && ((LivingAccessor) player).get1060() == 0.0f))
+                return;
+            if (minecraft.options.thirdPerson)
+                return;
+
+            final ScreenScaler scaledresolution = new ScreenScaler(minecraft.options, minecraft.actualWidth, minecraft.actualHeight);
+            final int i = scaledresolution.getScaledWidth();
+            final int j = scaledresolution.getScaledHeight();
+            GL11.glDisable(2929);
+            GL11.glDepthMask(false);
             GL11.glBlendFunc(770, 771);
             GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-        }
-        else
-        {
+            GL11.glDisable(3008);
             GL11.glEnable(2977);
             GL11.glEnable(3042);
-            GL11.glBlendFunc(770, 771);
-            ((EntityRenderAccessor) playerRenderer).invokeBindTexture("aether:textures/entity/energyNotGlow.png");
+            System.out.println("step 3");
+            GL11.glBindTexture(3553, minecraft.textureManager.getTextureId("aether:textures/capes/shieldEffect.png"));
+            final Tessellator tessellator = Tessellator.INSTANCE;
+            tessellator.start();
+            tessellator.vertex(0.0, j, -90.0, 0.0, 1.0);
+            tessellator.vertex(i, j, -90.0, 1.0, 1.0);
+            tessellator.vertex(i, 0.0, -90.0, 1.0, 0.0);
+            tessellator.vertex(0.0, 0.0, -90.0, 0.0, 0.0);
+            tessellator.draw();
+            GL11.glDepthMask(true);
+            GL11.glEnable(2929);
+            GL11.glEnable(3008);
+            GL11.glDisable(2977);
+            GL11.glDisable(3042);
+            GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         }
-        return true;
+
+        private void doRenderEnergyShield(final Living entityliving, PlayerRenderer playerRenderer, Biped modelEnergyShield, final double d, final double d1, final double d2, final float f, final float f1)
+        {
+            GL11.glPushMatrix();
+            GL11.glEnable(2884);
+            modelEnergyShield.handSwingProgress = ((LivingEntityRendererAccessor) playerRenderer).invoke820(entityliving, f1);
+            modelEnergyShield.isRiding = entityliving.method_1360();
+            try
+            {
+                final float f2 = entityliving.field_1013 + (entityliving.field_1012 - entityliving.field_1013) * f1;
+                final float f3 = entityliving.prevYaw + (entityliving.yaw - entityliving.prevYaw) * f1;
+                final float f4 = entityliving.prevPitch + (entityliving.pitch - entityliving.prevPitch) * f1;
+                ((LivingEntityRendererAccessor) playerRenderer).invoke826(entityliving, d, d1, d2);
+                final float f5 = ((LivingEntityRendererAccessor) playerRenderer).invoke828(entityliving, f1);
+                ((LivingEntityRendererAccessor) playerRenderer).invoke824(entityliving, f5, f2, f1);
+                final float f6 = 0.0625f;
+                GL11.glEnable(32826);
+                GL11.glScalef(-1.0f, -1.0f, 1.0f);
+                ((LivingEntityRendererAccessor) playerRenderer).invoke823(entityliving, f1);
+                GL11.glTranslatef(0.0f, -24.0f * f6 - 0.0078125f, 0.0f);
+                float f7 = entityliving.field_1048 + (entityliving.limbDistance - entityliving.field_1048) * f1;
+                final float f8 = entityliving.field_1050 - entityliving.limbDistance * (1.0f - f1);
+                if (f7 > 1.0f)
+                {
+                    f7 = 1.0f;
+                }
+                GL11.glEnable(3008);
+                if (setEnergyShieldBrightness((PlayerBase) entityliving, playerRenderer, 0, f1))
+                {
+                    modelEnergyShield.render(f8, f7, f5, f3 - f2, f4, f6);
+                    GL11.glDisable(3042);
+                    GL11.glEnable(3008);
+                }
+                GL11.glDisable(32826);
+            }
+            catch (Exception exception)
+            {
+                exception.printStackTrace();
+            }
+            GL11.glEnable(2884);
+            GL11.glPopMatrix();
+        }
+
+        protected boolean setEnergyShieldBrightness(final PlayerBase player, PlayerRenderer playerRenderer, final int i, final float f)
+        {
+            if (i != 0) return false;
+            if ((player.onGround || (player.vehicle != null && player.vehicle.onGround)) && ((LivingAccessor) player).get1029() == 0.0f && ((LivingAccessor) player).get1060() == 0.0f)
+            {
+                ((EntityRenderAccessor) playerRenderer).invokeBindTexture("aether:textures/entity/energyGlow.png");
+                GL11.glEnable(2977);
+                GL11.glEnable(3042);
+                GL11.glBlendFunc(770, 771);
+                GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+            }
+            else
+            {
+                GL11.glEnable(2977);
+                GL11.glEnable(3042);
+                GL11.glBlendFunc(770, 771);
+                ((EntityRenderAccessor) playerRenderer).invokeBindTexture("aether:textures/entity/energyNotGlow.png");
+            }
+            return true;
+        }
     }
 }

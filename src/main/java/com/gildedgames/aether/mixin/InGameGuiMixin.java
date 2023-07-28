@@ -1,13 +1,9 @@
 package com.gildedgames.aether.mixin;
 
 import com.gildedgames.aether.AetherMod;
-import com.gildedgames.aether.mixin.access.LivingAccessor;
-import com.gildedgames.aether.registry.AetherItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.InGame;
-import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.util.ScreenScaler;
-import net.minecraft.entity.player.PlayerBase;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -55,7 +51,6 @@ public class InGameGuiMixin
     {
         InGame instance = (InGame) (Object) this;
         renderHearts(instance);
-        renderShieldEffect();
         renderBossHP(instance);
     }
 
@@ -141,48 +136,5 @@ public class InGameGuiMixin
             }
         }
         GL11.glDisable(3042);
-    }
-
-    private void renderShieldEffect()
-    {
-
-        if (minecraft.player.inventory.armour[6] == null)
-            return;
-        if (minecraft.player.inventory.armour[6].itemId != AetherItems.RepShield.id)
-            return;
-
-        PlayerBase player = minecraft.player;
-
-        if (!(player.onGround || (player.vehicle != null && player.vehicle.onGround)))
-            return;
-        if (!(((LivingAccessor) player).get1029() == 0.0f && ((LivingAccessor) player).get1060() == 0.0f))
-            return;
-        if (minecraft.options.thirdPerson)
-            return;
-
-        final ScreenScaler scaledresolution = new ScreenScaler(minecraft.options, minecraft.actualWidth, minecraft.actualHeight);
-        final int i = scaledresolution.getScaledWidth();
-        final int j = scaledresolution.getScaledHeight();
-        GL11.glDisable(2929);
-        GL11.glDepthMask(false);
-        GL11.glBlendFunc(770, 771);
-        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-        GL11.glDisable(3008);
-        GL11.glEnable(2977);
-        GL11.glEnable(3042);
-        GL11.glBindTexture(3553, minecraft.textureManager.getTextureId("aether:textures/capes/shieldEffect.png"));
-        final Tessellator tessellator = Tessellator.INSTANCE;
-        tessellator.start();
-        tessellator.vertex(0.0, j, -90.0, 0.0, 1.0);
-        tessellator.vertex(i, j, -90.0, 1.0, 1.0);
-        tessellator.vertex(i, 0.0, -90.0, 1.0, 0.0);
-        tessellator.vertex(0.0, 0.0, -90.0, 0.0, 0.0);
-        tessellator.draw();
-        GL11.glDepthMask(true);
-        GL11.glEnable(2929);
-        GL11.glEnable(3008);
-        GL11.glDisable(2977);
-        GL11.glDisable(3042);
-        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     }
 }

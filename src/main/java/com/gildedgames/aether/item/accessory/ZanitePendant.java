@@ -12,8 +12,9 @@ public class ZanitePendant extends Pendant
     }
 
     @Override
-    public void tickWhileWorn(PlayerBase playerBase, ItemInstance itemInstance)
+    public ItemInstance tickWhileWorn(PlayerBase playerBase, ItemInstance itemInstance)
     {
         // todo: mine faster as durability decreases
+        return itemInstance;
     }
 }

@@ -12,11 +12,6 @@ public class AgileCape extends CosmeticCape
     }
 
     @Override
-    public void tickWhileWorn(PlayerBase playerBase, ItemInstance itemInstance)
-    {
-    }
-
-    @Override
     public void onAccessoryAdded(PlayerBase playerBase, ItemInstance itemInstance)
     {
         playerBase.field_1641 = 1.0f;

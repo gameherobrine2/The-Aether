@@ -12,8 +12,9 @@ public class ZaniteRing extends Ring
     }
 
     @Override
-    public void tickWhileWorn(PlayerBase playerBase, ItemInstance itemInstance)
+    public ItemInstance tickWhileWorn(PlayerBase playerBase, ItemInstance itemInstance)
     {
         // todo: mine faster
+        return itemInstance;
     }
 }

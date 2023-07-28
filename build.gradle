@@ -59,7 +59,7 @@ dependencies {
 	implementation "org.apache.logging.log4j:log4j-slf4j18-impl:2.16.0"
 	modImplementation("net.modificationstation:StationAPI:${project.stapi_version}")
 
-	modImplementation files('lib/accessoryapi-0.3.0.jar') {
+	modImplementation("com.github.matthewperiut:accessory-api:${project.accessoryapi_version}") {
 		transitive false
 	}
 

@@ -1,28 +1,29 @@
 package com.gildedgames.aether.item.accessory;
 
 import com.matthewperiut.accessoryapi.api.Accessory;
-import com.matthewperiut.accessoryapi.api.AccessoryType;
-import com.matthewperiut.accessoryapi.api.helper.AccessoryRenderHelper;
+import com.matthewperiut.accessoryapi.api.render.AccessoryRenderer;
+import com.matthewperiut.accessoryapi.api.render.HasCustomRenderer;
+import com.matthewperiut.accessoryapi.api.render.builtin.GloveRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.entity.PlayerRenderer;
-import net.minecraft.client.render.entity.model.Biped;
-import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
 
-public class Glove extends TemplateItemBase implements Accessory
+import java.awt.*;
+import java.util.Optional;
+
+public class Glove extends TemplateItemBase implements Accessory, HasCustomRenderer
 {
     public final int strength;
-    private final int colour;
+    private final int color;
     public String texture;
 
     public Glove(Identifier identifier, int strength, String texture, int color)
     {
         super(identifier);
         this.texture = texture;
-        this.colour = color;
+        this.color = color;
         this.strength = strength;
         this.setMaxStackSize(1);
         this.setDurability(500);
@@ -34,40 +35,28 @@ public class Glove extends TemplateItemBase implements Accessory
     }
 
     @Override
-    public AccessoryType[] getAccessoryTypes(ItemInstance item)
+    public String[] getAccessoryTypes(ItemInstance item)
     {
-        return new AccessoryType[]{AccessoryType.glove};
+        return new String[]{"gloves"};
     }
 
     @Environment(EnvType.CLIENT)
     public int getColourMultiplier(int i)
     {
-        return colour;
+        return color;
+    }
+
+    AccessoryRenderer renderer;
+
+    @Override
+    public Optional<AccessoryRenderer> getRenderer()
+    {
+        return Optional.ofNullable(renderer);
     }
 
     @Override
-    public void tickWhileWorn(PlayerBase playerBase, ItemInstance itemInstance)
+    public void constructRenderer()
     {
-
-    }
-
-    @Override
-    public void renderWhileWorn(PlayerBase player, PlayerRenderer playerRenderer, ItemInstance itemInstance, Biped modelMisc, Object[] objects)
-    {
-        final Glove glove = (Glove) itemInstance.getType();
-        AccessoryRenderHelper.ArmOverlay(player, glove.texture, glove.colour, modelMisc, objects);
-    }
-
-    @Override
-    public void onAccessoryAdded(PlayerBase playerBase, ItemInstance itemInstance)
-    {
-        final Glove glove = (Glove) itemInstance.getType();
-        AccessoryRenderHelper.enableFirstPersonArmOverlayRender(glove.texture, glove.colour);
-    }
-
-    @Override
-    public void onAccessoryRemoved(PlayerBase playerBase, ItemInstance itemInstance)
-    {
-        AccessoryRenderHelper.disableFirstPersonArmOverlay();
+        renderer = new GloveRenderer(texture).withColor(new Color(color));
     }
 }
