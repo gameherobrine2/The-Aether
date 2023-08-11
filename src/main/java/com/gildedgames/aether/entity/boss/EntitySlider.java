@@ -6,7 +6,10 @@ import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.NameGen;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.BlockBase;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.Living;
 import net.minecraft.entity.WalkingBase;
@@ -446,10 +449,13 @@ public class EntitySlider extends FlyingBase implements IAetherBoss, MobSpawnDat
 
     private void chatItUp(final String s)
     {
+        // todo: make this neater, change to something that isn't jank?
+        if (FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER)
+            return;
+
         if (this.chatTime <= 0)
         {
-            //MinecraftClientAccessor.getMCinstance().overlay.addChatMessage(s); //still no stationapi documentation, so i am using minecraftclientaccessor
-            // todo: say stuff to player
+            ((Minecraft) FabricLoader.getInstance().getGameInstance()).overlay.addChatMessage(s);
             this.chatTime = 60;
         }
     }

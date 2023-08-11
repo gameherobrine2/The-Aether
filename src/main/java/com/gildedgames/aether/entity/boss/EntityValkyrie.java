@@ -8,7 +8,10 @@ import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.NameGen;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.BlockBase;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.Living;
 import net.minecraft.entity.player.PlayerBase;
@@ -295,9 +298,13 @@ public class EntityValkyrie extends EntityDungeonMob implements IAetherBoss
 
     private void chatItUp(final String s)
     {
-        if (this.chatTime <= 0 && this.otherDimension())
+        // todo: make this neater, change to something that isn't jank?
+        if (FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER)
+            return;
+
+        if (this.chatTime <= 0)
         {
-            // todo: chat MinecraftClientAccessor.getMCinstance().overlay.addChatMessage(s);
+            ((Minecraft) FabricLoader.getInstance().getGameInstance()).overlay.addChatMessage(s);
             this.chatTime = 60;
         }
     }

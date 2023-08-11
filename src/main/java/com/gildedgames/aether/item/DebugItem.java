@@ -16,7 +16,7 @@ public class DebugItem extends TemplateItemBase {
 
     @Override
     public ItemInstance use(ItemInstance arg, Level arg2, PlayerBase arg3) {
-        EntityBase e = new EntityValkyrie(arg2);
+        EntityBase e = new EntityValkyrie(arg2, arg3.x, arg3.y, arg3.z, true);
         e.setPosition(arg3.x, arg3.y, arg3.z);
         arg2.spawnEntity(e);
 
