@@ -1,5 +1,6 @@
 package com.gildedgames.aether.registry;
 
+import com.gildedgames.aether.item.DebugItem;
 import com.gildedgames.aether.item.accessory.*;
 import com.gildedgames.aether.item.misc.*;
 import com.gildedgames.aether.item.tool.*;
@@ -26,6 +27,9 @@ public class AetherItems
     @Entrypoint.ModID
     private static ModID MOD_ID;
 
+    // todo: delete
+    public static ItemBase SpawnerStick;
+
     @EventListener
     private static void registerItems(ItemRegistryEvent event)
     {
@@ -37,6 +41,9 @@ public class AetherItems
         AccessoryRegister.add("ring");
         AccessoryRegister.add("ring");
         AccessoryRegister.add("gloves");
+
+        // todo: delete
+        SpawnerStick = new DebugItem(Identifier.of(MOD_ID, "spawner_stick")).setTranslationKey(MOD_ID, "SpawnerStick");
 
         AmbrosiumShard = new ItemAmbrosium(Identifier.of(MOD_ID, "ambrosium_shard"), 1).setTranslationKey(MODID, "AmbrosiumShard");
         Stick = new ItemAether(Identifier.of(MOD_ID, "stick")).setTranslationKey(MODID, "SkyrootStick");
@@ -117,7 +124,6 @@ public class AetherItems
         AetherItems.AgilityCape = new AgileCape(Identifier.of(MOD_ID, "item_agility_cape"), "aether:textures/capes/AgilityCape.png").setTranslationKey(MODID, "AgilityCape");
         AetherItems.WhiteCape = new CosmeticCape(Identifier.of(MOD_ID, "item_white_cape"), "aether:textures/capes/WhiteCape.png").setTranslationKey(MODID, "WhiteCape");
         AetherItems.RedCape = new CosmeticCape(Identifier.of(MOD_ID, "item_red_cape"), "aether:textures/capes/RedCape.png", 15208721).setTranslationKey(MODID, "RedCape");
-        ;//new ItemMoreArmor(Identifier.of(MOD_ID, "item_red_cape"), 0, "aether:textures/capes/RedCape.png", Accessory.Type.cape, 15208721).setTranslationKey(MODID, "RedCape");
         AetherItems.YellowCape = new CosmeticCape(Identifier.of(MOD_ID, "item_yellow_cape"), "aether:textures/capes/YellowCape.png", 13486862).setTranslationKey(MODID, "YellowCape");
         AetherItems.BlueCape = new CosmeticCape(Identifier.of(MOD_ID, "item_blue_cape"), "aether:textures/capes/BlueCape.png", 1277879).setTranslationKey(MODID, "BlueCape");
         AetherItems.IronBubble = new IronBubble(Identifier.of(MOD_ID, "item_iron_bubble")).setTranslationKey(MODID, "IronBubble");

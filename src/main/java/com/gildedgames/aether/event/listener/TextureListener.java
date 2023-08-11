@@ -80,6 +80,9 @@ public class TextureListener
 
         //Items
 
+        // todo: remove
+        AetherItems.SpawnerStick.setTexture(Identifier.of(MOD_ID, "items/Stick"));
+
         ((ItemAmbrosium) AetherItems.AmbrosiumShard).setTexture(Identifier.of(MOD_ID, "items/AmbrosiumShard"));
         ((ItemAetherKey) AetherItems.Key).setTexture(Identifier.of(MOD_ID, "items/Key"));
         ((ItemAether) AetherItems.VictoryMedal).setTexture(Identifier.of(MOD_ID, "items/VictoryMedal"));

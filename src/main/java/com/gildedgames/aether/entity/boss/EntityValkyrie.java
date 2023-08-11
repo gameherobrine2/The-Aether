@@ -416,15 +416,19 @@ public class EntityValkyrie extends EntityDungeonMob implements IAetherBoss
         tag.put("Anger", (short) this.angerLevel);
         tag.put("TeleTimer", (short) this.teleTimer);
         tag.put("TimeLeft", (short) this.timeLeft);
-        tag.put("Boss", this.boss);
         tag.put("Duel", this.duel);
         tag.put("DungeonX", this.dungeonX);
         tag.put("DungeonY", this.dungeonY);
         tag.put("DungeonZ", this.dungeonZ);
         tag.put("DungeonEntranceZ", this.dungeonEntranceZ);
         tag.put("SafePos", (AbstractTag) this.method_1329(this.safeX, this.safeY, this.safeZ));
-        tag.put("IsCurrentBoss", this.isCurrentBoss());
-        tag.put("BossName", this.bossName);
+
+        tag.put("Boss", this.boss);
+        if (this.boss)
+        {
+            tag.put("IsCurrentBoss", this.isCurrentBoss());
+            tag.put("BossName", this.bossName);
+        }
     }
 
     @Override
@@ -443,16 +447,18 @@ public class EntityValkyrie extends EntityDungeonMob implements IAetherBoss
         if (this.boss)
         {
             this.texture = "aether:textures/entity/valkyrie2.png";
+            this.bossName = tag.getString("BossName");
+            if (tag.getBoolean("IsCurrentBoss"))
+            {
+                //todo: boss refactor
+                AetherMod.currentBoss = this;
+            }
+
         }
         final ListTag nbttaglist = tag.getListTag("SafePos");
         this.safeX = ((DoubleTag) nbttaglist.get(0)).data;
         this.safeY = ((DoubleTag) nbttaglist.get(1)).data;
         this.safeZ = ((DoubleTag) nbttaglist.get(2)).data;
-        if (tag.getBoolean("IsCurrentBoss"))
-        {
-            AetherMod.currentBoss = this;
-        }
-        this.bossName = tag.getString("BossName");
     }
 
     @Override
