@@ -438,6 +438,6 @@ public class Whirly extends EntityAetherAnimal
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_whirly");
+        return AetherMod.MODID.id("Whirly");
     }
 }

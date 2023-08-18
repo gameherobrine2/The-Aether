@@ -283,6 +283,6 @@ public class EntityAechorPlant extends EntityAetherAnimal
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_aechor_plant");
+        return AetherMod.MODID.id("AechorPlant");
     }
 }

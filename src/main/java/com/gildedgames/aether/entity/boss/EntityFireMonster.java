@@ -558,6 +558,6 @@ public class EntityFireMonster extends FlyingBase implements IAetherBoss, MobSpa
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("boss_sunspirit");
+        return AetherMod.MODID.id("SunSpirit");
     }
 }

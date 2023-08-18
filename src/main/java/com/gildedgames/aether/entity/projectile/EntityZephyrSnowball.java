@@ -269,6 +269,6 @@ public class EntityZephyrSnowball extends EntityBase implements MobSpawnDataProv
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("dangerous_weapon_zephyrsnowball");
+        return AetherMod.MODID.id("ZephyrSnowball");
     }
 }

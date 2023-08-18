@@ -243,6 +243,6 @@ public class EntityFlyingCow extends EntityAetherAnimal
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("flying_cow");
+        return AetherMod.MODID.id("FlyingCow");
     }
 }

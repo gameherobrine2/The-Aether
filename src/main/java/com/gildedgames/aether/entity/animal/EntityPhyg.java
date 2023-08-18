@@ -240,6 +240,6 @@ public class EntityPhyg extends EntityAetherAnimal
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_phyg");
+        return AetherMod.MODID.id("Phyg");
     }
 }

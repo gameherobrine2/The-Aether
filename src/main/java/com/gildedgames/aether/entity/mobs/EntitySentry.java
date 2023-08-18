@@ -287,6 +287,6 @@ public class EntitySentry extends EntityDungeonMob
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_sentry");
+        return AetherMod.MODID.id("Sentry");
     }
 }

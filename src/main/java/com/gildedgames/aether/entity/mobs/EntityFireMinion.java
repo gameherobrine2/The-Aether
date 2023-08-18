@@ -40,6 +40,6 @@ public class EntityFireMinion extends MonsterBase implements MobSpawnDataProvide
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_fireminion");
+        return AetherMod.MODID.id("FireMinion");
     }
 }

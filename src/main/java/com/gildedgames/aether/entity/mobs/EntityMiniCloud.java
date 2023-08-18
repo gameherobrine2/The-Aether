@@ -198,6 +198,6 @@ public class EntityMiniCloud extends FlyingBase implements MobSpawnDataProvider
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_cloud");
+        return AetherMod.MODID.id("Minicloud");
     }
 }

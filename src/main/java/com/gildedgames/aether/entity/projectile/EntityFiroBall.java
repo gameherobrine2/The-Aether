@@ -318,6 +318,6 @@ public class EntityFiroBall extends FlyingBase implements MobSpawnDataProvider
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_fireball");
+        return AetherMod.MODID.id("Fireball");
     }
 }

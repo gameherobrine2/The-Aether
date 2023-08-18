@@ -140,6 +140,6 @@ public class EntityFloatingBlock extends EntityBase implements MobSpawnDataProvi
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_floatingblock");
+        return AetherMod.MODID.id("FloatingBlock");
     }
 }

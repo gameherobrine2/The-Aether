@@ -616,6 +616,6 @@ public class EntitySwet extends EntityAetherAnimal
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_swet");
+        return AetherMod.MODID.id("Swet");
     }
 }

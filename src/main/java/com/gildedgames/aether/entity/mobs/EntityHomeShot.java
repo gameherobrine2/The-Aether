@@ -195,6 +195,6 @@ public class EntityHomeShot extends FlyingBase implements MobSpawnDataProvider
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_homeshot");
+        return AetherMod.MODID.id("Homeshot");
     }
 }

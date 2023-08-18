@@ -92,6 +92,6 @@ public class EntityMimic extends EntityDungeonMob
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_mimic");
+        return AetherMod.MODID.id("Mimic");
     }
 }

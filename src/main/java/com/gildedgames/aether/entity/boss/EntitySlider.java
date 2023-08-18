@@ -660,6 +660,6 @@ public class EntitySlider extends FlyingBase implements IAetherBoss, MobSpawnDat
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("boss_slider");
+        return AetherMod.MODID.id("Slider");
     }
 }

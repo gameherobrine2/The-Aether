@@ -221,6 +221,6 @@ public class EntityCloudParachute extends EntityBase implements MobSpawnDataProv
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_parachute");
+        return AetherMod.MODID.id("Parachute");
     }
 }

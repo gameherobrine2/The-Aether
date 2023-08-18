@@ -271,6 +271,6 @@ public class EntitySheepuff extends EntityAetherAnimal
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_sheepuff");
+        return AetherMod.MODID.id("Sheepuff");
     }
 }

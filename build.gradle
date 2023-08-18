@@ -62,6 +62,9 @@ dependencies {
 	modImplementation("com.github.matthewperiut:accessory-api:${project.accessoryapi_version}") {
 		transitive false
 	}
+	modImplementation("com.github.matthewperiut:spc-babric:${project.spc_version}") {
+		transitive false
+	}
 
 	modLocalRuntime("com.github.calmilamsy:ModMenu:${project.modmenu_version}") {
 		transitive false

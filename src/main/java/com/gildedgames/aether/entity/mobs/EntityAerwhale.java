@@ -315,6 +315,6 @@ public class EntityAerwhale extends FlyingBase implements MonsterEntityType, Mob
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_aerwhale");
+        return AetherMod.MODID.id("Aerwhale");
     }
 }

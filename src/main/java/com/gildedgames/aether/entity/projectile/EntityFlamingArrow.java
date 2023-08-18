@@ -370,6 +370,6 @@ public class EntityFlamingArrow extends EntityBase implements MobSpawnDataProvid
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_arrow");
+        return AetherMod.MODID.id("FlamingArrow");
     }
 }

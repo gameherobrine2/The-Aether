@@ -371,6 +371,6 @@ public class EntityMoa extends EntityAetherAnimal
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_moa");
+        return AetherMod.MODID.id("Moa");
     }
 }

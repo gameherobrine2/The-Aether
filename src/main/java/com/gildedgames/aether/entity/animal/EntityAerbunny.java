@@ -411,6 +411,6 @@ public class EntityAerbunny extends EntityAetherAnimal
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_aerbunny");
+        return AetherMod.MODID.id("Aerbunny");
     }
 }

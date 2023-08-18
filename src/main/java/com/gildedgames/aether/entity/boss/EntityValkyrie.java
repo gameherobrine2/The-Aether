@@ -709,6 +709,6 @@ public class EntityValkyrie extends EntityDungeonMob implements IAetherBoss
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_valkyrie");
+        return AetherMod.MODID.id("Valkyrie");
     }
 }

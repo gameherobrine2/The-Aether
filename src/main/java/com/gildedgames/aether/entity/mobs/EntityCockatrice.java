@@ -310,6 +310,6 @@ public class EntityCockatrice extends MonsterBase implements MobSpawnDataProvide
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("entity_cockatrice");
+        return AetherMod.MODID.id("Cockatrice");
     }
 }

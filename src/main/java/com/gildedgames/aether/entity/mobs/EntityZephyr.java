@@ -249,6 +249,6 @@ public class EntityZephyr extends FlyingBase implements MonsterEntityType, MobSp
     @Override
     public Identifier getHandlerIdentifier()
     {
-        return AetherMod.MODID.id("awful_monster");
+        return AetherMod.MODID.id("Zephyr");
     }
 }
