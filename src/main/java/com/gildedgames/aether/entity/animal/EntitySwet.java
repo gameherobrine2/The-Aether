@@ -30,91 +30,104 @@ public class EntitySwet extends EntityAetherAnimal
     public boolean kickoff;
     public boolean friendly;
 
+    public EntitySwet(final Level level, int textureNum)
+    {
+        super(level);
+        this.textureNum = textureNum;
+        textureSet = true;
+        setStartVariables();
+    }
+
     public EntitySwet(final Level level)
     {
         super(level);
-        this.health = 25;
-        if (!this.textureSet)
+        setStartVariables();
+    }
+
+    private void setStartVariables()
+    {
+        health = 25;
+        if (!textureSet)
         {
-            if (this.rand.nextInt(2) == 0)
+            if (rand.nextInt(2) == 0)
             {
-                this.textureNum = 2;
-                this.textureSet = true;
+                textureNum = 2;
+                textureSet = true;
             }
             else
             {
-                this.textureNum = 1;
-                this.textureSet = true;
+                textureNum = 1;
+                textureSet = true;
             }
         }
-        if (this.textureNum == 1)
+        if (textureNum == 1)
         {
-            this.texture = "aether:textures/entity/swets.png";
-            this.movementSpeed = 1.5f;
+            texture = "aether:textures/entity/swets.png";
+            movementSpeed = 1.5f;
         }
         else
         {
-            this.texture = "aether:textures/entity/goldswets.png";
-            this.movementSpeed = 3.0f;
+            texture = "aether:textures/entity/goldswets.png";
+            movementSpeed = 3.0f;
         }
-        this.setSize(0.8f, 0.8f);
-        this.setPosition(this.x, this.y, this.z);
-        this.hops = 0;
-        this.gotrider = false;
-        this.flutter = 0;
-        this.ticker = 0;
+        setSize(0.8f, 0.8f);
+        setPosition(x, y, z);
+        hops = 0;
+        gotrider = false;
+        flutter = 0;
+        ticker = 0;
     }
 
     @Override
     public void tickRiding()
     {
         super.tickRiding();
-        if (this.passenger != null && this.kickoff)
+        if (passenger != null && kickoff)
         {
-            this.passenger.startRiding(this);
-            this.kickoff = false;
+            passenger.startRiding(this);
+            kickoff = false;
         }
     }
 
     @Override
     public void method_1382()
     {
-        this.passenger.setPosition(this.x, this.boundingBox.minY - 0.30000001192092896 + this.passenger.standingEyeHeight, this.z);
+        passenger.setPosition(x, boundingBox.minY - 0.30000001192092896 + passenger.standingEyeHeight, z);
     }
 
     @Override
     public void tick()
     {
-        if (this.entity != null)
+        if (entity != null)
         {
             for (int i = 0; i < 3; ++i)
             {
                 final float f = 0.01745278f;
-                final double d = (float) this.x + (this.rand.nextFloat() - this.rand.nextFloat()) * 0.3f;
-                final double d2 = (float) this.y + this.height;
-                final double d3 = (float) this.z + (this.rand.nextFloat() - this.rand.nextFloat()) * 0.3f;
-                this.level.addParticle("splash", d, d2 - 0.25, d3, 0.0, 0.0, 0.0);
+                final double d = (float) x + (rand.nextFloat() - rand.nextFloat()) * 0.3f;
+                final double d2 = (float) y + height;
+                final double d3 = (float) z + (rand.nextFloat() - rand.nextFloat()) * 0.3f;
+                level.addParticle("splash", d, d2 - 0.25, d3, 0.0, 0.0, 0.0);
             }
         }
         super.tick();
-        if (this.gotrider)
+        if (gotrider)
         {
-            if (this.passenger != null)
+            if (passenger != null)
             {
                 return;
             }
-            final List list = this.level.getEntities(this, this.boundingBox.expand(0.5, 0.75, 0.5));
+            final List list = level.getEntities(this, boundingBox.expand(0.5, 0.75, 0.5));
             final int j = 0;
             if (j < list.size())
             {
                 final EntityBase entity = (EntityBase) list.get(j);
-                this.capturePrey(entity);
+                capturePrey(entity);
             }
-            this.gotrider = false;
+            gotrider = false;
         }
-        if (this.method_1393())
+        if (method_1393())
         {
-            this.dissolve();
+            dissolve();
         }
     }
 
@@ -126,21 +139,21 @@ public class EntitySwet extends EntityAetherAnimal
 
     public void handleFallDamage(final float height)
     {
-        if (this.friendly)
+        if (friendly)
         {
             return;
         }
         super.handleFallDamage(height);
-        if (this.hops >= 3 && this.health > 0)
+        if (hops >= 3 && health > 0)
         {
-            this.dissolve();
+            dissolve();
         }
     }
 
     @Override
     public void method_925(final EntityBase entity, final int i, final double d, final double d1)
     {
-        if (this.passenger != null && entity == this.passenger)
+        if (passenger != null && entity == passenger)
         {
             return;
         }
@@ -151,13 +164,13 @@ public class EntitySwet extends EntityAetherAnimal
     {
         for (int i = 0; i < 50; ++i)
         {
-            final float f = this.rand.nextFloat() * 3.141593f * 2.0f;
-            final float f2 = this.rand.nextFloat() * 0.5f + 0.25f;
+            final float f = rand.nextFloat() * 3.141593f * 2.0f;
+            final float f2 = rand.nextFloat() * 0.5f + 0.25f;
             final float f3 = MathHelper.sin(f) * f2;
             final float f4 = MathHelper.cos(f) * f2;
-            this.level.addParticle("splash", this.x + f3, this.boundingBox.minY + 1.25, this.z + f4, f3 * 1.5 + this.velocityX, 4.0, f4 * 1.5 + this.velocityZ);
+            level.addParticle("splash", x + f3, boundingBox.minY + 1.25, z + f4, f3 * 1.5 + velocityX, 4.0, f4 * 1.5 + velocityZ);
         }
-        if (this.passenger != null)
+        if (passenger != null)
         {
             final EntityBase passenger = this.passenger;
             passenger.y += this.passenger.standingEyeHeight - 0.3f;

@@ -310,17 +310,15 @@ public class Whirly extends EntityAetherAnimal
     }
 
     @Override
-    @Environment(EnvType.CLIENT)
     public void remove()
     {
         SideUtils.run(this::clientRemove, this::serverRemove);
         super.remove();
     }
 
-    @Environment(EnvType.SERVER)
     public void serverRemove()
     {
-        if (this.fluffies.size() > 0)
+        if (!this.fluffies.isEmpty())
         {
             for (int i = 0; i < this.fluffies.size(); ++i)
             {
@@ -329,10 +327,9 @@ public class Whirly extends EntityAetherAnimal
         }
     }
 
-    @Environment(EnvType.CLIENT)
     public void clientRemove()
     {
-        if (this.fluffies.size() > 0)
+        if (!this.fluffies.isEmpty())
         {
             for (int i = 0; i < this.fluffies.size(); ++i)
             {

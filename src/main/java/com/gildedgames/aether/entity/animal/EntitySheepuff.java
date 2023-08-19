@@ -21,12 +21,24 @@ public class EntitySheepuff extends EntityAetherAnimal
     public static final float[][] fleeceColorTable;
     private int amountEaten;
 
+    public EntitySheepuff(final Level level, final int color)
+    {
+        super(level);
+        this.setFleeceColor(color);
+        setStartVariables();
+    }
+
     public EntitySheepuff(final Level level)
     {
         super(level);
+        this.setFleeceColor(getRandomFleeceColor(this.rand));
+        setStartVariables();
+    }
+
+    private void setStartVariables()
+    {
         this.texture = "aether:textures/entity/sheepuff.png";
         this.setSize(0.9f, 1.3f);
-        this.setFleeceColor(getRandomFleeceColor(this.rand));
         this.amountEaten = 0;
     }
 
