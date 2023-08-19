@@ -11,6 +11,8 @@ import net.modificationstation.stationapi.api.mod.entrypoint.EventBusPolicy;
 
 import static com.gildedgames.aether.AetherMod.MODID;
 import static com.gildedgames.aether.AetherMod.of;
+import static net.minecraft.block.BlockBase.HAS_TILE_ENTITY;
+import static net.minecraft.block.BlockBase.WOOD_SOUNDS;
 
 @Entrypoint(eventBus = @EventBusPolicy(registerInstance = false))
 public class AetherBlocks
@@ -24,8 +26,8 @@ public class AetherBlocks
         AETHER_GRASS_BLOCK = new AetherGrassBlock(of("aether_grass_block")).setHardness(0.2F).setSounds(BlockBase.GRASS_SOUNDS).setTranslationKey(MODID, "AetherGrass");
         HOLYSTONE = new BlockHolystone(of("holystone")).setHardness(0.5F).setSounds(BlockBase.STONE_SOUNDS).setTranslationKey(MODID, "Holystone");
         MOSSY_HOLYSTONE = new BlockMossyHolystone(of("mossy_holystone")).setHardness(0.5F).setSounds(BlockBase.STONE_SOUNDS).setTranslationKey(MODID, "MossyHolystone");
-        SKYROOT_LOG = new BlockLog(of("skyroot_log")).setHardness(2.0f).setSounds(BlockBase.WOOD_SOUNDS).setTranslationKey(MODID, "SkyrootLog");
-        GOLDEN_OAK_LOG = new BlockLog(of("golden_oak_log")).setHardness(2.0f).setSounds(BlockBase.WOOD_SOUNDS).setTranslationKey(MODID, "GoldenOakLog");
+        SKYROOT_LOG = new BlockLog(of("skyroot_log")).setHardness(2.0f).setSounds(WOOD_SOUNDS).setTranslationKey(MODID, "SkyrootLog");
+        GOLDEN_OAK_LOG = new BlockLog(of("golden_oak_log")).setHardness(2.0f).setSounds(WOOD_SOUNDS).setTranslationKey(MODID, "GoldenOakLog");
         SKYROOT_LEAVES = new BlockAetherLeaves(of("skyroot_leaves"), false).setHardness(0.2f).setLightOpacity(1).setSounds(BlockBase.GRASS_SOUNDS).setTranslationKey(MODID, "SkyrootLeaves");
         GOLDEN_OAK_LEAVES = new BlockAetherLeaves(of("golden_oak_leaves"), true).setHardness(0.2f).setLightOpacity(1).setSounds(BlockBase.GRASS_SOUNDS).setTranslationKey(MODID, "GoldenOakLeaves");
         AERCLOUD = new BlockAercloud(of("aercloud")).setHardness(0.2f).setLightOpacity(3).setSounds(BlockBase.WOOL_SOUNDS).setTranslationKey(MODID, "Aercloud");
@@ -36,8 +38,8 @@ public class AetherBlocks
         GOLDEN_OAK_SAPLING = new BlockAetherSapling(of("golden_oak_sapling"), true).setTranslationKey(MODID, "GoldenOakSapling").setHardness(0.0f).setSounds(BlockBase.GRASS_SOUNDS);
         AMBROSIUM_ORE = new BlockAmbrosiumOre(of("ambrosium_ore")).setHardness(3.0f).setBlastResistance(5.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey(MODID, "AmbrosiumOre");
         ICESTONE = new BlockIcestone(of("icestone")).setHardness(3.0f).setSounds(BlockBase.GLASS_SOUNDS).setTranslationKey(MODID, "Icestone");
-        SKYROOT_PLANKS = new BlockAetherPlank(of("skyroot_planks"), Material.WOOD).setHardness(2.0f).setBlastResistance(5.0f).setSounds(BlockBase.WOOD_SOUNDS).setTranslationKey(MODID, "AetherPlank");
-        AMBROSIUM_TORCH = new BlockAmbrosiumTorch(of("ambrosium_torch")).setLightEmittance(0.9375f).setSounds(BlockBase.WOOD_SOUNDS).setTranslationKey(MODID, "AmbrosiumTorch");
+        SKYROOT_PLANKS = new BlockAetherPlank(of("skyroot_planks"), Material.WOOD).setHardness(2.0f).setBlastResistance(5.0f).setSounds(WOOD_SOUNDS).setTranslationKey(MODID, "AetherPlank");
+        AMBROSIUM_TORCH = new BlockAmbrosiumTorch(of("ambrosium_torch")).setLightEmittance(0.9375f).setSounds(WOOD_SOUNDS).setTranslationKey(MODID, "AmbrosiumTorch");
         ZANITE_ORE = new BlockZaniteOre(of("zanite_ore")).setHardness(3.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey(MODID, "ZaniteOre");
         ZANITE_BLOCK = new BlockZanite(of("zanite_block")).setHardness(3.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey(MODID, "ZaniteBlock");
         QUICKSOIL = new BlockQuicksoil(of("quicksoil")).setHardness(0.5f).setSounds(BlockBase.SAND_SOUNDS).setTranslationKey(MODID, "Quicksoil");
@@ -47,7 +49,7 @@ public class AetherBlocks
         LOCKED_LIGHT_DUNGEON_STONE = new BlockDungeon(of("locked_light_dungeon_stone")).setHardness(-1.0f).setBlastResistance(1000000.0f).setSounds(BlockBase.PISTON_SOUNDS).setLightEmittance(0.5f).setTranslationKey(MODID, "LightLockedDungeonStone");
         TRAPPED_DUNGEON_STONE = new BlockTrap(of("trap")).setHardness(-1.0f).setBlastResistance(1000000.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey(MODID, "Trap");
         TREASURE_CHEST = new BlockTreasureChest(of("treasure_chest")).setHardness(-1.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey(MODID, "TreasureChest");
-        CHEST_MIMIC = new BlockChestMimic(of("mimic_chest")).setHardness(2.0f).setSounds(BlockBase.WOOD_SOUNDS).setTranslationKey(MODID, "Mimic");
+        CHEST_MIMIC = new BlockChestMimic(of("mimic_chest")).setHardness(2.0f).setSounds(WOOD_SOUNDS).setTranslationKey(MODID, "Mimic");
         PILLAR = new BlockPillar(of("pillar")).setHardness(0.5f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey(MODID, "Pillar");
         FREEZER = new BlockFreezer(of("freezer")).setHardness(2.5f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey(MODID, "Freezer");
         QUICKSOIL_GLASS = new BlockQuicksoilGlass(of("quicksoilglass")).setLightEmittance(0.7375f).setHardness(0.2f).setLightOpacity(0).setSounds(BlockBase.GLASS_SOUNDS).setTranslationKey(MODID, "QuicksoilGlass");
@@ -55,7 +57,9 @@ public class AetherBlocks
         ENCHANTED_GRAVITITE = new BlockEnchantedGravitite(of("enchanted_gravitite"), true).setHardness(5.0f).setSounds(BlockBase.PISTON_SOUNDS).setTranslationKey(MODID, "EnchantedGravitite");
         ENCHANTER = new BlockEnchanter(of("enchanter")).setTranslationKey(MODID, "Enchanter").setHardness(2.0f);
         INCUBATOR = new BlockIncubator(of("incubator")).setTranslationKey(MODID, "Incubator").setHardness(2.0f);
-        BED = new BlockAetherBed(of("aether_bed")).setHardness(0.2f).setTranslationKey(MODID, "aether_bed").disableStat().disableNotifyOnMetaDataChange();
+        BED = new BlockAetherBed(of("aether_bed")).setHardness(0.2f).setTranslationKey(MODID, "AetherBed").disableStat().disableNotifyOnMetaDataChange();
+        AETHER_CHEST = new AetherChest(of("aether_chest")).setHardness(2.5f).setTranslationKey(MODID, "AetherChest").setSounds(WOOD_SOUNDS).disableNotifyOnMetaDataChange();
+        HAS_TILE_ENTITY[AETHER_CHEST.id] = false;
     }
 
     public static boolean isGood(final int id, final int meta)
@@ -67,6 +71,7 @@ public class AetherBlocks
             AETHER_PORTAL,
             AETHER_DIRT,
             AETHER_GRASS_BLOCK,
+            AETHER_CHEST,
             BED,
             QUICKSOIL,
             HOLYSTONE,

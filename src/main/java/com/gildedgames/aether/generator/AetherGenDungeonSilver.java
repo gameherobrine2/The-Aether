@@ -3,12 +3,8 @@ package com.gildedgames.aether.generator;
 import com.gildedgames.aether.block.BlockTreasureChest;
 import com.gildedgames.aether.entity.boss.EntityValkyrie;
 import com.gildedgames.aether.registry.AetherBlocks;
-import com.gildedgames.aether.registry.AetherItems;
 import net.minecraft.block.BlockBase;
-import net.minecraft.item.ItemBase;
-import net.minecraft.item.ItemInstance;
 import net.minecraft.level.Level;
-import net.minecraft.tileentity.TileEntityChest;
 
 import java.util.Random;
 
@@ -219,13 +215,7 @@ public class AetherGenDungeonSilver extends AetherGenBuildings
                                 final int v = z + 7 + 7 * r + rand.nextInt(2);
                                 if (level.getTileId(u, y + 5 * q + 1, v) == 0)
                                 {
-                                    level.setTile(u, y + 5 * q + 1, v, BlockBase.CHEST.id);
-                                    final TileEntityChest chest = (TileEntityChest) level.getTileEntity(u, y + 5 * q + 1, v);
-                                    for (u = 0; u < 3 + rand.nextInt(3); ++u)
-                                    {
-                                        final ItemInstance item = this.getNormalLoot(rand);
-                                        chest.setInventoryItem(rand.nextInt(chest.getInventorySize()), item);
-                                    }
+                                    level.setTile(u, y + 5 * q + 1, v, AetherBlocks.AETHER_CHEST.id);
                                     break;
                                 }
                                 break;
@@ -397,181 +387,5 @@ public class AetherGenDungeonSilver extends AetherGenBuildings
         world.setTileInChunk(i + 4, j + 8, k + 3, BlockBase.DOUBLE_STONE_SLAB.id);
         world.setTileInChunk(i + 4, j + 9, k + 4, BlockBase.STONE_SLAB.id);
         world.setTileInChunk(i + 3, j + 9, k + 4, BlockBase.DOUBLE_STONE_SLAB.id);
-    }
-
-    private ItemInstance getNormalLoot(final Random random)
-    {
-        final int item = random.nextInt(15);
-        switch (item)
-        {
-            case 0:
-            {
-                return new ItemInstance(AetherItems.PickZanite);
-            }
-            case 1:
-            {
-                return new ItemInstance(AetherItems.Bucket, 1, 2);
-            }
-            case 2:
-            {
-                return new ItemInstance(AetherItems.DartShooter);
-            }
-            case 3:
-            {
-                return new ItemInstance(AetherItems.MoaEgg, 1, 0);
-            }
-            case 4:
-            {
-                return new ItemInstance(AetherItems.AmbrosiumShard, random.nextInt(10) + 1);
-            }
-            case 5:
-            {
-                return new ItemInstance(AetherItems.Dart, random.nextInt(5) + 1, 0);
-            }
-            case 6:
-            {
-                return new ItemInstance(AetherItems.Dart, random.nextInt(3) + 1, 1);
-            }
-            case 7:
-            {
-                return new ItemInstance(AetherItems.Dart, random.nextInt(3) + 1, 2);
-            }
-            case 8:
-            {
-                if (random.nextInt(20) == 0)
-                {
-                    return new ItemInstance(AetherItems.BlueMusicDisk);
-                }
-                break;
-            }
-            case 9:
-            {
-                return new ItemInstance(AetherItems.Bucket);
-            }
-            case 10:
-            {
-                if (random.nextInt(10) == 0)
-                {
-                    return new ItemInstance(ItemBase.byId[ItemBase.record13.id + random.nextInt(2)]);
-                }
-                break;
-            }
-            case 11:
-            {
-                if (random.nextInt(2) == 0)
-                {
-                    return new ItemInstance(AetherItems.ZaniteBoots);
-                }
-                if (random.nextInt(2) == 0)
-                {
-                    return new ItemInstance(AetherItems.ZaniteHelmet);
-                }
-                if (random.nextInt(2) == 0)
-                {
-                    return new ItemInstance(AetherItems.ZaniteLeggings);
-                }
-                if (random.nextInt(2) == 0)
-                {
-                    return new ItemInstance(AetherItems.ZaniteChestplate);
-                }
-                break;
-            }
-            case 12:
-            {
-                if (random.nextInt(4) == 0)
-                {
-                    return new ItemInstance(AetherItems.IronPendant);
-                }
-            }
-            case 13:
-            {
-                if (random.nextInt(10) == 0)
-                {
-                    return new ItemInstance(AetherItems.GoldPendant);
-                }
-            }
-            case 14:
-            {
-                if (random.nextInt(15) == 0)
-                {
-                    return new ItemInstance(AetherItems.ZaniteRing);
-                }
-                break;
-            }
-        }
-        return new ItemInstance(AetherBlocks.AMBROSIUM_TORCH, random.nextInt(5));
-    }
-
-    private ItemInstance getSilverLoot(final Random random)
-    {
-        final int item = random.nextInt(9);
-        switch (item)
-        {
-            case 0:
-            {
-                return new ItemInstance(AetherItems.GummieSwet, random.nextInt(16));
-            }
-            case 1:
-            {
-                return new ItemInstance(AetherItems.SwordLightning);
-            }
-            case 2:
-            {
-                if (random.nextBoolean())
-                {
-                    return new ItemInstance(AetherItems.AxeValkyrie);
-                }
-                if (random.nextBoolean())
-                {
-                    return new ItemInstance(AetherItems.ShovelValkyrie);
-                }
-                if (random.nextBoolean())
-                {
-                    return new ItemInstance(AetherItems.PickValkyrie);
-                }
-                break;
-            }
-            case 3:
-            {
-                return new ItemInstance(AetherItems.SwordHoly);
-            }
-            case 4:
-            {
-                return new ItemInstance(AetherItems.GoldenFeather);
-            }
-            case 5:
-            {
-                return new ItemInstance(AetherItems.RegenerationStone);
-            }
-            case 6:
-            {
-                if (random.nextBoolean())
-                {
-                    return new ItemInstance(AetherItems.NeptuneHelmet);
-                }
-                if (random.nextBoolean())
-                {
-                    return new ItemInstance(AetherItems.NeptuneLeggings);
-                }
-                if (random.nextBoolean())
-                {
-                    return new ItemInstance(AetherItems.NeptuneChestplate);
-                }
-                break;
-            }
-            case 7:
-            {
-                if (random.nextBoolean())
-                {
-                    return new ItemInstance(AetherItems.NeptuneBoots);
-                }
-                return new ItemInstance(AetherItems.NeptuneGlove);
-            }
-            case 8:
-            {
-                return new ItemInstance(AetherItems.InvisibilityCloak);
-            }
-        }
-        return new ItemInstance(AetherItems.ZanitePendant);
     }
 }
