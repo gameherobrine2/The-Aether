@@ -1,17 +1,21 @@
 package com.gildedgames.aether.mixin;
 
 import com.gildedgames.aether.AetherMod;
+import com.gildedgames.aether.entity.base.IAetherBoss;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.InGame;
 import net.minecraft.client.util.ScreenScaler;
+import net.minecraft.entity.EntityBase;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.List;
 import java.util.Random;
 
 @Mixin(InGame.class)
@@ -22,6 +26,7 @@ public class InGameGuiMixin
     @Shadow
     private Random rand;
 
+    @Unique
     public void customBlit(InGame instance, int a, int b, int c, int d, int e, int f)
     {
         if (AetherMod.getPlayerHandler(minecraft.player).maxHealth > 20)
@@ -54,30 +59,59 @@ public class InGameGuiMixin
         renderBossHP(instance);
     }
 
+    @Unique
+    int ticksToBossCheck = 0;
+
+    @Unique
+    EntityBase boss = null;
+
+    @Unique
+    private static double distance(double x1, double y1, double z1, double x2, double y2, double z2) {
+        return Math.sqrt(Math.pow(x2 - x1, 2) +
+                Math.pow(y2 - y1, 2) +
+                Math.pow(z2 - z1, 2));
+    }
+
+    @Unique
     private void renderBossHP(InGame instance)
     {
-        /* todo: find a boss within a 50x50x50 block area, render their bar.
-        if (Aether.currentBoss != null) {
-            if(!(Aether.currentBoss instanceof IAetherBoss)) {
-                return;
+        ticksToBossCheck++;
+
+        if (ticksToBossCheck == 100)
+        {
+            ticksToBossCheck = 0;
+            boss = null;
+            for (EntityBase entity : (List<EntityBase>) minecraft.level.entities)
+            {
+                if (entity instanceof IAetherBoss)
+                {
+                    if (distance(entity.x, entity.y, entity.z, minecraft.player.x, minecraft.player.y, minecraft.player.z) > 25)
+                        continue;
+
+                    boss = entity;
+                    break;
+                }
             }
-            final Minecraft mc = MinecraftClientAccessor.getMCinstance();
-            final ScreenScaler scaledresolution = new ScreenScaler(mc.options, mc.actualWidth, mc.actualHeight);
+        }
+
+        if (boss != null) {
+            final ScreenScaler scaledresolution = new ScreenScaler(minecraft.options, minecraft.actualWidth, minecraft.actualHeight);
             final int width = scaledresolution.getScaledWidth();
             final int height = scaledresolution.getScaledHeight();
-            final String s = ((IAetherBoss)Aether.currentBoss).getBossTitle();
-            mc.textRenderer.drawTextWithShadow(s, width / 2 - mc.textRenderer.getTextWidth(s) / 2, 2, -1);
-            GL11.glBindTexture(3553, mc.textureManager.getTextureId("aether:textures/gui/bossHPBar.png"));
+            final String s = ((IAetherBoss) boss).getBossTitle();
+            minecraft.textRenderer.drawTextWithShadow(s, width / 2 - minecraft.textRenderer.getTextWidth(s) / 2, 2, -1);
+            GL11.glBindTexture(3553, minecraft.textureManager.getTextureId("aether:textures/gui/bossHPBar.png"));
             GL11.glEnable(3042);
             GL11.glBlendFunc(775, 769);
             GL11.glColor3f(1.0f, 1.0f, 1.0f);
             GL11.glDisable(3042);
             instance.blit(width / 2 - 128, 12, 0, 16, 256, 32);
-            final int w = (int)(((IAetherBoss)Aether.currentBoss).getBossHP() / (float)((IAetherBoss)Aether.currentBoss).getBossMaxHP() * 256.0f);
+            final int w = (int)(((IAetherBoss) boss).getBossHP() / (float)((IAetherBoss) boss).getBossMaxHP() * 256.0f);
             instance.blit(width / 2 - 128, 12, 0, 0, w, 16);
-        }*/
+        }
     }
 
+    @Unique
     private void renderHearts(InGame instance)
     {
         int maxHealth = AetherMod.getPlayerHandler(minecraft.player).maxHealth;

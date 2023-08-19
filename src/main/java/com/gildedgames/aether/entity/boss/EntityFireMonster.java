@@ -9,8 +9,11 @@ import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.NameGen;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.BlockBase;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.Living;
 import net.minecraft.entity.living.FlyingBase;
@@ -316,9 +319,12 @@ public class EntityFireMonster extends FlyingBase implements IAetherBoss, MobSpa
         this.bossName = tag.getString("BossName");
     }
 
-    public void chatLine(final String s)
+    private void chatLine(final String s)
     {
-        // todo: chat MinecraftClientAccessor.getMCinstance().overlay.addChatMessage(s);
+        if (FabricLoader.getInstance().getEnvironmentType() == EnvType.SERVER)
+            return;
+
+        ((Minecraft) FabricLoader.getInstance().getGameInstance()).overlay.addChatMessage(s);
     }
 
     public boolean chatWithMe()

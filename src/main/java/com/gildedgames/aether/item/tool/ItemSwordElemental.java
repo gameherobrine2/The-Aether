@@ -59,7 +59,7 @@ public class ItemSwordElemental extends TemplateSword
         else if (this.element == EnumElement.Lightning)
         {
             damageTarget.level.spawnEntity(new EntityAetherLightning(damageSource.level, damageSource.x, damageSource.y, damageSource.z));
-            //todo: aether lightning ModLoader.getMinecraftInstance().level.spawnEntity(new EntityAetherLightning(ModLoader.getMinecraftInstance().level, (int)damageSource.x, (int)damageSource.y, (int)damageSource.z));
+            // aether lightning ModLoader.getMinecraftInstance().level.spawnEntity(new EntityAetherLightning(ModLoader.getMinecraftInstance().level, (int)damageSource.x, (int)damageSource.y, (int)damageSource.z));
         }
         itemstack.applyDamage(1, damageTarget);
         return true;
