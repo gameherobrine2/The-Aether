@@ -3,7 +3,6 @@ package com.gildedgames.aether.item.accessory;
 import com.gildedgames.aether.entity.base.EntityProjectileBase;
 import com.gildedgames.aether.mixin.access.EntityRenderAccessor;
 import com.gildedgames.aether.mixin.access.LivingAccessor;
-import com.gildedgames.aether.registry.AetherItems;
 import com.matthewperiut.accessoryapi.api.Accessory;
 import com.matthewperiut.accessoryapi.api.render.AccessoryRenderer;
 import com.matthewperiut.accessoryapi.api.render.HasCustomRenderer;
@@ -59,7 +58,7 @@ public class EnergyShield extends TemplateItemBase implements Accessory, HasCust
                     ItemInstance shieldItem = null;
                     if (inv.armour.length > 4)
                     {
-                        flag = (inv != null && inv.armour[6] != null && inv.armour[6].itemId == AetherItems.RepShield.id);
+                        //flag = (inv != null && inv.armour[6] != null && inv.armour[6].itemId == AetherItems.RepShield.id);
                         shieldItem = inv.armour[6];
                     }
                     if (flag && (player.onGround || (player.vehicle != null && player.vehicle.onGround)) && ((LivingAccessor) player).get1029() == 0.0f && ((LivingAccessor) player).get1060() == 0.0f)

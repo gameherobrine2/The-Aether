@@ -50,7 +50,6 @@ repositories {
 
 dependencies {
 	implementation 'org.projectlombok:lombok:1.18.26'
-	implementation 'org.projectlombok:lombok:1.18.26'
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.glasslauncher:bin:${project.yarn_mappings}"
 	modImplementation "babric:fabric-loader:${project.loader_version}"
@@ -58,6 +57,7 @@ dependencies {
 	implementation "org.slf4j:slf4j-api:1.8.0-beta4"
 	implementation "org.apache.logging.log4j:log4j-slf4j18-impl:2.16.0"
 	modImplementation("net.modificationstation:StationAPI:${project.stapi_version}")
+	//modImplementation "com.github.paulevsGitch:BHCreative:${project.bhcreative_version}"
 
 	modImplementation("com.github.matthewperiut:accessory-api:${project.accessoryapi_version}") {
 		transitive false
@@ -72,7 +72,7 @@ dependencies {
 	modLocalRuntime("net.glasslauncher.mods:GlassConfigAPI:${project.gcapi_version}") {
 		transitive false
 	}
-	modLocalRuntime("net.glasslauncher:HowManyItems-Fabric-Unofficial:5.0.13") {
+	modLocalRuntime("net.glasslauncher:HowManyItems-Fabric-Unofficial:${project.hmi_version}") {
 		transitive false
 	}
 }

@@ -1,8 +1,6 @@
 package com.gildedgames.aether.event.listener;
 
-import com.gildedgames.aether.block.BlockAmbrosiumTorch;
-import com.gildedgames.aether.item.misc.*;
-import com.gildedgames.aether.item.tool.*;
+import com.gildedgames.aether.item.tool.ItemSkyrootBucket;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import net.mine_diver.unsafeevents.listener.EventListener;
@@ -76,17 +74,12 @@ public class TextureListener
         ItemSkyrootBucket.sprRemedy = Atlases.getGuiItems().addTexture(Identifier.of(MOD_ID, "items/BucketRemedy")).index;
 
         //Some textures for blocks
-        ((BlockAmbrosiumTorch) AetherBlocks.AMBROSIUM_TORCH).texture = sprAmbrosiumTorch;
+        AetherBlocks.AMBROSIUM_TORCH.texture = sprAmbrosiumTorch;
 
-        //Items
-
-        // todo: remove
-        AetherItems.SpawnerStick.setTexture(Identifier.of(MOD_ID, "items/Stick"));
-
-        ((ItemAmbrosium) AetherItems.AmbrosiumShard).setTexture(Identifier.of(MOD_ID, "items/AmbrosiumShard"));
-        ((ItemAetherKey) AetherItems.Key).setTexture(Identifier.of(MOD_ID, "items/Key"));
-        ((ItemAether) AetherItems.VictoryMedal).setTexture(Identifier.of(MOD_ID, "items/VictoryMedal"));
-        ((ItemAether) AetherItems.Stick).setTexture(Identifier.of(MOD_ID, "items/Stick"));
+        AetherItems.AmbrosiumShard.setTexture(Identifier.of(MOD_ID, "items/AmbrosiumShard"));
+        AetherItems.Key.setTexture(Identifier.of(MOD_ID, "items/Key"));
+        AetherItems.VictoryMedal.setTexture(Identifier.of(MOD_ID, "items/VictoryMedal"));
+        AetherItems.Stick.setTexture(Identifier.of(MOD_ID, "items/Stick"));
         AetherItems.GoldPendant.setTexture(Identifier.of(MOD_ID, "items/Pendant"));
         AetherItems.IronPendant.setTexture(Identifier.of(MOD_ID, "items/Pendant"));
         AetherItems.IcePendant.setTexture(Identifier.of(MOD_ID, "items/Pendant"));
@@ -95,24 +88,24 @@ public class TextureListener
         AetherItems.GoldRing.setTexture(Identifier.of(MOD_ID, "items/Ring"));
         AetherItems.IceRing.setTexture(Identifier.of(MOD_ID, "items/Ring"));
         AetherItems.ZaniteRing.setTexture(Identifier.of(MOD_ID, "items/Ring"));
-        ((ItemMoaEgg) AetherItems.MoaEgg).setTexture(Identifier.of(MOD_ID, "items/MoaEgg"));
-        ((ItemAether) AetherItems.AechorPetal).setTexture(Identifier.of(MOD_ID, "items/AechorPetal"));
-        ((ItemAether) AetherItems.GoldenAmber).setTexture(Identifier.of(MOD_ID, "items/GoldenAmber"));
-        ((ItemAmbrosium) AetherItems.HealingStone).setTexture(Identifier.of(MOD_ID, "items/HealingStone"));
-        ((ItemAether) AetherItems.Zanite).setTexture(Identifier.of(MOD_ID, "items/Zanite"));
-        ((ItemAetherRecord) AetherItems.BlueMusicDisk).setTexture(Identifier.of(MOD_ID, "items/BlueMusicDisk"));
+        AetherItems.MoaEgg.setTexture(Identifier.of(MOD_ID, "items/MoaEgg"));
+        AetherItems.AechorPetal.setTexture(Identifier.of(MOD_ID, "items/AechorPetal"));
+        AetherItems.GoldenAmber.setTexture(Identifier.of(MOD_ID, "items/GoldenAmber"));
+        AetherItems.HealingStone.setTexture(Identifier.of(MOD_ID, "items/HealingStone"));
+        AetherItems.Zanite.setTexture(Identifier.of(MOD_ID, "items/Zanite"));
+        AetherItems.BlueMusicDisk.setTexture(Identifier.of(MOD_ID, "items/BlueMusicDisk"));
         AetherItems.PickSkyroot.setTexture(Identifier.of(MOD_ID, "items/PickSkyroot"));
         AetherItems.ShovelSkyroot.setTexture(Identifier.of(MOD_ID, "items/ShovelSkyroot"));
         AetherItems.AxeSkyroot.setTexture(Identifier.of(MOD_ID, "items/AxeSkyroot"));
         AetherItems.SwordSkyroot.setTexture(Identifier.of(MOD_ID, "items/SwordSkyroot"));
-        ((ItemHolystonePickaxe) AetherItems.PickHolystone).setTexture(Identifier.of(MOD_ID, "items/PickHolystone"));
-        ((ItemHolystoneSpade) AetherItems.ShovelHolystone).setTexture(Identifier.of(MOD_ID, "items/ShovelHolystone"));
-        ((ItemHolystoneAxe) AetherItems.AxeHolystone).setTexture(Identifier.of(MOD_ID, "items/AxeHolystone"));
-        ((ItemSwordHolystone) AetherItems.SwordHolystone).setTexture(Identifier.of(MOD_ID, "items/SwordHolystone"));
-        ((ItemZaniteAxe) AetherItems.AxeZanite).setTexture(Identifier.of(MOD_ID, "items/AxeZanite"));
-        ((ItemZanitePickaxe) AetherItems.PickZanite).setTexture(Identifier.of(MOD_ID, "items/PickZanite"));
-        ((ItemZaniteSpade) AetherItems.ShovelZanite).setTexture(Identifier.of(MOD_ID, "items/ShovelZanite"));
-        ((ItemSwordZanite) AetherItems.SwordZanite).setTexture(Identifier.of(MOD_ID, "items/SwordZanite"));
+        AetherItems.PickHolystone.setTexture(Identifier.of(MOD_ID, "items/PickHolystone"));
+        AetherItems.ShovelHolystone.setTexture(Identifier.of(MOD_ID, "items/ShovelHolystone"));
+        AetherItems.AxeHolystone.setTexture(Identifier.of(MOD_ID, "items/AxeHolystone"));
+        AetherItems.SwordHolystone.setTexture(Identifier.of(MOD_ID, "items/SwordHolystone"));
+        AetherItems.AxeZanite.setTexture(Identifier.of(MOD_ID, "items/AxeZanite"));
+        AetherItems.PickZanite.setTexture(Identifier.of(MOD_ID, "items/PickZanite"));
+        AetherItems.ShovelZanite.setTexture(Identifier.of(MOD_ID, "items/ShovelZanite"));
+        AetherItems.SwordZanite.setTexture(Identifier.of(MOD_ID, "items/SwordZanite"));
         AetherItems.LeatherGlove.setTexture(Identifier.of(MOD_ID, "items/Glove"));
         AetherItems.IronGlove.setTexture(Identifier.of(MOD_ID, "items/Glove"));
         AetherItems.GoldGlove.setTexture(Identifier.of(MOD_ID, "items/Glove"));
@@ -122,13 +115,13 @@ public class TextureListener
         AetherItems.ObsidianGlove.setTexture(Identifier.of(MOD_ID, "items/Glove"));
         AetherItems.PhoenixGlove.setTexture(Identifier.of(MOD_ID, "items/GloveChain"));
         AetherItems.NeptuneGlove.setTexture(Identifier.of(MOD_ID, "items/GloveChain"));
-        ((ItemGravititePickaxe) AetherItems.PickGravitite).setTexture(Identifier.of(MOD_ID, "items/PickGravitite"));
-        ((ItemGravititeSpade) AetherItems.ShovelGravitite).setTexture(Identifier.of(MOD_ID, "items/ShovelGravitite"));
-        ((ItemGravititeAxe) AetherItems.AxeGravitite).setTexture(Identifier.of(MOD_ID, "items/AxeGravitite"));
-        ((ItemSwordGravitite) AetherItems.SwordGravitite).setTexture(Identifier.of(MOD_ID, "items/SwordGravitite"));
-        ((ItemValkyriePickaxe) AetherItems.PickValkyrie).setTexture(Identifier.of(MOD_ID, "items/ValkyriePickaxe"));
-        ((ItemValkyrieSpade) AetherItems.ShovelValkyrie).setTexture(Identifier.of(MOD_ID, "items/ValkyrieShovel"));
-        ((ItemValkyrieAxe) AetherItems.AxeValkyrie).setTexture(Identifier.of(MOD_ID, "items/ValkyrieAxe"));
+        AetherItems.PickGravitite.setTexture(Identifier.of(MOD_ID, "items/PickGravitite"));
+        AetherItems.ShovelGravitite.setTexture(Identifier.of(MOD_ID, "items/ShovelGravitite"));
+        AetherItems.AxeGravitite.setTexture(Identifier.of(MOD_ID, "items/AxeGravitite"));
+        AetherItems.SwordGravitite.setTexture(Identifier.of(MOD_ID, "items/SwordGravitite"));
+        AetherItems.PickValkyrie.setTexture(Identifier.of(MOD_ID, "items/ValkyriePickaxe"));
+        AetherItems.ShovelValkyrie.setTexture(Identifier.of(MOD_ID, "items/ValkyrieShovel"));
+        AetherItems.AxeValkyrie.setTexture(Identifier.of(MOD_ID, "items/ValkyrieAxe"));
         AetherItems.IronBubble.setTexture(Identifier.of(MOD_ID, "items/IronBubble"));
         AetherItems.AetherCape.setTexture(Identifier.of(MOD_ID, "items/AetherCape"));
         AetherItems.RegenerationStone.setTexture(Identifier.of(MOD_ID, "items/RegenerationStone"));
@@ -138,23 +131,23 @@ public class TextureListener
         AetherItems.RedCape.setTexture(Identifier.of(MOD_ID, "items/Cape"));
         AetherItems.YellowCape.setTexture(Identifier.of(MOD_ID, "items/Cape"));
         AetherItems.BlueCape.setTexture(Identifier.of(MOD_ID, "items/Cape"));
-        ((ItemCloudParachute) AetherItems.CloudParachute).setTexture(Identifier.of(MOD_ID, "items/CloudParachute"));
-        ((ItemCloudParachute) AetherItems.CloudParachuteGold).setTexture(Identifier.of(MOD_ID, "items/CloudParachute"));
-        ((ItemLifeShard) AetherItems.LifeShard).setTexture(Identifier.of(MOD_ID, "items/LifeShard"));
+        AetherItems.CloudParachute.setTexture(Identifier.of(MOD_ID, "items/CloudParachute"));
+        AetherItems.CloudParachuteGold.setTexture(Identifier.of(MOD_ID, "items/CloudParachute"));
+        AetherItems.LifeShard.setTexture(Identifier.of(MOD_ID, "items/LifeShard"));
         AetherItems.GoldenFeather.setTexture(Identifier.of(MOD_ID, "items/GoldenFeather"));
-        ((ItemLance) AetherItems.Lance).setTexture(Identifier.of(MOD_ID, "items/Lance"));
-        AetherItems.RepShield.setTexture(Identifier.of(MOD_ID, "items/RepulsionShield"));
-        ((ItemPigSlayer) AetherItems.PigSlayer).setTexture(Identifier.of(MOD_ID, "items/PigSlayer"));
-        ((ItemVampireBlade) AetherItems.VampireBlade).setTexture(Identifier.of(MOD_ID, "items/VampireBlade"));
-        ((ItemAether) AetherItems.NatureStaff).setTexture(Identifier.of(MOD_ID, "items/NatureStaff"));
-        ((ItemSwordElemental) AetherItems.SwordFire).setTexture(Identifier.of(MOD_ID, "items/ElementalSword"));
-        ((ItemSwordElemental) AetherItems.SwordHoly).setTexture(Identifier.of(MOD_ID, "items/ElementalSword"));
-        ((ItemSwordElemental) AetherItems.SwordLightning).setTexture(Identifier.of(MOD_ID, "items/ElementalSword"));
-        ((ItemLightningKnife) AetherItems.LightningKnife).setTexture(Identifier.of(MOD_ID, "items/LightningKnife"));
-        ((ItemGummieSwet) AetherItems.GummieSwet).setTexture(Identifier.of(MOD_ID, "items/GummieSwet"));
-        ((ItemNotchHammer) AetherItems.HammerNotch).setTexture(Identifier.of(MOD_ID, "items/HammerNotch"));
-        ((ItemCloudStaff) AetherItems.CloudStaff).setTexture(Identifier.of(MOD_ID, "items/CloudStaff"));
-        ((ItemPhoenixBow) AetherItems.PhoenixBow).setTexture(Identifier.of(MOD_ID, "items/PhoenixBow"));
+        AetherItems.Lance.setTexture(Identifier.of(MOD_ID, "items/Lance"));
+        //AetherItems.RepShield.setTexture(Identifier.of(MOD_ID, "items/RepulsionShield"));
+        AetherItems.PigSlayer.setTexture(Identifier.of(MOD_ID, "items/PigSlayer"));
+        AetherItems.VampireBlade.setTexture(Identifier.of(MOD_ID, "items/VampireBlade"));
+        AetherItems.NatureStaff.setTexture(Identifier.of(MOD_ID, "items/NatureStaff"));
+        AetherItems.SwordFire.setTexture(Identifier.of(MOD_ID, "items/ElementalSword"));
+        AetherItems.SwordHoly.setTexture(Identifier.of(MOD_ID, "items/ElementalSword"));
+        AetherItems.SwordLightning.setTexture(Identifier.of(MOD_ID, "items/ElementalSword"));
+        AetherItems.LightningKnife.setTexture(Identifier.of(MOD_ID, "items/LightningKnife"));
+        AetherItems.GummieSwet.setTexture(Identifier.of(MOD_ID, "items/GummieSwet"));
+        AetherItems.HammerNotch.setTexture(Identifier.of(MOD_ID, "items/HammerNotch"));
+        AetherItems.CloudStaff.setTexture(Identifier.of(MOD_ID, "items/CloudStaff"));
+        AetherItems.PhoenixBow.setTexture(Identifier.of(MOD_ID, "items/PhoenixBow"));
     }
 
     //this is Alias code but i changed public static booleans to ints and renamed them

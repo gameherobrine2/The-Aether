@@ -6,11 +6,15 @@ import com.gildedgames.aether.registry.AetherAchievements;
 import com.gildedgames.aether.registry.AetherBlocks;
 import com.gildedgames.aether.registry.AetherItems;
 import com.gildedgames.aether.utils.Lore;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.BlockBase;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.container.ContainerBase;
+import net.minecraft.container.slot.Slot;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
@@ -100,6 +104,53 @@ public class GuiLore extends ContainerBase
         final int j = (this.width - this.containerWidth) / 2;
         final int k = (this.height - this.containerHeight) / 2;
         this.blit(j, k, 0, 0, this.containerWidth, this.containerHeight);
+    }
+
+    private Slot getSlot(int i, int j) {
+        for(int var3 = 0; var3 < this.container.slots.size(); ++var3) {
+            Slot var4 = (Slot)this.container.slots.get(var3);
+            if (this.isMouseOverSlot(var4, i, j)) {
+                return var4;
+            }
+        }
+
+        return null;
+    }
+
+    private boolean isMouseOverSlot(Slot arg, int i, int j) {
+        int var4 = (this.width - this.containerWidth) / 2;
+        int var5 = (this.height - this.containerHeight) / 2;
+        i -= var4;
+        j -= var5;
+        return i >= arg.x - 1 && i < arg.x + 16 + 1 && j >= arg.y - 1 && j < arg.y + 16 + 1;
+    }
+
+    @Override
+    protected void mouseClicked(int i, int j, int k)
+    {
+        if (k == 0 || k == 1) {
+            Slot var4 = this.getSlot(i, j);
+            int var5 = (this.width - this.containerWidth) / 2;
+            int var6 = (this.height - this.containerHeight) / 2;
+            boolean var7 = i < var5 || j < var6 || i >= var5 + this.containerWidth || j >= var6 + this.containerHeight;
+            int var8 = -1;
+            if (var4 != null) {
+                var8 = var4.id;
+            }
+
+            if (var7) {
+                var8 = -999;
+            }
+
+            if (var8 != -1) {
+                boolean var9 = var8 != -999 && (Keyboard.isKeyDown(42) || Keyboard.isKeyDown(54));
+                ItemInstance item = this.minecraft.interactionManager.clickSlot(this.container.currentContainerId, var8, k, var9, this.minecraft.player);
+                if (((Minecraft) FabricLoader.getInstance().getGameInstance()).hasLevel())
+                {
+                    ((Slot) this.container.slots.get(0)).setStack(item);
+                }
+            }
+        }
     }
 
     /* todo: Add these to lore book:
@@ -384,7 +435,7 @@ public class GuiLore extends ContainerBase
         GuiLore.lores.add(new Lore(AetherItems.CloudStaff, "Cloud Staff", "Found in Dungeons.", "Use this staff to", "summon two mini", "zephyrs which", "will shoot ice", "balls", 2));
         GuiLore.lores.add(new Lore(AetherItems.LifeShard, "Life Shard", "Found in Dungeons.", "Increases your", "maximum health by", "one heart", "", "", 2));
         GuiLore.lores.add(new Lore(AetherItems.GoldenFeather, "Golden Feather", "Found in Dungeons.", "While holding this", "you will float", "gently to the ground", "and take no fall", "damage", 2));
-        GuiLore.lores.add(new Lore(AetherItems.RepShield, "Shield of Repulsion", "Found in Dungeons.", "Place it in shield", "slot.", "While standing still", "all projectiles", "will bounce off you", 2));
+        //GuiLore.lores.add(new Lore(AetherItems.RepShield, "Shield of Repulsion", "Found in Dungeons.", "Place it in shield", "slot.", "While standing still", "all projectiles", "will bounce off you", 2));
         GuiLore.lores.add(new Lore(AetherItems.Lance, "Lance", "Found in Dungeons.", "Powerful weapon", "with extended", "reach", "", "", 2));
         GuiLore.lores.add(new Lore(AetherItems.AetherCape, "Swet Cape", "Found in Dungeons.", "Wear it as a cape.", "Purely asthetic", "item", "", "s", 2));
         GuiLore.lores.add(new Lore(AetherItems.ZanitePendant, "Zanite Pendant", "Made from zanite.", "Wear it in your", "pendant slot.", "As it wears away", "it increases your", "mining speed", 2));

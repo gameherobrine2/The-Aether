@@ -5,8 +5,7 @@ import net.minecraft.level.structure.Structure;
 
 import java.util.Random;
 
-public class AetherGenBuildings extends Structure
-{
+public class AetherGenBuildings extends Structure {
     public int blockID1;
     public int blockID2;
     public int meta1;

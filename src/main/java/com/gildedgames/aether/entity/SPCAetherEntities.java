@@ -3,9 +3,7 @@ package com.gildedgames.aether.entity;
 import com.gildedgames.aether.entity.animal.EntitySheepuff;
 import com.gildedgames.aether.entity.animal.EntitySwet;
 import com.gildedgames.aether.entity.boss.EntityValkyrie;
-import com.matthewperiut.spc.api.PosParse;
 import com.matthewperiut.spc.api.SummonRegistry;
-import net.minecraft.level.Level;
 
 public class SPCAetherEntities
 {

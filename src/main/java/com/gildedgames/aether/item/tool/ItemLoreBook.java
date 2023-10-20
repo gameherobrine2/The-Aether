@@ -1,10 +1,16 @@
 package com.gildedgames.aether.item.tool;
 
+import com.gildedgames.aether.gui.GuiLore;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.level.Level;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.item.TemplateItemBase;
+import net.modificationstation.stationapi.api.util.SideUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class ItemLoreBook extends TemplateItemBase
@@ -34,14 +40,20 @@ public class ItemLoreBook extends TemplateItemBase
     @Override
     public ItemInstance use(final ItemInstance item, final Level level, final PlayerBase player)
     {
-        /*
-        if (FabricLoader.getInstance().getGameInstance() instanceof Minecraft mc)
-        {
-            mc.openScreen(new GuiLore(player.inventory, item.getDamage()));
-        }*/
-        // todo: open gui lore
-        //TODO ModLoader.OpenGUI(player, (ScreenBase)new GuiLore(player.inventory, item.getDamage()));
+        SideUtils.run(() -> useLoreClient(player, item), () -> useLoreServer());
         return item;
+    }
+
+    @Environment(EnvType.SERVER)
+    private static void useLoreServer() {
+
+    }
+
+    @Environment(EnvType.CLIENT)
+    private static void useLoreClient(final PlayerBase player, final ItemInstance item) {
+        //noinspection deprecation
+        if (FabricLoader.getInstance().getGameInstance() instanceof Minecraft mc)
+            mc.openScreen(new GuiLore(player.inventory, item.getDamage()));
     }
 
     @Override
