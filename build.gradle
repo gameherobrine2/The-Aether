@@ -69,6 +69,7 @@ dependencies {
 	modLocalRuntime("com.github.calmilamsy:ModMenu:${project.modmenu_version}") {
 		transitive false
 	}
+	implementation "blue.endless:jankson:1.2.1"
 	modLocalRuntime("net.glasslauncher.mods:GlassConfigAPI:${project.gcapi_version}") {
 		transitive false
 	}
