@@ -1,5 +1,6 @@
 package com.gildedgames.aether.item.tool;
 
+import com.gildedgames.aether.entity.projectile.EntityLightningKnife;
 import com.gildedgames.aether.item.misc.ItemAether;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemInstance;
@@ -20,9 +21,9 @@ public class ItemLightningKnife extends ItemAether
     {
         --item.count;
         level.playSound(player, "aether:aether.sound.other.dartshooter.shootdart", 2.0f, 1.0f / (ItemLightningKnife.rand.nextFloat() * 0.4f + 0.8f));
-        //if (!level.isServerSide) {
-        //TODO knife level.spawnEntity(new EntityLightningKnife(level, player));
-        //}
+        if (!level.isServerSide) {
+        	level.spawnEntity(new EntityLightningKnife(level, player));
+        }
         return item;
     }
 }

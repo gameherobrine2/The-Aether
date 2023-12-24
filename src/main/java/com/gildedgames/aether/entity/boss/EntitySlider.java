@@ -23,7 +23,6 @@ import net.minecraft.util.maths.MathHelper;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.server.entity.MobSpawnDataProvider;
 
-//TODO: add render
 public class EntitySlider extends FlyingBase implements IAetherBoss, MobSpawnDataProvider
 {
     public int moveTimer;

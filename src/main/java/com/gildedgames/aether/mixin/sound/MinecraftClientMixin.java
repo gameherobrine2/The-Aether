@@ -29,7 +29,6 @@ public class MinecraftClientMixin
             }
             catch (IOException e)
             {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             soundsLoaded = true;

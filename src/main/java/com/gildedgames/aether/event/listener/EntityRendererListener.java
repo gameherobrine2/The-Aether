@@ -48,7 +48,7 @@ public class EntityRendererListener
         event.renderers.put(EntityHomeShot.class, new RenderHomeShot(new ModelHomeShot(0.0f, 0.0f), 0.2f));
         //event.renderers.put(EntityNotchWave.class, new RenderNotchWave());
         event.renderers.put(EntityAetherLightning.class, new LightningRenderer());
-        //event.renderers.put(EntityLightningKnife.class, new RenderLightningKnife());
+        event.renderers.put(EntityLightningKnife.class, new RenderLightningKnife());
         event.renderers.put(EntitySentry.class, new RenderSentry(new Slime(0), 0.2f));
         event.renderers.put(EntityMiniCloud.class, new LivingEntityRenderer(new ModelMiniCloud(0.0f, 20.0f), 0.35f));
         event.renderers.put(Whirly.class, new RenderWhirly());

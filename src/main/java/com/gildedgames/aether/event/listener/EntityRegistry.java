@@ -72,5 +72,6 @@ public class EntityRegistry
         event.register(EntityMiniCloud.class, "Minicloud");
         event.register(EntityFlamingArrow.class, "FlamingArrow");
         event.register(Whirly.class, "Whirly");
+        event.register(EntityLightningKnife.class, "LightningKnife");
     }
 }
